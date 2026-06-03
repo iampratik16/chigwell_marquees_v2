@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { EASE_LUXE } from "@/lib/motion";
 import { HERO } from "@/lib/media";
 import { VIDEO } from "@/lib/media.real";
+import BackgroundVideo from "@/components/ui/BackgroundVideo";
 import MagneticButton from "@/components/ui/MagneticButton";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 import { useMounted } from "@/lib/useMounted";
@@ -22,17 +23,7 @@ export default function Hero() {
       {/* Backdrop, real cinematic clip; poster still loads instantly + serves reduced motion. */}
       <div className="absolute inset-0">
         {playVideo ? (
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster={hero.src}
-            className="h-full w-full object-cover"
-            aria-hidden
-          >
-            <source src={VIDEO.hero} type="video/mp4" />
-          </video>
+          <BackgroundVideo src={VIDEO.hero} poster={hero.src} className="h-full w-full object-cover" />
         ) : (
           <div className="relative h-full w-full">
             <Image src={hero.src} alt={hero.alt} fill priority sizes="100vw" className="object-cover" />

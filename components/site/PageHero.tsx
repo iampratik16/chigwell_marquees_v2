@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import BackgroundVideo from "@/components/ui/BackgroundVideo";
 import { EASE_LUXE } from "@/lib/motion";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 import { useMounted } from "@/lib/useMounted";
@@ -34,9 +35,7 @@ export default function PageHero({ eyebrow, title, intro, media, video, size = "
     >
       <div className="absolute inset-0">
         {playVideo ? (
-          <video autoPlay muted loop playsInline poster={media.src} className="h-full w-full object-cover" aria-hidden>
-            <source src={video} type="video/mp4" />
-          </video>
+          <BackgroundVideo src={video!} poster={media.src} className="h-full w-full object-cover" />
         ) : (
           <div className={reduced ? "relative h-full w-full" : "ken-burns relative h-full w-full"}>
             <Image src={media.src} alt={media.alt} fill priority sizes="100vw" className="object-cover" />
