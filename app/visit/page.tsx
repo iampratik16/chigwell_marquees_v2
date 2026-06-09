@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/site/PageHero";
+import JsonLd from "@/components/site/JsonLd";
+import { faqPage } from "@/lib/structured-data";
 import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
@@ -7,11 +9,12 @@ import Reveal from "@/components/ui/Reveal";
 import AnimatedLink from "@/components/ui/AnimatedLink";
 import EnquiryForm from "@/components/site/EnquiryForm";
 import Faqs from "@/components/site/Faqs";
-import { FACTS, SITE } from "@/lib/site";
+import { FACTS, FAQS, SITE } from "@/lib/site";
 import { ESTATE } from "@/lib/media";
 
 export const metadata: Metadata = {
-  title: "Visit & Enquire",
+  alternates: { canonical: "/visit" },
+  title: { absolute: "Visit Our Essex Marquee Venue | The Chigwell Marquees" },
   description:
     "Visit The Chigwell Marquees at 159 High Road, Chigwell, Essex IG7 6BD, around 40 minutes from Central London. Begin your enquiry online.",
 };
@@ -19,6 +22,7 @@ export const metadata: Metadata = {
 export default function VisitPage() {
   return (
     <>
+      <JsonLd data={faqPage(FAQS)} />
       <PageHero
         eyebrow="Visit & enquire"
         title={"Come and see\nthe estate."}

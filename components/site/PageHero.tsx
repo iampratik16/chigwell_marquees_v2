@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import BackgroundVideo from "@/components/ui/BackgroundVideo";
+import SocialLinks from "@/components/site/SocialLinks";
 import { EASE_LUXE } from "@/lib/motion";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 import { useMounted } from "@/lib/useMounted";
@@ -20,10 +21,12 @@ type Props = {
   poster?: string;
   /** Smaller hero for utility pages. */
   size?: "lg" | "md";
+  /** Show a "Follow along" social row beneath the intro. */
+  social?: boolean;
 };
 
 /** Cinematic dark hero shared by inner pages. */
-export default function PageHero({ eyebrow, title, intro, media, video, poster, size = "lg" }: Props) {
+export default function PageHero({ eyebrow, title, intro, media, video, poster, size = "lg", social }: Props) {
   const reduced = useReducedMotion();
   const mounted = useMounted();
   const lines = title.split("\n");
@@ -81,6 +84,18 @@ export default function PageHero({ eyebrow, title, intro, media, video, poster, 
           >
             {intro}
           </motion.p>
+        )}
+
+        {social && (
+          <motion.div
+            initial={reduced ? false : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE_LUXE, delay: 1.05 }}
+            className="mt-8 flex items-center gap-5 text-bone"
+          >
+            <span className="eyebrow text-bone/55">Follow along</span>
+            <SocialLinks size={20} />
+          </motion.div>
         )}
       </div>
     </section>

@@ -8,11 +8,13 @@ import Grain from "@/components/effects/Grain";
 import Cursor from "@/components/effects/Cursor";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
+import JsonLd from "@/components/site/JsonLd";
+import { localBusiness } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.name}, Luxury Marquee Venue, Essex`,
+    default: "The Chigwell Marquees | Luxury Marquee Wedding Venue in Essex",
     template: `%s · ${SITE.name}`,
   },
   description: SITE.description,
@@ -24,15 +26,20 @@ export const metadata: Metadata = {
     "corporate event venue",
     "luxury marquee hire",
   ],
+  // Defaults only: no title/description here so each page's own copy fills
+  // og/twitter, and no canonical here so it doesn't leak to every route.
   openGraph: {
     type: "website",
     locale: "en_GB",
-    title: `${SITE.name}, A grand setting for remarkable occasions`,
-    description: SITE.description,
     siteName: SITE.name,
+    images: [
+      { url: "/og/og-default.jpg", width: 1200, height: 630, alt: `${SITE.name}, luxury marquee venue in Essex` },
+    ],
   },
-  twitter: { card: "summary_large_image" },
-  alternates: { canonical: "/" },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og/og-default.jpg"],
+  },
 };
 
 export const viewport: Viewport = {
@@ -46,6 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en-GB" className={`${gambetta.variable} ${switzer.variable}`}>
       <body className="bg-bone text-ink antialiased">
+        <JsonLd data={localBusiness} />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-5 focus:py-2 focus:text-sm focus:text-bone"

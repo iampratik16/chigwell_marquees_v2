@@ -13,7 +13,7 @@ export default function IntroStatement() {
         <div className="max-w-5xl">
           <Eyebrow>The estate</Eyebrow>
           <RevealText as="h2" className="mt-8 display-lg">
-            {"A blank canvas of ivory and green, \nset within forty-two acres of\nhistoric Essex countryside."}
+            {"A luxury marquee wedding venue in Essex, \na blank canvas of ivory and green set\nwithin forty-two acres of countryside."}
           </RevealText>
         </div>
 

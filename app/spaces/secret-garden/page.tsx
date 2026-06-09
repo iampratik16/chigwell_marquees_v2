@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/site/PageHero";
+import JsonLd from "@/components/site/JsonLd";
+import { breadcrumbList } from "@/lib/structured-data";
 import SplitFeature from "@/components/site/SplitFeature";
 import SpecList from "@/components/site/SpecList";
 import CtaBand from "@/components/site/CtaBand";
 import { SECRET_IMG, VIDEO, POSTER } from "@/lib/media.real";
 
 export const metadata: Metadata = {
-  title: "The Secret Garden",
+  alternates: { canonical: "/spaces/secret-garden" },
+  title: { absolute: "Secret Garden Wedding Venue Essex | The Chigwell Marquees" },
   description:
     "The Secret Garden, a secluded lawn with a classic fountain for outdoor civil ceremonies, drinks receptions and photography, for up to 250 guests.",
 };
@@ -14,6 +17,13 @@ export const metadata: Metadata = {
 export default function SecretGardenPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Home", path: "/" },
+          { name: "The Spaces", path: "/spaces" },
+          { name: "The Secret Garden", path: "/spaces/secret-garden" },
+        ])}
+      />
       <PageHero
         eyebrow="The spaces · III"
         title={"The Secret\nGarden."}

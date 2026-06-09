@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/site/PageHero";
+import JsonLd from "@/components/site/JsonLd";
+import { serviceNode, breadcrumbList } from "@/lib/structured-data";
 import SplitFeature from "@/components/site/SplitFeature";
 import SpecList from "@/components/site/SpecList";
 import CtaBand from "@/components/site/CtaBand";
@@ -12,7 +14,8 @@ import { OCC_ASIAN, SPACE_MEGA, SPACE_MINI } from "@/lib/media";
 import { REAL, VIDEO, POSTER, ASIAN_IMG } from "@/lib/media.real";
 
 export const metadata: Metadata = {
-  title: "Weddings",
+  alternates: { canonical: "/occasions/weddings" },
+  title: { absolute: "Wedding Venue in Essex | The Chigwell Marquees" },
   description:
     "Wedding venue hire in Essex, two magnificent marquees for intimate and grand weddings, including traditional Asian weddings, with a starlit ceiling and the Secret Garden.",
 };
@@ -20,6 +23,22 @@ export const metadata: Metadata = {
 export default function WeddingsPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          serviceNode({
+            name: "Wedding Venue Hire",
+            serviceType: "Wedding venue hire",
+            description:
+              "Wedding venue hire in Essex, two magnificent marquees for intimate and grand weddings, including traditional Asian weddings, with a starlit ceiling and the Secret Garden.",
+            path: "/occasions/weddings",
+          }),
+          breadcrumbList([
+            { name: "Home", path: "/" },
+            { name: "Occasions", path: "/occasions" },
+            { name: "Weddings", path: "/occasions/weddings" },
+          ]),
+        ]}
+      />
       <PageHero
         eyebrow="Occasions · Weddings"
         title={"Weddings\nin Essex."}

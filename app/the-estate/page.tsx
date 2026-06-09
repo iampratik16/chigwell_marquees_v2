@@ -12,7 +12,8 @@ import RevealImage from "@/components/ui/RevealImage";
 import { ESTATE_IMG, VIDEO, POSTER } from "@/lib/media.real";
 
 export const metadata: Metadata = {
-  title: "The Estate",
+  alternates: { canonical: "/the-estate" },
+  title: { absolute: "Marquee Venue Estate in Essex | The Chigwell Marquees" },
   description:
     "The Chigwell Marquees sit within the 42-acre grounds of Chigwell Hall, a Grade II listed manor, a surprising setting in the English countryside, minutes from the Central Line.",
 };

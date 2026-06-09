@@ -6,12 +6,15 @@ import StatsBand from "@/components/sections/home/StatsBand";
 import GalleryRail from "@/components/sections/home/GalleryRail";
 import CaseStudies from "@/components/sections/home/CaseStudies";
 import Journey from "@/components/sections/home/Journey";
-import JsonLd from "@/components/site/JsonLd";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
     <>
-      <JsonLd />
       <Hero />
       <IntroStatement />
       <TwoSpaces />

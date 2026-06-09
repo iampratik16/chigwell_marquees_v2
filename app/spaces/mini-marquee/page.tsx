@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/site/PageHero";
+import JsonLd from "@/components/site/JsonLd";
+import { breadcrumbList } from "@/lib/structured-data";
 import SplitFeature from "@/components/site/SplitFeature";
 import SpecList from "@/components/site/SpecList";
 import StarlitCeiling from "@/components/site/StarlitCeiling";
@@ -8,7 +10,8 @@ import { SPACE_GARDEN } from "@/lib/media";
 import { MINI_IMG } from "@/lib/media.real";
 
 export const metadata: Metadata = {
-  title: "The Mini Marquee",
+  alternates: { canonical: "/spaces/mini-marquee" },
+  title: { absolute: "Intimate Marquee Venue in Essex | The Chigwell Marquees" },
   description:
     "The Mini Marquee, an intimate setting for 30 to 200 guests with floor-to-ceiling glass, a starlit ceiling, built-in air conditioning and access to the Secret Garden.",
 };
@@ -16,6 +19,13 @@ export const metadata: Metadata = {
 export default function MiniMarqueePage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Home", path: "/" },
+          { name: "The Spaces", path: "/spaces" },
+          { name: "The Mini Marquee", path: "/spaces/mini-marquee" },
+        ])}
+      />
       <PageHero
         eyebrow="The spaces · II"
         title={"The Mini\nMarquee."}

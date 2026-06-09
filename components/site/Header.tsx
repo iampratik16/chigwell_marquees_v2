@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { NAV, SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import Logo from "./Logo";
+import SocialLinks from "./SocialLinks";
 import MagneticButton from "@/components/ui/MagneticButton";
 import { EASE_LUXE } from "@/lib/motion";
 
@@ -131,6 +132,10 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
+            <div className="hidden items-center gap-4 lg:flex">
+              <SocialLinks size={16} />
+              <span className="h-4 w-px bg-current opacity-20" aria-hidden />
+            </div>
             <div className="hidden lg:block">
               <MagneticButton
                 href="/visit#enquire"
@@ -226,6 +231,11 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
           <a href={`mailto:${SITE.email}`} className="text-lg">
             {SITE.email}
           </a>
+        </div>
+
+        <div className="mt-10">
+          <p className="eyebrow text-bone/45">Follow along</p>
+          <SocialLinks size={22} className="mt-4 text-bone/85" />
         </div>
       </div>
     </motion.div>

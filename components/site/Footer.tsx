@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { NAV, SITE, SOCIALS } from "@/lib/site";
+import { NAV, SITE } from "@/lib/site";
 import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
 import MagneticButton from "@/components/ui/MagneticButton";
 import AnimatedLink from "@/components/ui/AnimatedLink";
+import SocialLinks from "@/components/site/SocialLinks";
 
 export default function Footer() {
   const year = 2026;
@@ -74,15 +75,7 @@ export default function Footer() {
 
         <div className="md:col-span-3">
           <p className="eyebrow text-bone/45">Follow along</p>
-          <ul className="mt-5 flex flex-col gap-3">
-            {SOCIALS.map((s) => (
-              <li key={s.href}>
-                <AnimatedLink href={s.href} className="text-bone/75 normal-case tracking-normal">
-                  {s.label}
-                </AnimatedLink>
-              </li>
-            ))}
-          </ul>
+          <SocialLinks labelled className="mt-5 text-bone/75" />
         </div>
 
         <div className="md:col-span-2">
@@ -106,10 +99,10 @@ export default function Footer() {
       <div className="container-luxe flex flex-col gap-3 border-t border-bone/12 py-7 text-[0.72rem] uppercase tracking-[0.14em] text-bone/45 sm:flex-row sm:items-center sm:justify-between">
         <p>© {year} {SITE.name}. All rights reserved.</p>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
-          <Link href="/visit" className="transition-colors hover:text-bone">
+          <Link href="/privacy" className="transition-colors hover:text-bone">
             Privacy
           </Link>
-          <Link href="/visit" className="transition-colors hover:text-bone">
+          <Link href="/terms" className="transition-colors hover:text-bone">
             Terms
           </Link>
           <span className="text-bone/30">Crafted with intention</span>

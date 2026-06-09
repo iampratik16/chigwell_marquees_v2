@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { EASE_LUXE } from "@/lib/motion";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 
 type Props = {
@@ -16,7 +15,13 @@ function easeOutExpo(t: number) {
   return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
 }
 
-/** Counts up from 0 → value once it scrolls into view. */
+/**
+ * Renders the REAL value in the server HTML (so crawlers and AI read the true
+ * figure, never 0), then progressively enhances: on the client it resets to 0
+ * while still below the fold and counts up to the value when it scrolls into
+ * view. If it is already on screen at load, or reduced motion is requested,
+ * the real value simply stays put, no animation, no flash.
+ */
 export default function Counter({
   value,
   suffix = "",
@@ -25,16 +30,20 @@ export default function Counter({
   className,
 }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [display, setDisplay] = useState(0);
+  // SSR and the first client render both show the real value (hydration-safe).
+  const [display, setDisplay] = useState(value);
   const reduced = useReducedMotion();
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
-    if (reduced) {
-      setDisplay(value);
-      return;
-    }
+    if (!el || reduced) return;
+
+    // If it's already visible at load, keep the rendered value (avoid a flash).
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) return;
+
+    // Below the fold: drop to 0 off-screen, then animate up once it's in view.
+    setDisplay(0);
 
     let raf = 0;
     let start = 0;

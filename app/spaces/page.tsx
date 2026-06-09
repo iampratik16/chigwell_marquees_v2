@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/site/PageHero";
+import JsonLd from "@/components/site/JsonLd";
+import { breadcrumbList } from "@/lib/structured-data";
 import SplitFeature from "@/components/site/SplitFeature";
 import CtaBand from "@/components/site/CtaBand";
 import Section from "@/components/ui/Section";
@@ -13,7 +15,8 @@ import {
 } from "@/lib/media";
 
 export const metadata: Metadata = {
-  title: "The Spaces",
+  alternates: { canonical: "/spaces" },
+  title: { absolute: "Marquee Hire & Venue Spaces, Essex | The Chigwell Marquees" },
   description:
     "Two luxury marquees and a secret garden on the 42-acre Chigwell Hall estate, the Mega Marquee (300–1,000), the Mini Marquee (30–200) and the Secret Garden (up to 250).",
 };
@@ -21,6 +24,12 @@ export const metadata: Metadata = {
 export default function SpacesPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Home", path: "/" },
+          { name: "The Spaces", path: "/spaces" },
+        ])}
+      />
       <PageHero
         eyebrow="The spaces"
         title={"Two marquees and\na secret garden."}

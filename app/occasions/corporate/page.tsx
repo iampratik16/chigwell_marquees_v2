@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/site/PageHero";
+import JsonLd from "@/components/site/JsonLd";
+import { serviceNode, breadcrumbList } from "@/lib/structured-data";
 import SplitFeature from "@/components/site/SplitFeature";
 import SpecList from "@/components/site/SpecList";
 import CtaBand from "@/components/site/CtaBand";
@@ -10,7 +12,8 @@ import Reveal from "@/components/ui/Reveal";
 import { OCC_CORPORATE, OCC_CORPORATE_2, img } from "@/lib/media";
 
 export const metadata: Metadata = {
-  title: "Corporate",
+  alternates: { canonical: "/occasions/corporate" },
+  title: { absolute: "Corporate Event Venue near London | The Chigwell Marquees" },
   description:
     "Corporate venue hire in Essex, conferences, galas, product launches, team-building, festivals and office Christmas parties, with a full PA, big screens and 42 acres.",
 };
@@ -18,6 +21,22 @@ export const metadata: Metadata = {
 export default function CorporatePage() {
   return (
     <>
+      <JsonLd
+        data={[
+          serviceNode({
+            name: "Corporate Event Venue Hire",
+            serviceType: "Corporate event venue hire",
+            description:
+              "Corporate venue hire in Essex, conferences, galas, product launches, team-building, festivals and office Christmas parties, with a full PA, big screens and 42 acres.",
+            path: "/occasions/corporate",
+          }),
+          breadcrumbList([
+            { name: "Home", path: "/" },
+            { name: "Occasions", path: "/occasions" },
+            { name: "Corporate", path: "/occasions/corporate" },
+          ]),
+        ]}
+      />
       <PageHero
         eyebrow="Occasions · Corporate"
         title={"Business, at an\nincredible location."}
@@ -34,10 +53,11 @@ export default function CorporatePage() {
             </RevealText>
             <Reveal>
               <p className="lead mt-8 max-w-2xl text-mist">
-                Divide the venue into rooms and spaces for breakouts and
-                exhibitions, with a full catering team for corporate dinners.
-                Lots of companies who use our conference service make repeat
-                bookings, we really are the perfect venue.
+                As a corporate event venue near London, we divide the estate
+                into rooms and spaces for breakouts and exhibitions, with a full
+                catering team for corporate dinners. Lots of companies who use
+                our conference service make repeat bookings, we really are the
+                perfect venue.
               </p>
             </Reveal>
           </div>
@@ -76,7 +96,7 @@ export default function CorporatePage() {
         title="Forty-two acres to play with."
         body={[
           "With capacity for over a thousand people and the full run of the estate, we're a leading location in the south-east for a great team-building day.",
-          "A fully built-in PA and cordless microphone make us a natural home for festivals and large-scale outdoor events, too.",
+          "A fully built-in PA and cordless microphone make us a natural home for festival venue hire and large-scale outdoor events, too.",
         ]}
         media={img("festival-venue-hire-essex-chigwell-marquees.jpg", "A festival-scale event across the estate")}
         ratio="4 / 3"

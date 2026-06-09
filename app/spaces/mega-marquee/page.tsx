@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/site/PageHero";
+import JsonLd from "@/components/site/JsonLd";
+import { breadcrumbList } from "@/lib/structured-data";
 import SplitFeature from "@/components/site/SplitFeature";
 import SpecList from "@/components/site/SpecList";
 import CtaBand from "@/components/site/CtaBand";
@@ -7,7 +9,8 @@ import { SPACE_MEGA_ALT, SPACE_MEGA_HERO } from "@/lib/media";
 import { VIDEO, REAL } from "@/lib/media.real";
 
 export const metadata: Metadata = {
-  title: "The Mega Marquee",
+  alternates: { canonical: "/spaces/mega-marquee" },
+  title: { absolute: "Large Marquee Venue Hire in Essex | The Chigwell Marquees" },
   description:
     "The Mega Marquee, a grand structure for 300 to 1,000 guests, with high ceilings, a state-of-the-art sound & lighting rig and a fully functioning kitchen.",
 };
@@ -15,6 +18,13 @@ export const metadata: Metadata = {
 export default function MegaMarqueePage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Home", path: "/" },
+          { name: "The Spaces", path: "/spaces" },
+          { name: "The Mega Marquee", path: "/spaces/mega-marquee" },
+        ])}
+      />
       <PageHero
         eyebrow="The spaces · I"
         title={"The Mega\nMarquee."}

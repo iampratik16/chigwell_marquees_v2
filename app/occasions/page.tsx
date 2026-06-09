@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/site/PageHero";
+import JsonLd from "@/components/site/JsonLd";
+import { breadcrumbList } from "@/lib/structured-data";
 import SplitFeature from "@/components/site/SplitFeature";
 import CtaBand from "@/components/site/CtaBand";
 import Section from "@/components/ui/Section";
@@ -9,7 +11,8 @@ import Reveal from "@/components/ui/Reveal";
 import { OCC_WEDDINGS, OCC_CELEBRATIONS, OCC_CORPORATE } from "@/lib/media";
 
 export const metadata: Metadata = {
-  title: "Occasions",
+  alternates: { canonical: "/occasions" },
+  title: { absolute: "Event & Party Venue Hire in Essex | The Chigwell Marquees" },
   description:
     "Weddings, celebrations and corporate events at The Chigwell Marquees, one adaptable estate, dressed entirely to your vision, with no corkage.",
 };
@@ -17,6 +20,12 @@ export const metadata: Metadata = {
 export default function OccasionsPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Home", path: "/" },
+          { name: "Occasions", path: "/occasions" },
+        ])}
+      />
       <PageHero
         eyebrow="Occasions"
         title={"Held for every\nkind of gathering."}

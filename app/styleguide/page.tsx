@@ -11,6 +11,7 @@ import Marquee from "@/components/ui/Marquee";
 import { HERO } from "@/lib/media";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/styleguide" },
   title: "Styleguide",
   robots: { index: false },
 };

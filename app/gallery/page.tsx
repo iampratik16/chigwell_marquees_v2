@@ -7,7 +7,8 @@ import { GALLERY_FILES, img } from "@/lib/media";
 import { REAL, REAL_GALLERY } from "@/lib/media.real";
 
 export const metadata: Metadata = {
-  title: "Gallery",
+  alternates: { canonical: "/gallery" },
+  title: { absolute: "Marquee Venue Gallery, Essex | The Chigwell Marquees" },
   description:
     "A gallery of real weddings, celebrations and corporate events at The Chigwell Marquees, across the Mega Marquee, Mini Marquee and Secret Garden.",
 };
@@ -36,6 +37,7 @@ export default function GalleryPage() {
         intro="Real weddings, parties and gatherings, drawn from years of celebrations on the estate."
         media={REAL.ceremonyAisle}
         size="md"
+        social
       />
 
       <Section tone="bone" spacing="md">
