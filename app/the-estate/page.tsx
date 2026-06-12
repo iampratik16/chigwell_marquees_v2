@@ -9,7 +9,7 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
 import RevealImage from "@/components/ui/RevealImage";
-import { ESTATE_IMG, VIDEO, POSTER } from "@/lib/media.real";
+import { ESTATE_IMG, HALL_IMG, VIDEO, POSTER } from "@/lib/media.real";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/the-estate" },
@@ -32,17 +32,30 @@ export default function EstatePage() {
 
       <Section tone="bone" spacing="lg">
         <div className="container-luxe">
-          <div className="max-w-4xl">
-            <Eyebrow>A surprising setting in the English countryside</Eyebrow>
-            <RevealText as="h2" className="mt-7 display-lg">
-              {"Escape the city, without\never really leaving it."}
-            </RevealText>
-            <Reveal>
-              <p className="lead mt-8 max-w-2xl text-mist">
-                Elope with your guests, family and colleagues to a spellbinding
-                setting just 40 minutes from Central London and 15 from the M25,                 yet wrapped in 42 acres of open Essex countryside.
-              </p>
-            </Reveal>
+          <div className="grid items-center gap-10 md:grid-cols-12 md:gap-16">
+            <div className="md:col-span-6">
+              <Eyebrow>A surprising setting in the English countryside</Eyebrow>
+              <RevealText as="h2" className="mt-7 display-lg">
+                {"Escape the city, without\never really leaving it."}
+              </RevealText>
+              <Reveal>
+                <p className="lead mt-8 text-mist">
+                  Elope with your guests, family and colleagues to a spellbinding
+                  setting just 40 minutes from Central London and 15 from the
+                  M25, yet wrapped in 42 acres of open Essex countryside.
+                </p>
+              </Reveal>
+            </div>
+            <div className="md:col-span-6">
+              <RevealImage
+                media={HALL_IMG.escape}
+                ratio="3 / 2"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                interactive
+                cursorLabel="View"
+                className="rounded-[1.25rem]"
+              />
+            </div>
           </div>
         </div>
       </Section>
@@ -51,12 +64,29 @@ export default function EstatePage() {
         eyebrow="Chigwell Hall"
         title={"A Grade II listed\nmanor at its heart."}
         body={[
-          "Both marquees, along with Chigwell Hall itself, are set amongst an impressive forty-two acres of land, a rare combination of space, privacy and stately-home romance.",
-          "A wonderful blank canvas, furnished for any event: from a reception venue with a difference to the perfect garden wedding.",
+          "Built in 1881, Chigwell Hall is a magnificent Grade II listed manor house set at the heart of our stunning 42-acre estate. Rich in Victorian character and timeless elegance, the hall provides a truly iconic backdrop for your special occasion.",
+          "Its striking red-brick exterior, grand chimneys, bay windows and Juliet balconies create endless opportunities for breathtaking photography, whilst the beautifully maintained grounds offer an atmosphere of luxury and exclusivity from the moment your guests arrive.",
+          "Inside, the hall combines classic charm with contemporary comfort. The sweeping staircase provides a beautiful setting for photographs before leading into our elegant function suites.",
+          "Both the Banqueting Suite and Belmont Suite feature private bars and spacious dancefloors, creating the perfect setting for unforgettable celebrations that continue long into the evening.",
         ]}
         media={ESTATE_IMG.hall}
         ratio="3 / 2"
       />
+
+      {/* Inside the Hall — function suites */}
+      <Section tone="bone-dim" spacing="md">
+        <div className="container-luxe">
+          <Eyebrow>Inside the Hall</Eyebrow>
+          <RevealText as="h2" className="mt-5 display-md max-w-3xl">
+            Elegant function suites for every celebration.
+          </RevealText>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <RevealImage media={HALL_IMG.room1} ratio="4 / 5" sizes="33vw" interactive cursorLabel="View" />
+            <RevealImage media={HALL_IMG.room2} ratio="4 / 5" sizes="33vw" interactive cursorLabel="View" delay={0.08} className="md:mt-10" />
+            <RevealImage media={HALL_IMG.room3} ratio="4 / 5" sizes="33vw" interactive cursorLabel="View" delay={0.16} />
+          </div>
+        </div>
+      </Section>
 
       <SplitFeature
         eyebrow="The grounds"

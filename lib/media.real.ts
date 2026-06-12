@@ -3,6 +3,7 @@ import type { Media } from "./media.gen";
 /** Real venue videos supplied from the business's Instagram. */
 export const VIDEO = {
   hero: "/media/video/hero.mp4",
+  megaHero: "/media/video/mega-hero.mp4", // The Mega Marquee page hero
   mega: "/media/video/scene-mega.mp4",
   mini: "/media/video/scene-mini.mp4",
   wedding: "/media/video/scene-wedding.mp4", // aerial estate (estate hero)
@@ -81,16 +82,94 @@ export const ESTATE_IMG = {
   },
 } as const;
 
+/** Chigwell Hall, the manor itself and its function rooms (supplied). */
+export const HALL_IMG = {
+  escape: {
+    src: "/media/chigwell-hall-4b.jpg",
+    alt: "Chigwell Hall set within the open Essex countryside",
+    width: 5464,
+    height: 3643,
+    cat: "estate",
+  },
+  room1: {
+    src: "/media/hall-room-12d.jpg",
+    alt: "Inside Chigwell Hall, a function suite with classic charm and contemporary comfort",
+    width: 2000,
+    height: 1500,
+    cat: "estate",
+  },
+  room2: {
+    src: "/media/hall-room-13a.jpg",
+    alt: "The Banqueting Suite at Chigwell Hall, dressed for a celebration",
+    width: 2000,
+    height: 1255,
+    cat: "estate",
+  },
+  room3: {
+    src: "/media/hall-room-13b.jpg",
+    alt: "The Belmont Suite at Chigwell Hall, with private bar and spacious dancefloor",
+    width: 1999,
+    height: 1264,
+    cat: "estate",
+  },
+} as const;
+
 /** The Mini Marquee, clear interiors (supplied). */
 export const MINI_IMG = {
   interior: {
-    src: "/media/mini-interior.jpg",
+    src: "/media/mini-8c.jpg",
     alt: "The Mini Marquee beneath its white canopy ceiling with soft uplighting",
-    width: 1080,
-    height: 720,
+    width: 5438,
+    height: 3625,
     cat: "weddings",
   },
   staged: REAL.interiorWide2, // ig-03, arched floral stage
+  intro: {
+    src: "/media/mini-8a.jpg",
+    alt: "The Mini Marquee, an intimate, elegant setting dressed for a celebration",
+    width: 1500,
+    height: 2000,
+    cat: "weddings",
+  },
+  bright: {
+    src: "/media/mini-photo-202.jpg",
+    alt: "The Mini Marquee dressed for a wedding, a floral aisle leading to the arched stage",
+    width: 8200,
+    height: 5467,
+    cat: "weddings",
+  },
+} as const;
+
+/** Chigwell Hall function suites (supplied). */
+export const SUITES_IMG = {
+  banqueting: {
+    src: "/media/hall-room-12a.jpg",
+    alt: "The Banqueting Suite at Chigwell Hall, set for a private celebration",
+    width: 2000,
+    height: 1500,
+    cat: "estate",
+  },
+  banquetingBar: {
+    src: "/media/hall-room-12b.jpg",
+    alt: "The Banqueting Suite's fitted bar and dancefloor",
+    width: 2000,
+    height: 1500,
+    cat: "estate",
+  },
+  banquetingHall: {
+    src: "/media/hall-room-12c.jpg",
+    alt: "The Banqueting Suite's spacious interior with adjustable ambient lighting",
+    width: 2000,
+    height: 1500,
+    cat: "estate",
+  },
+  belmont: {
+    src: "/media/hall-room-13a.jpg",
+    alt: "The Belmont Suite at Chigwell Hall, a sophisticated first-floor space",
+    width: 2000,
+    height: 1255,
+    cat: "estate",
+  },
 } as const;
 
 /** The Secret Garden (supplied). */
@@ -109,6 +188,20 @@ export const SECRET_IMG = {
     height: 1350,
     cat: "estate",
   },
+  waterfall: {
+    src: "/media/garden-waterfall-10f.jpg",
+    alt: "The Secret Garden at Chigwell Hall, surrounded by greenery and tranquil scenery",
+    width: 4032,
+    height: 3024,
+    cat: "estate",
+  },
+  grounds: {
+    src: "/media/garden-grounds.jpg",
+    alt: "The grounds beside the Mega Marquee, with the on-site waterfall and picturesque bridge",
+    width: 1600,
+    height: 1143,
+    cat: "estate",
+  },
 } as const;
 
 /** Asian weddings (supplied). */
@@ -125,6 +218,20 @@ export const ASIAN_IMG = {
     alt: "An Asian wedding couple by the estate's iron gates",
     width: 1080,
     height: 1440,
+    cat: "asian",
+  },
+  pair1: {
+    src: "/media/wedding-4d.jpg",
+    alt: "A confetti send-off after a wedding ceremony in the grounds",
+    width: 1067,
+    height: 1600,
+    cat: "asian",
+  },
+  pair2: {
+    src: "/media/wedding-photo-120.jpg",
+    alt: "A wedding couple by the estate's iron gates",
+    width: 4623,
+    height: 6936,
     cat: "asian",
   },
 } as const;

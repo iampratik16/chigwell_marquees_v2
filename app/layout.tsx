@@ -9,6 +9,7 @@ import Cursor from "@/components/effects/Cursor";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
 import JsonLd from "@/components/site/JsonLd";
+import { LightboxProvider } from "@/components/ui/Lightbox";
 import { localBusiness } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
@@ -63,9 +64,11 @@ export default function RootLayout({
         <SmoothScroll>
           <Grain />
           <Cursor />
-          <Header />
-          <main id="main">{children}</main>
-          <Footer />
+          <LightboxProvider>
+            <Header />
+            <main id="main">{children}</main>
+            <Footer />
+          </LightboxProvider>
         </SmoothScroll>
       </body>
     </html>

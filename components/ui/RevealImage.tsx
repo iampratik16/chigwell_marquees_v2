@@ -6,6 +6,7 @@ import { EASE_LUXE, inView } from "@/lib/motion";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 import { cn } from "@/lib/utils";
 import { BLUR } from "@/lib/blur";
+import { useLightbox } from "@/components/ui/Lightbox";
 import type { Media } from "@/lib/media";
 
 type Props = {
@@ -39,12 +40,30 @@ export default function RevealImage({
   className_img,
 }: Props) {
   const reduced = useReducedMotion();
+  const { open } = useLightbox();
 
   return (
     <motion.div
-      className={cn("relative overflow-hidden bg-bone-dim", interactive && "group/img", className)}
+      className={cn(
+        "relative overflow-hidden bg-bone-dim",
+        interactive && "group/img cursor-pointer",
+        className,
+      )}
       style={ratio ? { aspectRatio: ratio } : undefined}
       data-cursor={cursorLabel}
+      onClick={interactive ? () => open(media) : undefined}
+      role={interactive ? "button" : undefined}
+      tabIndex={interactive ? 0 : undefined}
+      onKeyDown={
+        interactive
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                open(media);
+              }
+            }
+          : undefined
+      }
       initial={reduced ? false : { opacity: 0 }}
       whileInView={reduced ? undefined : { opacity: 1 }}
       viewport={{ ...inView }}

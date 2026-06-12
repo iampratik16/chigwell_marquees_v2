@@ -105,8 +105,8 @@ export default function WeddingsPage() {
 
       <Section tone="bone-dim" spacing="sm">
         <div className="container-luxe grid gap-5 md:grid-cols-2">
-          <RevealImage media={ASIAN_IMG.confetti} ratio="4 / 5" sizes="(max-width:768px) 100vw, 50vw" interactive cursorLabel="View" className="rounded-2xl" />
-          <RevealImage media={ASIAN_IMG.portrait} ratio="4 / 5" sizes="(max-width:768px) 100vw, 50vw" interactive cursorLabel="View" delay={0.08} className="rounded-2xl md:mt-12" />
+          <RevealImage media={ASIAN_IMG.pair1} ratio="4 / 5" sizes="(max-width:768px) 100vw, 50vw" interactive cursorLabel="View" className="rounded-2xl" />
+          <RevealImage media={ASIAN_IMG.pair2} ratio="4 / 5" sizes="(max-width:768px) 100vw, 50vw" interactive cursorLabel="View" delay={0.08} className="rounded-2xl md:mt-12" />
         </div>
       </Section>
 

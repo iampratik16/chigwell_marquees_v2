@@ -6,6 +6,11 @@ import SplitFeature from "@/components/site/SplitFeature";
 import SpecList from "@/components/site/SpecList";
 import StarlitCeiling from "@/components/site/StarlitCeiling";
 import CtaBand from "@/components/site/CtaBand";
+import Section from "@/components/ui/Section";
+import Eyebrow from "@/components/ui/Eyebrow";
+import RevealText from "@/components/ui/RevealText";
+import Reveal from "@/components/ui/Reveal";
+import RevealImage from "@/components/ui/RevealImage";
 import { SPACE_GARDEN } from "@/lib/media";
 import { MINI_IMG } from "@/lib/media.real";
 
@@ -33,6 +38,60 @@ export default function MiniMarqueePage() {
         media={MINI_IMG.interior}
       />
 
+      <Section tone="bone" spacing="lg">
+        <div className="container-luxe">
+          <div className="grid gap-10 md:grid-cols-12 md:gap-16">
+            <div className="md:col-span-7">
+              <Eyebrow>An intimate, elegant marquee in Essex</Eyebrow>
+              <RevealText as="h2" className="mt-7 display-lg">
+                {"Memorable moments with\nyour closest people."}
+              </RevealText>
+              <div className="mt-8 space-y-6">
+                <Reveal>
+                  <p className="lead text-mist">
+                    The Mini Marquee at The Chigwell Marquees offers an intimate
+                    and elegant setting, perfect for stylish celebrations and
+                    more personal gatherings. Designed to accommodate between 30
+                    and 200 guests, this beautifully styled space combines
+                    luxury, warmth and versatility to create a truly
+                    unforgettable atmosphere.
+                  </p>
+                </Reveal>
+                <Reveal delay={0.08}>
+                  <p className="text-mist">
+                    Nestled within the picturesque grounds of Chigwell Hall, the
+                    Mini Marquee provides a refined blank canvas that can be
+                    tailored to suit your unique vision — whether you are
+                    planning an engagement celebration, wedding reception,
+                    cultural event or private party.
+                  </p>
+                </Reveal>
+                <Reveal delay={0.16}>
+                  <p className="text-mist">
+                    With its romantic starlight ceiling, elegant furnishings and
+                    peaceful surroundings, the Mini Marquee creates the perfect
+                    setting for memorable moments with your closest family and
+                    friends.
+                  </p>
+                </Reveal>
+              </div>
+            </div>
+            <div className="md:col-span-5">
+              <div className="md:sticky md:top-28">
+                <RevealImage
+                  media={MINI_IMG.intro}
+                  ratio="4 / 5"
+                  sizes="(max-width: 768px) 100vw, 42vw"
+                  interactive
+                  cursorLabel="View"
+                  className="rounded-[1.25rem]"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
       <SplitFeature
         eyebrow="Intimate by design"
         title={"Bright by day,\nstarlit by night."}
@@ -40,7 +99,7 @@ export default function MiniMarqueePage() {
           "The perfect choice for a more intimate event or wedding, 30 to 200 guests, with modern light-grey flooring and a full side of glass windows that lets the natural light pour in.",
           "A fixed, built-in air-conditioning unit keeps the room comfortable, while a raised stage gives your chosen band or DJ a home.",
         ]}
-        media={MINI_IMG.staged}
+        media={MINI_IMG.bright}
         ratio="4 / 3"
       />
 
@@ -64,15 +123,14 @@ export default function MiniMarqueePage() {
         eyebrow="Features"
         title="Small room, full kit."
         features={[
-          "Accommodates 30 – 200 guests",
-          "White-canopy starlit ceiling",
-          "Full side of glass windows",
-          "Built-in air-conditioning unit",
-          "State-of-the-art sound, cordless microphone",
-          "Raised stage area",
-          "Access to the Bridal Suite",
-          "Free onsite car park",
-          "Access to the Secret Garden",
+          "Capacity for 30 – 200 guests",
+          "Complimentary on-site parking with attendants",
+          "Elegant starlight ceiling",
+          "State-of-the-art sound system with cordless microphone",
+          "Private bridal suite",
+          "Gold Napoleon chairs",
+          "Restroom facilities with attendants",
+          "Exclusive access to the Secret Garden for 2 hours",
         ]}
         tone="bone"
       />

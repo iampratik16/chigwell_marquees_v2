@@ -5,7 +5,12 @@ import { breadcrumbList } from "@/lib/structured-data";
 import SplitFeature from "@/components/site/SplitFeature";
 import SpecList from "@/components/site/SpecList";
 import CtaBand from "@/components/site/CtaBand";
-import { SECRET_IMG, VIDEO, POSTER } from "@/lib/media.real";
+import Section from "@/components/ui/Section";
+import Eyebrow from "@/components/ui/Eyebrow";
+import RevealText from "@/components/ui/RevealText";
+import Reveal from "@/components/ui/Reveal";
+import RevealImage from "@/components/ui/RevealImage";
+import { SECRET_IMG, ESTATE_IMG, VIDEO, POSTER } from "@/lib/media.real";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/spaces/secret-garden" },
@@ -33,6 +38,60 @@ export default function SecretGardenPage() {
         poster={POSTER.secretGarden}
       />
 
+      <Section tone="bone" spacing="lg">
+        <div className="container-luxe">
+          <div className="grid gap-10 md:grid-cols-12 md:gap-16">
+            <div className="md:col-span-7">
+              <Eyebrow>Secret Garden &amp; Waterfall</Eyebrow>
+              <RevealText as="h2" className="mt-7 display-lg">
+                {"One of the most\nenchanting corners\nof the estate."}
+              </RevealText>
+              <div className="mt-8 space-y-6">
+                <Reveal>
+                  <p className="lead text-mist">
+                    Hidden behind the Mini Marquee, our Secret Garden is one of
+                    the most enchanting areas within the Chigwell Hall estate — a
+                    peaceful and romantic setting designed for unforgettable
+                    moments.
+                  </p>
+                </Reveal>
+                <Reveal delay={0.08}>
+                  <p className="text-mist">
+                    Surrounded by beautiful greenery and tranquil scenery, many
+                    couples choose to exchange their vows beneath our charming
+                    pergola whilst enjoying the calming sounds of the fountain and
+                    nature around them. The secluded atmosphere creates a truly
+                    magical backdrop for ceremonies, photographs and special
+                    memories.
+                  </p>
+                </Reveal>
+                <Reveal delay={0.16}>
+                  <p className="text-mist">
+                    The Secret Garden is also the perfect space for welcoming
+                    guests with drinks, canapés and live music before the main
+                    celebration begins. Meanwhile, our stunning on-site waterfall
+                    and picturesque bridge provide exceptional photo opportunities
+                    for newlyweds and guests alike.
+                  </p>
+                </Reveal>
+              </div>
+            </div>
+            <div className="md:col-span-5">
+              <div className="md:sticky md:top-28">
+                <RevealImage
+                  media={SECRET_IMG.waterfall}
+                  ratio="4 / 5"
+                  sizes="(max-width: 768px) 100vw, 42vw"
+                  interactive
+                  cursorLabel="View"
+                  className="rounded-[1.25rem]"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
       <SplitFeature
         eyebrow="The grounds"
         title={"A picturesque setting\nfor your finest moments."}
@@ -40,8 +99,8 @@ export default function SecretGardenPage() {
           "When you hire either marquee, your guests are given exclusive use of a secluded secret garden. With beautifully tended lawns and a classic fountain at its heart, it is the perfect setting for a short stroll in the setting sun.",
           "Couples often use it for outdoor civil ceremonies, and it is, without question, the place for romantic photography and the pictures you'll keep forever.",
         ]}
-        media={SECRET_IMG.gazebo}
-        ratio="4 / 5"
+        media={ESTATE_IMG.gazebo}
+        ratio="3 / 2"
       />
 
       <SplitFeature

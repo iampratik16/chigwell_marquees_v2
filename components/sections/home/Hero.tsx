@@ -10,7 +10,7 @@ import MagneticButton from "@/components/ui/MagneticButton";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 import { useMounted } from "@/lib/useMounted";
 
-const HEADLINE = ["A grand setting", "for remarkable", "occasions."];
+const HEADLINE = ["Luxurious wedding", "venue in Essex"];
 
 export default function Hero() {
   const reduced = useReducedMotion();

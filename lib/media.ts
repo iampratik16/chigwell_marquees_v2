@@ -12,16 +12,20 @@ export const HERO: Media[] = [
 ];
 
 /* ── Estate / about ── */
-export const ESTATE = img(
-  "party-venue-chigwell-essex.jpg",
-  "Inside the marquee on the Chigwell Hall estate",
-);
+export const ESTATE: Media = {
+  src: "/media/chigwell-hall-4e.jpg",
+  alt: "Inside the marquee on the Chigwell Hall estate",
+  width: 1600,
+  height: 1066,
+};
 
 /* ── The two spaces + garden ── */
-export const SPACE_MEGA = img(
-  "chigwell-marquees-large-marquee.jpg",
-  "The Mega Marquee, high ceilings and neutral interiors for up to 1,000 guests",
-);
+export const SPACE_MEGA: Media = {
+  src: "/media/mega-photo-35.jpg",
+  alt: "The Mega Marquee, high ceilings and neutral interiors for up to 1,000 guests",
+  width: 7008,
+  height: 4672,
+};
 export const SPACE_MEGA_ALT = img(
   "large-party-venue-marquee-venues-near-me-essex-the-chigwell-marquees.jpg",
   "The Mega Marquee laid out for a large banquet",
@@ -46,6 +50,44 @@ export const SPACE_GARDEN_ALT = img(
   "engagement-venue-hire-luxury-marquee-hire-essex-the-chigwell-marquees.jpg",
   "Guests gathered in the grounds at golden hour",
 );
+
+/* ── Spaces page (supplied photography) ── */
+export const SPACES_HERO: Media = {
+  src: "/media/spaces-hero-4bdnnvby.jpg",
+  alt: "Two marquees and a secret garden on the Chigwell Hall estate",
+  width: 5472,
+  height: 3648,
+};
+export const SPACE_MEGA_FEATURE: Media = {
+  src: "/media/mega-3j7a1689.jpg",
+  alt: "The Mega Marquee dressed for a celebration, a floral aisle running its length",
+  width: 5760,
+  height: 3840,
+};
+export const SPACE_MEGA_INTRO: Media = {
+  src: "/media/mega-photo-122.jpg",
+  alt: "The Mega Marquee, an expansive luxury setting dressed for a grand celebration",
+  width: 7008,
+  height: 4672,
+};
+export const GALLERY_HERO: Media = {
+  src: "/media/gallery-hero-gimage.jpg",
+  alt: "Inside the marquee, dressed for a celebration on the Chigwell Hall estate",
+  width: 2048,
+  height: 1366,
+};
+export const SPACE_MINI_FEATURE: Media = {
+  src: "/media/mini-6.jpg",
+  alt: "The Mini Marquee, an intimate, light-filled setting opening onto the Secret Garden",
+  width: 4000,
+  height: 3000,
+};
+export const SPACE_GARDEN_FEATURE: Media = {
+  src: "/media/garden-10b.jpg",
+  alt: "The Secret Garden, a secluded lawn with a classic central fountain",
+  width: 3840,
+  height: 5760,
+};
 
 /* ── Occasions ── */
 export const OCC_WEDDINGS = img(

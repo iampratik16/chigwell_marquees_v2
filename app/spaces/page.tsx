@@ -9,9 +9,10 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
 import {
-  SPACE_MEGA,
-  SPACE_MINI,
-  SPACE_GARDEN,
+  SPACES_HERO,
+  SPACE_MEGA_FEATURE,
+  SPACE_MINI_FEATURE,
+  SPACE_GARDEN_FEATURE,
 } from "@/lib/media";
 
 export const metadata: Metadata = {
@@ -34,7 +35,7 @@ export default function SpacesPage() {
         eyebrow="The spaces"
         title={"Two marquees and\na secret garden."}
         intro="One estate, three distinct settings, each a blank canvas, dressed entirely to your vision."
-        media={SPACE_MEGA}
+        media={SPACES_HERO}
       />
 
       <Section tone="bone" spacing="lg">
@@ -62,7 +63,7 @@ export default function SpacesPage() {
           "A striking structure with high ceilings and neutral interiors, built for grand weddings, galas and corporate showcases of 300 to 1,000 guests.",
           "A state-of-the-art sound & lighting rig, a fully functioning kitchen with its own discreet entrance, and access to the Bridal Suite and Secret Garden.",
         ]}
-        media={SPACE_MEGA}
+        media={SPACE_MEGA_FEATURE}
         ratio="4 / 3"
         link={{ href: "/spaces/mega-marquee", label: "Explore the Mega Marquee" }}
       />
@@ -74,7 +75,7 @@ export default function SpacesPage() {
           "An intimate, light-filled space with a full side of glass, built-in air conditioning and a white-canopy starlit ceiling that switches on as evening falls.",
           "A raised stage for your band or DJ, and a door straight onto the Secret Garden, now licensed for civil ceremonies.",
         ]}
-        media={SPACE_MINI}
+        media={SPACE_MINI_FEATURE}
         ratio="4 / 3"
         reverse
         tone="bone-dim"
@@ -88,7 +89,7 @@ export default function SpacesPage() {
           "A secluded lawn with a classic central fountain, the picturesque setting for outdoor civil ceremonies, welcome drinks and unforgettable photography.",
           "Given over to your exclusive use whenever you hire either marquee.",
         ]}
-        media={SPACE_GARDEN}
+        media={SPACE_GARDEN_FEATURE}
         ratio="4 / 3"
         link={{ href: "/spaces/secret-garden", label: "Explore the Secret Garden" }}
       />

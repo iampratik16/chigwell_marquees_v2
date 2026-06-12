@@ -42,6 +42,7 @@ export const NAV: NavItem[] = [
       { label: "The Mega Marquee", href: "/spaces/mega-marquee", blurb: "300 – 1,000 guests" },
       { label: "The Mini Marquee", href: "/spaces/mini-marquee", blurb: "30 – 200 · starlit ceiling" },
       { label: "The Secret Garden", href: "/spaces/secret-garden", blurb: "Outdoor ceremonies · up to 250" },
+      { label: "The Suites", href: "/spaces/suites", blurb: "Banqueting & Belmont · indoor" },
     ],
   },
   {
@@ -80,35 +81,43 @@ export const FACTS = [
  */
 export const FAQS = [
   {
-    q: "What's the difference between the Mega and Mini Marquee?",
-    a: "Capacity. The Mega Marquee is the larger of the two, accommodating from 300 to 1,000 guests. The Mini Marquee is for a more intimate event, for up to 200.",
+    q: "What's the difference between your Mega and Mini Marquee?",
+    a: "Capacity! Our Mega Marquee is the larger of the two venues, accommodating from 300 -1,000 guests. Our Mini Marquee is for a more intimate event accommodating for up to 200 guests.",
   },
   {
-    q: "Are the venues licensed for civil ceremonies?",
-    a: "Yes, our Secret Garden and Belmont Suite are both licensed to hold civil ceremonies, and the Mini Marquee is licensed too.",
+    q: "Is the venue licensed for Civil Ceremonies?",
+    a: "Our Secret Garden and Belmont Suite are both licensed to hold Civil Ceremonies.",
   },
   {
     q: "Does the hire cost include catering?",
-    a: "No, The Chigwell Marquees are dry-hire venues, so you're free to bring your own caterer. There's no corkage, either.",
+    a: "Unfortunately, no. The Chigwell Marquees are dry hire venues.",
   },
   {
-    q: "How many hours does the hire include?",
-    a: "Twelve hours is standard. When you hold your civil ceremony with us, this can be extended.",
+    q: "How many hours does the hire charge include?",
+    a: "12 Hours is standard however when holding your Civil Ceremony with us, this can be extended.",
   },
   {
-    q: "Is there parking?",
-    a: "Yes, and lots of it. We have approximately 600 car-park spaces, free for your guests to use.",
+    q: "Is there parking available at The Chigwell Marquees?",
+    a: "Yes! And lots of it! We have approximately 600 carpark spaces available which are free for guests to use.",
   },
   {
-    q: "What time does my event need to finish?",
-    a: "Our licence permits events to run until midnight, seven days a week.",
+    q: "Are fireworks permitted?",
+    a: "No, they are not.",
   },
   {
-    q: "What's the nearest tube station?",
-    a: "Chigwell Station, on the Central Line, a 15-minute walk or a 5-minute car journey from the venue.",
+    q: "What time does my event need to finish by?",
+    a: "At The Chigwell Marquees, our license permits events to go on until midnight.",
   },
   {
-    q: "Are there nearby hotels for guests?",
-    a: "Yes. The Travelodge Chigwell is a 6-minute drive away, and the Premier Inn Buckhurst Hill is around 7 minutes.",
+    q: "What's the nearest tube station to The Chigwell Marquees?",
+    a: "Chigwell Station is our nearest underground station. This is found on the Central Line. From here, it's a 15-minute walk to the venue or a 5-minute car journey.",
+  },
+  {
+    q: "Do you have accommodation for guests at the venue?",
+    a: "Sadly we do not.",
+  },
+  {
+    q: "Are there nearby hotels for guests to stay?",
+    a: "Yes! The Travelodge Chigwell is a 6-minute car journey away from The Chigwell Marquees. The Premier Inn Buckhurst Hill is a 7-minute car journey away from The Chigwell Marquees.",
   },
 ] as const;

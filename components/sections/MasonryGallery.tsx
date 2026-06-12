@@ -13,8 +13,11 @@ const FILTERS = [
   { key: "all", label: "Everything" },
   { key: "weddings", label: "Weddings" },
   { key: "asian", label: "Asian Weddings" },
-  { key: "celebrations", label: "Celebrations" },
-  { key: "corporate", label: "Corporate" },
+  { key: "engagements", label: "Engagements" },
+  { key: "parties", label: "Parties" },
+  { key: "birthdays", label: "Birthdays" },
+  { key: "corporate", label: "Corporate Events" },
+  { key: "civil", label: "Civil Ceremonies" },
 ];
 
 export default function MasonryGallery({ items }: { items: GalleryItem[] }) {
