@@ -44,7 +44,7 @@ export default function WeddingsPage() {
         title={"Weddings\nin Essex."}
         intro="Choosing a venue for your special day is one of the most important decisions you'll make. Here, we offer two magnificent ones."
         media={REAL.ceremonyAisle}
-        video={VIDEO.weddings}
+        video={VIDEO.weddingHero}
         poster={POSTER.weddings}
       />
 

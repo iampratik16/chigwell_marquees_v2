@@ -4,6 +4,7 @@ import type { Media } from "./media.gen";
 export const VIDEO = {
   hero: "/media/video/hero.mp4",
   megaHero: "/media/video/mega-hero.mp4", // The Mega Marquee page hero
+  weddingHero: "/media/video/wedding-hero.mp4", // The Weddings page hero
   mega: "/media/video/scene-mega.mp4",
   mini: "/media/video/scene-mini.mp4",
   wedding: "/media/video/scene-wedding.mp4", // aerial estate (estate hero)

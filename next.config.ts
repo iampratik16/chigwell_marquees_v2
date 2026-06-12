@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  images: {
+    formats: ["image/avif", "image/webp"],
+    qualities: [75, 80],
+    minimumCacheTTL: 2678400, // 31 days
+  },
   async redirects() {
     return [
       // TODO: This redirect map is INCOMPLETE. Before launch, pull the full set

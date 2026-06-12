@@ -60,23 +60,25 @@ export function LightboxProvider({ children }: { children: React.ReactNode }) {
             </button>
             <motion.figure
               key={current.src}
-              className="relative flex max-h-full max-w-6xl flex-col items-center"
+              className="relative flex max-h-full w-full max-w-[1600px] flex-col items-center"
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
-              transition={{ duration: 0.5, ease: EASE_LUXE }}
+              transition={{ duration: 0.45, ease: EASE_LUXE }}
               onClick={(e) => e.stopPropagation()}
             >
-              <Image
-                src={current.src}
-                alt={current.alt}
-                width={current.width}
-                height={current.height}
-                sizes="92vw"
-                priority
-                className="h-auto max-h-[82vh] w-auto rounded-lg object-contain shadow-2xl"
-              />
-              <figcaption className="mt-4 max-w-2xl text-center text-sm text-bone/70">
+              <div className="relative h-[80vh] w-[92vw] max-w-[1600px]">
+                <Image
+                  src={current.src}
+                  alt={current.alt}
+                  fill
+                  sizes="92vw"
+                  quality={80}
+                  priority
+                  className="rounded-lg object-contain shadow-2xl"
+                />
+              </div>
+              <figcaption className="mt-3 max-w-2xl text-center text-sm text-bone/70">
                 {current.alt}
               </figcaption>
             </motion.figure>
