@@ -10,6 +10,7 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
 import RevealImage from "@/components/ui/RevealImage";
+import RevealVideo from "@/components/ui/RevealVideo";
 import { SPACE_MEGA_ALT, SPACE_MEGA_HERO, SPACE_MEGA_INTRO } from "@/lib/media";
 import { VIDEO, REAL } from "@/lib/media.real";
 
@@ -102,19 +103,44 @@ export default function MegaMarqueePage() {
         ratio="4 / 5"
       />
 
-      <SplitFeature
-        eyebrow="Catering"
-        title="A kitchen hidden in plain sight."
-        body={[
-          "Your chosen caterer is given a fully functioning kitchen with ample preparation space and its own entrance, kept discreetly out of sight of your guests.",
-          "The grounds can also accommodate outdoor cooking, from live stations to spectacle.",
-        ]}
-        media={SPACE_MEGA_ALT}
-        video={VIDEO.mega}
-        ratio="4 / 3"
-        reverse
-        tone="bone-dim"
-      />
+      {/* Catering — portrait (9:16) video kept at its native aspect ratio */}
+      <div className="bg-bone-dim py-16 md:py-24">
+        <div className="container-luxe">
+          <div className="grid items-center gap-10 md:grid-cols-12 md:gap-16">
+            <div className="md:order-2 md:col-span-6">
+              <div className="mx-auto w-full max-w-[340px]">
+                <RevealVideo
+                  src={VIDEO.mega}
+                  poster={SPACE_MEGA_ALT}
+                  ratio="9 / 16"
+                  className="rounded-[1.25rem]"
+                />
+              </div>
+            </div>
+            <div className="md:order-1 md:col-span-6">
+              <Eyebrow>Catering</Eyebrow>
+              <RevealText as="h2" className="mt-5 display-md">
+                A kitchen hidden in plain sight.
+              </RevealText>
+              <div className="mt-6 space-y-5">
+                <Reveal>
+                  <p className="lead text-ink/85">
+                    Your chosen caterer is given a fully functioning kitchen with
+                    ample preparation space and its own entrance, kept discreetly
+                    out of sight of your guests.
+                  </p>
+                </Reveal>
+                <Reveal delay={0.08}>
+                  <p className="text-mist">
+                    The grounds can also accommodate outdoor cooking, from live
+                    stations to spectacle.
+                  </p>
+                </Reveal>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <SpecList
         eyebrow="Features"
