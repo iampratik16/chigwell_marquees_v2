@@ -43,7 +43,6 @@ export default function SplitFeature({
                 src={video}
                 poster={media}
                 ratio={ratio}
-                cursorLabel="Watch"
                 className="rounded-[1.25rem]"
               />
             ) : (
