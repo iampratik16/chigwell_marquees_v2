@@ -11,8 +11,9 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
 import RevealImage from "@/components/ui/RevealImage";
+import RevealVideo from "@/components/ui/RevealVideo";
 import { SPACE_GARDEN } from "@/lib/media";
-import { MINI_IMG } from "@/lib/media.real";
+import { MINI_IMG, VIDEO } from "@/lib/media.real";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/spaces/mini-marquee" },
@@ -118,6 +119,45 @@ export default function MiniMarqueePage() {
         tone="bone-dim"
         link={{ href: "/spaces/secret-garden", label: "See the Secret Garden" }}
       />
+
+      {/* Catering — portrait (9:16) video kept at its native aspect ratio */}
+      <div className="bg-bone py-16 md:py-24">
+        <div className="container-luxe">
+          <div className="grid items-center gap-10 md:grid-cols-12 md:gap-16">
+            <div className="md:order-2 md:col-span-6">
+              <div className="mx-auto w-full max-w-[340px]">
+                <RevealVideo
+                  src={VIDEO.mega}
+                  poster={MINI_IMG.interior}
+                  ratio="9 / 16"
+                  className="rounded-[1.25rem]"
+                />
+              </div>
+            </div>
+            <div className="md:order-1 md:col-span-6">
+              <Eyebrow>Catering</Eyebrow>
+              <RevealText as="h2" className="mt-5 display-md">
+                A kitchen hidden in plain sight.
+              </RevealText>
+              <div className="mt-6 space-y-5">
+                <Reveal>
+                  <p className="lead text-ink/85">
+                    Your chosen caterer is given a fully functioning kitchen with
+                    ample preparation space and its own entrance, kept discreetly
+                    out of sight of your guests.
+                  </p>
+                </Reveal>
+                <Reveal delay={0.08}>
+                  <p className="text-mist">
+                    The grounds can also accommodate outdoor cooking, from live
+                    stations to spectacle.
+                  </p>
+                </Reveal>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <SpecList
         eyebrow="Features"
