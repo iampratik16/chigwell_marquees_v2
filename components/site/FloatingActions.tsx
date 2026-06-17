@@ -148,7 +148,7 @@ export default function FloatingActions() {
               aria-label="Message us on WhatsApp"
               className="flex h-16 w-16 items-center justify-center rounded-full border border-bone/15 bg-ink/90 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.6)] backdrop-blur-sm transition-colors duration-400 hover:bg-botanical focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-bone"
             >
-              <WhatsAppGlyph className="h-8 w-8 text-[#f8b25a]" />
+              <WhatsAppGlyph className="h-8 w-8" bubble="#f8b25a" phone="#fff" />
             </a>
 
             {/* Quick-enquiry launcher — lower / primary */}
