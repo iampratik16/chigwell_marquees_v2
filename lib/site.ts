@@ -12,9 +12,9 @@ export const SITE = {
   email: "info@thechigwellmarquees.com",
   /** Single source of truth for WhatsApp — number, greeting and display format. */
   whatsapp: {
-    number: "918638702710",
+    number: "447549517417",
     greeting: "Hi, I'd like to enquire about The Chigwell Marquees.",
-    display: "+91 86387 02710",
+    display: "+44 7549 517417",
   },
   address: {
     line1: "Chigwell Hall, 159 High Road",

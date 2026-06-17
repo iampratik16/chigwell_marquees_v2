@@ -193,6 +193,7 @@ export default function FloatingActions() {
               role="dialog"
               aria-modal="true"
               aria-labelledby="quick-enquiry-title"
+              data-lenis-prevent
               {...enter}
               transition={{ duration: 0.45, ease: EASE_LUXE }}
               className={cn(
