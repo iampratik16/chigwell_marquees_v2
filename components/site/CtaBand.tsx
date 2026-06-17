@@ -21,35 +21,46 @@ export default function CtaBand({
   tone = "botanical",
 }: Props) {
   return (
-    <Section tone={tone} spacing="md">
-      <div className="container-luxe">
-        <div className="grid items-center gap-8 md:grid-cols-12">
-          <div className="md:col-span-7">
-            <RevealText as="h2" className="display-md text-bone">
-              {title}
+    <>
+      {/* Light gallery band — a premium "see more" prompt before the enquiry CTA */}
+      {secondary && (
+        <Section tone="bone" spacing="sm">
+          <div className="container-luxe flex flex-col items-center gap-7 border-t border-line pt-12 text-center md:pt-14">
+            <RevealText as="p" className="font-display text-2xl text-ink md:text-[1.9rem]">
+              See more of the estate.
             </RevealText>
-            {blurb && (
-              <Reveal delay={0.1}>
-                <p className="mt-5 max-w-xl text-bone/70">{blurb}</p>
-              </Reveal>
-            )}
+            <Reveal delay={0.1}>
+              <MagneticButton href={secondary.href} variant="outline" cursorLabel="Gallery">
+                {secondary.label}
+              </MagneticButton>
+            </Reveal>
           </div>
-          <div className="md:col-span-5">
-            <Reveal delay={0.15}>
-              <div className="flex flex-wrap items-center gap-4 md:justify-end">
+        </Section>
+      )}
+
+      <Section tone={tone} spacing="md">
+        <div className="container-luxe">
+          <div className="grid items-center gap-8 md:grid-cols-12">
+            <div className="md:col-span-8">
+              <RevealText as="h2" className="display-md text-bone">
+                {title}
+              </RevealText>
+              {blurb && (
+                <Reveal delay={0.1}>
+                  <p className="mt-5 max-w-xl text-bone/70">{blurb}</p>
+                </Reveal>
+              )}
+            </div>
+            <div className="md:col-span-4 md:flex md:justify-end">
+              <Reveal delay={0.15}>
                 <MagneticButton href={primary.href} variant="light" cursorLabel="Enquire">
                   {primary.label}
                 </MagneticButton>
-                {secondary && (
-                  <MagneticButton href={secondary.href} variant="ghost" cursorLabel="Gallery">
-                    {secondary.label}
-                  </MagneticButton>
-                )}
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
           </div>
         </div>
-      </div>
-    </Section>
+      </Section>
+    </>
   );
 }
