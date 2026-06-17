@@ -53,6 +53,7 @@ export default function GalleryPage() {
         title="Picture your own occasion here."
         blurb="The best way to feel the estate is to stand in it. Arrange a private viewing."
         primary={{ href: "/visit#enquire", label: "Arrange a viewing" }}
+        secondary={null}
       />
     </>
   );

@@ -7,6 +7,8 @@ type Props = {
   title: string;
   blurb?: string;
   primary?: { href: string; label: string };
+  /** Defaults to a gallery link; pass `null` to omit (e.g. on the gallery page). */
+  secondary?: { href: string; label: string } | null;
   tone?: "botanical" | "ink";
 };
 
@@ -15,13 +17,14 @@ export default function CtaBand({
   title,
   blurb,
   primary = { href: "/visit#enquire", label: "Begin an enquiry" },
+  secondary = { href: "/gallery", label: "View the gallery" },
   tone = "botanical",
 }: Props) {
   return (
     <Section tone={tone} spacing="md">
       <div className="container-luxe">
         <div className="grid items-center gap-8 md:grid-cols-12">
-          <div className="md:col-span-8">
+          <div className="md:col-span-7">
             <RevealText as="h2" className="display-md text-bone">
               {title}
             </RevealText>
@@ -31,11 +34,18 @@ export default function CtaBand({
               </Reveal>
             )}
           </div>
-          <div className="md:col-span-4 md:flex md:justify-end">
+          <div className="md:col-span-5">
             <Reveal delay={0.15}>
-              <MagneticButton href={primary.href} variant="light" cursorLabel="Enquire">
-                {primary.label}
-              </MagneticButton>
+              <div className="flex flex-wrap items-center gap-4 md:justify-end">
+                <MagneticButton href={primary.href} variant="light" cursorLabel="Enquire">
+                  {primary.label}
+                </MagneticButton>
+                {secondary && (
+                  <MagneticButton href={secondary.href} variant="ghost" cursorLabel="Gallery">
+                    {secondary.label}
+                  </MagneticButton>
+                )}
+              </div>
             </Reveal>
           </div>
         </div>

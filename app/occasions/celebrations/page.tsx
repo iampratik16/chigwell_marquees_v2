@@ -5,8 +5,22 @@ import { serviceNode, breadcrumbList } from "@/lib/structured-data";
 import SplitFeature from "@/components/site/SplitFeature";
 import SpecList from "@/components/site/SpecList";
 import CtaBand from "@/components/site/CtaBand";
-import { OCC_CELEBRATIONS, OCC_CELEBRATIONS_2, OCC_CIVIL } from "@/lib/media";
-import { REAL } from "@/lib/media.real";
+import { OCC_CIVIL, img, type Media } from "@/lib/media";
+
+const CELEB_HERO = img(
+  "birthday-party-venue-essex-chigwell-marquees.jpg",
+  "A milestone birthday party with a styled balloon arch and dessert table",
+);
+const CELEB_PARTY = img(
+  "party-venues-near-me.jpg",
+  "A party venue in Essex dressed for a celebration",
+);
+const CELEB_MINI: Media = {
+  src: "/media/mini-interior.jpg",
+  alt: "The Mini Marquee beneath its starlit canopy, set for an intimate gathering",
+  width: 1080,
+  height: 720,
+};
 
 export const metadata: Metadata = {
   alternates: { canonical: "/occasions/celebrations" },
@@ -38,7 +52,7 @@ export default function CelebrationsPage() {
         eyebrow="Occasions · Celebrations"
         title={"Every reason\nto gather."}
         intro="Party venue hire in Essex for birthdays, engagements, anniversaries and milestones, the estate dressed entirely to the moment."
-        media={OCC_CELEBRATIONS}
+        media={CELEB_HERO}
       />
 
       <SplitFeature
@@ -48,7 +62,7 @@ export default function CelebrationsPage() {
           "Our birthday party venue flexes from an intimate thirtieth to a thousand-guest spectacular, with a state-of-the-art sound system, dance floor and bar built in.",
           "Bring your own caterer and theme, with no corkage and 42 acres to set the scene, from summer garden parties to a Christmas party venue in Essex.",
         ]}
-        media={OCC_CELEBRATIONS_2}
+        media={CELEB_PARTY}
         ratio="4 / 3"
       />
 
@@ -59,7 +73,7 @@ export default function CelebrationsPage() {
           "A glamorous engagement party, a landmark anniversary, a pre-wedding gathering, set against the lawns and the fountain of the Secret Garden.",
           "The Mini Marquee for something intimate; the Mega Marquee when the whole family is coming.",
         ]}
-        media={REAL.gardenParty}
+        media={CELEB_MINI}
         ratio="4 / 5"
         reverse
         tone="bone-dim"
