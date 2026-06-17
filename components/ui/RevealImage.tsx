@@ -18,6 +18,8 @@ type Props = {
   priority?: boolean;
   /** Enable hover zoom. */
   interactive?: boolean;
+  /** Skip the click-to-open lightbox (e.g. when the image is wrapped in a link). */
+  disableLightbox?: boolean;
   cursorLabel?: string;
   delay?: number;
   className_img?: string;
@@ -35,27 +37,30 @@ export default function RevealImage({
   sizes = "(max-width: 768px) 100vw, 50vw",
   priority = false,
   interactive = false,
+  disableLightbox = false,
   cursorLabel,
   delay = 0,
   className_img,
 }: Props) {
   const reduced = useReducedMotion();
   const { open } = useLightbox();
+  const canLightbox = interactive && !disableLightbox;
 
   return (
     <motion.div
       className={cn(
         "relative overflow-hidden bg-bone-dim",
-        interactive && "group/img cursor-pointer",
+        interactive && "group/img",
+        canLightbox && "cursor-pointer",
         className,
       )}
       style={ratio ? { aspectRatio: ratio } : undefined}
       data-cursor={cursorLabel}
-      onClick={interactive ? () => open(media) : undefined}
-      role={interactive ? "button" : undefined}
-      tabIndex={interactive ? 0 : undefined}
+      onClick={canLightbox ? () => open(media) : undefined}
+      role={canLightbox ? "button" : undefined}
+      tabIndex={canLightbox ? 0 : undefined}
       onKeyDown={
-        interactive
+        canLightbox
           ? (e) => {
               if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();

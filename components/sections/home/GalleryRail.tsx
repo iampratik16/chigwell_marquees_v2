@@ -113,7 +113,7 @@ export default function GalleryRail() {
   );
 
   return (
-    <section className="overflow-hidden bg-bone-dim py-20 md:py-28">
+    <section className="overflow-hidden bg-bone-dim py-16 md:py-20">
       <div className="container-luxe">
         <Heading />
 

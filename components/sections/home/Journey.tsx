@@ -21,7 +21,7 @@ export default function Journey() {
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/70" />
       </div>
 
-      <div className="container-luxe relative py-28 md:py-40">
+      <div className="container-luxe relative py-20 md:py-28">
         <div className="max-w-3xl">
           <Eyebrow tone="champagne">Visit</Eyebrow>
           <RevealText as="h2" className="mt-6 display-xl">

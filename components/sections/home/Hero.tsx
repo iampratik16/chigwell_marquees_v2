@@ -64,10 +64,6 @@ export default function Hero() {
           transition={{ duration: 1, ease: EASE_LUXE, delay: 1.05 }}
           className="mt-7 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
         >
-          <p className="lead max-w-md text-bone/80">
-            Two cinematic marquees on a 42-acre Essex estate, for weddings,
-            celebrations and corporate events of 30 to 1,000 guests.
-          </p>
           <div className="flex flex-wrap items-center gap-4">
             <MagneticButton href="/spaces" variant="light" cursorLabel="Explore">
               Explore the spaces

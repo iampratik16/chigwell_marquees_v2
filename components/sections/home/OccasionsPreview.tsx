@@ -4,29 +4,43 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
 import RevealImage from "@/components/ui/RevealImage";
-import { OCC_WEDDINGS, OCC_CELEBRATIONS, OCC_CORPORATE } from "@/lib/media";
+import {
+  OCC_WEDDINGS_CARD,
+  OCC_CELEBRATIONS_CARD,
+  OCC_CORPORATE_CARD,
+  OCC_FAITH,
+} from "@/lib/media";
 
+/** Four occasion pillars — Weddings leads as the primary market. */
 const CARDS = [
   {
     n: "01",
     label: "Weddings",
-    blurb: "Garden ceremonies, civil vows and grand traditional Asian weddings.",
+    tag: "Primary",
+    blurb: "Garden ceremonies, civil vows and grand traditional weddings.",
     href: "/occasions/weddings",
-    media: OCC_WEDDINGS,
+    media: OCC_WEDDINGS_CARD,
   },
   {
     n: "02",
-    label: "Celebrations",
-    blurb: "Milestone birthdays, engagements, anniversaries and mitzvahs.",
-    href: "/occasions/celebrations",
-    media: OCC_CELEBRATIONS,
+    label: "Corporate Events",
+    blurb: "Galas, conferences, product launches and Christmas parties.",
+    href: "/occasions/corporate",
+    media: OCC_CORPORATE_CARD,
   },
   {
     n: "03",
-    label: "Corporate",
-    blurb: "Galas, conferences, product launches, festivals and Christmas parties.",
-    href: "/occasions/corporate",
-    media: OCC_CORPORATE,
+    label: "Faith-Based Events",
+    blurb: "Asian weddings, mitzvahs and religious ceremonies, hosted with care.",
+    href: "/occasions/faith-based",
+    media: OCC_FAITH,
+  },
+  {
+    n: "04",
+    label: "Private Celebrations",
+    blurb: "Milestone birthdays, engagements and anniversaries.",
+    href: "/occasions/celebrations",
+    media: OCC_CELEBRATIONS_CARD,
   },
 ];
 
@@ -43,32 +57,43 @@ export default function OccasionsPreview() {
           </div>
           <Reveal>
             <p className="max-w-sm text-mist md:text-right">
-              One adaptable estate, dressed entirely to your vision, from thirty
-              guests to a thousand, and no corkage, ever.
+              One adaptable estate, from thirty guests to a thousand, with no
+              corkage, ever.
             </p>
           </Reveal>
         </div>
 
-        <div className="mt-14 grid gap-6 md:mt-20 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 md:mt-16 lg:grid-cols-4">
           {CARDS.map((c, i) => (
             <Link
               key={c.href}
               href={c.href}
               data-cursor="Explore"
-              className="group/card block"
+              aria-label={`${c.label} — ${c.blurb}`}
+              className="group/card block rounded-[1.25rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-champagne/70 focus-visible:ring-offset-4 focus-visible:ring-offset-bone"
             >
-              <RevealImage
-                media={c.media}
-                ratio="4 / 5"
-                sizes="(max-width: 768px) 100vw, 33vw"
-                interactive
-                delay={i * 0.08}
-                className="rounded-[1.25rem]"
-              />
-              <div className="mt-5 flex items-start justify-between gap-4">
+              <div className="relative">
+                <RevealImage
+                  media={c.media}
+                  ratio="4 / 5"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  interactive
+                  disableLightbox
+                  delay={i * 0.07}
+                  className="rounded-[1.25rem]"
+                />
+                {c.tag && (
+                  <span className="absolute left-4 top-4 rounded-full bg-bone/90 px-3 py-1 text-[0.6rem] font-medium uppercase tracking-[0.18em] text-ink shadow-sm backdrop-blur-sm">
+                    {c.tag}
+                  </span>
+                )}
+              </div>
+              <div className="mt-5 flex items-start justify-between gap-3">
                 <div>
                   <span className="eyebrow text-mist">{c.n}</span>
-                  <h3 className="mt-1 font-display text-3xl">{c.label}</h3>
+                  <h3 className="mt-1 font-display text-2xl leading-tight md:text-[1.6rem]">
+                    {c.label}
+                  </h3>
                 </div>
                 <span
                   aria-hidden
@@ -77,7 +102,7 @@ export default function OccasionsPreview() {
                   ↗
                 </span>
               </div>
-              <p className="mt-2 max-w-xs text-sm text-mist">{c.blurb}</p>
+              <p className="mt-2 text-sm text-mist">{c.blurb}</p>
             </Link>
           ))}
         </div>

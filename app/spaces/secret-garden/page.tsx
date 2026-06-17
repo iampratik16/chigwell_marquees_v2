@@ -95,10 +95,7 @@ export default function SecretGardenPage() {
       <SplitFeature
         eyebrow="The grounds"
         title={"A picturesque setting\nfor your finest moments."}
-        body={[
-          "When you hire either marquee, your guests are given exclusive use of a secluded secret garden. With beautifully tended lawns and a classic fountain at its heart, it is the perfect setting for a short stroll in the setting sun.",
-          "Couples often use it for outdoor civil ceremonies, and it is, without question, the place for romantic photography and the pictures you'll keep forever.",
-        ]}
+        body="Exclusively yours with either marquee — tended lawns, a classic fountain, and the place for outdoor ceremonies and pictures you'll keep forever."
         media={ESTATE_IMG.gazebo}
         ratio="3 / 2"
       />
@@ -106,10 +103,7 @@ export default function SecretGardenPage() {
       <SplitFeature
         eyebrow="In bloom"
         title="Blossom-lined avenues, made for photographs."
-        body={[
-          "In spring the grounds turn to blossom, pink avenues, manicured lawns and quiet corners that frame every photograph effortlessly.",
-          "From welcome drinks to the last light of the day, the garden is yours alone.",
-        ]}
+        body="In spring the grounds turn to blossom — pink avenues and quiet corners that frame every photograph effortlessly."
         media={SECRET_IMG.blossom}
         ratio="4 / 5"
         reverse

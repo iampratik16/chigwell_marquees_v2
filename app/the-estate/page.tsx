@@ -4,11 +4,15 @@ import SplitFeature from "@/components/site/SplitFeature";
 import SpecList from "@/components/site/SpecList";
 import StatsBand from "@/components/sections/home/StatsBand";
 import CtaBand from "@/components/site/CtaBand";
+import JsonLd from "@/components/site/JsonLd";
+import Faqs from "@/components/site/Faqs";
 import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
 import RevealImage from "@/components/ui/RevealImage";
+import { faqPage } from "@/lib/structured-data";
+import { FAQS } from "@/lib/site";
 import { ESTATE_IMG, HALL_IMG, VIDEO, POSTER } from "@/lib/media.real";
 
 export const metadata: Metadata = {
@@ -21,6 +25,7 @@ export const metadata: Metadata = {
 export default function EstatePage() {
   return (
     <>
+      <JsonLd data={faqPage(FAQS)} />
       <PageHero
         eyebrow="The estate"
         title={"Set within forty-two\nacres of Essex."}
@@ -91,10 +96,7 @@ export default function EstatePage() {
       <SplitFeature
         eyebrow="The grounds"
         title={"From the Hall to the\nDuck Pond."}
-        body={[
-          "The grounds offer fantastic photo opportunities, from pictures beside the Grade II listed Hall, to the Secret Garden and the idyllic Duck Pond.",
-          "Tree-lined avenues and manicured lawns make every frame effortless. Wherever the camera turns, you will not be disappointed.",
-        ]}
+        body="From the Grade II listed Hall to the Secret Garden and idyllic Duck Pond, tree-lined avenues and manicured lawns frame every photograph effortlessly."
         media={ESTATE_IMG.avenue}
         ratio="3 / 2"
         reverse
@@ -104,10 +106,7 @@ export default function EstatePage() {
       <SplitFeature
         eyebrow="The Secret Garden"
         title="Vows beneath the open sky."
-        body={[
-          "A secluded lawn with a classic fountain and a floral gazebo, licensed for outdoor civil ceremonies and made for romantic photography in the setting sun.",
-          "Given over to your exclusive use whenever you hire either marquee.",
-        ]}
+        body="A secluded lawn with a classic fountain and floral gazebo, licensed for outdoor civil ceremonies — and yours exclusively with either marquee."
         media={ESTATE_IMG.gazebo}
         ratio="3 / 2"
         link={{ href: "/spaces/secret-garden", label: "Explore the Secret Garden" }}
@@ -142,6 +141,21 @@ export default function EstatePage() {
         ]}
         tone="bone-dim"
       />
+
+      {/* FAQs */}
+      <Section tone="bone" spacing="lg">
+        <div className="container-luxe">
+          <div className="grid gap-12 md:grid-cols-12">
+            <div className="md:col-span-4">
+              <Eyebrow>Good to know</Eyebrow>
+              <h2 className="mt-6 display-md">Questions, answered.</h2>
+            </div>
+            <div className="md:col-span-8">
+              <Faqs />
+            </div>
+          </div>
+        </div>
+      </Section>
 
       <CtaBand
         title="Come and feel the scale of it."

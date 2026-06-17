@@ -4,14 +4,18 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { EASE_LUXE } from "@/lib/motion";
 import { cn } from "@/lib/utils";
+import {
+  VENUE_INTEREST_OPTIONS,
+  submitEnquiry,
+  validateContact,
+  type ContactErrors,
+  type EnquiryPayload,
+  type VenueInterest,
+} from "@/lib/enquiry";
 
-const OCCASIONS = [
-  "Wedding",
-  "Asian Wedding",
-  "Civil Ceremony",
-  "Celebration / Party",
-  "Corporate Event",
-  "Other",
+const MONTHS = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
 ];
 
 const fieldBase =
@@ -25,19 +29,62 @@ function Label({ children, htmlFor }: { children: React.ReactNode; htmlFor: stri
   );
 }
 
+function FieldError({ id, message }: { id: string; message?: string }) {
+  if (!message) return null;
+  return (
+    <p id={id} role="alert" className="mt-1.5 text-sm text-[#a23b2d]">
+      {message}
+    </p>
+  );
+}
+
 export default function EnquiryForm() {
   const [sent, setSent] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [errors, setErrors] = useState<ContactErrors>({});
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const clearError = (key: keyof ContactErrors) =>
+    setErrors((e) => (e[key] ? { ...e, [key]: undefined } : e));
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // No backend in this build, simulate a graceful submission.
-    // Wire to a route handler / email service to go live (see README).
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    const fullName = (data.get("fullName") as string)?.trim() ?? "";
+    const email = (data.get("email") as string)?.trim() ?? "";
+    const phone = (data.get("phone") as string)?.trim() ?? "";
+    const consent = data.get("consent") === "on";
+
+    const next = validateContact({ fullName, email, phone, consent });
+
+    if (Object.values(next).some(Boolean)) {
+      setErrors(next);
+      const firstKey = (["fullName", "email", "phone", "consent"] as const).find((k) => next[k]);
+      if (firstKey) form.querySelector<HTMLElement>(`[name="${firstKey}"]`)?.focus();
+      return;
+    }
+
+    const payload: EnquiryPayload = {
+      occasion: ((data.get("occasion") as string) ?? "").trim(),
+      fullName,
+      email,
+      phone,
+      preferredDate: ((data.get("preferredDate") as string) ?? "") || undefined,
+      preferredMonth: ((data.get("preferredMonth") as string) ?? "") || undefined,
+      guests: ((data.get("guests") as string) ?? "") || undefined,
+      venueInterest: data.getAll("venueInterest") as VenueInterest[],
+      consent,
+    };
+
+    setErrors({});
     setBusy(true);
-    window.setTimeout(() => {
-      setBusy(false);
+    try {
+      await submitEnquiry(payload);
       setSent(true);
-    }, 700);
+    } finally {
+      setBusy(false);
+    }
   };
 
   return (
@@ -62,55 +109,150 @@ export default function EnquiryForm() {
           <motion.form
             key="form"
             onSubmit={onSubmit}
+            noValidate
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.4 }}
             className="grid grid-cols-1 gap-x-8 gap-y-7 sm:grid-cols-2"
           >
-            <div className="sm:col-span-1">
-              <Label htmlFor="name">Your name</Label>
-              <input id="name" name="name" required className={fieldBase} placeholder="Full name" />
-            </div>
-            <div className="sm:col-span-1">
-              <Label htmlFor="email">Email</Label>
-              <input id="email" name="email" type="email" required className={fieldBase} placeholder="you@email.com" />
-            </div>
-            <div className="sm:col-span-1">
-              <Label htmlFor="phone">Phone</Label>
-              <input id="phone" name="phone" type="tel" className={fieldBase} placeholder="Optional" />
-            </div>
-            <div className="sm:col-span-1">
-              <Label htmlFor="occasion">Occasion</Label>
-              <select id="occasion" name="occasion" required className={cn(fieldBase, "appearance-none")} defaultValue="">
-                <option value="" disabled>
-                  Select…
-                </option>
-                {OCCASIONS.map((o) => (
-                  <option key={o} value={o}>
-                    {o}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="sm:col-span-1">
-              <Label htmlFor="date">Preferred date</Label>
-              <input id="date" name="date" type="date" className={fieldBase} />
-            </div>
-            <div className="sm:col-span-1">
-              <Label htmlFor="guests">Approx. guests</Label>
-              <input id="guests" name="guests" type="number" min={1} className={fieldBase} placeholder="e.g. 220" />
-            </div>
+            {/* 1 · Tell us about your occasion — moved to the top */}
             <div className="sm:col-span-2">
-              <Label htmlFor="message">Tell us about your occasion</Label>
-              <textarea id="message" name="message" rows={4} className={cn(fieldBase, "resize-none")} placeholder="A few words about your day…" />
+              <Label htmlFor="occasion">Tell us about your occasion</Label>
+              <textarea
+                id="occasion"
+                name="occasion"
+                rows={4}
+                className={cn(fieldBase, "resize-none")}
+                placeholder="A few words about your day, the occasion, your vision…"
+              />
             </div>
 
-            <div className="sm:col-span-2 flex items-start gap-3">
-              <input id="consent" name="consent" type="checkbox" required className="mt-1 h-4 w-4 accent-botanical" />
-              <label htmlFor="consent" className="text-sm text-mist">
-                I agree to be contacted about my enquiry and accept the terms &amp;
-                privacy policy.
-              </label>
+            {/* 2 · Full name (required) */}
+            <div className="sm:col-span-1">
+              <Label htmlFor="fullName">Full name *</Label>
+              <input
+                id="fullName"
+                name="fullName"
+                required
+                aria-required="true"
+                aria-invalid={!!errors.fullName}
+                aria-describedby={errors.fullName ? "fullName-error" : undefined}
+                onInput={() => clearError("fullName")}
+                className={fieldBase}
+                placeholder="Full name"
+              />
+              <FieldError id="fullName-error" message={errors.fullName} />
+            </div>
+
+            {/* 3 · Email (required) */}
+            <div className="sm:col-span-1">
+              <Label htmlFor="email">Email address *</Label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                aria-required="true"
+                aria-invalid={!!errors.email}
+                aria-describedby={errors.email ? "email-error" : undefined}
+                onInput={() => clearError("email")}
+                className={fieldBase}
+                placeholder="you@email.com"
+              />
+              <FieldError id="email-error" message={errors.email} />
+            </div>
+
+            {/* 4 · Phone (required) */}
+            <div className="sm:col-span-1">
+              <Label htmlFor="phone">Phone number *</Label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                required
+                aria-required="true"
+                aria-invalid={!!errors.phone}
+                aria-describedby={errors.phone ? "phone-error" : undefined}
+                onInput={() => clearError("phone")}
+                className={fieldBase}
+                placeholder="07000 000000"
+              />
+              <FieldError id="phone-error" message={errors.phone} />
+            </div>
+
+            {/* 5 · Preferred date (optional) */}
+            <div className="sm:col-span-1">
+              <Label htmlFor="preferredDate">Preferred date</Label>
+              <input id="preferredDate" name="preferredDate" type="date" className={fieldBase} />
+            </div>
+
+            {/* 6 · Preferred month (optional, secondary) */}
+            <div className="sm:col-span-1">
+              <Label htmlFor="preferredMonth">Preferred month</Label>
+              <select
+                id="preferredMonth"
+                name="preferredMonth"
+                aria-describedby="preferredMonth-help"
+                className={cn(fieldBase, "appearance-none")}
+                defaultValue=""
+              >
+                <option value="">No preference…</option>
+                {MONTHS.map((m) => (
+                  <option key={m} value={m}>{m}</option>
+                ))}
+              </select>
+              <p id="preferredMonth-help" className="mt-1.5 text-sm text-mist">
+                For clients who don&apos;t yet have a date.
+              </p>
+            </div>
+
+            {/* 7 · Number of guests (optional) */}
+            <div className="sm:col-span-1">
+              <Label htmlFor="guests">Number of guests</Label>
+              <input id="guests" name="guests" type="number" min={1} className={fieldBase} placeholder="e.g. 220" />
+            </div>
+
+            {/* Venue interest (optional, multi-select) */}
+            <fieldset className="sm:col-span-2">
+              <legend className="eyebrow mb-3 block text-mist">Venue interest</legend>
+              <div className="flex flex-col gap-2 sm:flex-row sm:gap-8">
+                {VENUE_INTEREST_OPTIONS.map((v) => (
+                  <label
+                    key={v}
+                    className="flex min-h-[44px] cursor-pointer items-center gap-3 text-ink"
+                  >
+                    <input
+                      type="checkbox"
+                      name="venueInterest"
+                      value={v}
+                      className="h-4 w-4 accent-botanical"
+                    />
+                    <span className="text-[0.95rem]">{v}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+
+            {/* Consent (required) */}
+            <div className="sm:col-span-2">
+              <div className="flex items-start gap-3">
+                <input
+                  id="consent"
+                  name="consent"
+                  type="checkbox"
+                  required
+                  aria-required="true"
+                  aria-invalid={!!errors.consent}
+                  aria-describedby={errors.consent ? "consent-error" : undefined}
+                  onChange={() => clearError("consent")}
+                  className="mt-1 h-4 w-4 accent-botanical"
+                />
+                <label htmlFor="consent" className="text-sm text-mist">
+                  I agree to be contacted about my enquiry and accept the terms &amp;
+                  privacy policy.
+                </label>
+              </div>
+              <FieldError id="consent-error" message={errors.consent} />
             </div>
 
             <div className="sm:col-span-2 mt-2">

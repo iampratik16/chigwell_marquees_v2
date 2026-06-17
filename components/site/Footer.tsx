@@ -5,6 +5,7 @@ import Reveal from "@/components/ui/Reveal";
 import MagneticButton from "@/components/ui/MagneticButton";
 import AnimatedLink from "@/components/ui/AnimatedLink";
 import SocialLinks from "@/components/site/SocialLinks";
+import Logo from "@/components/site/Logo";
 
 export default function Footer() {
   const year = 2026;
@@ -12,7 +13,7 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-ink text-bone">
       {/* Emotive CTA */}
-      <div className="container-luxe border-b border-bone/12 py-24 md:py-36">
+      <div className="container-luxe border-b border-bone/12 py-16 md:py-24">
         <div className="grid gap-12 md:grid-cols-12 md:items-end">
           <div className="md:col-span-8">
             <span className="eyebrow text-champagne">Begin your enquiry</span>
@@ -34,9 +35,9 @@ export default function Footer() {
       </div>
 
       {/* Detail columns */}
-      <div className="container-luxe grid gap-12 py-16 md:grid-cols-12">
+      <div className="container-luxe grid gap-12 py-12 md:grid-cols-12">
         <div className="md:col-span-4">
-          <p className="font-display text-2xl leading-tight">{SITE.name}</p>
+          <Logo invert className="w-fit" imgClassName="h-14 sm:h-16 md:h-20" />
           <address className="mt-4 not-italic leading-relaxed text-bone/65">
             {SITE.address.line1}
             <br />

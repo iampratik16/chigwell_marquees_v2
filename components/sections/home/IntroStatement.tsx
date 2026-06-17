@@ -17,7 +17,7 @@ export default function IntroStatement() {
           </RevealText>
         </div>
 
-        <div className="mt-16 grid gap-12 md:mt-24 md:grid-cols-12 md:items-end">
+        <div className="mt-12 grid gap-12 md:mt-16 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7">
             <RevealImage
               media={ESTATE}
@@ -31,21 +31,15 @@ export default function IntroStatement() {
           <div className="md:col-span-5 md:pb-4">
             <Reveal>
               <p className="lead text-ink/85">
-                Located in the stunning grounds of Chigwell Hall, a Grade II
-                listed manor set within 42 acres of countryside, we offer two
-                unique and luxurious venues perfect for your special event.
+                Set within the stunning 42-acre grounds of Chigwell Hall, a Grade
+                II listed manor, we offer two unique and luxurious venues for your
+                special event.
               </p>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-6 text-mist">
-                The Chigwell Marquees can host any number of guests from 30 to
-                1,000. The Mini and Mega marquees are perfect for a marquee
-                wedding, engagement party, anniversary, birthday, civil
-                ceremony, bar or bat mitzvah and all corporate events – from
-                training days to annual awards shows. Whatever you’re planning,
-                The Chigwell Marquees and our experienced team can assist and
-                accommodate with ease, so that you can make the most of what
-                matters.
+                From 30 to 1,000 guests — weddings, parties, civil ceremonies and
+                corporate events, all handled with ease by our experienced team.
               </p>
             </Reveal>
             <Reveal delay={0.2}>

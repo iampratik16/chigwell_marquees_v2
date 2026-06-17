@@ -8,7 +8,7 @@ export default function StarlitCeiling() {
   return (
     <section className="relative overflow-hidden bg-ink-deep text-bone">
       <Starfield count={170} seed={23} />
-      <div className="container-luxe relative py-32 md:py-48">
+      <div className="container-luxe relative py-20 md:py-32">
         <div className="mx-auto max-w-3xl text-center">
           <Eyebrow tone="champagne" className="justify-center before:hidden">
             The signature

@@ -8,6 +8,7 @@ import Grain from "@/components/effects/Grain";
 import Cursor from "@/components/effects/Cursor";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
+import FloatingActions from "@/components/site/FloatingActions";
 import JsonLd from "@/components/site/JsonLd";
 import { LightboxProvider } from "@/components/ui/Lightbox";
 import { localBusiness } from "@/lib/structured-data";
@@ -68,6 +69,7 @@ export default function RootLayout({
             <Header />
             <main id="main">{children}</main>
             <Footer />
+            <FloatingActions />
           </LightboxProvider>
         </SmoothScroll>
       </body>

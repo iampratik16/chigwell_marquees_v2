@@ -10,6 +10,7 @@ import Logo from "./Logo";
 import SocialLinks from "./SocialLinks";
 import MagneticButton from "@/components/ui/MagneticButton";
 import { EASE_LUXE } from "@/lib/motion";
+import { useIsDesktop } from "@/lib/useMediaQuery";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -41,7 +42,17 @@ export default function Header() {
 
   useEffect(() => setOpen(false), [pathname]);
 
-  const dark = !scrolled && !open; // light text over hero
+  const isDesktop = useIsDesktop();
+  const dark = !scrolled && !open; // desktop-hero treatment (button variant)
+
+  // The logo / content is white only over the dark hero (desktop) or when the
+  // dark mobile menu is open; on the light mobile/tablet bar it stays navy/ink.
+  const logoInvert = open || (isDesktop && !scrolled);
+  const textColor = open
+    ? "text-bone"
+    : !scrolled
+      ? "text-ink lg:text-bone"
+      : "text-ink";
 
   return (
     <>
@@ -52,19 +63,21 @@ export default function Header() {
         className={cn(
           "fixed inset-x-0 top-0 z-50",
           "transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          scrolled
-            ? "border-b border-line-soft bg-bone/80 backdrop-blur-xl"
-            : "border-b border-transparent bg-transparent",
+          open
+            ? "border-transparent bg-transparent"
+            : scrolled
+              ? "border-b border-line-soft bg-bone/80 backdrop-blur-xl"
+              : "border-b border-line-soft bg-bone/85 backdrop-blur-xl lg:border-transparent lg:bg-transparent lg:backdrop-blur-none",
         )}
       >
         <div
           className={cn(
             "container-luxe flex items-center justify-between transition-all duration-500",
-            scrolled ? "py-3.5" : "py-5",
-            dark ? "text-bone" : "text-ink",
+            scrolled ? "py-1.5 lg:py-2" : "py-2 lg:py-2.5",
+            textColor,
           )}
         >
-          <Logo />
+          <Logo invert={logoInvert} />
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
@@ -187,9 +200,9 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
       animate={{ clipPath: "inset(0 0 0% 0)" }}
       exit={{ clipPath: "inset(0 0 100% 0)" }}
       transition={{ duration: 0.7, ease: EASE_LUXE }}
-      className="fixed inset-0 z-40 flex flex-col bg-ink text-bone lg:hidden"
+      className="fixed inset-0 z-40 flex w-full max-w-full flex-col overflow-x-hidden bg-ink text-bone lg:hidden"
     >
-      <div className="container-luxe flex-1 overflow-y-auto pt-28 pb-12" data-lenis-prevent>
+      <div className="container-luxe flex-1 overflow-y-auto pt-24 pb-12" data-lenis-prevent>
         <nav className="flex flex-col" aria-label="Mobile">
           {NAV.map((item, i) => (
             <motion.div

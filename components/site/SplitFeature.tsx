@@ -34,7 +34,7 @@ export default function SplitFeature({
 }: Props) {
   const paras = Array.isArray(body) ? body : [body];
   return (
-    <div className={cn("py-16 md:py-24", tone === "bone-dim" ? "bg-bone-dim" : "bg-bone")}>
+    <div className={cn("py-12 md:py-16", tone === "bone-dim" ? "bg-bone-dim" : "bg-bone")}>
       <div className="container-luxe">
         <div className="grid items-center gap-10 md:grid-cols-12 md:gap-16">
           <div className={cn("md:col-span-6", reverse && "md:order-2")}>

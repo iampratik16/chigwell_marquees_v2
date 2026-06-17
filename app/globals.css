@@ -45,10 +45,31 @@
 
   body {
     font-family: var(--font-sans);
+    font-size: 0.95rem;
     line-height: 1.6;
     overflow-x: hidden;
     background-color: var(--color-bone);
     color: var(--color-ink);
+  }
+
+  /* Replaced elements never push the page wider than the viewport */
+  img,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
+  }
+
+  /*
+   * Mobile/tablet only: clip horizontal overflow at the root so the layout
+   * viewport never grows wider than the screen (fixes the right-edge cut on
+   * the mobile menu). Excluded on desktop because root overflow breaks the
+   * GSAP ScrollTrigger pin used by the "Two spaces" scene.
+   */
+  @media (max-width: 1023px) {
+    html {
+      overflow-x: clip;
+    }
   }
 
   /* Lenis */
@@ -126,27 +147,27 @@
   }
 
   .display-hero {
-    font-size: clamp(2.5rem, 8.4vw, 8.5rem);
-    line-height: 0.95;
+    font-size: clamp(2.05rem, 7vw, 7rem);
+    line-height: 0.97;
     letter-spacing: -0.02em;
   }
   .display-xl {
-    font-size: clamp(2.6rem, 7vw, 6.5rem);
-    line-height: 0.96;
+    font-size: clamp(2.15rem, 5.8vw, 5.4rem);
+    line-height: 0.98;
     letter-spacing: -0.02em;
   }
   .display-lg {
-    font-size: clamp(2.1rem, 5vw, 4.25rem);
-    line-height: 1;
+    font-size: clamp(1.75rem, 4.15vw, 3.5rem);
+    line-height: 1.02;
     letter-spacing: -0.015em;
   }
   .display-md {
-    font-size: clamp(1.7rem, 3.2vw, 2.75rem);
-    line-height: 1.05;
+    font-size: clamp(1.4rem, 2.65vw, 2.3rem);
+    line-height: 1.08;
     letter-spacing: -0.01em;
   }
   .lead {
-    font-size: clamp(1.1rem, 1.7vw, 1.5rem);
+    font-size: clamp(1rem, 1.55vw, 1.38rem);
     line-height: 1.5;
     letter-spacing: -0.005em;
   }
@@ -199,37 +220,40 @@
 .cursor-ring {
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
-  margin: -21px 0 0 -21px;
-  border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--color-champagne) 70%, transparent);
+  width: 56px;
+  height: 30px;
+  margin: -15px 0 0 -28px;
+  border: 0;
+  border-radius: 0;
+  background-image: url("/cursor-crown.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   transition:
     width 0.45s var(--ease-luxe),
     height 0.45s var(--ease-luxe),
     margin 0.45s var(--ease-luxe),
     background-color 0.45s var(--ease-luxe),
-    border-color 0.45s var(--ease-luxe),
+    border-radius 0.45s var(--ease-luxe),
     opacity 0.4s ease;
 }
 .cursor-ring[data-active="true"] {
-  width: 64px;
-  height: 64px;
-  margin: -32px 0 0 -32px;
-  background: color-mix(in srgb, var(--color-champagne) 14%, transparent);
-  border-color: transparent;
+  width: 76px;
+  height: 41px;
+  margin: -20.5px 0 0 -38px;
 }
 .cursor-ring[data-down="true"] {
-  width: 32px;
-  height: 32px;
-  margin: -16px 0 0 -16px;
+  width: 44px;
+  height: 24px;
+  margin: -12px 0 0 -22px;
 }
 .cursor-ring[data-labelled="true"] {
   width: 92px;
   height: 92px;
   margin: -46px 0 0 -46px;
-  background: var(--color-champagne);
-  border-color: transparent;
+  border-radius: 50%;
+  background-image: none;
+  background-color: var(--color-champagne);
 }
 .cursor-label {
   font-family: var(--font-sans);

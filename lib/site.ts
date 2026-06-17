@@ -10,7 +10,12 @@ export const SITE = {
   phone: "020 3196 0159",
   phoneHref: "tel:02031960159",
   email: "info@thechigwellmarquees.com",
-  whatsapp: "https://wa.me/message/QDPSE2YBQRTTC1",
+  /** Single source of truth for WhatsApp — number, greeting and display format. */
+  whatsapp: {
+    number: "918638702710",
+    greeting: "Hi, I'd like to enquire about The Chigwell Marquees.",
+    display: "+91 86387 02710",
+  },
   address: {
     line1: "Chigwell Hall, 159 High Road",
     city: "Chigwell",
@@ -19,6 +24,14 @@ export const SITE = {
     maps: "https://www.google.com/maps/search/?api=1&query=The+Chigwell+Marquees+159+High+Road+Chigwell+IG7+6BD",
   },
 } as const;
+
+/** wa.me link built from the single-source-of-truth WhatsApp config. */
+export function whatsappLink(withGreeting = true): string {
+  const base = `https://wa.me/${SITE.whatsapp.number}`;
+  return withGreeting
+    ? `${base}?text=${encodeURIComponent(SITE.whatsapp.greeting)}`
+    : base;
+}
 
 export const SOCIALS = [
   { label: "Instagram", href: "https://www.instagram.com/thechigwellmarquees/" },
@@ -32,11 +45,11 @@ export type NavItem = { label: string; href: string; children?: NavChild[] };
 
 export const NAV: NavItem[] = [
   {
-    label: "The Estate",
+    label: "About Us",
     href: "/the-estate",
   },
   {
-    label: "Spaces",
+    label: "Venue",
     href: "/spaces",
     children: [
       { label: "The Mega Marquee", href: "/spaces/mega-marquee", blurb: "300 – 1,000 guests" },
@@ -50,8 +63,9 @@ export const NAV: NavItem[] = [
     href: "/occasions",
     children: [
       { label: "Weddings", href: "/occasions/weddings", blurb: "Garden, civil & Asian weddings" },
-      { label: "Celebrations", href: "/occasions/celebrations", blurb: "Birthdays, engagements, mitzvahs" },
-      { label: "Corporate", href: "/occasions/corporate", blurb: "Galas, conferences, festivals" },
+      { label: "Corporate Events", href: "/occasions/corporate", blurb: "Galas, conferences, festivals" },
+      { label: "Faith-Based Events", href: "/occasions/faith-based", blurb: "Asian weddings, mitzvahs & ceremonies" },
+      { label: "Private Celebrations", href: "/occasions/celebrations", blurb: "Birthdays, engagements, anniversaries" },
     ],
   },
   { label: "Gallery", href: "/gallery" },

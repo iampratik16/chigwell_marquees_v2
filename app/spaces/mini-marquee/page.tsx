@@ -96,10 +96,7 @@ export default function MiniMarqueePage() {
       <SplitFeature
         eyebrow="Intimate by design"
         title={"Bright by day,\nstarlit by night."}
-        body={[
-          "The perfect choice for a more intimate event or wedding, 30 to 200 guests, with modern light-grey flooring and a full side of glass windows that lets the natural light pour in.",
-          "A fixed, built-in air-conditioning unit keeps the room comfortable, while a raised stage gives your chosen band or DJ a home.",
-        ]}
+        body="An intimate space for 30 to 200, with a full side of glass that floods the room with natural light by day."
         media={MINI_IMG.bright}
         ratio="4 / 3"
       />
@@ -109,10 +106,7 @@ export default function MiniMarqueePage() {
       <SplitFeature
         eyebrow="The garden door"
         title="Steps from the Secret Garden."
-        body={[
-          "Booking includes access to the Secret Garden for welcome drinks and pictures around the fountain, and the Mini Marquee is now licensed for civil ceremonies.",
-          "An effortless flow from vows, to drinks on the lawn, to dinner and dancing under the stars.",
-        ]}
+        body="A door straight onto the Secret Garden, licensed for civil ceremonies — an effortless flow from vows to drinks on the lawn."
         media={SPACE_GARDEN}
         ratio="4 / 3"
         reverse
@@ -121,7 +115,7 @@ export default function MiniMarqueePage() {
       />
 
       {/* Catering — portrait (9:16) video kept at its native aspect ratio */}
-      <div className="bg-bone py-16 md:py-24">
+      <div className="bg-bone py-12 md:py-16">
         <div className="container-luxe">
           <div className="grid items-center gap-10 md:grid-cols-12 md:gap-16">
             <div className="md:order-2 md:col-span-6">
@@ -142,15 +136,8 @@ export default function MiniMarqueePage() {
               <div className="mt-6 space-y-5">
                 <Reveal>
                   <p className="lead text-ink/85">
-                    Your chosen caterer is given a fully functioning kitchen with
-                    ample preparation space and its own entrance, kept discreetly
-                    out of sight of your guests.
-                  </p>
-                </Reveal>
-                <Reveal delay={0.08}>
-                  <p className="text-mist">
-                    The grounds can also accommodate outdoor cooking, from live
-                    stations to spectacle.
+                    Your caterer gets a fully functioning kitchen with its own
+                    discreet entrance — plus the grounds for live outdoor cooking.
                   </p>
                 </Reveal>
               </div>

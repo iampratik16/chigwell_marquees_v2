@@ -5,7 +5,6 @@ import OccasionsPreview from "@/components/sections/home/OccasionsPreview";
 import StatsBand from "@/components/sections/home/StatsBand";
 import GalleryRail from "@/components/sections/home/GalleryRail";
 import CaseStudies from "@/components/sections/home/CaseStudies";
-import Journey from "@/components/sections/home/Journey";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -22,7 +21,6 @@ export default function Home() {
       <StatsBand />
       <GalleryRail />
       <CaseStudies />
-      <Journey />
     </>
   );
 }

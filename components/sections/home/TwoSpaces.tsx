@@ -1,35 +1,65 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { gsap, useGSAP } from "@/lib/gsap";
-import { SPACE_MEGA } from "@/lib/media";
-import { MINI_IMG } from "@/lib/media.real";
+import { motion } from "framer-motion";
 import AnimatedLink from "@/components/ui/AnimatedLink";
 import Eyebrow from "@/components/ui/Eyebrow";
-import Starfield from "@/components/effects/Starfield";
+import { EASE_LUXE } from "@/lib/motion";
 import { useReducedMotion } from "@/lib/useReducedMotion";
-import { useMounted } from "@/lib/useMounted";
-import { useIsDesktop } from "@/lib/useMediaQuery";
+import { cn } from "@/lib/utils";
 
-const MEGA = {
-  numeral: "I",
-  name: "The Mega Marquee",
-  capacity: "300 – 1,000 guests",
-  copy: "High ceilings, neutral interiors, a state-of-the-art sound & lighting rig and a fully functioning kitchen, a grand blank canvas for weddings, galas and corporate showcases.",
-  href: "/spaces/mega-marquee",
-  media: SPACE_MEGA,
-};
-const MINI = {
-  numeral: "II",
-  name: "The Mini Marquee",
-  capacity: "30 – 200 guests",
-  copy: "Floor-to-ceiling glass, built-in air conditioning and a white-canopy starlit ceiling that switches on as evening falls, opening onto the Secret Garden.",
-  href: "/spaces/mini-marquee",
-  media: MINI_IMG.interior,
+type Area = {
+  numeral: string;
+  name: string;
+  capacity: string;
+  copy: string;
+  href: string;
+  media: { src: string; alt: string };
 };
 
-function SpaceContent({ s }: { s: typeof MEGA }) {
+/* Four estate settings presented in one cinematic, tabbed stage. */
+const AREAS: Area[] = [
+  {
+    numeral: "I",
+    name: "The Mega Marquee",
+    capacity: "300 – 1,000 guests",
+    copy: "High ceilings, neutral interiors, a state-of-the-art sound & lighting rig and a fully functioning kitchen, a grand blank canvas for weddings, galas and corporate showcases.",
+    href: "/spaces/mega-marquee",
+    media: { src: "/media/mega-photo-35.jpg", alt: "Inside the Mega Marquee dressed for a celebration" },
+  },
+  {
+    numeral: "II",
+    name: "The Mini Marquee",
+    capacity: "30 – 200 guests",
+    copy: "Floor-to-ceiling glass, built-in air conditioning and a white-canopy starlit ceiling that switches on as evening falls, opening onto the Secret Garden.",
+    href: "/spaces/mini-marquee",
+    media: { src: "/media/mini-8c.jpg", alt: "The Mini Marquee, an intimate light-filled setting" },
+  },
+  {
+    numeral: "III",
+    name: "Chigwell Hall",
+    // TODO(client): confirm a capacity/subtitle line for Chigwell Hall.
+    capacity: "Grade II listed manor",
+    // TODO(client): confirm final description copy for Chigwell Hall.
+    copy: "A magnificent Grade II listed Victorian manor at the heart of the estate, home to elegant indoor function suites.",
+    // TODO(client): confirm the canonical link target for Chigwell Hall (estate vs. suites).
+    href: "/the-estate",
+    media: { src: "/media/chigwell-hall-4e.jpg", alt: "Chigwell Hall, the Grade II listed manor on the estate" },
+  },
+  {
+    numeral: "IV",
+    name: "Grounds & Gardens",
+    capacity: "up to 250",
+    copy: "A secluded lawn with a classic central fountain, the picturesque setting for outdoor civil ceremonies, welcome drinks and unforgettable photography.",
+    // TODO(client): confirm Grounds & Gardens maps to the Secret Garden route.
+    href: "/spaces/secret-garden",
+    media: { src: "/media/garden-10b.jpg", alt: "The grounds and gardens of the Chigwell Hall estate" },
+  },
+];
+
+/** Overlay composition — identical to the original venue block. */
+function SpaceContent({ s }: { s: Area }) {
   return (
     <div className="grid gap-8 md:grid-cols-12 md:items-end">
       <div className="md:col-span-7">
@@ -49,126 +79,137 @@ function SpaceContent({ s }: { s: typeof MEGA }) {
   );
 }
 
-/** Static, structurally-stable version (SSR default + reduced motion). */
-function Static() {
+export default function TwoSpaces() {
+  const reduced = useReducedMotion();
+  const [active, setActive] = useState(0);
+  // Which images may load: the first eagerly; the rest are primed on idle or
+  // on tab hover/focus so switching never flashes.
+  const [primed, setPrimed] = useState<Set<number>>(() => new Set([0]));
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const N = AREAS.length;
+
+  const prime = (i: number) =>
+    setPrimed((p) => (p.has(i) ? p : new Set(p).add(i)));
+
+  useEffect(() => {
+    const all = () => setPrimed(new Set(AREAS.map((_, i) => i)));
+    const ric = typeof window !== "undefined" ? window.requestIdleCallback : undefined;
+    if (ric) {
+      const id = ric(all);
+      return () => window.cancelIdleCallback?.(id);
+    }
+    const t = setTimeout(all, 1200);
+    return () => clearTimeout(t);
+  }, []);
+
+  const select = (i: number) => {
+    prime(i);
+    setActive(i);
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    let next: number | null = null;
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") next = (active + 1) % N;
+    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = (active - 1 + N) % N;
+    else if (e.key === "Home") next = 0;
+    else if (e.key === "End") next = N - 1;
+    if (next !== null) {
+      e.preventDefault();
+      select(next);
+      tabRefs.current[next]?.focus();
+    }
+  };
+
+  const fade = reduced
+    ? ""
+    : "transition-opacity duration-[550ms] ease-[cubic-bezier(0.16,1,0.3,1)]";
+
   return (
-    <section className="bg-ink text-bone">
-      {[MEGA, MINI].map((s, i) => (
-        <div key={s.name} className="relative h-[82svh] min-h-[520px] w-full overflow-hidden">
-          <Image src={s.media.src} alt={s.media.alt} fill sizes="100vw" className="object-cover" />
+    <section className="relative h-[min(85vh,920px)] min-h-[560px] w-full overflow-hidden bg-ink text-bone">
+      {/* Stacked, crossfading panels (image + overlay together) */}
+      {AREAS.map((s, i) => {
+        const on = i === active;
+        return (
           <div
-            className={
-              i === 1
-                ? "absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/15 to-ink/40"
-                : "absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/35 to-ink/55"
-            }
-          />
-          {i === 1 && <Starfield count={150} />}
-          {i === 0 && (
-            <div className="container-luxe absolute inset-x-0 top-24">
-              <Eyebrow tone="champagne">Two spaces · one estate</Eyebrow>
-            </div>
-          )}
-          <div className="container-luxe relative flex h-full flex-col justify-end pb-16">
-            <SpaceContent s={s} />
-          </div>
-        </div>
-      ))}
-    </section>
-  );
-}
+            key={s.name}
+            id={`area-panel-${i}`}
+            role="tabpanel"
+            aria-labelledby={`area-tab-${i}`}
+            aria-hidden={!on}
+            className={cn("absolute inset-0", fade, on ? "opacity-100" : "pointer-events-none opacity-0")}
+          >
+            {primed.has(i) && (
+              <Image
+                src={s.media.src}
+                alt={s.media.alt}
+                fill
+                priority={i === 0}
+                sizes="100vw"
+                className={cn(
+                  "object-cover",
+                  reduced ? "" : "transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)]",
+                  on ? "scale-100" : "scale-[1.04]",
+                )}
+              />
+            )}
+            {/* Top scrim (tabs legibility) + bottom scrim (heading/description legibility) */}
+            <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-ink/40" />
 
-/** GSAP-pinned cinematic scene (only mounted when motion is allowed). */
-function Pinned() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(
-    () => {
-      const ctx = sectionRef.current;
-      if (!ctx) return;
-      const q = gsap.utils.selector(ctx);
-      const megaContent = ctx.querySelector<HTMLElement>(".mega-content");
-      const miniContent = ctx.querySelector<HTMLElement>(".mini-content");
-
-      gsap.set(q(".mini-layer"), { opacity: 0 });
-      gsap.set(q(".starfield"), { opacity: 0 });
-      gsap.set(q(".mini-content"), { opacity: 0, y: 40 });
-
-      // The Mega and Mini "Step inside" links overlap, so only one layer may be
-      // clickable at a time. Drive this from scroll progress rather than tweening
-      // pointer-events: string props don't scrub reliably and would leave the
-      // Mega link dead (or the invisible Mini link swallowing its clicks).
-      const setClickable = (megaOn: boolean) => {
-        if (megaContent) megaContent.style.pointerEvents = megaOn ? "auto" : "none";
-        if (miniContent) miniContent.style.pointerEvents = megaOn ? "none" : "auto";
-      };
-      setClickable(true);
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ctx,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 1,
-          pin: stageRef.current,
-          anticipatePin: 1,
-          onUpdate: (self) => setClickable(self.progress < 0.5),
-        },
-      });
-
-      tl.to(q(".mega-img"), { scale: 1.14, ease: "none" }, 0)
-        .to(q(".mega-content"), { opacity: 0, y: -40, ease: "power1.in" }, 0.18)
-        .to(q(".dark-veil"), { opacity: 0.45, ease: "none" }, 0.2)
-        .to(q(".mega-layer"), { opacity: 0, ease: "none" }, 0.3)
-        .to(q(".mini-layer"), { opacity: 1, ease: "none" }, 0.32)
-        .fromTo(q(".mini-img"), { scale: 1.16 }, { scale: 1.02, ease: "none" }, 0.32)
-        .to(q(".starfield"), { opacity: 1, ease: "power1.out" }, 0.5)
-        .to(q(".mini-content"), { opacity: 1, y: 0, ease: "power2.out" }, 0.58);
-    },
-    { scope: sectionRef },
-  );
-
-  return (
-    <section ref={sectionRef} className="relative h-[340vh] bg-ink text-bone">
-      <div ref={stageRef} className="relative h-[100svh] w-full overflow-hidden">
-        <div className="mega-layer absolute inset-0">
-          <Image src={MEGA.media.src} alt={MEGA.media.alt} fill sizes="100vw" className="mega-img object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/25 to-ink/40" />
-        </div>
-
-        <div className="mini-layer absolute inset-0">
-          <Image src={MINI.media.src} alt={MINI.media.alt} fill sizes="100vw" className="mini-img object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/15 to-ink/40" />
-          <div className="starfield">
-            <Starfield count={170} seed={23} />
-          </div>
-        </div>
-
-        <div className="dark-veil pointer-events-none absolute inset-0 bg-ink-deep opacity-0" />
-
-        <div className="container-luxe pointer-events-none absolute inset-x-0 top-28 z-10">
-          <Eyebrow tone="champagne">Two spaces · one estate</Eyebrow>
-        </div>
-
-        <div className="container-luxe relative z-10 flex h-full items-end pb-[clamp(3rem,9vh,7rem)]">
-          <div className="relative w-full">
-            <div className="mega-content">
-              <SpaceContent s={MEGA} />
-            </div>
-            <div className="mini-content absolute inset-x-0 bottom-0">
-              <SpaceContent s={MINI} />
+            <div className="container-luxe absolute inset-x-0 bottom-0 z-10 pb-[clamp(2.5rem,8vh,6rem)]">
+              <SpaceContent s={s} />
             </div>
           </div>
+        );
+      })}
+
+      {/* Top-left: eyebrow + tab selector (shared, above the panels) */}
+      <div className="container-luxe pointer-events-none absolute inset-x-0 top-28 z-20 md:top-32">
+        <Eyebrow tone="champagne">Four settings · one estate</Eyebrow>
+
+        <div
+          role="tablist"
+          aria-label="Estate settings"
+          onKeyDown={onKeyDown}
+          className="pointer-events-auto mt-6 inline-flex max-w-full gap-1 overflow-x-auto rounded-full bg-ink/55 p-1 shadow-[0_10px_40px_-12px_rgba(0,0,0,0.6)] ring-1 ring-bone/15 backdrop-blur-md [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {AREAS.map((s, i) => {
+            const on = i === active;
+            return (
+              <button
+                key={s.name}
+                ref={(el) => {
+                  tabRefs.current[i] = el;
+                }}
+                role="tab"
+                id={`area-tab-${i}`}
+                aria-selected={on}
+                aria-controls={`area-panel-${i}`}
+                tabIndex={on ? 0 : -1}
+                onClick={() => select(i)}
+                onMouseEnter={() => prime(i)}
+                onFocus={() => prime(i)}
+                className={cn(
+                  "relative flex min-h-[44px] shrink-0 items-center whitespace-nowrap rounded-full px-4 py-2 text-[0.7rem] font-medium uppercase tracking-[0.16em] transition-colors duration-300 outline-none focus-visible:ring-2 focus-visible:ring-champagne/80",
+                  on ? "text-champagne" : "text-bone/70 hover:text-bone",
+                )}
+              >
+                {on && (
+                  <motion.span
+                    layoutId="two-spaces-pill"
+                    transition={reduced ? { duration: 0 } : { duration: 0.5, ease: EASE_LUXE }}
+                    className="absolute inset-0 rounded-full bg-bone/12 ring-1 ring-champagne/40"
+                  />
+                )}
+                <span className="relative z-10 flex items-center">
+                  <span className="mr-2 font-display italic">{s.numeral}</span>
+                  {s.name}
+                </span>
+              </button>
+            );
+          })}
         </div>
       </div>
     </section>
   );
-}
-
-export default function TwoSpaces() {
-  const reduced = useReducedMotion();
-  const mounted = useMounted();
-  const isDesktop = useIsDesktop();
-  return mounted && !reduced && isDesktop ? <Pinned /> : <Static />;
 }

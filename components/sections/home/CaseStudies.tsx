@@ -1,13 +1,33 @@
 import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
+import RevealImage from "@/components/ui/RevealImage";
+import type { Media } from "@/lib/media";
 
-/** Real case-study titles from the source (no fabricated quotes, see ASSETS_TODO). */
-const CASES = [
-  { title: "Bollywood Themed Engagement Party", space: "Mega Marquee" },
-  { title: "Amy & Danny's Summer Wedding", space: "Mini Marquee" },
-  { title: "The Perfect Christmas Party", space: "Mega Marquee" },
-  { title: "FestiFit, Fitness Event", space: "Mega Marquee" },
+type Showcase = { label: string; line: string; media: Media };
+
+/** A glimpse of the four settings across the estate. */
+const SHOWCASES: Showcase[] = [
+  {
+    label: "Mega Marquee",
+    line: "Grand celebrations for up to 1,000 guests.",
+    media: { src: "/media/recent-mega.jpg", alt: "The Mega Marquee dressed for a celebration", width: 2000, height: 1334 },
+  },
+  {
+    label: "Mini Marquee",
+    line: "Intimate weddings beneath a starlit ceiling.",
+    media: { src: "/media/recent-mini.jpg", alt: "The Mini Marquee set for an intimate wedding", width: 2000, height: 1500 },
+  },
+  {
+    label: "Chigwell House",
+    line: "A Grade II listed manor at the estate's heart.",
+    media: { src: "/media/recent-hall.jpg", alt: "Chigwell Hall, the Grade II listed manor", width: 2000, height: 1333 },
+  },
+  {
+    label: "Garden",
+    line: "Outdoor ceremonies in the Secret Garden.",
+    media: { src: "/media/recent-garden.jpg", alt: "The Secret Garden and grounds of the estate", width: 1333, height: 2000 },
+  },
 ];
 
 export default function CaseStudies() {
@@ -17,29 +37,32 @@ export default function CaseStudies() {
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <Eyebrow>Recently at the estate</Eyebrow>
-            <h2 className="mt-6 display-md max-w-xl">
-              A few of the occasions we&apos;ve had the privilege to host.
-            </h2>
+            <h2 className="mt-6 display-md max-w-xl">A glimpse across the estate.</h2>
           </div>
         </div>
 
-        <ul className="mt-12 border-t border-line">
-          {CASES.map((c, i) => (
-            <Reveal key={c.title} delay={i * 0.05}>
-              <li className="group/case flex flex-col gap-1 border-b border-line py-7 md:flex-row md:items-baseline md:justify-between">
-                <div className="flex items-baseline gap-5">
-                  <span className="eyebrow text-mist">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="font-display text-2xl transition-colors duration-500 group-hover/case:text-botanical md:text-3xl">
-                    {c.title}
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {SHOWCASES.map((s, i) => (
+            <Reveal key={s.label} delay={i * 0.06}>
+              <figure>
+                <RevealImage
+                  media={s.media}
+                  ratio="4 / 5"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  interactive
+                  cursorLabel="View"
+                  className="rounded-xl"
+                />
+                <figcaption className="mt-4">
+                  <span className="block text-[0.72rem] uppercase tracking-[0.18em] text-mist">
+                    {s.label}
                   </span>
-                </div>
-                <span className="pl-10 text-sm uppercase tracking-[0.16em] text-mist md:pl-0">
-                  {c.space}
-                </span>
-              </li>
+                  <p className="mt-1.5 font-display text-lg leading-snug">{s.line}</p>
+                </figcaption>
+              </figure>
             </Reveal>
           ))}
-        </ul>
+        </div>
       </div>
     </Section>
   );

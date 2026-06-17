@@ -20,9 +20,9 @@ const tones = {
 };
 
 const spacings = {
-  sm: "py-16 md:py-24",
-  md: "py-24 md:py-32",
-  lg: "py-28 md:py-44",
+  sm: "py-12 md:py-16",
+  md: "py-16 md:py-24",
+  lg: "py-20 md:py-32",
 };
 
 /** Standard full-width section with tokenised tone + rhythm. */

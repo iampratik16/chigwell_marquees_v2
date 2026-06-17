@@ -8,7 +8,7 @@ import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
-import { OCC_WEDDINGS, OCC_CELEBRATIONS, OCC_CORPORATE } from "@/lib/media";
+import { OCC_WEDDINGS, OCC_CELEBRATIONS, OCC_CORPORATE_CARD, OCC_FAITH } from "@/lib/media";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/occasions" },
@@ -42,9 +42,8 @@ export default function OccasionsPage() {
             </RevealText>
             <Reveal>
               <p className="lead mt-8 max-w-2xl text-mist">
-                Partition the space, dress it in any theme, bring your own
-                caterer, there is no corkage, and an experienced events team to
-                hold the whole day together.
+                A blank canvas for thirty guests or a thousand — dressed to any
+                theme, bring your own caterer, no corkage.
               </p>
             </Reveal>
           </div>
@@ -52,41 +51,43 @@ export default function OccasionsPage() {
       </Section>
 
       <SplitFeature
-        eyebrow="01 · Weddings"
+        eyebrow="01 · Weddings · Primary"
         title="Weddings, of every tradition."
-        body={[
-          "Garden ceremonies, civil vows and grand traditional Asian weddings, for thirty guests or a thousand.",
-          "A leading Essex and London venue, with trusted caterers, décor companies and DJs who know our marquees inside out.",
-        ]}
+        body="Garden ceremonies, civil vows and grand traditional weddings, for thirty guests or a thousand."
         media={OCC_WEDDINGS}
-        ratio="4 / 3"
+        ratio="16 / 9"
         link={{ href: "/occasions/weddings", label: "Explore weddings" }}
       />
 
       <SplitFeature
-        eyebrow="02 · Celebrations"
+        eyebrow="02 · Corporate Events"
+        title="Corporate, at an incredible location."
+        body="Galas, conferences, product launches and the office Christmas party of the year — full PA, big screens, 42 acres."
+        media={OCC_CORPORATE_CARD}
+        ratio="4 / 3"
+        reverse
+        tone="bone-dim"
+        link={{ href: "/occasions/corporate", label: "Explore corporate" }}
+      />
+
+      <SplitFeature
+        eyebrow="03 · Faith-Based Events"
+        title="Faith-based, hosted with care."
+        body="Asian weddings, mitzvahs and religious ceremonies, accommodated with cultural understanding and ease."
+        media={OCC_FAITH}
+        ratio="4 / 3"
+        link={{ href: "/occasions/faith-based", label: "Explore faith-based events" }}
+      />
+
+      <SplitFeature
+        eyebrow="04 · Private Celebrations"
         title="Celebrations worth gathering for."
-        body={[
-          "Milestone birthdays, engagements, anniversaries and Bar & Bat Mitzvahs, the room dressed entirely to the occasion.",
-          "Civil ceremonies, christenings and every reason to bring people together.",
-        ]}
+        body="Milestone birthdays, engagements and anniversaries, the room dressed entirely to the occasion."
         media={OCC_CELEBRATIONS}
         ratio="4 / 3"
         reverse
         tone="bone-dim"
-        link={{ href: "/occasions/celebrations", label: "Explore celebrations" }}
-      />
-
-      <SplitFeature
-        eyebrow="03 · Corporate"
-        title="Corporate, at an incredible location."
-        body={[
-          "Galas, conferences, product launches, team days and festivals, with a full PA, big screens and 42 acres to play with.",
-          "And the most memorable office Christmas party your team has ever had.",
-        ]}
-        media={OCC_CORPORATE}
-        ratio="4 / 3"
-        link={{ href: "/occasions/corporate", label: "Explore corporate" }}
+        link={{ href: "/occasions/celebrations", label: "Explore private celebrations" }}
       />
 
       <CtaBand

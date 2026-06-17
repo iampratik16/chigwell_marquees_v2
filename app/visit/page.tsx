@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/site/PageHero";
-import JsonLd from "@/components/site/JsonLd";
-import { faqPage } from "@/lib/structured-data";
 import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
 import AnimatedLink from "@/components/ui/AnimatedLink";
 import EnquiryForm from "@/components/site/EnquiryForm";
-import Faqs from "@/components/site/Faqs";
-import { FACTS, FAQS, SITE } from "@/lib/site";
+import Journey from "@/components/sections/home/Journey";
+import { FACTS, SITE, whatsappLink } from "@/lib/site";
+import WhatsAppGlyph from "@/components/ui/WhatsAppGlyph";
 import { ESTATE } from "@/lib/media";
 
 export const metadata: Metadata = {
@@ -22,7 +21,6 @@ export const metadata: Metadata = {
 export default function VisitPage() {
   return (
     <>
-      <JsonLd data={faqPage(FAQS)} />
       <PageHero
         eyebrow="Visit & enquire"
         title={"Come and see\nthe estate."}
@@ -44,7 +42,7 @@ export default function VisitPage() {
               {SITE.address.postcode}
             </address>
 
-            <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6">
+            <dl className="mt-10 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2">
               {FACTS.map((f) => (
                 <div key={f.k} className="border-t border-line pt-4">
                   <dt className="eyebrow text-mist">{f.k}</dt>
@@ -59,6 +57,16 @@ export default function VisitPage() {
               </a>
               <a href={`mailto:${SITE.email}`} className="text-ink/80 hover:text-botanical">
                 {SITE.email}
+              </a>
+              <a
+                href={whatsappLink(false)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Message us on WhatsApp at ${SITE.whatsapp.display}`}
+                className="inline-flex items-center gap-2 text-ink/80 hover:text-botanical"
+              >
+                <WhatsAppGlyph className="h-4 w-4" />
+                {SITE.whatsapp.display}
               </a>
               <div className="mt-2">
                 <AnimatedLink href={SITE.address.maps} arrow cursorLabel="Map">
@@ -113,20 +121,8 @@ export default function VisitPage() {
         </div>
       </Section>
 
-      {/* FAQs */}
-      <Section tone="bone" spacing="lg">
-        <div className="container-luxe">
-          <div className="grid gap-12 md:grid-cols-12">
-            <div className="md:col-span-4">
-              <Eyebrow>Good to know</Eyebrow>
-              <h2 className="mt-6 display-md">Questions, answered.</h2>
-            </div>
-            <div className="md:col-span-8">
-              <Faqs />
-            </div>
-          </div>
-        </div>
-      </Section>
+      {/* Travel & location — relocated from the homepage */}
+      <Journey />
     </>
   );
 }

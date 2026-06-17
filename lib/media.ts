@@ -126,6 +126,26 @@ export const OCC_CIVIL = img(
   "civil-ceremoney-venue-essex-the-chigwell-marquees.jpg",
   "A civil ceremony set within the marquee",
 );
+export const OCC_FAITH = img(
+  "asian-wedding-mandap-hire.jpg",
+  "A traditional mandap dressed for a faith-based wedding ceremony",
+);
+export const OCC_FAITH_2 = img(
+  "asian-weddings-indian-wedding-essex-the-chigwell-marquees.jpg",
+  "A vibrant Asian wedding celebration in the Mega Marquee",
+);
+export const OCC_WEDDINGS_CARD = img(
+  "small-civil-ceremony-venue-luxury-marquee-event-hire-essex-the-chigwell-marquees.jpg",
+  "A wedding reception dressed beneath the marquee canopy",
+);
+export const OCC_CORPORATE_CARD = img(
+  "chigwell-marquees-corporate-events-04.jpg",
+  "A corporate event with full lighting and a dancefloor under the marquee",
+);
+export const OCC_CELEBRATIONS_CARD = img(
+  "birthday-party-venue-essex-chigwell-marquees.jpg",
+  "A celebration dressed with balloons and a styled dessert table",
+);
 
 /* ── Occasion index cards ── */
 export const OCCASION_CARDS = [

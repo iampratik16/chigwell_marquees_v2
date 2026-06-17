@@ -94,10 +94,7 @@ export default function MegaMarqueePage() {
       <SplitFeature
         eyebrow="The grand canvas"
         title={"A structure that turns\nheads, for all the\nright reasons."}
-        body={[
-          "The Mega Marquee is a striking venue for large weddings, engagement parties and corporate events, accommodating from 250 to 1,000 guests.",
-          "Finished with neutral carpet throughout and crowned by high ceilings, it gives you the height and the blank canvas to execute your décor vision exactly.",
-        ]}
+        body="A striking blank canvas for 250 to 1,000 guests — neutral carpet, soaring ceilings and the height to realise any décor vision."
         media={REAL.tallCenterpiece}
         ratio="4 / 5"
       />
