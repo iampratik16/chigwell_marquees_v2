@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import LegalDoc, { type LegalSection } from "@/components/site/LegalDoc";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/privacy" },
-  title: { absolute: "Privacy Policy | The Chigwell Marquees" },
+export const metadata = pageMeta({
+  title: "Privacy Policy | The Chigwell Marquees",
   description:
-    "How The Chigwell Marquees collects, uses and protects your personal data, and the rights you have under UK data protection law.",
-};
+    "How The Chigwell Marquees collects, uses and protects your personal data when you enquire about or visit our luxury marquee venue in Essex.",
+  path: "/privacy",
+});
 
 const sections: LegalSection[] = [
   {

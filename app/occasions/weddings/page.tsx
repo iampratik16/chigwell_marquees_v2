@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/site/PageHero";
 import JsonLd from "@/components/site/JsonLd";
 import { serviceNode, breadcrumbList } from "@/lib/structured-data";
@@ -13,12 +13,13 @@ import RevealImage from "@/components/ui/RevealImage";
 import { OCC_ASIAN, SPACE_MEGA, SPACE_MINI } from "@/lib/media";
 import { REAL, VIDEO, POSTER, ASIAN_IMG } from "@/lib/media.real";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/occasions/weddings" },
-  title: { absolute: "Wedding Venue in Essex | The Chigwell Marquees" },
+export const metadata = pageMeta({
+  title: "Wedding Venue in Essex | The Chigwell Marquees",
   description:
-    "Wedding venue hire in Essex, two magnificent marquees for intimate and grand weddings, including traditional Asian weddings, with a starlit ceiling and the Secret Garden.",
-};
+    "An Essex wedding venue for civil ceremonies and receptions of 30 to 1,000 guests, with bespoke wedding packages, the Secret Garden and no corkage on dry hire.",
+  path: "/occasions/weddings",
+  imageAlt: "A wedding reception styled inside a marquee at The Chigwell Marquees",
+});
 
 export default function WeddingsPage() {
   return (
@@ -75,7 +76,7 @@ export default function WeddingsPage() {
         ]}
         media={SPACE_MINI}
         ratio="4 / 3"
-        link={{ href: "/spaces/mini-marquee", label: "See the Mini Marquee" }}
+        link={{ href: "/venues/mini-marquee", label: "See the Mini Marquee" }}
       />
 
       <SplitFeature
@@ -89,7 +90,7 @@ export default function WeddingsPage() {
         ratio="4 / 3"
         reverse
         tone="bone-dim"
-        link={{ href: "/spaces/mega-marquee", label: "See the Mega Marquee" }}
+        link={{ href: "/venues/mega-marquee", label: "See the Mega Marquee" }}
       />
 
       <SplitFeature

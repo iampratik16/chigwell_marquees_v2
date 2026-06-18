@@ -157,10 +157,10 @@ export const OCCASION_CARDS = [
 
 /* ── Curated home gallery teaser (varied aspect ratios) ── */
 export const HOME_GALLERY: Media[] = [
-  img("chigwell-marquees-wedding-events-01.jpg"),
-  img("chigwell-marquees-themed-events-03.jpg"),
-  img("asian-wedding-mandap-hire.jpg"),
-  img("chigwell-marquees-corporate-events-02.jpg"),
-  img("chigwell-marquees-wedding-events-04.jpg"),
-  img("chigwell-marquees-civil-ceremonies-01.jpg"),
+  img("chigwell-marquees-wedding-events-01.jpg", "A wedding reception styled inside the marquee at The Chigwell Marquees"),
+  img("chigwell-marquees-themed-events-03.jpg", "A themed celebration dressed across the marquee floor"),
+  img("asian-wedding-mandap-hire.jpg", "An ornate mandap set for an Asian wedding ceremony"),
+  img("chigwell-marquees-corporate-events-02.jpg", "A corporate event staged inside the Mega Marquee"),
+  img("chigwell-marquees-wedding-events-04.jpg", "Guests seated for a wedding breakfast beneath the marquee canopy"),
+  img("chigwell-marquees-civil-ceremonies-01.jpg", "A civil ceremony set beneath the marquee at Chigwell Hall"),
 ];

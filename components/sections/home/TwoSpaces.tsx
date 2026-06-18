@@ -25,7 +25,7 @@ const AREAS: Area[] = [
     name: "The Mega Marquee",
     capacity: "300 – 1,000 guests",
     copy: "High ceilings, neutral interiors, a state-of-the-art sound & lighting rig and a fully functioning kitchen, a grand blank canvas for weddings, galas and corporate showcases.",
-    href: "/spaces/mega-marquee",
+    href: "/venues/mega-marquee",
     media: { src: "/media/mega-photo-35.jpg", alt: "Inside the Mega Marquee dressed for a celebration" },
   },
   {
@@ -33,7 +33,7 @@ const AREAS: Area[] = [
     name: "The Mini Marquee",
     capacity: "30 – 200 guests",
     copy: "Floor-to-ceiling glass, built-in air conditioning and a white-canopy starlit ceiling that switches on as evening falls, opening onto the Secret Garden.",
-    href: "/spaces/mini-marquee",
+    href: "/venues/mini-marquee",
     media: { src: "/media/mini-8c.jpg", alt: "The Mini Marquee, an intimate light-filled setting" },
   },
   {
@@ -53,7 +53,7 @@ const AREAS: Area[] = [
     capacity: "up to 250",
     copy: "A secluded lawn with a classic central fountain, the picturesque setting for outdoor civil ceremonies, welcome drinks and unforgettable photography.",
     // TODO(client): confirm Grounds & Gardens maps to the Secret Garden route.
-    href: "/spaces/secret-garden",
+    href: "/venues/secret-garden",
     media: { src: "/media/garden-10b.jpg", alt: "The grounds and gardens of the Chigwell Hall estate" },
   },
 ];

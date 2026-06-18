@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/site/PageHero";
 import JsonLd from "@/components/site/JsonLd";
 import { serviceNode, breadcrumbList } from "@/lib/structured-data";
@@ -11,14 +11,13 @@ import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
 import { OCC_FAITH, OCC_FAITH_2, OCC_CIVIL } from "@/lib/media";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/occasions/faith-based" },
-  // TODO: confirm copy
-  title: { absolute: "Faith-Based Event Venue in Essex | The Chigwell Marquees" },
-  // TODO: confirm copy
+export const metadata = pageMeta({
+  title: "Asian Wedding & Faith-Based Venue, Essex | The Chigwell Marquees",
   description:
-    "A faith-based event venue in Essex for Asian weddings, mitzvahs and religious ceremonies, accommodated with cultural understanding, flexible catering and partitionable spaces.",
-};
+    "An Asian wedding and faith-based venue in Essex for Hindu, Sikh and Muslim weddings, Bar & Bat Mitzvahs and religious ceremonies of up to 1,000 guests.",
+  path: "/occasions/faith-based",
+  imageAlt: "An Asian wedding mandap staged in the Mega Marquee at The Chigwell Marquees",
+});
 
 export default function FaithBasedPage() {
   return (

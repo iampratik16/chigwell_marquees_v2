@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/site/PageHero";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbList } from "@/lib/structured-data";
@@ -12,12 +12,13 @@ import Reveal from "@/components/ui/Reveal";
 import RevealImage from "@/components/ui/RevealImage";
 import { SUITES_IMG } from "@/lib/media.real";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/spaces/suites" },
-  title: { absolute: "The Suites at Chigwell Hall | The Chigwell Marquees" },
+export const metadata = pageMeta({
+  title: "Banqueting & Belmont Suites, Chigwell | The Chigwell Marquees",
   description:
-    "Two beautifully appointed indoor suites within Chigwell Hall, the Banqueting Suite for up to 160 guests and the first-floor Belmont Suite for up to 70, with private bars and dancefloors.",
-};
+    "The Belmont and Banqueting Suites at Chigwell Hall — elegant indoor rooms licensed for civil ceremonies, dining and meetings beside our Essex marquees.",
+  path: "/venues/suites",
+  imageAlt: "An elegant indoor suite at Chigwell Hall set for a civil ceremony",
+});
 
 export default function SuitesPage() {
   return (
@@ -25,8 +26,8 @@ export default function SuitesPage() {
       <JsonLd
         data={breadcrumbList([
           { name: "Home", path: "/" },
-          { name: "The Spaces", path: "/spaces" },
-          { name: "The Suites", path: "/spaces/suites" },
+          { name: "Venues", path: "/venues" },
+          { name: "The Suites", path: "/venues/suites" },
         ])}
       />
       <PageHero

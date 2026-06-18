@@ -11,7 +11,7 @@ import Footer from "@/components/site/Footer";
 import FloatingActions from "@/components/site/FloatingActions";
 import JsonLd from "@/components/site/JsonLd";
 import { LightboxProvider } from "@/components/ui/Lightbox";
-import { localBusiness } from "@/lib/structured-data";
+import { localBusiness, organization } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -55,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en-GB" className={`${gambetta.variable} ${switzer.variable}`}>
       <body className="bg-bone text-ink antialiased">
-        <JsonLd data={localBusiness} />
+        <JsonLd data={[organization, localBusiness]} />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-5 focus:py-2 focus:text-sm focus:text-bone"

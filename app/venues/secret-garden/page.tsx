@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/site/PageHero";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbList } from "@/lib/structured-data";
@@ -12,12 +12,13 @@ import Reveal from "@/components/ui/Reveal";
 import RevealImage from "@/components/ui/RevealImage";
 import { SECRET_IMG, ESTATE_IMG, VIDEO, POSTER } from "@/lib/media.real";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/spaces/secret-garden" },
-  title: { absolute: "Secret Garden Wedding Venue Essex | The Chigwell Marquees" },
+export const metadata = pageMeta({
+  title: "Secret Garden Wedding Venue, Essex | The Chigwell Marquees",
   description:
-    "The Secret Garden, a secluded lawn with a classic fountain for outdoor civil ceremonies, drinks receptions and photography, for up to 250 guests.",
-};
+    "The Secret Garden — a secluded lawn with a central fountain, licensed for outdoor civil ceremonies and welcome drinks for up to 250 guests, in Chigwell, Essex.",
+  path: "/venues/secret-garden",
+  imageAlt: "The Secret Garden lawn and central fountain set for an outdoor ceremony",
+});
 
 export default function SecretGardenPage() {
   return (
@@ -25,8 +26,8 @@ export default function SecretGardenPage() {
       <JsonLd
         data={breadcrumbList([
           { name: "Home", path: "/" },
-          { name: "The Spaces", path: "/spaces" },
-          { name: "The Secret Garden", path: "/spaces/secret-garden" },
+          { name: "Venues", path: "/venues" },
+          { name: "The Secret Garden", path: "/venues/secret-garden" },
         ])}
       />
       <PageHero

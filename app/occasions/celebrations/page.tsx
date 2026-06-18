@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/site/PageHero";
 import JsonLd from "@/components/site/JsonLd";
 import { serviceNode, breadcrumbList } from "@/lib/structured-data";
@@ -22,12 +22,13 @@ const CELEB_MINI: Media = {
   height: 720,
 };
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/occasions/celebrations" },
-  title: { absolute: "Party Venue Hire in Essex | The Chigwell Marquees" },
+export const metadata = pageMeta({
+  title: "Party Venue Hire in Essex | The Chigwell Marquees",
   description:
-    "Birthdays, engagements, anniversaries, Bar & Bat Mitzvahs and civil ceremonies at The Chigwell Marquees, dressed entirely to your occasion.",
-};
+    "Party venue hire in Essex for birthdays, engagements, anniversaries, Bar & Bat Mitzvahs and civil ceremonies, dressed entirely to your occasion.",
+  path: "/occasions/celebrations",
+  imageAlt: "A milestone birthday party styled at The Chigwell Marquees",
+});
 
 export default function CelebrationsPage() {
   return (

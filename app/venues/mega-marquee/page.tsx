@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/site/PageHero";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbList } from "@/lib/structured-data";
@@ -13,12 +13,13 @@ import RevealImage from "@/components/ui/RevealImage";
 import { SPACE_MEGA_HERO, SPACE_MEGA_INTRO } from "@/lib/media";
 import { VIDEO, REAL } from "@/lib/media.real";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/spaces/mega-marquee" },
-  title: { absolute: "Large Marquee Venue Hire in Essex | The Chigwell Marquees" },
+export const metadata = pageMeta({
+  title: "Large Marquee Venue Hire in Essex | The Chigwell Marquees",
   description:
-    "The Mega Marquee, a grand structure for 300 to 1,000 guests, with high ceilings, a state-of-the-art sound & lighting rig and a fully functioning kitchen.",
-};
+    "The Mega Marquee — a large Essex marquee venue for weddings, galas and corporate events of 300 to 1,000 guests, with a pro sound and lighting rig and full kitchen.",
+  path: "/venues/mega-marquee",
+  imageAlt: "Inside the Mega Marquee dressed for a grand wedding reception",
+});
 
 export default function MegaMarqueePage() {
   return (
@@ -26,8 +27,8 @@ export default function MegaMarqueePage() {
       <JsonLd
         data={breadcrumbList([
           { name: "Home", path: "/" },
-          { name: "The Spaces", path: "/spaces" },
-          { name: "The Mega Marquee", path: "/spaces/mega-marquee" },
+          { name: "Venues", path: "/venues" },
+          { name: "The Mega Marquee", path: "/venues/mega-marquee" },
         ])}
       />
       <PageHero

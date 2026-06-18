@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import LegalDoc, { type LegalSection } from "@/components/site/LegalDoc";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/terms" },
-  title: { absolute: "Terms of Hire | The Chigwell Marquees" },
+export const metadata = pageMeta({
+  title: "Terms of Hire | The Chigwell Marquees",
   description:
-    "The terms and conditions of hire for events at The Chigwell Marquees, covering bookings, payment, cancellation, responsibilities and liability.",
-};
+    "The terms and conditions for hiring The Chigwell Marquees, our two luxury marquee venues set in the grounds of Chigwell Hall, Essex.",
+  path: "/terms",
+});
 
 const sections: LegalSection[] = [
   {

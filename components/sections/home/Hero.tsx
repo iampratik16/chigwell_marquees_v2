@@ -65,7 +65,7 @@ export default function Hero() {
           className="mt-7 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
         >
           <div className="flex flex-wrap items-center gap-4">
-            <MagneticButton href="/spaces" variant="light" cursorLabel="Explore">
+            <MagneticButton href="/venues" variant="light" cursorLabel="Explore">
               Explore the spaces
             </MagneticButton>
             <MagneticButton href="/visit#enquire" variant="ghost" cursorLabel="Enquire">

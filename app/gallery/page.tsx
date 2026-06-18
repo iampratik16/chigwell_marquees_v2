@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/site/PageHero";
 import Section from "@/components/ui/Section";
 import MasonryGallery, { type GalleryItem } from "@/components/sections/MasonryGallery";
@@ -7,12 +7,13 @@ import { GALLERY_FILES, GALLERY_HERO, img } from "@/lib/media";
 import { REAL_GALLERY } from "@/lib/media.real";
 import { CONTENT_GALLERY } from "@/lib/gallery-content";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/gallery" },
-  title: { absolute: "Marquee Venue Gallery, Essex | The Chigwell Marquees" },
+export const metadata = pageMeta({
+  title: "Marquee Venue Gallery, Essex | The Chigwell Marquees",
   description:
-    "A gallery of real weddings, celebrations and corporate events at The Chigwell Marquees, across the Mega Marquee, Mini Marquee and Secret Garden.",
-};
+    "A photo gallery of The Chigwell Marquees — weddings, parties and corporate events styled across our two Essex marquees, the Secret Garden and Chigwell Hall.",
+  path: "/gallery",
+  imageAlt: "A gallery of weddings and celebrations at The Chigwell Marquees",
+});
 
 function categorise(file: string): string {
   const f = file.toLowerCase();

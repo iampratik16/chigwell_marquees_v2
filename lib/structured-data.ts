@@ -4,6 +4,8 @@ import { SITE, SOCIALS } from "./site";
 
 /** Stable @id for the venue so other nodes (services, events) can reference it. */
 export const VENUE_ID = `${SITE.url}/#venue`;
+/** Stable @id for the brand/publisher organisation. */
+export const ORG_ID = `${SITE.url}/#organization`;
 
 const AREA_SERVED = [
   { "@type": "AdministrativeArea", name: "Essex" },
@@ -22,25 +24,48 @@ export const localBusiness = {
   name: SITE.name,
   description: SITE.description,
   url: SITE.url,
-  telephone: "+442031960159",
+  telephone: SITE.phoneIntl,
   email: SITE.email,
   image: `${SITE.url}/og/og-default.jpg`,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Chigwell Hall, 159 High Road",
-    addressLocality: "Chigwell",
-    addressRegion: "Essex",
-    postalCode: "IG7 6BD",
+    streetAddress: SITE.address.line1,
+    addressLocality: SITE.address.city,
+    addressRegion: SITE.address.county,
+    postalCode: SITE.address.postcode,
     addressCountry: "GB",
   },
-  // TODO(before launch): add `geo` with the EXACT coordinates from the Google
-  // Business Profile (Business Profile Manager -> the pinned map location).
-  // Do NOT guess the latitude/longitude, wrong coords hurt local ranking.
-  // Once known, add alongside `address`:
-  //   geo: { "@type": "GeoCoordinates", latitude: <lat>, longitude: <lng> },
+  // Verified to postcode precision from the IG7 6BD record for Chigwell Hall,
+  // High Road. Owner: confirm this matches the pin in your Google Business
+  // Profile exactly — wrong coordinates hurt local ranking.
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 51.624856,
+    longitude: 0.076094,
+  },
+  hasMap: SITE.address.maps,
+  // TODO(owner): add openingHoursSpecification only if you publish set
+  // viewing/office hours. Do NOT invent them.
   maximumAttendeeCapacity: 1000,
   priceRange: "££££",
   areaServed: AREA_SERVED,
+  sameAs: SOCIALS.map((s) => s.href),
+};
+
+/**
+ * Organisation (brand / publisher) node, injected once in the root layout
+ * beside the venue. Supplies the logo used for the Google knowledge panel.
+ */
+export const organization = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": ORG_ID,
+  name: SITE.name,
+  url: SITE.url,
+  logo: `${SITE.url}/logo.png`,
+  image: `${SITE.url}/og/og-default.jpg`,
+  email: SITE.email,
+  telephone: SITE.phoneIntl,
   sameAs: SOCIALS.map((s) => s.href),
 };
 

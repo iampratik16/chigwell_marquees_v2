@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/site/PageHero";
 import JsonLd from "@/components/site/JsonLd";
 import { serviceNode, breadcrumbList } from "@/lib/structured-data";
@@ -11,12 +11,13 @@ import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
 import { OCC_CORPORATE, OCC_CORPORATE_2, img } from "@/lib/media";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/occasions/corporate" },
-  title: { absolute: "Corporate Event Venue near London | The Chigwell Marquees" },
+export const metadata = pageMeta({
+  title: "Corporate Event Venue near London | The Chigwell Marquees",
   description:
-    "Corporate venue hire in Essex, conferences, galas, product launches, team-building, festivals and office Christmas parties, with a full PA, big screens and 42 acres.",
-};
+    "A corporate event venue near London for conferences, galas, product launches and private functions of up to 1,000 guests, on the Chigwell Hall estate in Essex.",
+  path: "/occasions/corporate",
+  imageAlt: "A corporate gala dinner staged in the Mega Marquee",
+});
 
 export default function CorporatePage() {
   return (

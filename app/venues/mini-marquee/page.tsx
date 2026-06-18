@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/site/PageHero";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbList } from "@/lib/structured-data";
@@ -15,12 +15,13 @@ import RevealVideo from "@/components/ui/RevealVideo";
 import { SPACE_GARDEN } from "@/lib/media";
 import { MINI_IMG, VIDEO } from "@/lib/media.real";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/spaces/mini-marquee" },
-  title: { absolute: "Intimate Marquee Venue in Essex | The Chigwell Marquees" },
+export const metadata = pageMeta({
+  title: "Intimate Marquee Venue in Essex | The Chigwell Marquees",
   description:
-    "The Mini Marquee, an intimate setting for 30 to 200 guests with floor-to-ceiling glass, a starlit ceiling, built-in air conditioning and access to the Secret Garden.",
-};
+    "The Mini Marquee — an intimate, light-filled Essex venue for 30 to 200 guests, with a starlit ceiling, air conditioning and doors onto the Secret Garden.",
+  path: "/venues/mini-marquee",
+  imageAlt: "The Mini Marquee beneath its starlit ceiling, set for an intimate celebration",
+});
 
 export default function MiniMarqueePage() {
   return (
@@ -28,8 +29,8 @@ export default function MiniMarqueePage() {
       <JsonLd
         data={breadcrumbList([
           { name: "Home", path: "/" },
-          { name: "The Spaces", path: "/spaces" },
-          { name: "The Mini Marquee", path: "/spaces/mini-marquee" },
+          { name: "Venues", path: "/venues" },
+          { name: "The Mini Marquee", path: "/venues/mini-marquee" },
         ])}
       />
       <PageHero
@@ -111,7 +112,7 @@ export default function MiniMarqueePage() {
         ratio="4 / 3"
         reverse
         tone="bone-dim"
-        link={{ href: "/spaces/secret-garden", label: "See the Secret Garden" }}
+        link={{ href: "/venues/secret-garden", label: "See the Secret Garden" }}
       />
 
       {/* Catering — portrait (9:16) video kept at its native aspect ratio */}

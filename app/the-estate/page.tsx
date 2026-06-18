@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/site/PageHero";
 import SplitFeature from "@/components/site/SplitFeature";
 import SpecList from "@/components/site/SpecList";
@@ -15,12 +15,13 @@ import { faqPage } from "@/lib/structured-data";
 import { FAQS } from "@/lib/site";
 import { ESTATE_IMG, HALL_IMG, VIDEO, POSTER } from "@/lib/media.real";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/the-estate" },
-  title: { absolute: "Marquee Venue Estate in Essex | The Chigwell Marquees" },
+export const metadata = pageMeta({
+  title: "The Estate at Chigwell Hall, Essex | The Chigwell Marquees",
   description:
-    "The Chigwell Marquees sit within the 42-acre grounds of Chigwell Hall, a Grade II listed manor, a surprising setting in the English countryside, minutes from the Central Line.",
-};
+    "Discover Chigwell Hall — a Grade II listed reception venue set in 42 acres of Essex countryside, home to two luxury marquees, the Secret Garden and our event FAQs.",
+  path: "/the-estate",
+  imageAlt: "Chigwell Hall, the Grade II listed manor at the heart of the estate",
+});
 
 export default function EstatePage() {
   return (
@@ -109,7 +110,7 @@ export default function EstatePage() {
         body="A secluded lawn with a classic fountain and floral gazebo, licensed for outdoor civil ceremonies — and yours exclusively with either marquee."
         media={ESTATE_IMG.gazebo}
         ratio="3 / 2"
-        link={{ href: "/spaces/secret-garden", label: "Explore the Secret Garden" }}
+        link={{ href: "/venues/secret-garden", label: "Explore the Secret Garden" }}
       />
 
       <StatsBand />

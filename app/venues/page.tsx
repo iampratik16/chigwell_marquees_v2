@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/site/PageHero";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbList } from "@/lib/structured-data";
@@ -15,12 +15,13 @@ import {
   SPACE_GARDEN_FEATURE,
 } from "@/lib/media";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/spaces" },
-  title: { absolute: "Marquee Hire & Venue Spaces, Essex | The Chigwell Marquees" },
+export const metadata = pageMeta({
+  title: "Marquee Venues & Hire in Essex | The Chigwell Marquees",
   description:
-    "Two luxury marquees and a secret garden on the 42-acre Chigwell Hall estate, the Mega Marquee (300–1,000), the Mini Marquee (30–200) and the Secret Garden (up to 250).",
-};
+    "Explore our Essex marquee venues: the Mega Marquee (300–1,000), the Mini Marquee (30–200), the Secret Garden and indoor suites on the Chigwell Hall estate.",
+  path: "/venues",
+  imageAlt: "The marquees and Secret Garden in the grounds of Chigwell Hall",
+});
 
 export default function SpacesPage() {
   return (
@@ -28,7 +29,7 @@ export default function SpacesPage() {
       <JsonLd
         data={breadcrumbList([
           { name: "Home", path: "/" },
-          { name: "The Spaces", path: "/spaces" },
+          { name: "Venues", path: "/venues" },
         ])}
       />
       <PageHero
@@ -65,7 +66,7 @@ export default function SpacesPage() {
         ]}
         media={SPACE_MEGA_FEATURE}
         ratio="4 / 3"
-        link={{ href: "/spaces/mega-marquee", label: "Explore the Mega Marquee" }}
+        link={{ href: "/venues/mega-marquee", label: "Explore the Mega Marquee" }}
       />
 
       <SplitFeature
@@ -79,7 +80,7 @@ export default function SpacesPage() {
         ratio="4 / 3"
         reverse
         tone="bone-dim"
-        link={{ href: "/spaces/mini-marquee", label: "Explore the Mini Marquee" }}
+        link={{ href: "/venues/mini-marquee", label: "Explore the Mini Marquee" }}
       />
 
       <SplitFeature
@@ -91,7 +92,7 @@ export default function SpacesPage() {
         ]}
         media={SPACE_GARDEN_FEATURE}
         ratio="4 / 3"
-        link={{ href: "/spaces/secret-garden", label: "Explore the Secret Garden" }}
+        link={{ href: "/venues/secret-garden", label: "Explore the Secret Garden" }}
       />
 
       <CtaBand

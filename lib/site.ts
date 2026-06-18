@@ -9,6 +9,7 @@ export const SITE = {
   url: "https://thechigwellmarquees.com",
   phone: "020 3196 0159",
   phoneHref: "tel:02031960159",
+  phoneIntl: "+442031960159", // E.164, single source for schema.org telephone
   email: "info@thechigwellmarquees.com",
   /** Single source of truth for WhatsApp — number, greeting and display format. */
   whatsapp: {
@@ -49,13 +50,13 @@ export const NAV: NavItem[] = [
     href: "/the-estate",
   },
   {
-    label: "Venue",
-    href: "/spaces",
+    label: "Venues",
+    href: "/venues",
     children: [
-      { label: "The Mega Marquee", href: "/spaces/mega-marquee", blurb: "300 – 1,000 guests" },
-      { label: "The Mini Marquee", href: "/spaces/mini-marquee", blurb: "30 – 200 · starlit ceiling" },
-      { label: "The Secret Garden", href: "/spaces/secret-garden", blurb: "Outdoor ceremonies · up to 250" },
-      { label: "The Suites", href: "/spaces/suites", blurb: "Banqueting & Belmont · indoor" },
+      { label: "The Mega Marquee", href: "/venues/mega-marquee", blurb: "300 – 1,000 guests" },
+      { label: "The Mini Marquee", href: "/venues/mini-marquee", blurb: "30 – 200 · starlit ceiling" },
+      { label: "The Secret Garden", href: "/venues/secret-garden", blurb: "Outdoor ceremonies · up to 250" },
+      { label: "The Suites", href: "/venues/suites", blurb: "Banqueting & Belmont · indoor" },
     ],
   },
   {

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/site/PageHero";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbList } from "@/lib/structured-data";
@@ -10,12 +10,13 @@ import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
 import { OCC_WEDDINGS, OCC_CELEBRATIONS, OCC_CORPORATE_CARD, OCC_FAITH } from "@/lib/media";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/occasions" },
-  title: { absolute: "Event & Party Venue Hire in Essex | The Chigwell Marquees" },
+export const metadata = pageMeta({
+  title: "Event & Party Venue Hire in Essex | The Chigwell Marquees",
   description:
-    "Weddings, celebrations and corporate events at The Chigwell Marquees, one adaptable estate, dressed entirely to your vision, with no corkage.",
-};
+    "From weddings and corporate events to faith-based celebrations and milestone parties — discover every occasion you can host at The Chigwell Marquees, Essex.",
+  path: "/occasions",
+  imageAlt: "Events and celebrations hosted at The Chigwell Marquees, Essex",
+});
 
 export default function OccasionsPage() {
   return (

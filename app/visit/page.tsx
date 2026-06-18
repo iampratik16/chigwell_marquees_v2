@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/site/PageHero";
 import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
@@ -11,12 +11,13 @@ import { FACTS, SITE, whatsappLink } from "@/lib/site";
 import WhatsAppGlyph from "@/components/ui/WhatsAppGlyph";
 import { ESTATE } from "@/lib/media";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/visit" },
-  title: { absolute: "Visit Our Essex Marquee Venue | The Chigwell Marquees" },
+export const metadata = pageMeta({
+  title: "Visit Our Essex Marquee Venue | The Chigwell Marquees",
   description:
-    "Visit The Chigwell Marquees at 159 High Road, Chigwell, Essex IG7 6BD, around 40 minutes from Central London. Begin your enquiry online.",
-};
+    "Visit The Chigwell Marquees in Chigwell, Essex — 40 minutes from London, near the M25 and Chigwell Station, with 600 free parking spaces. Enquire about your date.",
+  path: "/visit",
+  imageAlt: "The approach to The Chigwell Marquees in Chigwell, Essex",
+});
 
 export default function VisitPage() {
   return (
