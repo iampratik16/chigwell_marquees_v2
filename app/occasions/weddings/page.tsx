@@ -10,8 +10,15 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
 import RevealImage from "@/components/ui/RevealImage";
-import { OCC_ASIAN, SPACE_MEGA, SPACE_MINI } from "@/lib/media";
+import { OCC_ASIAN, SPACE_MEGA, type Media } from "@/lib/media";
 import { REAL, VIDEO, POSTER, ASIAN_IMG } from "@/lib/media.real";
+
+const MINI_WEDDING: Media = {
+  src: "/media/content/mini-photo-202.jpg",
+  alt: "Inside the Mini Marquee, dressed for an intimate wedding",
+  width: 2560,
+  height: 1706,
+};
 
 export const metadata = pageMeta({
   title: "Wedding Venue in Essex | The Chigwell Marquees",
@@ -74,7 +81,7 @@ export default function WeddingsPage() {
           "Ideal for smaller weddings and seating up to 200, with an elegantly presented three-course meal followed by a celebration into the night, sound system, dance floor and bar.",
           "A starlit ceiling, air conditioning and access to the Bridal Suite and Secret Garden, where you and your guests can gather on the lawn around the fountain.",
         ]}
-        media={SPACE_MINI}
+        media={MINI_WEDDING}
         ratio="4 / 3"
         link={{ href: "/venues/mini-marquee", label: "See the Mini Marquee" }}
       />
