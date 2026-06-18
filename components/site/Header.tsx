@@ -64,7 +64,7 @@ export default function Header() {
           "fixed inset-x-0 top-0 z-50",
           "transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
           open
-            ? "border-transparent bg-transparent"
+            ? "border-transparent bg-ink"
             : scrolled
               ? "border-b border-line-soft bg-bone/80 backdrop-blur-xl"
               : "border-b border-line-soft bg-bone/85 backdrop-blur-xl lg:border-transparent lg:bg-transparent lg:backdrop-blur-none",
@@ -202,7 +202,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
       transition={{ duration: 0.7, ease: EASE_LUXE }}
       className="fixed inset-0 z-40 flex w-full max-w-full flex-col overflow-x-hidden bg-ink text-bone lg:hidden"
     >
-      <div className="container-luxe flex-1 overflow-y-auto pt-24 pb-12" data-lenis-prevent>
+      <div className="container-luxe flex-1 overflow-y-auto pt-28 pb-12 sm:pt-32" data-lenis-prevent>
         <nav className="flex flex-col" aria-label="Mobile">
           {NAV.map((item, i) => (
             <motion.div
