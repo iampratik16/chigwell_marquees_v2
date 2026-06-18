@@ -5,6 +5,7 @@ import { breadcrumbList } from "@/lib/structured-data";
 import SplitFeature from "@/components/site/SplitFeature";
 import SpecList from "@/components/site/SpecList";
 import CtaBand from "@/components/site/CtaBand";
+import GalleryBand from "@/components/site/GalleryBand";
 import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
@@ -111,6 +112,8 @@ export default function SecretGardenPage() {
         tone="bone-dim"
       />
 
+      <GalleryBand tone="bone-dim" />
+
       <SpecList
         eyebrow="The detail"
         title="Yours, exclusively."
@@ -139,6 +142,7 @@ export default function SecretGardenPage() {
         blurb="The Secret Garden flows straight into both marquees, ceremony, reception and celebration, all on one estate."
         tone="ink"
         primary={{ href: "/visit#enquire", label: "Plan a garden ceremony" }}
+        secondary={null}
       />
     </>
   );

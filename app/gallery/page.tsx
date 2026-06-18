@@ -18,6 +18,8 @@ export const metadata = pageMeta({
 function categorise(file: string): string {
   const f = file.toLowerCase();
   if (/asian|bengali|indian|mandap|pakistani|turkish|hindu/.test(f)) return "asian";
+  // These two civil-ceremony photographs are shown under Weddings, not Civil
+  if (/civil-ceremoney-venue-to-rent-essex|civil-ceremonies-essex-chigwell-marquees/.test(f)) return "weddings";
   if (/civil-ceremon|civil/.test(f)) return "civil";
   if (/engagement/.test(f)) return "engagements";
   if (/birthday|christening|children/.test(f)) return "birthdays";

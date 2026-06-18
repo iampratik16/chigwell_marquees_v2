@@ -6,6 +6,7 @@ import SplitFeature from "@/components/site/SplitFeature";
 import SpecList from "@/components/site/SpecList";
 import StarlitCeiling from "@/components/site/StarlitCeiling";
 import CtaBand from "@/components/site/CtaBand";
+import GalleryBand from "@/components/site/GalleryBand";
 import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
@@ -147,6 +148,8 @@ export default function MiniMarqueePage() {
         </div>
       </div>
 
+      <GalleryBand />
+
       <SpecList
         eyebrow="Features"
         title="Small room, full kit."
@@ -178,6 +181,7 @@ export default function MiniMarqueePage() {
         title="An evening that ends under the stars."
         blurb="Tell us your date and guest count, we'll show you how the Mini Marquee transforms from afternoon light to starlit night."
         primary={{ href: "/visit#enquire", label: "Enquire about the Mini Marquee" }}
+        secondary={null}
       />
     </>
   );

@@ -5,6 +5,7 @@ import { breadcrumbList } from "@/lib/structured-data";
 import SplitFeature from "@/components/site/SplitFeature";
 import SpecList from "@/components/site/SpecList";
 import CtaBand from "@/components/site/CtaBand";
+import GalleryBand from "@/components/site/GalleryBand";
 import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
@@ -100,6 +101,8 @@ export default function MegaMarqueePage() {
         ratio="4 / 5"
       />
 
+      <GalleryBand />
+
       <SpecList
         eyebrow="Features"
         title="Everything, built in."
@@ -132,6 +135,7 @@ export default function MegaMarqueePage() {
         title="Imagine your thousand guests here."
         blurb="From sit-down banquets to awards nights and product launches, the Mega Marquee scales to the moment."
         primary={{ href: "/visit#enquire", label: "Enquire about the Mega Marquee" }}
+        secondary={null}
       />
     </>
   );
