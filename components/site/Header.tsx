@@ -146,8 +146,8 @@ export default function Header() {
 
           <div className="flex items-center gap-3">
             <div className="hidden items-center gap-4 lg:flex">
-              <SocialLinks size={16} />
-              <span className="h-4 w-px bg-current opacity-20" aria-hidden />
+              <SocialLinks size={24} />
+              <span className="h-6 w-px bg-current opacity-20" aria-hidden />
             </div>
             <div className="hidden lg:block">
               <MagneticButton
