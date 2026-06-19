@@ -22,13 +22,11 @@ export default function Hero() {
     <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-ink text-bone">
       {/* Backdrop, real cinematic clip; poster still loads instantly + serves reduced motion. */}
       <div className="absolute inset-0">
-        {playVideo ? (
-          <BackgroundVideo src={VIDEO.hero} poster={POSTER.hero} className="h-full w-full object-cover" />
-        ) : (
-          <div className="relative h-full w-full">
-            <Image src={POSTER.hero} alt={hero.alt} fill priority sizes="100vw" className="object-cover" />
-          </div>
-        )}
+        {/* Poster image base — always covers the hero, robust on every browser. */}
+        <div className="absolute inset-0">
+          <Image src={POSTER.hero} alt={hero.alt} fill priority sizes="100vw" className="object-cover" />
+        </div>
+        {playVideo && <BackgroundVideo src={VIDEO.hero} poster={POSTER.hero} className="object-cover" />}
         {/* Cinematic grading */}
         <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-ink/55" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/60 via-transparent to-transparent" />

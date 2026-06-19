@@ -40,13 +40,12 @@ export default function PageHero({ eyebrow, title, intro, media, video, poster, 
       }`}
     >
       <div className="absolute inset-0">
-        {playVideo ? (
-          <BackgroundVideo src={video!} poster={posterSrc} className="h-full w-full object-cover" />
-        ) : (
-          <div className={reduced ? "relative h-full w-full" : "ken-burns relative h-full w-full"}>
-            <Image src={posterSrc} alt={media.alt} fill priority sizes="100vw" className="object-cover" />
-          </div>
-        )}
+        {/* Poster image base — always covers the hero, robust on every browser (incl. iOS Safari). */}
+        <div className={reduced ? "absolute inset-0" : "ken-burns absolute inset-0"}>
+          <Image src={posterSrc} alt={media.alt} fill priority sizes="100vw" className="object-cover" />
+        </div>
+        {/* Cinematic clip, layered on top once it can play. */}
+        {playVideo && <BackgroundVideo src={video!} poster={posterSrc} className="object-cover" />}
         <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-ink/45" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/55 to-transparent" />
       </div>
