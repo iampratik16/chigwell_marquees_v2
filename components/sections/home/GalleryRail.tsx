@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { EASE_LUXE } from "@/lib/motion";
@@ -75,6 +75,22 @@ export default function GalleryRail() {
   // Exact offset as a percentage of the track (slides are border-box, no gaps).
   const offset = (page * perView * 100) / TOTAL;
 
+  // Touch swipe (phone/tablet): a clear horizontal drag flips the page.
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const onTouchStart = (e: React.TouchEvent) => {
+    const t = e.touches[0];
+    touchStart.current = { x: t.clientX, y: t.clientY };
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const s = touchStart.current;
+    touchStart.current = null;
+    if (!s) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - s.x;
+    const dy = t.clientY - s.y;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) goto(page + (dx < 0 ? 1 : -1));
+  };
+
   // Lightbox controls
   const close = useCallback(() => setIndex(null), []);
   const step = useCallback(
@@ -117,8 +133,12 @@ export default function GalleryRail() {
       <div className="container-luxe">
         <Heading />
 
-        {/* Carousel viewport */}
-        <div className="relative mt-12 overflow-hidden">
+        {/* Carousel viewport — swipeable on touch devices */}
+        <div
+          className="relative mt-12 touch-pan-y overflow-hidden"
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
           <div
             className="flex"
             style={{

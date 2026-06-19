@@ -36,7 +36,7 @@ export default function SpecList({
 
           <div className="md:col-span-8">
             {specs && (
-              <dl className="grid grid-cols-1 sm:grid-cols-2">
+              <dl className="grid grid-cols-1 gap-x-10 sm:grid-cols-2 lg:gap-x-16">
                 {specs.map((s, i) => (
                   <Reveal key={s.k} delay={(i % 2) * 0.06}>
                     <div

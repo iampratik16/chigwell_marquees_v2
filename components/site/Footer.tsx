@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { NAV, SITE } from "@/lib/site";
 import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
@@ -9,10 +12,13 @@ import Logo from "@/components/site/Logo";
 
 export default function Footer() {
   const year = 2026;
+  // The Visit page is itself the enquiry page, so the duplicate CTA is hidden there.
+  const onVisit = usePathname() === "/visit";
 
   return (
     <footer className="relative overflow-hidden bg-ink text-bone">
       {/* Emotive CTA */}
+      {!onVisit && (
       <div className="container-luxe border-b border-bone/12 py-16 md:py-24">
         <div className="grid gap-12 md:grid-cols-12 md:items-end">
           <div className="md:col-span-8">
@@ -33,6 +39,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      )}
 
       {/* Detail columns */}
       <div className="container-luxe grid gap-12 py-12 md:grid-cols-12">
@@ -82,7 +89,7 @@ export default function Footer() {
         <div className="md:col-span-2">
           <p className="eyebrow text-bone/45">Visit</p>
           <p className="mt-5 leading-relaxed text-bone/65">
-            ≈ 40 minutes from Central London. Free parking on the estate.
+            40 minutes from Central London. Free parking on the estate.
           </p>
           <AnimatedLink href="/visit" arrow className="mt-4 text-champagne" cursorLabel="Map">
             Find us
@@ -92,7 +99,7 @@ export default function Footer() {
 
       {/* Oversized wordmark */}
       <div aria-hidden className="select-none px-[var(--gutter)] pb-6">
-        <span className="block whitespace-nowrap font-display text-[9.4vw] leading-none tracking-tight text-bone/[0.05]">
+        <span className="block whitespace-nowrap font-display text-[9.4vw] leading-none tracking-tight text-bone/[0.09]">
           Chigwell Marquees
         </span>
       </div>

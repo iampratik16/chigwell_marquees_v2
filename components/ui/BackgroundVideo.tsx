@@ -44,7 +44,7 @@ export default function BackgroundVideo({ src, poster, className }: Props) {
       playsInline
       preload="auto"
       poster={poster}
-      className={className}
+      className={`absolute inset-0 h-full w-full object-cover ${className ?? ""}`}
       aria-hidden
     >
       <source src={src} type="video/mp4" />

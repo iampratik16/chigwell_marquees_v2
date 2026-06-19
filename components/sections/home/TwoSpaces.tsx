@@ -86,6 +86,8 @@ export default function TwoSpaces() {
   // on tab hover/focus so switching never flashes.
   const [primed, setPrimed] = useState<Set<number>>(() => new Set([0]));
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const railRef = useRef<HTMLDivElement>(null);
+  const [edges, setEdges] = useState({ left: false, right: false });
   const N = AREAS.length;
 
   const prime = (i: number) =>
@@ -100,6 +102,24 @@ export default function TwoSpaces() {
     }
     const t = setTimeout(all, 1200);
     return () => clearTimeout(t);
+  }, []);
+
+  // Track scroll position so the tab rail can signal that more settings exist.
+  const updateEdges = () => {
+    const el = railRef.current;
+    if (!el) return;
+    setEdges({
+      left: el.scrollLeft > 4,
+      right: el.scrollLeft + el.clientWidth < el.scrollWidth - 4,
+    });
+  };
+  useEffect(() => {
+    updateEdges();
+    const el = railRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(updateEdges);
+    ro.observe(el);
+    return () => ro.disconnect();
   }, []);
 
   const select = (i: number) => {
@@ -123,6 +143,9 @@ export default function TwoSpaces() {
   const fade = reduced
     ? ""
     : "transition-opacity duration-[550ms] ease-[cubic-bezier(0.16,1,0.3,1)]";
+
+  // Soft-fade whichever rail edge has more tabs hidden beyond it.
+  const edgeMask = `linear-gradient(to right, ${edges.left ? "transparent" : "#000"}, #000 28px, #000 calc(100% - 28px), ${edges.right ? "transparent" : "#000"})`;
 
   return (
     <section className="relative h-[min(85vh,920px)] min-h-[560px] w-full overflow-hidden bg-ink text-bone">
@@ -167,11 +190,15 @@ export default function TwoSpaces() {
       <div className="container-luxe pointer-events-none absolute inset-x-0 top-28 z-20 md:top-32">
         <Eyebrow tone="champagne">Four settings · one estate</Eyebrow>
 
+        <div className="pointer-events-auto relative mt-6 inline-flex max-w-full">
         <div
+          ref={railRef}
           role="tablist"
           aria-label="Estate settings"
           onKeyDown={onKeyDown}
-          className="pointer-events-auto mt-6 inline-flex max-w-full gap-1 overflow-x-auto rounded-full bg-ink/55 p-1 shadow-[0_10px_40px_-12px_rgba(0,0,0,0.6)] ring-1 ring-bone/15 backdrop-blur-md [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          onScroll={updateEdges}
+          style={{ maskImage: edgeMask, WebkitMaskImage: edgeMask }}
+          className="inline-flex max-w-full gap-1 overflow-x-auto rounded-full bg-ink/55 p-1 shadow-[0_10px_40px_-12px_rgba(0,0,0,0.6)] ring-1 ring-bone/15 backdrop-blur-md [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {AREAS.map((s, i) => {
             const on = i === active;
@@ -208,6 +235,26 @@ export default function TwoSpaces() {
               </button>
             );
           })}
+        </div>
+
+          {/* Scroll hint — a champagne chevron nudging right while more settings remain */}
+          {edges.right && (
+            <motion.span
+              aria-hidden
+              initial={reduced ? false : { opacity: 0 }}
+              animate={reduced ? { opacity: 0.9 } : { opacity: 0.9, x: [0, 3, 0] }}
+              transition={
+                reduced
+                  ? undefined
+                  : { x: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }, opacity: { duration: 0.4 } }
+              }
+              className="pointer-events-none absolute right-1.5 top-1/2 z-10 -translate-y-1/2 text-champagne drop-shadow-[0_1px_5px_rgba(0,0,0,0.7)]"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m9 6 6 6-6 6" />
+              </svg>
+            </motion.span>
+          )}
         </div>
       </div>
     </section>

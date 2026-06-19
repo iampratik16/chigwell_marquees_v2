@@ -88,7 +88,7 @@ export default function EstatePage() {
           </RevealText>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             <RevealImage media={HALL_IMG.room1} ratio="4 / 5" sizes="33vw" interactive cursorLabel="View" />
-            <RevealImage media={HALL_IMG.room2} ratio="4 / 5" sizes="33vw" interactive cursorLabel="View" delay={0.08} className="md:mt-10" />
+            <RevealImage media={HALL_IMG.room2} ratio="4 / 5" sizes="33vw" interactive cursorLabel="View" delay={0.08} />
             <RevealImage media={HALL_IMG.room3} ratio="4 / 5" sizes="33vw" interactive cursorLabel="View" delay={0.16} />
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function EstatePage() {
           <Eyebrow>Across the grounds</Eyebrow>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             <RevealImage media={ESTATE_IMG.avenue} ratio="4 / 5" sizes="33vw" interactive cursorLabel="View" />
-            <RevealImage media={ESTATE_IMG.gazebo} ratio="4 / 5" sizes="33vw" interactive cursorLabel="View" delay={0.08} className="md:mt-10" />
+            <RevealImage media={ESTATE_IMG.gazebo} ratio="4 / 5" sizes="33vw" interactive cursorLabel="View" delay={0.08} />
             <RevealImage media={ESTATE_IMG.hall} ratio="4 / 5" sizes="33vw" interactive cursorLabel="View" delay={0.16} />
           </div>
         </div>
