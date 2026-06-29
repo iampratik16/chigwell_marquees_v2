@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { EASE_LUXE, inView } from "@/lib/motion";
@@ -27,10 +28,34 @@ export default function RevealVideo({
 }: Props) {
   const reduced = useReducedMotion();
   const mounted = useMounted();
-  const play = mounted && !reduced;
+  const ref = useRef<HTMLDivElement>(null);
+  const [near, setNear] = useState(false);
+
+  // Only fetch + decode the clip once it's about to enter the viewport. An
+  // off-screen <video autoPlay> would otherwise download and decode on page
+  // load, starving the hero of bandwidth and stuttering the main thread.
+  useEffect(() => {
+    if (near || reduced) return;
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setNear(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "300px 0px" }, // start loading ~300px before it scrolls in
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [near, reduced]);
+
+  const play = mounted && !reduced && near;
 
   return (
     <motion.div
+      ref={ref}
       className={cn("relative overflow-hidden bg-bone-dim", className)}
       style={{ aspectRatio: ratio }}
       data-cursor={cursorLabel}
@@ -45,6 +70,7 @@ export default function RevealVideo({
           muted
           loop
           playsInline
+          preload="auto"
           poster={poster.src}
           className="h-full w-full object-cover"
           aria-hidden
