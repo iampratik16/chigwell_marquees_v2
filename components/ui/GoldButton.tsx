@@ -13,6 +13,8 @@ type Props = {
   cursorLabel?: string;
   ariaLabel?: string;
   type?: "button" | "submit";
+  /** "onLight" uses espresso text for legibility on light backgrounds. */
+  tone?: "default" | "onLight";
 };
 
 /**
@@ -28,8 +30,9 @@ export default function GoldButton({
   cursorLabel,
   ariaLabel,
   type = "button",
+  tone = "default",
 }: Props) {
-  const cls = cn(styles.goldBtn, className);
+  const cls = cn(styles.goldBtn, tone === "onLight" && styles.onLight, className);
   const inner = <span className={styles.label}>{children}</span>;
 
   if (href) {

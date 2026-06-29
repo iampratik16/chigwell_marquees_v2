@@ -1,23 +1,21 @@
-/* Antique-gold metallic CTA. Sheen sweep + grain live here because the
-   keyframe animation is awkward to express in pure Tailwind. */
+/* Transparent CTA with a thin, shiny gold gradient border + a single hover
+   sheen sweep. Kept in a CSS module because the sweep keyframe and the
+   gradient-border trick are awkward in pure Tailwind. */
 
 .goldBtn {
-  /* gold ramp */
-  --gold-deep: #7a5c1e;
-  --gold-base: #b8902f;
-  --gold-mid: #d4af37;
-  --gold-highlight: #f3e2a0;
-  --gold-peak: #fff6da;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --gb-text: #ecd79a; /* shiny champagne — for dark backgrounds */
+  --gb-fill: transparent; /* fill stays transparent; faint gold on hover */
 
   position: relative;
-  isolation: isolate; /* keep the ::before/::after stacking local */
+  isolation: isolate;
   overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.625rem;
 
-  /* match the primary pill rhythm (MagneticButton: rounded-full px-7 py-3.5) */
+  /* match the primary pill rhythm */
   border-radius: 9999px;
   padding: 0.875rem 1.75rem;
   font-size: 0.78rem;
@@ -27,59 +25,73 @@
   letter-spacing: 0.16em;
   white-space: nowrap;
 
-  color: #16130f; /* site espresso — AA on gold */
+  color: var(--gb-text);
   text-decoration: none;
   cursor: pointer;
-  border: 1px solid #8a651c;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+
+  /* transparent interior; a whisper of gold appears on hover */
+  border: none;
+  background: var(--gb-fill);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 250, 225, 0.12),
+    0 1px 8px rgba(0, 0, 0, 0.18);
+  transition:
+    transform 250ms var(--ease),
+    box-shadow 250ms ease,
+    background-color 250ms ease,
+    color 200ms ease;
+}
+
+/* shiny gold gradient border — drawn only in the 1.5px ring via mask, so the
+   interior stays transparent and the pill's rounded corners are respected. */
+.goldBtn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  padding: 1.5px;
+  pointer-events: none;
   background: linear-gradient(
     135deg,
     #7a5c1e 0%,
-    #b8902f 18%,
-    #e9cf72 42%,
-    #f3e2a0 50%,
-    #d4af37 64%,
-    #a77e26 82%,
+    #c9a24a 28%,
+    #f3e2a0 47%,
+    #fff6da 52%,
+    #d4af37 62%,
+    #a77e26 80%,
     #7a5c1e 100%
   );
-  box-shadow:
-    inset 0 1px 0 rgba(255, 250, 225, 0.55),
-    inset 0 -1px 2px rgba(90, 60, 15, 0.4),
-    0 2px 8px rgba(0, 0, 0, 0.35);
-  transition:
-    transform 250ms cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 250ms ease;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
 }
 
-/* metallic grain — fractal noise, barely there */
-.goldBtn::after {
+/* deeper text for light backgrounds (gallery reviews, scrolled header bar) */
+.onLight {
+  --gb-text: #16130f;
+  text-shadow: none;
+}
+
+/* hover sheen — a single skewed light band swept across the button */
+.goldBtn::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 1;
   border-radius: inherit;
   pointer-events: none;
-  opacity: 0.1;
-  mix-blend-mode: soft-light;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* hover sheen — a single skewed light band swept across the face */
-.goldBtn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-  pointer-events: none;
   background: linear-gradient(
     120deg,
     transparent 0%,
     rgba(255, 255, 255, 0) 35%,
-    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.5) 50%,
     rgba(255, 255, 255, 0) 65%,
     transparent 100%
   );
@@ -87,7 +99,7 @@
   opacity: 0;
 }
 
-/* label rides above the grain + sheen */
+/* label rides above the sheen and the border ring */
 .label {
   position: relative;
   z-index: 3;
@@ -97,31 +109,26 @@
 }
 
 .goldBtn:hover {
+  --gb-fill: rgba(212, 175, 55, 0.14); /* whisper of gold */
   transform: translateY(-1px);
   box-shadow:
-    inset 0 1px 0 rgba(255, 250, 225, 0.55),
-    inset 0 -1px 2px rgba(90, 60, 15, 0.4),
-    0 4px 18px rgba(212, 175, 55, 0.35); /* warm glow */
+    inset 0 1px 0 rgba(255, 250, 225, 0.28),
+    0 6px 22px rgba(212, 175, 55, 0.3); /* warm glow */
 }
-
 .goldBtn:hover::before {
   animation: goldSheen 600ms ease-out;
 }
-
 .goldBtn:active {
   transform: translateY(0);
   box-shadow:
-    inset 0 1px 0 rgba(255, 250, 225, 0.55),
-    inset 0 -1px 2px rgba(90, 60, 15, 0.4),
-    0 2px 10px rgba(212, 175, 55, 0.22); /* softer glow */
+    inset 0 1px 0 rgba(255, 250, 225, 0.2),
+    0 2px 10px rgba(212, 175, 55, 0.22);
 }
-
 .goldBtn:focus-visible {
   outline: none;
   box-shadow:
-    inset 0 1px 0 rgba(255, 250, 225, 0.55),
     0 0 0 2px #16130f,
-    0 0 0 4px var(--gold-mid); /* focus ring in the gold tone */
+    0 0 0 4px #d4af37; /* focus ring in the gold tone */
 }
 
 @keyframes goldSheen {

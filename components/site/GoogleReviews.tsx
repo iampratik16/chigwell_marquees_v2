@@ -49,7 +49,7 @@ export default function GoogleReviews({
                 Read what our clients say on Google — real reviews from weddings,
                 celebrations and events across the estate.
               </p>
-              <GoldButton href={reviewsUrl} cursorLabel="Reviews">
+              <GoldButton href={reviewsUrl} cursorLabel="Reviews" tone="onLight">
                 Read our Google reviews
               </GoldButton>
             </>

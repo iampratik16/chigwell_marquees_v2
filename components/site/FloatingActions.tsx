@@ -163,11 +163,7 @@ export default function FloatingActions() {
               }}
               aria-label="Open quick enquiry to book a viewing"
               aria-haspopup="dialog"
-              style={{
-                backgroundImage:
-                  "linear-gradient(135deg,#7a5c1e 0%,#b8902f 18%,#e9cf72 42%,#f3e2a0 50%,#d4af37 64%,#a77e26 82%,#7a5c1e 100%)",
-              }}
-              className="flex items-center gap-3 rounded-full border border-[#8a651c] px-8 py-5 text-[0.82rem] font-medium uppercase tracking-[0.16em] text-ink shadow-[inset_0_1px_0_rgba(255,250,225,0.55),0_12px_40px_-12px_rgba(0,0,0,0.5)] transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d4af37] focus-visible:ring-offset-2 focus-visible:ring-offset-bone"
+              className="flex items-center gap-3 rounded-full border border-bone/15 bg-ink px-8 py-5 text-[0.82rem] font-medium uppercase tracking-[0.16em] text-bone shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_40px_-12px_rgba(0,0,0,0.7)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-ink-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-bone"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" className="h-5 w-5">
                 <path d="M4 5h16v11H8l-4 4V5Z" strokeLinejoin="round" />

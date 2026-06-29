@@ -149,7 +149,7 @@ export default function Header() {
               <span className="h-6 w-px bg-current opacity-20" aria-hidden />
             </div>
             <div className="hidden lg:block">
-              <GoldButton href="/visit#enquire" cursorLabel="Book">
+              <GoldButton href="/visit#enquire" cursorLabel="Book" tone={darkBg ? "default" : "onLight"}>
                 Book a Viewing
               </GoldButton>
             </div>
