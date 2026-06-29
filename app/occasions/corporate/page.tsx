@@ -122,7 +122,6 @@ export default function CorporatePage() {
       <CtaBand
         title="Whatever your corporate need, let's talk."
         blurb="Conferences, launches, away-days or the Christmas party of the year. Tell us the brief."
-        primary={{ href: "/visit#enquire", label: "Enquire for business" }}
       />
     </>
   );

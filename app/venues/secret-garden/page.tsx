@@ -141,7 +141,6 @@ export default function SecretGardenPage() {
         title="Say your vows beneath the open sky."
         blurb="The Secret Garden flows straight into both marquees, ceremony, reception and celebration, all on one estate."
         tone="ink"
-        primary={{ href: "/visit#enquire", label: "Plan a garden ceremony" }}
         secondary={null}
       />
     </>

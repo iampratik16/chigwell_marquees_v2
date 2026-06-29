@@ -7,6 +7,7 @@ import { HERO } from "@/lib/media";
 import { VIDEO, POSTER } from "@/lib/media.real";
 import BackgroundVideo from "@/components/ui/BackgroundVideo";
 import MagneticButton from "@/components/ui/MagneticButton";
+import GoldButton from "@/components/ui/GoldButton";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 import { useMounted } from "@/lib/useMounted";
 
@@ -63,11 +64,11 @@ export default function Hero() {
           className="mt-7 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
         >
           <div className="flex flex-wrap items-center gap-4">
-            <MagneticButton href="/venues" variant="light" cursorLabel="Explore">
+            <GoldButton href="/visit#enquire" cursorLabel="Book">
+              Book a Viewing
+            </GoldButton>
+            <MagneticButton href="/venues" variant="ghost" cursorLabel="Explore">
               Explore the spaces
-            </MagneticButton>
-            <MagneticButton href="/visit#enquire" variant="ghost" cursorLabel="Enquire">
-              Begin an enquiry
             </MagneticButton>
           </div>
         </motion.div>

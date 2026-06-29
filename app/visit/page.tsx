@@ -30,6 +30,37 @@ export default function VisitPage() {
         size="md"
       />
 
+      {/* Enquiry */}
+      <Section id="enquire" tone="bone-dim" spacing="lg">
+        <div className="container-luxe grid gap-14 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <Eyebrow>Begin your enquiry</Eyebrow>
+            <RevealText as="h2" className="mt-6 display-md">
+              {"Tell us about\nyour occasion."}
+            </RevealText>
+            <Reveal>
+              <p className="mt-6 text-mist">
+                Share a few details and our events team will be in touch to talk
+                dates, spaces and everything that makes your day yours.
+              </p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="mt-8 text-sm text-mist">
+                Prefer to talk? Call{" "}
+                <a href={SITE.phoneHref} className="text-ink underline">
+                  {SITE.phone}
+                </a>
+                .
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="md:col-span-8">
+            <EnquiryForm />
+          </div>
+        </div>
+      </Section>
+
       {/* Location + map */}
       <Section tone="bone" spacing="md">
         <div className="container-luxe grid gap-12 md:grid-cols-12 md:items-center">
@@ -87,37 +118,6 @@ export default function VisitPage() {
                 className="absolute inset-0 h-full w-full grayscale-[0.25] contrast-[1.05]"
               />
             </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* Enquiry */}
-      <Section id="enquire" tone="bone-dim" spacing="lg">
-        <div className="container-luxe grid gap-14 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <Eyebrow>Begin your enquiry</Eyebrow>
-            <RevealText as="h2" className="mt-6 display-md">
-              {"Tell us about\nyour occasion."}
-            </RevealText>
-            <Reveal>
-              <p className="mt-6 text-mist">
-                Share a few details and our events team will be in touch to talk
-                dates, spaces and everything that makes your day yours.
-              </p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="mt-8 text-sm text-mist">
-                Prefer to talk? Call{" "}
-                <a href={SITE.phoneHref} className="text-ink underline">
-                  {SITE.phone}
-                </a>
-                .
-              </p>
-            </Reveal>
-          </div>
-
-          <div className="md:col-span-8">
-            <EnquiryForm />
           </div>
         </div>
       </Section>

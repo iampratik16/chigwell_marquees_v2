@@ -2,7 +2,6 @@ import Link from "next/link";
 import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
-import Reveal from "@/components/ui/Reveal";
 import RevealImage from "@/components/ui/RevealImage";
 import {
   OCC_WEDDINGS_CARD,
@@ -48,19 +47,11 @@ export default function OccasionsPreview() {
   return (
     <Section tone="bone" spacing="lg">
       <div className="container-luxe">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-2xl">
-            <Eyebrow>Occasions</Eyebrow>
-            <RevealText as="h2" className="mt-6 display-lg">
-              {"Held for every\nkind of gathering."}
-            </RevealText>
-          </div>
-          <Reveal>
-            <p className="max-w-sm text-mist md:text-right">
-              One adaptable estate, from thirty guests to a thousand, with no
-              corkage, ever.
-            </p>
-          </Reveal>
+        <div className="max-w-2xl">
+          <Eyebrow>Occasions</Eyebrow>
+          <RevealText as="h2" className="mt-6 display-lg">
+            {"Held for every\nkind of gathering."}
+          </RevealText>
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 md:mt-16 lg:grid-cols-4">

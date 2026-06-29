@@ -34,7 +34,8 @@ export default function MegaMarqueePage() {
       />
       <PageHero
         eyebrow="The spaces · I"
-        title={"The Mega\nMarquee."}
+        title="The Mega Marquee."
+        titleClassName="whitespace-nowrap"
         intro="Up to one thousand guests beneath a single, grand and unbroken canvas."
         media={SPACE_MEGA_HERO}
         video={VIDEO.megaHero}
@@ -134,7 +135,6 @@ export default function MegaMarqueePage() {
       <CtaBand
         title="Imagine your thousand guests here."
         blurb="From sit-down banquets to awards nights and product launches, the Mega Marquee scales to the moment."
-        primary={{ href: "/visit#enquire", label: "Enquire about the Mega Marquee" }}
         secondary={null}
       />
     </>

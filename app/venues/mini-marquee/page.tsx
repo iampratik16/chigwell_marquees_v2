@@ -36,7 +36,8 @@ export default function MiniMarqueePage() {
       />
       <PageHero
         eyebrow="The spaces · II"
-        title={"The Mini\nMarquee."}
+        title="The Mini Marquee."
+        titleClassName="whitespace-nowrap"
         intro="Intimate, light-filled and quietly magical, for thirty to two hundred."
         media={MINI_IMG.interior}
       />
@@ -180,7 +181,6 @@ export default function MiniMarqueePage() {
       <CtaBand
         title="An evening that ends under the stars."
         blurb="Tell us your date and guest count, we'll show you how the Mini Marquee transforms from afternoon light to starlit night."
-        primary={{ href: "/visit#enquire", label: "Enquire about the Mini Marquee" }}
         secondary={null}
       />
     </>

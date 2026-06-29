@@ -3,6 +3,7 @@ import type { Media } from "./media.gen";
 /** Real venue videos supplied from the business's Instagram. */
 export const VIDEO = {
   hero: "/media/video/hero.mp4",
+  aboutHero: "/media/video/about-hero.mp4", // About Us / the-estate page hero
   megaHero: "/media/video/mega-hero.mp4", // The Mega Marquee page hero
   weddingHero: "/media/video/wedding-hero.mp4", // The Weddings page hero
   mega: "/media/video/scene-mega.mp4",
@@ -19,6 +20,7 @@ export const VIDEO = {
  */
 export const POSTER = {
   hero: "/media/video/hero-poster.jpg",
+  aboutHero: "/media/video/about-hero-poster.jpg",
   wedding: "/media/video/scene-wedding-poster.jpg",
   weddings: "/media/video/weddings-poster.jpg",
   secretGarden: "/media/video/secret-garden-poster.jpg",

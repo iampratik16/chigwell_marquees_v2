@@ -3,9 +3,15 @@ import PageHero from "@/components/site/PageHero";
 import Section from "@/components/ui/Section";
 import MasonryGallery, { type GalleryItem } from "@/components/sections/MasonryGallery";
 import CtaBand from "@/components/site/CtaBand";
+import GoogleReviews from "@/components/site/GoogleReviews";
 import { GALLERY_FILES, GALLERY_HERO, img } from "@/lib/media";
 import { REAL_GALLERY } from "@/lib/media.real";
 import { CONTENT_GALLERY } from "@/lib/gallery-content";
+import { SOCIALS } from "@/lib/site";
+
+const INSTAGRAM =
+  SOCIALS.find((s) => s.label === "Instagram")?.href ??
+  "https://www.instagram.com/thechigwellmarquees/";
 
 export const metadata = pageMeta({
   title: "Marquee Venue Gallery, Essex | The Chigwell Marquees",
@@ -50,12 +56,31 @@ export default function GalleryPage() {
 
       <Section tone="bone" spacing="md">
         <MasonryGallery items={items} />
+
+        {/* Provision: link the gallery straight to the live Instagram feed. */}
+        <div className="container-luxe mt-12 flex flex-col items-center gap-3 text-center sm:mt-16">
+          <p className="eyebrow text-mist">See more on Instagram</p>
+          <a
+            href={INSTAGRAM}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="Instagram"
+            aria-label="Follow The Chigwell Marquees on Instagram (opens in a new tab)"
+            className="group/ig inline-flex items-center gap-2 text-[0.95rem] font-medium tracking-[0.04em] text-ink transition-colors hover:text-champagne"
+          >
+            @thechigwellmarquees
+            <span aria-hidden className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/ig:translate-x-1">
+              ↗
+            </span>
+          </a>
+        </div>
       </Section>
+
+      <GoogleReviews />
 
       <CtaBand
         title="Picture your own occasion here."
         blurb="The best way to feel the estate is to stand in it. Arrange a private viewing."
-        primary={{ href: "/visit#enquire", label: "Arrange a viewing" }}
         secondary={null}
       />
     </>

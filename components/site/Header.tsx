@@ -8,7 +8,7 @@ import { NAV, SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import Logo from "./Logo";
 import SocialLinks from "./SocialLinks";
-import MagneticButton from "@/components/ui/MagneticButton";
+import GoldButton from "@/components/ui/GoldButton";
 import { EASE_LUXE } from "@/lib/motion";
 import { useIsDesktop } from "@/lib/useMediaQuery";
 
@@ -43,11 +43,10 @@ export default function Header() {
   useEffect(() => setOpen(false), [pathname]);
 
   const isDesktop = useIsDesktop();
-  const dark = !scrolled && !open; // desktop-hero treatment (button variant)
 
-  // The logo / content is white only over the dark hero (desktop) or when the
-  // dark mobile menu is open; on the light mobile/tablet bar it stays navy/ink.
-  const logoInvert = open || (isDesktop && !scrolled);
+  // Over dark backgrounds (desktop hero top, or the open mobile menu) use the
+  // white-wordmark + gold-crown logo; on the light bar use the full-colour one.
+  const darkBg = open || (isDesktop && !scrolled);
   const textColor = open
     ? "text-bone"
     : !scrolled
@@ -77,7 +76,7 @@ export default function Header() {
             textColor,
           )}
         >
-          <Logo invert={logoInvert} />
+          <Logo src={darkBg ? "/logo-footer.png" : "/logo.png"} />
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
@@ -91,7 +90,7 @@ export default function Header() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "group/nav relative inline-flex items-center gap-1 px-4 py-2 text-[0.8rem] font-medium uppercase tracking-[0.14em]",
+                    "group/nav relative inline-flex items-center gap-1 whitespace-nowrap px-3 py-2 text-[0.8rem] font-medium uppercase tracking-[0.14em]",
                   )}
                 >
                   <span className="relative">
@@ -145,18 +144,14 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <div className="hidden items-center gap-4 lg:flex">
+            <div className="hidden items-center gap-4 xl:flex">
               <SocialLinks size={24} />
               <span className="h-6 w-px bg-current opacity-20" aria-hidden />
             </div>
             <div className="hidden lg:block">
-              <MagneticButton
-                href="/visit#enquire"
-                variant={dark ? "ghost" : "solid"}
-                cursorLabel="Enquire"
-              >
-                Enquire
-              </MagneticButton>
+              <GoldButton href="/visit#enquire" cursorLabel="Book">
+                Book a Viewing
+              </GoldButton>
             </div>
 
             {/* Mobile toggle */}

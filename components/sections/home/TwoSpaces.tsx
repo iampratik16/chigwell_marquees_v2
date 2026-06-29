@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import AnimatedLink from "@/components/ui/AnimatedLink";
-import Eyebrow from "@/components/ui/Eyebrow";
 import { EASE_LUXE } from "@/lib/motion";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 import { cn } from "@/lib/utils";
@@ -188,9 +187,7 @@ export default function TwoSpaces() {
 
       {/* Top-left: eyebrow + tab selector (shared, above the panels) */}
       <div className="container-luxe pointer-events-none absolute inset-x-0 top-28 z-20 md:top-32">
-        <Eyebrow tone="champagne">Four settings · one estate</Eyebrow>
-
-        <div className="pointer-events-auto relative mt-6 inline-flex max-w-full">
+        <div className="pointer-events-auto relative inline-flex max-w-full">
         <div
           ref={railRef}
           role="tablist"

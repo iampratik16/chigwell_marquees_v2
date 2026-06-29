@@ -2,7 +2,7 @@ import Image from "next/image";
 import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
-import MagneticButton from "@/components/ui/MagneticButton";
+import GoldButton from "@/components/ui/GoldButton";
 import AnimatedLink from "@/components/ui/AnimatedLink";
 import { FACTS, SITE } from "@/lib/site";
 import { OCC_CORPORATE_2 } from "@/lib/media";
@@ -51,9 +51,9 @@ export default function Journey() {
             </Reveal>
             <Reveal delay={0.1}>
               <div className="mt-8 flex flex-wrap items-center gap-5">
-                <MagneticButton href="/visit" variant="light" cursorLabel="Visit">
-                  Plan your visit
-                </MagneticButton>
+                <GoldButton href="/visit#enquire" cursorLabel="Book">
+                  Book a Viewing
+                </GoldButton>
                 <AnimatedLink href={SITE.address.maps} arrow className="text-bone" cursorLabel="Map">
                   Get directions
                 </AnimatedLink>

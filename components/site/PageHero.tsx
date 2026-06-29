@@ -13,6 +13,8 @@ type Props = {
   eyebrow: string;
   /** Use \n for line breaks. */
   title: string;
+  /** Extra classes for the h1 (e.g. `whitespace-nowrap` to keep a title on one line). */
+  titleClassName?: string;
   intro?: string;
   media: Media;
   /** Optional looping clip; `media` is the reduced-motion fallback. */
@@ -26,7 +28,7 @@ type Props = {
 };
 
 /** Cinematic dark hero shared by inner pages. */
-export default function PageHero({ eyebrow, title, intro, media, video, poster, size = "lg", social }: Props) {
+export default function PageHero({ eyebrow, title, titleClassName, intro, media, video, poster, size = "lg", social }: Props) {
   const reduced = useReducedMotion();
   const mounted = useMounted();
   const lines = title.split("\n");
@@ -60,7 +62,7 @@ export default function PageHero({ eyebrow, title, intro, media, video, poster, 
           {eyebrow}
         </motion.span>
 
-        <h1 className={`font-display ${size === "lg" ? "display-xl" : "display-lg"} max-w-[16ch]`}>
+        <h1 className={`font-display ${size === "lg" ? "display-xl" : "display-lg"} max-w-[16ch] ${titleClassName ?? ""}`}>
           {lines.map((line, i) => (
             <motion.span
               key={i}

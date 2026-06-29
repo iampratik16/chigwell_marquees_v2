@@ -117,7 +117,6 @@ export default function FaithBasedPage() {
         title="Tell us about your celebration."
         // TODO: confirm copy
         blurb="Whatever the faith or tradition, our team will help you plan it with care."
-        primary={{ href: "/visit#enquire", label: "Begin an enquiry" }}
       />
     </>
   );

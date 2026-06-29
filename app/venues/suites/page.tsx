@@ -106,7 +106,6 @@ export default function SuitesPage() {
       <CtaBand
         title="An elegant indoor celebration awaits."
         blurb="Tell us your date and guest count, and our events team will show you the Banqueting and Belmont Suites and help you find the perfect fit."
-        primary={{ href: "/visit#enquire", label: "Enquire about the Suites" }}
       />
     </>
   );

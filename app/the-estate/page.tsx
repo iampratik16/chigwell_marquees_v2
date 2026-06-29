@@ -32,8 +32,8 @@ export default function EstatePage() {
         title={"Set within forty-two\nacres of Essex."}
         intro="A Grade II listed manor, two luxurious marquees and a secret garden, gathered on one extraordinary estate."
         media={ESTATE_IMG.hall}
-        video={VIDEO.wedding}
-        poster={POSTER.wedding}
+        video={VIDEO.aboutHero}
+        poster={POSTER.aboutHero}
       />
 
       <Section tone="bone" spacing="lg">
@@ -161,7 +161,6 @@ export default function EstatePage() {
       <CtaBand
         title="Come and feel the scale of it."
         blurb="Forty-two acres are hard to put into words. Arrange a private viewing and walk the estate for yourself, free parking, and the A12, M11 & M1 all close by."
-        primary={{ href: "/visit#enquire", label: "Arrange a viewing" }}
       />
     </>
   );

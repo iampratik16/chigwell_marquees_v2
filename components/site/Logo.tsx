@@ -8,12 +8,15 @@ export default function Logo({
   imgClassName,
   onClick,
   invert = false,
+  src = "/logo.png",
 }: {
   className?: string;
   /** Override the image height (a single Tailwind height utility). */
   imgClassName?: string;
   onClick?: () => void;
   invert?: boolean;
+  /** Override the logo asset (e.g. a white-text variant for dark sections). */
+  src?: string;
 }) {
   return (
     <Link
@@ -23,7 +26,7 @@ export default function Logo({
       className={cn("group/logo block leading-none", className)}
     >
       <Image
-        src="/logo.png"
+        src={src}
         alt="The Chigwell Marquees"
         width={630}
         height={156}

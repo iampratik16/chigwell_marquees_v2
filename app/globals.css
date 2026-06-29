@@ -220,9 +220,9 @@
 .cursor-ring {
   display: grid;
   place-items: center;
-  width: 56px;
-  height: 30px;
-  margin: -15px 0 0 -28px;
+  width: 40px;
+  height: 21px;
+  margin: -10.5px 0 0 -20px;
   border: 0;
   border-radius: 0;
   background-image: url("/cursor-crown.png");
@@ -238,14 +238,14 @@
     opacity 0.4s ease;
 }
 .cursor-ring[data-active="true"] {
-  width: 76px;
-  height: 41px;
-  margin: -20.5px 0 0 -38px;
+  width: 54px;
+  height: 29px;
+  margin: -14.5px 0 0 -27px;
 }
 .cursor-ring[data-down="true"] {
-  width: 44px;
-  height: 24px;
-  margin: -12px 0 0 -22px;
+  width: 32px;
+  height: 17px;
+  margin: -8.5px 0 0 -16px;
 }
 .cursor-ring[data-labelled="true"] {
   width: 92px;

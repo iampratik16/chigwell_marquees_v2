@@ -1,7 +1,7 @@
 import Section from "@/components/ui/Section";
 import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
-import MagneticButton from "@/components/ui/MagneticButton";
+import GoldButton from "@/components/ui/GoldButton";
 import GalleryBand from "@/components/site/GalleryBand";
 
 type Props = {
@@ -17,7 +17,7 @@ type Props = {
 export default function CtaBand({
   title,
   blurb,
-  primary = { href: "/visit#enquire", label: "Begin an enquiry" },
+  primary = { href: "/visit#enquire", label: "Book a Viewing" },
   secondary = { href: "/gallery", label: "View the gallery" },
   tone = "botanical",
 }: Props) {
@@ -41,9 +41,9 @@ export default function CtaBand({
             </div>
             <div className="md:col-span-4 md:flex md:justify-end">
               <Reveal delay={0.15}>
-                <MagneticButton href={primary.href} variant="light" cursorLabel="Enquire">
+                <GoldButton href={primary.href} cursorLabel="Book">
                   {primary.label}
-                </MagneticButton>
+                </GoldButton>
               </Reveal>
             </div>
           </div>

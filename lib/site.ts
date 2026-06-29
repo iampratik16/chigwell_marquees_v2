@@ -70,7 +70,7 @@ export const NAV: NavItem[] = [
     ],
   },
   { label: "Gallery", href: "/gallery" },
-  { label: "Visit", href: "/visit" },
+  { label: "Contact", href: "/visit" },
 ];
 
 /** Credibility numbers, counted up on view. */

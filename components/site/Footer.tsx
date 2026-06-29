@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { NAV, SITE } from "@/lib/site";
 import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
-import MagneticButton from "@/components/ui/MagneticButton";
+import GoldButton from "@/components/ui/GoldButton";
 import AnimatedLink from "@/components/ui/AnimatedLink";
 import SocialLinks from "@/components/site/SocialLinks";
 import Logo from "@/components/site/Logo";
@@ -32,9 +32,9 @@ export default function Footer() {
           </div>
           <div className="md:col-span-4 md:flex md:justify-end">
             <Reveal delay={0.1}>
-              <MagneticButton href="/visit#enquire" variant="light" cursorLabel="Enquire">
-                Plan your occasion
-              </MagneticButton>
+              <GoldButton href="/visit#enquire" cursorLabel="Book">
+                Book a Viewing
+              </GoldButton>
             </Reveal>
           </div>
         </div>
@@ -44,7 +44,7 @@ export default function Footer() {
       {/* Detail columns */}
       <div className="container-luxe grid gap-12 py-12 md:grid-cols-12">
         <div className="md:col-span-4">
-          <Logo invert className="w-fit" imgClassName="h-14 sm:h-16 md:h-20" />
+          <Logo src="/logo-footer.png" className="w-fit" imgClassName="h-14 sm:h-16 md:h-20" />
           <address className="mt-4 not-italic leading-relaxed text-bone/65">
             {SITE.address.line1}
             <br />
@@ -95,13 +95,6 @@ export default function Footer() {
             Find us
           </AnimatedLink>
         </div>
-      </div>
-
-      {/* Oversized wordmark */}
-      <div aria-hidden className="select-none px-[var(--gutter)] pb-6">
-        <span className="block whitespace-nowrap font-display text-[9.4vw] leading-none tracking-tight text-bone/[0.09]">
-          Chigwell Marquees
-        </span>
       </div>
 
       <div className="container-luxe flex flex-col gap-3 border-t border-bone/12 py-7 text-[0.72rem] uppercase tracking-[0.14em] text-bone/45 sm:flex-row sm:items-center sm:justify-between">

@@ -98,7 +98,6 @@ export default function SpacesPage() {
       <CtaBand
         title="Not sure which space is yours?"
         blurb="Tell us about your occasion and our events team will walk you through both marquees, the garden and everything in between."
-        primary={{ href: "/visit#enquire", label: "Arrange a viewing" }}
       />
     </>
   );

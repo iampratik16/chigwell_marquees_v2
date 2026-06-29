@@ -132,7 +132,6 @@ export default function WeddingsPage() {
       <CtaBand
         title="Making all your dreams a reality for your very special day."
         blurb="Share your date and vision, our events team will take it from there."
-        primary={{ href: "/visit#enquire", label: "Begin your wedding enquiry" }}
       />
     </>
   );

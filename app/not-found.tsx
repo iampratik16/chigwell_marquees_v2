@@ -22,7 +22,7 @@ export default function NotFound() {
           <Link href="/venues" className="hover:text-bone">Venues</Link>
           <Link href="/occasions" className="hover:text-bone">Occasions</Link>
           <Link href="/gallery" className="hover:text-bone">Gallery</Link>
-          <Link href="/visit" className="hover:text-bone">Visit</Link>
+          <Link href="/visit" className="hover:text-bone">Contact</Link>
         </div>
       </div>
     </section>

@@ -73,7 +73,7 @@ export default function MagneticButton({
       onMouseLeave={reset}
       style={{ x: sx, y: sy }}
       className={cn(
-        "group/btn relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full px-7 py-3.5",
+        "group/btn relative inline-flex items-center justify-center gap-2.5 overflow-hidden whitespace-nowrap rounded-full px-7 py-3.5",
         "text-[0.78rem] font-medium uppercase tracking-[0.16em] transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
         variants[variant],
         className,
