@@ -10,10 +10,6 @@ export default function StatsBand() {
       <div className="container-luxe">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <Eyebrow tone="champagne">By the numbers</Eyebrow>
-          <p className="max-w-md text-bone/55 md:text-right">
-            A rare combination of scale, privacy and polish, minutes from the
-            Central Line, yet wrapped in open countryside.
-          </p>
         </div>
 
         <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-12 md:mt-20 md:grid-cols-4">

@@ -19,9 +19,6 @@ function Heading() {
         <Eyebrow>Gallery</Eyebrow>
         <h2 className="mt-5 display-md">A glimpse inside</h2>
       </div>
-      <p className="max-w-xs text-sm text-mist">
-        Real weddings, parties and celebrations beneath the marquees.
-      </p>
     </div>
   );
 }
