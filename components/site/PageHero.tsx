@@ -38,7 +38,7 @@ export default function PageHero({ eyebrow, title, titleClassName, intro, media,
   return (
     <section
       className={`relative flex w-full items-end overflow-hidden bg-ink text-bone ${
-        size === "lg" ? "h-[68svh] min-h-[460px]" : "h-[52svh] min-h-[380px]"
+        size === "lg" ? "h-[74svh] min-h-[560px]" : "h-[62svh] min-h-[520px]"
       }`}
     >
       <div className="absolute inset-0">

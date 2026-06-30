@@ -7,7 +7,7 @@ import Reveal from "@/components/ui/Reveal";
 import AnimatedLink from "@/components/ui/AnimatedLink";
 import EnquiryForm from "@/components/site/EnquiryForm";
 import Journey from "@/components/sections/home/Journey";
-import { FACTS, SITE, whatsappLink } from "@/lib/site";
+import { SITE, whatsappLink } from "@/lib/site";
 import WhatsAppGlyph from "@/components/ui/WhatsAppGlyph";
 import { ESTATE } from "@/lib/media";
 
@@ -73,15 +73,6 @@ export default function VisitPage() {
               <br />
               {SITE.address.postcode}
             </address>
-
-            <dl className="mt-10 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2">
-              {FACTS.map((f) => (
-                <div key={f.k} className="border-t border-line pt-4">
-                  <dt className="eyebrow text-mist">{f.k}</dt>
-                  <dd className="mt-2 font-display text-lg leading-tight">{f.v}</dd>
-                </div>
-              ))}
-            </dl>
 
             <div className="mt-10 flex flex-col gap-3">
               <a href={SITE.phoneHref} className="font-display text-2xl hover:text-botanical">

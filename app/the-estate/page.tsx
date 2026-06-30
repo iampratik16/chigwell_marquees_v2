@@ -71,16 +71,16 @@ export default function EstatePage() {
         title={"A Grade II listed\nmanor at its heart."}
         body={[
           "Built in 1881, Chigwell Hall is a magnificent Grade II listed manor house set at the heart of our stunning 42-acre estate. Rich in Victorian character and timeless elegance, the hall provides a truly iconic backdrop for your special occasion.",
-          "Its striking red-brick exterior, grand chimneys, bay windows and Juliet balconies create endless opportunities for breathtaking photography, whilst the beautifully maintained grounds offer an atmosphere of luxury and exclusivity from the moment your guests arrive.",
           "Inside, the hall combines classic charm with contemporary comfort. The sweeping staircase provides a beautiful setting for photographs before leading into our elegant function suites.",
           "Both the Banqueting Suite and Belmont Suite feature private bars and spacious dancefloors, creating the perfect setting for unforgettable celebrations that continue long into the evening.",
         ]}
         media={ESTATE_IMG.hall}
         ratio="3 / 2"
+        tone="bone-dim"
       />
 
       {/* Inside the Hall — function suites */}
-      <Section tone="bone-dim" spacing="md">
+      <Section tone="bone" spacing="md">
         <div className="container-luxe">
           <Eyebrow>Inside the Hall</Eyebrow>
           <RevealText as="h2" className="mt-5 display-md max-w-3xl">
@@ -140,7 +140,7 @@ export default function EstatePage() {
           "Corporate events & conferences",
           "Festivals & filming occasions",
         ]}
-        tone="bone-dim"
+        tone="botanical"
       />
 
       {/* FAQs */}
@@ -161,6 +161,7 @@ export default function EstatePage() {
       <CtaBand
         title="Come and feel the scale of it."
         blurb="Forty-two acres are hard to put into words. Arrange a private viewing and walk the estate for yourself, free parking, and the A12, M11 & M1 all close by."
+        tone="ink"
       />
     </>
   );

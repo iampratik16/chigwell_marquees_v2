@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { EASE_LUXE } from "@/lib/motion";
-import { HOME_GALLERY } from "@/lib/media";
+import { CONTENT_GALLERY as HOME_GALLERY } from "@/lib/gallery-content";
 import Eyebrow from "@/components/ui/Eyebrow";
 import AnimatedLink from "@/components/ui/AnimatedLink";
 import { cn } from "@/lib/utils";
@@ -151,27 +151,12 @@ export default function GalleryRail() {
           </div>
         </div>
 
-        {/* Controls: pill pagination + arrows */}
+        {/* Controls: counter + arrows (scales to any number of photos) */}
         <div className="mt-8 flex items-center justify-between">
-          <div className="flex items-center gap-2" role="tablist" aria-label="Gallery pages">
-            {Array.from({ length: pages }).map((_, i) => {
-              const on = i === page;
-              return (
-                <button
-                  key={i}
-                  type="button"
-                  role="tab"
-                  aria-selected={on}
-                  aria-label={`Go to slide ${i + 1}`}
-                  onClick={() => goto(i)}
-                  className={cn(
-                    "h-2 rounded-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
-                    on ? "w-8 bg-ink" : "w-2 bg-ink/25 hover:bg-ink/45",
-                  )}
-                />
-              );
-            })}
-          </div>
+          <p className="text-sm uppercase tracking-[0.16em] text-ink/55" aria-live="polite">
+            {String(page + 1).padStart(2, "0")}
+            <span className="text-ink/30"> / {String(pages).padStart(2, "0")}</span>
+          </p>
           <div className="flex items-center gap-3">
             <Arrow dir={-1} disabled={atStart} />
             <Arrow dir={1} disabled={atEnd} />
