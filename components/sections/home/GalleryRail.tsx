@@ -69,8 +69,9 @@ export default function GalleryRail() {
   const atStart = page === 0;
   const atEnd = page >= pages - 1;
 
-  // Exact offset as a percentage of the track (slides are border-box, no gaps).
-  const offset = (page * perView * 100) / TOTAL;
+  // Shift by whole pages. translateX % is relative to the track's own box,
+  // which is exactly one viewport (one page) wide — so one page = 100%.
+  const offset = page * 100;
 
   // Touch swipe (phone/tablet): a clear horizontal drag flips the page.
   const touchStart = useRef<{ x: number; y: number } | null>(null);
