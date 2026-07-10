@@ -26,7 +26,7 @@ const SHOWCASES: Showcase[] = [
   {
     label: "Garden",
     line: "Outdoor ceremonies in the Secret Garden.",
-    media: { src: "/media/recent-garden.jpg", alt: "The Secret Garden and grounds of the estate", width: 1333, height: 2000 },
+    media: { src: "/media/garden-waterfall-10f.jpg", alt: "The Secret Garden waterfall and grounds of the estate", width: 2560, height: 1920 },
   },
 ];
 
