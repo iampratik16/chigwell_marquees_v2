@@ -4,6 +4,7 @@ import { SITE } from "@/lib/site";
 import "./globals.css";
 
 import SmoothScroll from "@/components/providers/SmoothScroll";
+import Loader from "@/components/site/Loader";
 import Grain from "@/components/effects/Grain";
 import Cursor from "@/components/effects/Cursor";
 import Header from "@/components/site/Header";
@@ -62,6 +63,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <Loader />
         <SmoothScroll>
           <Grain />
           <Cursor />

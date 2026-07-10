@@ -92,11 +92,14 @@ export default function SmoothScroll({
       ref={lenisRef}
       options={{
         autoRaf: false,
-        duration: 1.15,
-        lerp: 0.1,
+        // ponytail: snappier feel — higher lerp tracks the wheel tighter and a
+        // shorter duration settles faster, so the page keeps up with a fast
+        // flick instead of floating. Tune these two if it feels too abrupt.
+        duration: 0.9,
+        lerp: 0.14,
         smoothWheel: true,
-        wheelMultiplier: 1,
-        touchMultiplier: 1.4,
+        wheelMultiplier: 1.15,
+        touchMultiplier: 1.5,
         // Kill carried-over scroll momentum when a navigation link is clicked.
         stopInertiaOnNavigate: true,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

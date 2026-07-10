@@ -65,8 +65,8 @@ export default function Header() {
           open
             ? "border-transparent bg-ink"
             : scrolled
-              ? "border-b border-line-soft bg-bone/80 backdrop-blur-xl"
-              : "border-b border-line-soft bg-bone/85 backdrop-blur-xl lg:border-transparent lg:bg-transparent lg:backdrop-blur-none",
+              ? "border-b border-line-soft bg-bone/80 backdrop-blur-md"
+              : "border-b border-line-soft bg-bone/85 backdrop-blur-md lg:border-transparent lg:bg-transparent lg:backdrop-blur-none",
         )}
       >
         <div

@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Tree-shake framer-motion's barrel so each page ships only the motion
+  // primitives it uses — smaller JS, faster hydration/render across the site.
+  experimental: {
+    optimizePackageImports: ["framer-motion"],
+  },
+
   images: {
     formats: ["image/avif", "image/webp"],
     qualities: [75, 80],

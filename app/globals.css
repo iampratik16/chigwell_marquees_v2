@@ -347,10 +347,14 @@
   position: fixed;
   inset: 0;
   z-index: 60;
-  opacity: 0.045;
-  mix-blend-mode: multiply;
+  /* ponytail: dropped `mix-blend-mode: multiply` — a fixed blend layer forces a
+     full-viewport re-blend on every Lenis frame (the main scroll-jank source).
+     A plain low-opacity overlay composites for free. Nudged opacity up to keep
+     the grain visible without the blend. */
+  opacity: 0.06;
   background-image: url("/textures/grain.svg");
   background-size: 200px 200px;
+  transform: translateZ(0);
 }
 
 /* ───────────────────────── Reduced motion ───────────────────────── */

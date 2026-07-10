@@ -45,7 +45,7 @@ export default function RevealText({
         {line.split(" ").map((word, wi, arr) => (
           <Fragment key={wi}>
             <motion.span
-              className="inline-block will-change-transform"
+              className="inline-block"
               variants={
                 reduced
                   ? undefined
