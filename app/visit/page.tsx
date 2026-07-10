@@ -6,6 +6,7 @@ import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
 import AnimatedLink from "@/components/ui/AnimatedLink";
 import EnquiryForm from "@/components/site/EnquiryForm";
+import GoogleReviewsSection from "@/components/site/GoogleReviewsSection";
 import Journey from "@/components/sections/home/Journey";
 import { SITE, whatsappLink } from "@/lib/site";
 import WhatsAppGlyph from "@/components/ui/WhatsAppGlyph";
@@ -112,6 +113,8 @@ export default function VisitPage() {
           </div>
         </div>
       </Section>
+
+      <GoogleReviewsSection />
 
       {/* Travel & location — relocated from the homepage */}
       <Journey />
