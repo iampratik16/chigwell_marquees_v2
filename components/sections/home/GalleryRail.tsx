@@ -156,7 +156,6 @@ export default function GalleryRail() {
         <div className="mt-8 flex items-center justify-between">
           <p className="text-sm uppercase tracking-[0.16em] text-ink/55" aria-live="polite">
             {String(page + 1).padStart(2, "0")}
-            <span className="text-ink/30"> / {String(pages).padStart(2, "0")}</span>
           </p>
           <div className="flex items-center gap-3">
             <Arrow dir={-1} disabled={atStart} />
