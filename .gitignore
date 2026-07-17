@@ -24,3 +24,6 @@ yarn-error.log*
 
 # QA / debug screenshots (generated during development)
 shots/
+
+# Vercel CLI link metadata
+.vercel
