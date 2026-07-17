@@ -41,6 +41,7 @@ function FieldError({ id, message }: { id: string; message?: string }) {
 export default function EnquiryForm() {
   const [sent, setSent] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [failed, setFailed] = useState(false);
   const [errors, setErrors] = useState<ContactErrors>({});
 
   const clearError = (key: keyof ContactErrors) =>
@@ -65,7 +66,9 @@ export default function EnquiryForm() {
       return;
     }
 
-    const payload: EnquiryPayload = {
+    const payload: EnquiryPayload & { company?: string } = {
+      // Honeypot — empty for real users; a filled value marks a bot.
+      company: ((data.get("company") as string) ?? "") || undefined,
       occasion: ((data.get("occasion") as string) ?? "").trim(),
       fullName,
       email,
@@ -78,10 +81,13 @@ export default function EnquiryForm() {
     };
 
     setErrors({});
+    setFailed(false);
     setBusy(true);
     try {
       await submitEnquiry(payload);
       setSent(true);
+    } catch {
+      setFailed(true);
     } finally {
       setBusy(false);
     }
@@ -115,6 +121,12 @@ export default function EnquiryForm() {
             transition={{ duration: 0.4 }}
             className="grid grid-cols-1 gap-x-8 gap-y-7 sm:grid-cols-2"
           >
+            {/* Honeypot: hidden from people and screen readers; bots fill it. */}
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="company">Company</label>
+              <input id="company" name="company" tabIndex={-1} autoComplete="off" />
+            </div>
+
             {/* 1 · Tell us about your occasion — moved to the top */}
             <div className="sm:col-span-2">
               <Label htmlFor="occasion">Tell us about your occasion</Label>
@@ -264,6 +276,13 @@ export default function EnquiryForm() {
               >
                 {busy ? "Sending…" : "Send enquiry"}
               </button>
+              {failed && (
+                <p role="alert" className="mt-4 text-sm text-[#a23b2d]">
+                  Sorry — we couldn&apos;t send your enquiry just now. Please try
+                  again, or call us on{" "}
+                  <a className="underline" href="tel:02031960159">020 3196 0159</a>.
+                </p>
+              )}
             </div>
           </motion.form>
         )}

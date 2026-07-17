@@ -1,9 +1,9 @@
 /**
  * Enquiry contract — the single source of truth for the enquiry payload shape.
  *
- * NOTE: this build has no backend. `submitEnquiry` simulates a send. To go live,
- * wire it to a route handler / email service and forward this exact payload —
- * the email/notification template should include every field below.
+ * `submitEnquiry` POSTs this payload to /api/enquiry, which appends it to the
+ * Google Sheet via an Apps Script web app. Any new field added here should also
+ * be added to the sheet's columns and the Apps Script's appendRow.
  */
 
 export const VENUE_INTEREST_OPTIONS = [
@@ -58,13 +58,16 @@ export function validateContact(v: {
 }
 
 /**
- * Submit an enquiry. Replace the body with a POST to your route handler /
- * email service; keep the `EnquiryPayload` shape as the contract.
+ * Submit an enquiry to /api/enquiry, which records it in the Google Sheet.
+ * Throws on failure so the form can tell the user rather than fake a success.
  */
-export async function submitEnquiry(payload: EnquiryPayload): Promise<void> {
-  // TODO: POST payload to /api/enquiry (or an email service such as Resend).
-  if (typeof console !== "undefined") {
-    console.info("[enquiry] payload ready to send:", payload);
-  }
-  await new Promise((resolve) => setTimeout(resolve, 700));
+export async function submitEnquiry(
+  payload: EnquiryPayload & { company?: string },
+): Promise<void> {
+  const res = await fetch("/api/enquiry", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) throw new Error(`enquiry failed: ${res.status}`);
 }
