@@ -76,7 +76,7 @@ export default function Header() {
             textColor,
           )}
         >
-          <Logo src={darkBg ? "/logo-footer.png" : "/logo.png"} />
+          <Logo src={darkBg ? "/logo-footer.png" : "/logo.png"} priority />
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">

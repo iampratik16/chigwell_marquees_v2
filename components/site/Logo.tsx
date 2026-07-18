@@ -9,6 +9,7 @@ export default function Logo({
   onClick,
   invert = false,
   src = "/logo.png",
+  priority = false,
 }: {
   className?: string;
   /** Override the image height (a single Tailwind height utility). */
@@ -17,6 +18,8 @@ export default function Logo({
   invert?: boolean;
   /** Override the logo asset (e.g. a white-text variant for dark sections). */
   src?: string;
+  /** Eager-load the asset — pass only for above-the-fold placements (header). */
+  priority?: boolean;
 }) {
   return (
     <Link
@@ -30,7 +33,7 @@ export default function Logo({
         alt="The Chigwell Marquees"
         width={630}
         height={156}
-        priority
+        priority={priority}
         sizes="(max-width: 640px) 150px, (max-width: 1024px) 200px, 240px"
         className={cn(
           "w-auto transition-[filter] duration-500",

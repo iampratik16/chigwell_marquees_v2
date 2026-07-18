@@ -23,7 +23,6 @@ export default function IntroStatement() {
               media={ESTATE}
               ratio="16 / 10"
               sizes="(max-width: 768px) 100vw, 58vw"
-              priority
               interactive
               cursorLabel="The estate"
             />

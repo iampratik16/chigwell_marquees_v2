@@ -13,6 +13,30 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 2678400, // 31 days
   },
 
+  // Vercel serves /public assets with `max-age=0, must-revalidate`, so every
+  // repeat visit re-downloaded ~3MB of media. Media filenames are versioned in
+  // practice (suffixed variants: garden-waterfall-10f etc.) — when replacing a
+  // file, RENAME it; never overwrite in place, or visitors keep the old copy
+  // for up to a year.
+  async headers() {
+    return [
+      {
+        source: "/media/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
+      {
+        // Brand assets change rarely but are overwritten in place — cache a
+        // day, serve stale while revalidating.
+        source: "/:file(logo.png|logo-footer.png|cursor-crown.png)",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" },
+        ],
+      },
+    ];
+  },
+
   // trailingSlash defaults to `false`: the new site's canonical URLs are
   // slash-less (matching every canonical tag + sitemap entry). A request to a
   // legacy "/path/" is first 308-normalised to "/path", which then matches the

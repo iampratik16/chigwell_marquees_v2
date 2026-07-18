@@ -21,12 +21,12 @@ export default function Template({ children }: { children: React.ReactNode }) {
         className="pointer-events-none fixed inset-0 z-[70] origin-bottom bg-ink"
         initial={{ scaleY: reduced ? 0 : 1 }}
         animate={{ scaleY: 0 }}
-        transition={{ duration: reduced ? 0 : 0.8, ease: EASE_LUXE }}
+        transition={{ duration: reduced ? 0 : 0.45, ease: EASE_LUXE }}
       />
       <motion.div
         initial={{ opacity: reduced ? 1 : 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: reduced ? 0 : 0.6, ease: EASE_LUXE, delay: reduced ? 0 : 0.25 }}
+        transition={{ duration: reduced ? 0 : 0.4, ease: EASE_LUXE, delay: reduced ? 0 : 0.1 }}
       >
         {children}
       </motion.div>
