@@ -24,3 +24,10 @@ yarn-error.log*
 
 # QA / debug screenshots (generated during development)
 shots/
+.vercel
+
+# WP-export source material — local reference only, never deploy/publish
+_sources/
+
+# Playwright MCP session artifacts
+.playwright-mcp/

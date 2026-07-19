@@ -9,7 +9,9 @@ const nextConfig: NextConfig = {
 
   images: {
     formats: ["image/avif", "image/webp"],
-    qualities: [75, 80],
+    // 65 exists for full-bleed atmospheric backgrounds that sit behind scrims
+    // (TwoSpaces crossfade panels) — compression artifacts are invisible there.
+    qualities: [65, 75, 80],
     minimumCacheTTL: 2678400, // 31 days
   },
 
