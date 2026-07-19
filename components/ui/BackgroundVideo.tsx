@@ -16,9 +16,9 @@ type Props = {
 
 /**
  * Full-bleed background clip. The poster underlay paints first; the clip
- * itself stays out of the critical path: `preload="metadata"` plus play() only
- * after window `load` (or immediately if the page is already loaded), so the
- * multi-MB download never competes with fonts, JS, or the LCP image.
+ * itself stays out of the critical path: `preload="none"` means zero video
+ * bytes move until we call play() after window `load`, which also guarantees
+ * the small-screen src swap below lands before any fetch starts.
  * We call play() ourselves since the autoPlay attribute alone is unreliable on
  * mobile Safari (it leaves a tap-to-play button).
  */
@@ -29,6 +29,13 @@ export default function BackgroundVideo({ src, className }: Props) {
     const v = ref.current;
     if (!v) return;
     v.muted = true; // required for autoplay on iOS/Safari
+
+    // ponytail: convention over config — every clip ships a "<name>-sm.mp4"
+    // sibling (see lib/media.real.ts). Setting the element's src directly
+    // overrides the <source> child before any bytes are fetched.
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      v.src = src.replace(/\.mp4$/, "-sm.mp4");
+    }
 
     const play = () => {
       const p = v.play();
@@ -59,7 +66,7 @@ export default function BackgroundVideo({ src, className }: Props) {
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="none"
       className={`absolute inset-0 h-full w-full object-cover ${className ?? ""}`}
       aria-hidden
     >
