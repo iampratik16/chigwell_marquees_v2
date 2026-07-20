@@ -25,7 +25,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         {/* Poster image base — always covers the hero, robust on every browser. */}
         <div className="absolute inset-0">
-          <Image src={POSTER.hero} alt={hero.alt} fill priority sizes="100vw" className="object-cover" />
+          <Image src={POSTER.hero} alt={hero.alt} fill priority sizes="(min-width: 1920px) 1920px, 100vw" className="object-cover" />
         </div>
         {playVideo && <BackgroundVideo src={VIDEO.hero} poster={POSTER.hero} className="object-cover" />}
         {/* Cinematic grading */}
