@@ -180,6 +180,21 @@ image.
 
 > **Measured:** all photos served as AVIF; a phone pulls the ~640px cut, not 1200px.
 
+**Watch the ceiling, not just the floor.** A full-bleed image with `sizes="100vw"`
+lets a 4K monitor request a 3840px file — often a poster behind a scrim or video that
+never needs that detail. Cap it:
+
+```jsx
+// ❌ a 4K display downloads the ~640KB w=3840 cut for a background poster.
+<Image src={poster} fill sizes="100vw" />
+
+// ✅ cap the ceiling; nothing above 1920px is ever selected.
+<Image src={poster} fill sizes="(min-width: 1920px) 1920px, 100vw" />
+```
+
+> **Measured:** every hero site-wide was over-fetching at 4K until capped — found by
+> per-page load measurement, invisible in the markup.
+
 ### Rule 3.2 — Compress video properly, and give phones a smaller cut
 
 A muted background clip needs a fraction of a watchable video's bitrate.

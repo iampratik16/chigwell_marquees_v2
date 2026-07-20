@@ -17,6 +17,19 @@ local production build (`next start`), not by assumption.
 - Image format confirmed by requesting with an `Accept: image/avif` header and
   reading the returned `Content-Type`.
 - Video weights measured from the files on disk, mapped to the page that serves them.
+- **Per-page cold-load measurement:** for each route, the eager images the browser
+  would actually download were resolved from `srcset` + `sizes` at phone / laptop /
+  4K viewports and their real byte sizes summed. This is what caught the 4K hero
+  over-fetch below — invisible in the raw markup.
+
+### A finding this level of testing caught
+
+Markup inspection said every page was clean. Per-page **load** measurement found that
+every full-bleed hero offered a `w=3840` (4K) `srcset` candidate, so a large desktop
+downloaded a ~640KB poster for an image sitting behind a scrim and video. Fixed by
+capping `sizes` at 1920px in `PageHero.tsx` + `Hero.tsx` (commit on this branch). 4K
+displays now pull the ~360KB 1920 cut; laptops and phones were already correct.
+**Lesson recorded: inspect the markup AND measure the load — they catch different bugs.**
 
 Re-run the checks in the "Reproduce" section at the bottom before each release.
 
@@ -32,7 +45,7 @@ Re-run the checks in the "Reproduce" section at the bottom before each release.
 | 2.1 | Only hero eager, rest lazy | ✅ | **All 16 routes: exactly 3 eager images** (see table below) |
 | 2.2 | Heavy media deferred | ✅ | `BackgroundVideo.tsx` — `preload="none"`, `play()` after `load` |
 | 2.3 | No asset loaded twice | ✅ | Poster attribute removed; `<Image>` underlay is the poster |
-| 3.1 | Modern formats, sized per device | ✅ | `_next/image` returns `image/avif`; every `<img>` has `sizes` |
+| 3.1 | Modern formats, sized per device | ✅ | `_next/image` returns `image/avif`; every `<img>` has `sizes`; hero `srcset` capped at 1920px (was over-fetching 4K — now fixed) |
 | 3.2 | Video compressed + phone variant | ✅ | All clips H.264 CRF 27–28, audio stripped, `-sm` variant per clip |
 | 3.3 | Static media cached immutable | ✅ | `/media/*` → `max-age=31536000, immutable` (verified live) |
 | 3.4 | Rename to replace cached files | ✅ | Videos suffixed `-v2` / `-v3`; no in-place overwrites |
