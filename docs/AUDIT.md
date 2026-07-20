@@ -22,6 +22,30 @@ local production build (`next start`), not by assumption.
   4K viewports and their real byte sizes summed. This is what caught the 4K hero
   over-fetch below — invisible in the raw markup.
 
+### A bug this audit originally MISSED (and how)
+
+An earlier revision of this branch deleted 107 "unreferenced" media files and this
+document claimed they were "verified both directions." **That claim was false and the
+deletion broke images across the homepage, gallery, occasions and venues pages.**
+
+The scan grepped source for the string `media/`. But `lib/media.ts` references images
+as *bare filenames* — `img("chigwell-marquees-large-marquee.jpg")` — and `img()` adds
+the `/media/` prefix at runtime. The grep never matched those lines, so 97
+`GALLERY_FILES` entries and 27 `img()` call sites pointed at deleted files.
+
+Nothing caught it: `img()` throws only when the *registry* entry is missing, and the
+registry still listed every deleted file, so it returned a `src` pointing at nothing —
+no build error, no CI failure. The per-page audit counted `<img>` tags in the markup,
+which render fine regardless; it never requested the image URLs.
+
+**The deletion has been reverted** (all files restored; `_sources` untracking and the
+`quality={65}` change were kept). Repo-size cleanup, if revisited, must use a scan that
+resolves `img()` calls and `GALLERY_FILES` — not a string grep — and must be proven by
+requesting the URLs.
+
+**Two lessons, now baked into the checks below:** resolve references the way the code
+does, and *request the asset*, don't just count the tag.
+
 ### A finding this level of testing caught
 
 Markup inspection said every page was clean. Per-page **load** measurement found that
@@ -51,7 +75,7 @@ Re-run the checks in the "Reproduce" section at the bottom before each release.
 | 3.4 | Rename to replace cached files | ✅ | Videos suffixed `-v2` / `-v3`; no in-place overwrites |
 | 4.1 | Tested cold + throttled + mobile | ✅ | PSI + WebPageTest run on live URL (see `PERF_CHANGES.md`) |
 | 4.2 | Field data + real-moment mark | ✅ | Speed Insights installed; `splash:dismissed` mark emitted |
-| 4.3 | Lean repo | ✅ | 78MB unreferenced media + `_sources` removed / gitignored |
+| 4.3 | Lean repo | ⚠️ partial | `_sources` (63MB) untracked + scratch dirs gitignored. **Media deletion was reverted** — see below |
 
 ---
 
