@@ -8,10 +8,10 @@ export const VIDEO = {
   // when adding or replacing a clip.
   hero: "/media/video/hero-v2.mp4",
   aboutHero: "/media/video/about-hero-v2.mp4", // About Us / the-estate page hero
-  megaHero: "/media/video/mega-hero-v2.mp4", // The Mega Marquee page hero
+  megaHero: "/media/video/mega-hero-v3.mp4", // -v3: CRF28 re-encode (SSIM 0.98)
   weddingHero: "/media/video/wedding-hero-v2.mp4", // The Weddings page hero
-  mega: "/media/video/scene-mega-v2.mp4",
-  mini: "/media/video/scene-mini-v2.mp4",
+  mega: "/media/video/scene-mega-v3.mp4", // -v3: trimmed 21s->9s loop (halves size, no re-encode)
+  mini: "/media/video/scene-mini-v3.mp4", // -v3: trimmed 15s->9s loop
   wedding: "/media/video/scene-wedding-v2.mp4", // aerial estate (estate hero)
   weddings: "/media/video/weddings-v2.mp4", // garden gazebo couple (weddings hero)
   secretGarden: "/media/video/secret-garden-v2.mp4", // the garden (secret-garden hero)
