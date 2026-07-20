@@ -15,10 +15,18 @@ type Props = {
 };
 
 /**
- * Full-bleed background clip. The poster underlay paints first; the clip
- * itself stays out of the critical path: `preload="none"` means zero video
- * bytes move until we call play() after window `load`, which also guarantees
- * the small-screen src swap below lands before any fetch starts.
+ * Full-bleed background clip. The poster underlay paints first; the clip stays
+ * off the critical path — it ships with `preload="none"` so zero bytes (not even
+ * metadata) move at parse time. After window `load`, the effect upgrades preload
+ * to "metadata" and calls play().
+ *
+ * Why the upgrade matters: Safari/WebKit is unreliable at starting a video from
+ * a cold `preload="none"` via a scripted play() — it can sit on the poster
+ * forever, and our loadeddata/canplay fallbacks can't rescue it because those
+ * events never fire without a load. Flipping to "metadata" lets canplay fire, so
+ * the fallback works and desktop Safari keeps its motion — all still gated behind
+ * `load`, so nothing hits the critical path.
+ *
  * We call play() ourselves since the autoPlay attribute alone is unreliable on
  * mobile Safari (it leaves a tap-to-play button).
  */
@@ -43,6 +51,12 @@ export default function BackgroundVideo({ src, className }: Props) {
     };
 
     const start = () => {
+      // Now that the page has loaded, allow the browser to fetch metadata.
+      // The element ships with preload="none" so nothing loads at parse time;
+      // upgrading to "metadata" here lets Safari's canplay event fire (its
+      // scripted-play from a cold "none" is unreliable) without ever touching
+      // the critical path.
+      v.preload = "metadata";
       play();
       v.addEventListener("loadeddata", play);
       v.addEventListener("canplay", play);
@@ -58,8 +72,9 @@ export default function BackgroundVideo({ src, className }: Props) {
     };
   }, [src]);
 
-  // No autoPlay attribute: it would override preload="metadata" and start the
-  // download at parse time. The effect above calls play() after load.
+  // No autoPlay attribute, and preload="none" at parse time: together they keep
+  // ALL video bytes (even metadata) off the critical path. The effect above,
+  // after window load, upgrades preload to "metadata" and calls play().
   return (
     <video
       ref={ref}
