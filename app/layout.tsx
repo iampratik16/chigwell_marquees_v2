@@ -3,6 +3,7 @@ import { gambetta, switzer } from "./fonts";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import Loader from "@/components/site/Loader";
 import Grain from "@/components/effects/Grain";
@@ -74,6 +75,9 @@ export default function RootLayout({
             <FloatingActions />
           </LightboxProvider>
         </SmoothScroll>
+        {/* Real-user Core Web Vitals -> Vercel dashboard. No-op until Speed
+            Insights is enabled on the Vercel project. */}
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -44,7 +44,9 @@ export default function PageHero({ eyebrow, title, titleClassName, intro, media,
       <div className="absolute inset-0">
         {/* Poster image base — always covers the hero, robust on every browser (incl. iOS Safari). */}
         <div className={reduced ? "absolute inset-0" : "ken-burns absolute inset-0"}>
-          <Image src={posterSrc} alt={media.alt} fill priority sizes="100vw" className="object-cover" />
+          {/* Full-bleed, but capped at 1920px: the poster sits behind a scrim (and
+              often video), so 4K srcset candidates are wasted bytes. */}
+          <Image src={posterSrc} alt={media.alt} fill priority sizes="(min-width: 1920px) 1920px, 100vw" className="object-cover" />
         </div>
         {/* Cinematic clip, layered on top once it can play. */}
         {playVideo && <BackgroundVideo src={video!} poster={posterSrc} className="object-cover" />}

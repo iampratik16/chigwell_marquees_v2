@@ -27,4 +27,12 @@ shots/
 
 # Vercel CLI link metadata
 .vercel
+
+# Never commit local secrets
 .env*
+
+# WP-export source material — local reference only, never deploy/publish
+_sources/
+
+# Playwright MCP session artifacts
+.playwright-mcp/

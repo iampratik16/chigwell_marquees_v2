@@ -2,15 +2,19 @@ import type { Media } from "./media.gen";
 
 /** Real venue videos supplied from the business's Instagram. */
 export const VIDEO = {
-  hero: "/media/video/hero.mp4",
-  aboutHero: "/media/video/about-hero.mp4", // About Us / the-estate page hero
-  megaHero: "/media/video/mega-hero.mp4", // The Mega Marquee page hero
-  weddingHero: "/media/video/wedding-hero.mp4", // The Weddings page hero
-  mega: "/media/video/scene-mega.mp4",
-  mini: "/media/video/scene-mini.mp4",
-  wedding: "/media/video/scene-wedding.mp4", // aerial estate (estate hero)
-  weddings: "/media/video/weddings.mp4", // garden gazebo couple (weddings hero)
-  secretGarden: "/media/video/secret-garden.mp4", // the garden (secret-garden hero)
+  // -v2 = CRF-27 re-encodes (media/* is served immutable, so replacements get
+  // a new name). Every clip also has a small-screen sibling "<name>-sm.mp4"
+  // that BackgroundVideo swaps in on narrow viewports — keep the pair in sync
+  // when adding or replacing a clip.
+  hero: "/media/video/hero-v2.mp4",
+  aboutHero: "/media/video/about-hero-v2.mp4", // About Us / the-estate page hero
+  megaHero: "/media/video/mega-hero-v3.mp4", // -v3: CRF28 re-encode (SSIM 0.98)
+  weddingHero: "/media/video/wedding-hero-v2.mp4", // The Weddings page hero
+  mega: "/media/video/scene-mega-v3.mp4", // -v3: trimmed 21s->9s loop (halves size, no re-encode)
+  mini: "/media/video/scene-mini-v3.mp4", // -v3: trimmed 15s->9s loop
+  wedding: "/media/video/scene-wedding-v2.mp4", // aerial estate (estate hero)
+  weddings: "/media/video/weddings-v2.mp4", // garden gazebo couple (weddings hero)
+  secretGarden: "/media/video/secret-garden-v2.mp4", // the garden (secret-garden hero)
 } as const;
 
 /**

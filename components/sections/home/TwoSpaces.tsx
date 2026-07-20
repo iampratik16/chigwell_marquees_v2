@@ -165,7 +165,7 @@ export default function TwoSpaces() {
                 src={s.media.src}
                 alt={s.media.alt}
                 fill
-                priority={i === 0}
+                quality={65}
                 sizes="100vw"
                 className={cn(
                   "object-cover",
