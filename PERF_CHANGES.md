@@ -94,10 +94,14 @@ fade-in instead. The honest "when did the user see the site" number is the
 
 ## Commit 4 — `7787da9` "repo hygiene + image compression"
 
-- Deleted 107 files (14.8MB) from `public/media` that no code references —
-  leftovers from the WordPress import. Verified both directions: nothing
-  referenced is missing, nothing remaining is unreferenced (except the
-  `-sm.mp4` files, referenced by naming convention).
+- ~~Deleted 107 files (14.8MB) from `public/media`~~ **— REVERTED.** The scan
+  behind this was wrong: it grepped for the string `media/`, but `lib/media.ts`
+  references files as bare names via `img("file.jpg")`, so 97 `GALLERY_FILES`
+  entries and 27 `img()` call sites pointed at deleted files. Nothing failed at
+  build time (the registry still listed them), so it would have shipped broken
+  images to production. All files restored. See `docs/AUDIT.md` for the full
+  write-up. Deleting unreferenced media has **zero visitor benefit** anyway —
+  visitors never download files no page references; it only shrinks the repo.
 - `_sources/` (63MB of WP-export material) untracked and gitignored — it was
   being pushed to GitHub and uploaded on every deploy for nothing.
 - `.playwright-mcp/` (test artifacts) gitignored.

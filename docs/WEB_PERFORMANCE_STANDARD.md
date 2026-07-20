@@ -288,10 +288,22 @@ performance.mark("content-visible");
 
 Media the CDN serves belongs in the repo. Raw source exports, dead imports, and scratch
 files do not — they bloat every clone and every deploy for zero user benefit. Audit
-references **before** deleting, both directions (nothing referenced is missing; nothing
-remaining is unreferenced).
+references **before** deleting — and resolve them **the way the code does**, not with a
+string grep. A helper like `img("photo.jpg")` that builds the path at runtime is
+invisible to a search for `/media/`. Then prove it by **requesting the URLs**, because
+a missing file usually fails silently: the tag still renders, the build still passes,
+and you only find out in production.
 
-> **Measured:** removed 78MB of unreferenced media + source dumps from the tracked repo.
+```
+# ❌ WHAT NOT TO DO — grep for the path prefix, then delete what doesn't match.
+grep -r "/media/" src/   # misses img("photo.jpg"), registry lists, srcset builders
+
+# ✅ DO THIS — resolve every reference form, then fetch each asset and check the status.
+```
+
+> **Measured:** this exact mistake deleted 107 files that 97 gallery entries and 27
+> `img()` calls still used — no build error, no CI failure, just broken images. Reverted.
+> Untracking raw source exports (63MB) was the safe part and was kept.
 
 ---
 
