@@ -27,3 +27,4 @@ shots/
 
 # Vercel CLI link metadata
 .vercel
+.env*
