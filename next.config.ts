@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
     // 65 exists for full-bleed atmospheric backgrounds that sit behind scrims
     // (TwoSpaces crossfade panels) — compression artifacts are invisible there.
     qualities: [65, 75, 80],
+    // Cap at 2048: nothing on this site needs 4K, and the 3840 candidate made the
+    // gallery lightbox slow to optimize/download on first open (large originals).
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     minimumCacheTTL: 2678400, // 31 days
   },
 

@@ -206,11 +206,22 @@ export default function MasonryGallery({ items }: { items: GalleryItem[] }) {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="relative h-[80vh] w-[92vw] max-w-[1600px]">
+                {/* Low-res blurred backdrop: loads near-instantly (~15KB) so the
+                    frame is never black while the full image optimizes. */}
+                <Image
+                  src={current.src}
+                  alt=""
+                  aria-hidden
+                  fill
+                  sizes="24vw"
+                  quality={65}
+                  className="rounded-lg object-contain opacity-60 blur-xl"
+                />
                 <Image
                   src={current.src}
                   alt={current.alt}
                   fill
-                  sizes="92vw"
+                  sizes="(max-width: 1024px) 92vw, 1600px"
                   quality={80}
                   priority
                   className="rounded-lg object-contain shadow-2xl"
