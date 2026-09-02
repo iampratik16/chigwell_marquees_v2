@@ -2,13 +2,24 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { NAV, SITE } from "@/lib/site";
+import { SITE } from "@/lib/site";
 import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
 import GoldButton from "@/components/ui/GoldButton";
 import AnimatedLink from "@/components/ui/AnimatedLink";
 import SocialLinks from "@/components/site/SocialLinks";
 import Logo from "@/components/site/Logo";
+
+// Footer "Explore" links — deliberately separate from the header NAV so the
+// footer can label /the-estate as "Chigwell Hall & Grounds" without changing
+// the header's shorter "About Us".
+const EXPLORE_LINKS = [
+  { label: "Chigwell Hall & Grounds", href: "/the-estate" },
+  { label: "Venues", href: "/venues" },
+  { label: "Occasions", href: "/occasions" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Contact", href: "/visit" },
+];
 
 export default function Footer() {
   const year = 2026;
@@ -22,12 +33,12 @@ export default function Footer() {
       <div className="container-luxe border-b border-bone/12 py-16 md:py-24">
         <div className="grid gap-12 md:grid-cols-12 md:items-end">
           <div className="md:col-span-8">
-            <span className="eyebrow text-champagne">Begin your enquiry</span>
+            <span className="eyebrow text-champagne">Begin Your Enquiry</span>
             <RevealText
               as="h2"
-              className="mt-6 display-xl text-bone"
+              className="mt-6 display-lg text-bone"
             >
-              {"Let's set the scene\nfor something unforgettable."}
+              {"Come and experience\nThe Chigwell Marquees\nfor yourself."}
             </RevealText>
           </div>
           <div className="md:col-span-4 md:flex md:justify-end">
@@ -68,7 +79,7 @@ export default function Footer() {
         <div className="md:col-span-3">
           <p className="eyebrow text-bone/45">Explore</p>
           <ul className="mt-5 flex flex-col gap-3">
-            {NAV.map((n) => (
+            {EXPLORE_LINKS.map((n) => (
               <li key={n.href}>
                 <Link
                   href={n.href}
@@ -89,7 +100,8 @@ export default function Footer() {
         <div className="md:col-span-2">
           <p className="eyebrow text-bone/45">Visit</p>
           <p className="mt-5 leading-relaxed text-bone/65">
-            40 minutes from Central London. Free parking on the estate.
+            Located in Chigwell, Essex, with extensive complimentary on-site
+            parking.
           </p>
           <AnimatedLink href="/visit" arrow className="mt-4 text-champagne" cursorLabel="Map">
             Find us
@@ -106,7 +118,6 @@ export default function Footer() {
           <Link href="/terms" className="transition-colors hover:text-bone">
             Terms
           </Link>
-          <span className="text-bone/30">Crafted with intention</span>
         </div>
       </div>
     </footer>

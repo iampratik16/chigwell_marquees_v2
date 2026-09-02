@@ -11,9 +11,9 @@ export default function IntroStatement() {
     <Section tone="bone" spacing="lg" className="overflow-hidden">
       <div className="container-luxe">
         <div className="max-w-5xl">
-          <Eyebrow>The estate</Eyebrow>
+          <Eyebrow>The Chigwell Marquees</Eyebrow>
           <RevealText as="h2" className="mt-8 display-lg">
-            {"A luxury marquee wedding venue in Essex, \na blank canvas of ivory and green set\nwithin forty-two acres of countryside."}
+            {"Weddings and events set within 42 acres\nof beautiful grounds at Chigwell Hall"}
           </RevealText>
         </div>
 
@@ -24,28 +24,29 @@ export default function IntroStatement() {
               ratio="16 / 10"
               sizes="(max-width: 768px) 100vw, 58vw"
               interactive
-              cursorLabel="The estate"
+              cursorLabel="The grounds"
             />
           </div>
 
           <div className="md:col-span-5 md:pb-4">
             <Reveal>
               <p className="lead text-ink/85">
-                Set within the stunning 42-acre grounds of Chigwell Hall, a Grade
-                II listed manor, we offer two unique and luxurious venues for your
-                special event.
+                Set within the grounds of the Grade II listed Chigwell Hall, The
+                Chigwell Marquees offers two distinctive venues for weddings,
+                celebrations and events.
               </p>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-6 text-mist">
-                From 30 to 1,000 guests — weddings, parties, civil ceremonies and
-                corporate events, all handled with ease by our experienced team.
+                From intimate occasions to spectacular celebrations for up to
+                1,000 guests, our venues provide the flexibility to create an
+                event entirely around you.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
               <div className="mt-8">
                 <AnimatedLink href="/the-estate" arrow cursorLabel="Discover">
-                  Discover the estate
+                  Discover Chigwell Hall &amp; Grounds
                 </AnimatedLink>
               </div>
             </Reveal>

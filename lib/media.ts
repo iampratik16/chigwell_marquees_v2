@@ -14,7 +14,7 @@ export const HERO: Media[] = [
 /* ── Estate / about ── */
 export const ESTATE: Media = {
   src: "/media/chigwell-hall-4e.jpg",
-  alt: "Inside the marquee on the Chigwell Hall estate",
+  alt: "Inside the marquee at Chigwell Hall",
   width: 1600,
   height: 1066,
 };
@@ -54,7 +54,7 @@ export const SPACE_GARDEN_ALT = img(
 /* ── Spaces page (supplied photography) ── */
 export const SPACES_HERO: Media = {
   src: "/media/spaces-hero-4bdnnvby.jpg",
-  alt: "Two marquees and a secret garden on the Chigwell Hall estate",
+  alt: "Two marquees and a secret garden at Chigwell Hall",
   width: 5472,
   height: 3648,
 };
@@ -72,7 +72,7 @@ export const SPACE_MEGA_INTRO: Media = {
 };
 export const GALLERY_HERO: Media = {
   src: "/media/gallery-hero-gimage.jpg",
-  alt: "Inside the marquee, dressed for a celebration on the Chigwell Hall estate",
+  alt: "Inside the marquee, dressed for a celebration at Chigwell Hall",
   width: 2048,
   height: 1366,
 };
@@ -120,15 +120,34 @@ export const OCC_CORPORATE = img(
 );
 export const OCC_CORPORATE_2 = img(
   "festival-venue-hire-essex-chigwell-marquees.jpg",
-  "A festival-scale event staged across the estate",
+  "A festival-scale event staged across the grounds",
 );
+// Curated corporate imagery (AI-generated, photorealistic marquee events).
+export const CORP_GALA: Media = {
+  src: "/media/corporate-gala-dinner-essex-chigwell-marquees.jpg",
+  alt: "A black-tie corporate gala dinner set beneath the marquee",
+  width: 1200,
+  height: 896,
+};
+export const CORP_CONFERENCE: Media = {
+  src: "/media/large-corporate-conference-essex-chigwell-marquees.jpg",
+  alt: "A large-scale corporate conference staged in the Mega Marquee",
+  width: 1200,
+  height: 896,
+};
+export const CORP_RECEPTION: Media = {
+  src: "/media/corporate-networking-reception-essex-chigwell-marquees.jpg",
+  alt: "Guests networking at a corporate drinks reception in the marquee",
+  width: 1200,
+  height: 896,
+};
 export const OCC_CIVIL = img(
   "civil-ceremoney-venue-essex-the-chigwell-marquees.jpg",
   "A civil ceremony set within the marquee",
 );
 export const OCC_FAITH = img(
   "asian-wedding-mandap-hire.jpg",
-  "A traditional mandap dressed for a faith-based wedding ceremony",
+  "A traditional mandap dressed for a cultural wedding ceremony",
 );
 export const OCC_FAITH_2 = img(
   "asian-weddings-indian-wedding-essex-the-chigwell-marquees.jpg",

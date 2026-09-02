@@ -10,23 +10,23 @@ type Showcase = { label: string; line: string; media: Media };
 const SHOWCASES: Showcase[] = [
   {
     label: "Mega Marquee",
-    line: "Grand celebrations for up to 1,000 guests.",
+    line: "Large-scale weddings and events for up to 1,000 guests.",
     media: { src: "/media/recent-mega.jpg", alt: "The Mega Marquee dressed for a celebration", width: 2000, height: 1334 },
   },
   {
     label: "Mini Marquee",
-    line: "Intimate weddings beneath a starlit ceiling.",
+    line: "Elegant celebrations for up to 200 guests beneath a starlit ceiling.",
     media: { src: "/media/recent-mini.jpg", alt: "The Mini Marquee set for an intimate wedding", width: 2000, height: 1500 },
   },
   {
-    label: "Chigwell House",
-    line: "A Grade II listed manor at the estate's heart.",
+    label: "Chigwell Hall",
+    line: "A Grade II listed building surrounded by 42 acres of grounds.",
     media: { src: "/media/recent-hall.jpg", alt: "Chigwell Hall, the Grade II listed manor", width: 2000, height: 1333 },
   },
   {
-    label: "Garden",
-    line: "Outdoor ceremonies in the Secret Garden.",
-    media: { src: "/media/garden-waterfall-10f.jpg", alt: "The Secret Garden waterfall and grounds of the estate", width: 2560, height: 1920 },
+    label: "Secret Garden",
+    line: "A beautiful outdoor setting for selected ceremonies, welcome drinks and photography.",
+    media: { src: "/media/garden-waterfall-10f.jpg", alt: "The Secret Garden waterfall and grounds of Chigwell Hall", width: 2560, height: 1920 },
   },
 ];
 
@@ -36,8 +36,8 @@ export default function CaseStudies() {
       <div className="container-luxe">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <Eyebrow>Recently at the estate</Eyebrow>
-            <h2 className="mt-6 display-md max-w-xl">A glimpse across the estate.</h2>
+            <Eyebrow>Recently at Chigwell Hall</Eyebrow>
+            <h2 className="mt-6 display-md max-w-xl">Discover Our Spaces</h2>
           </div>
         </div>
 

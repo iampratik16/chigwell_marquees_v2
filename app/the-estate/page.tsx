@@ -16,7 +16,7 @@ import { FAQS } from "@/lib/site";
 import { ESTATE_IMG, HALL_IMG, VIDEO, POSTER } from "@/lib/media.real";
 
 export const metadata = pageMeta({
-  title: "The Estate at Chigwell Hall, Essex | The Chigwell Marquees",
+  title: "Chigwell Hall & Grounds, Essex | The Chigwell Marquees",
   description:
     "Discover Chigwell Hall — a Grade II listed reception venue set in 42 acres of Essex countryside, home to two luxury marquees, the Secret Garden and our event FAQs.",
   path: "/the-estate",
@@ -28,9 +28,9 @@ export default function EstatePage() {
     <>
       <JsonLd data={faqPage(FAQS)} />
       <PageHero
-        eyebrow="The estate"
-        title={"Set within forty-two\nacres of Essex."}
-        intro="A Grade II listed manor, two luxurious marquees and a secret garden, gathered on one extraordinary estate."
+        eyebrow="Chigwell Hall & Grounds"
+        title={"42 acres in the\nheart of Chigwell."}
+        intro="A Grade II listed building, two distinctive marquee venues and the Secret Garden, all surrounded by 42 acres of beautiful grounds."
         media={ESTATE_IMG.hall}
         video={VIDEO.aboutHero}
         poster={POSTER.aboutHero}
@@ -40,15 +40,17 @@ export default function EstatePage() {
         <div className="container-luxe">
           <div className="grid items-center gap-10 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-6">
-              <Eyebrow>A surprising setting in the English countryside</Eyebrow>
+              <Eyebrow>The Setting</Eyebrow>
               <RevealText as="h2" className="mt-7 display-lg">
-                {"Escape the city, without\never really leaving it."}
+                {"Countryside surroundings,\nclose to London."}
               </RevealText>
               <Reveal>
                 <p className="lead mt-8 text-mist">
-                  Elope with your guests, family and colleagues to a spellbinding
-                  setting just 40 minutes from Central London and 15 from the
-                  M25, yet wrapped in 42 acres of open Essex countryside.
+                  The Chigwell Marquees is located within the beautiful grounds of
+                  Chigwell Hall in Chigwell, Essex. Surrounded by 42 acres, the
+                  venue offers a peaceful setting for weddings and events while
+                  remaining within easy reach of Central London and major
+                  transport links.
                 </p>
               </Reveal>
             </div>
@@ -68,11 +70,11 @@ export default function EstatePage() {
 
       <SplitFeature
         eyebrow="Chigwell Hall"
-        title={"A Grade II listed\nmanor at its heart."}
+        title={"A Grade II listed landmark\nat the heart of the grounds."}
         body={[
-          "Built in 1881, Chigwell Hall is a magnificent Grade II listed manor house set at the heart of our stunning 42-acre estate. Rich in Victorian character and timeless elegance, the hall provides a truly iconic backdrop for your special occasion.",
-          "Inside, the hall combines classic charm with contemporary comfort. The sweeping staircase provides a beautiful setting for photographs before leading into our elegant function suites.",
-          "Both the Banqueting Suite and Belmont Suite feature private bars and spacious dancefloors, creating the perfect setting for unforgettable celebrations that continue long into the evening.",
+          "Built in 1881, Chigwell Hall is a magnificent Grade II listed building surrounded by 42 acres of grounds.",
+          "Its traditional architecture, sweeping staircase and period features provide a beautiful backdrop for weddings, events and photography.",
+          "Inside, Chigwell Hall also offers elegant function spaces suitable for selected celebrations and occasions.",
         ]}
         media={ESTATE_IMG.hall}
         ratio="3 / 2"
@@ -84,7 +86,7 @@ export default function EstatePage() {
         <div className="container-luxe">
           <Eyebrow>Inside the Hall</Eyebrow>
           <RevealText as="h2" className="mt-5 display-md max-w-3xl">
-            Elegant function suites for every celebration.
+            Elegant function spaces for memorable occasions.
           </RevealText>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             <RevealImage media={HALL_IMG.room1} ratio="4 / 5" sizes="33vw" interactive cursorLabel="View" />
@@ -96,8 +98,11 @@ export default function EstatePage() {
 
       <SplitFeature
         eyebrow="The grounds"
-        title={"From the Hall to the\nDuck Pond."}
-        body="From the Grade II listed Hall to the Secret Garden and idyllic Duck Pond, tree-lined avenues and manicured lawns frame every photograph effortlessly."
+        title="42 acres to discover."
+        body={[
+          "From Chigwell Hall and the Secret Garden to landscaped lawns, mature trees, the waterfall and bridge, the surrounding grounds provide a beautiful setting for weddings and photography.",
+          "Access to different areas of the grounds is subject to your venue booking and agreed timings.",
+        ]}
         media={ESTATE_IMG.avenue}
         ratio="3 / 2"
         reverse
@@ -106,8 +111,11 @@ export default function EstatePage() {
 
       <SplitFeature
         eyebrow="The Secret Garden"
-        title="Vows beneath the open sky."
-        body="A secluded lawn with a classic fountain and floral gazebo, licensed for outdoor civil ceremonies — and yours exclusively with either marquee."
+        title="A beautiful outdoor setting."
+        body={[
+          "Located alongside the Mini Marquee, the Secret Garden features landscaped lawns, a central fountain and a secluded setting for selected ceremonies, welcome drinks, canapés and wedding photography.",
+          "Access and use depend on the arrangements included within your booking.",
+        ]}
         media={ESTATE_IMG.gazebo}
         ratio="3 / 2"
         link={{ href: "/venues/secret-garden", label: "Explore the Secret Garden" }}
@@ -128,17 +136,17 @@ export default function EstatePage() {
       </Section>
 
       <SpecList
-        eyebrow="Perfect for"
-        title="One estate, every kind of occasion."
+        eyebrow="Perfect For"
+        title="One location. Many occasions."
         features={[
-          "Weddings & reception venues",
-          "Civil unions & ceremonies",
-          "Milestone birthdays",
+          "Weddings & receptions",
+          "Civil ceremonies",
+          "Birthdays",
           "Bar & Bat Mitzvahs",
           "Anniversaries & engagements",
-          "Religious & faith-based events",
+          "Cultural & religious events",
           "Corporate events & conferences",
-          "Festivals & filming occasions",
+          "Private celebrations",
         ]}
         tone="botanical"
       />
@@ -159,8 +167,9 @@ export default function EstatePage() {
       </Section>
 
       <CtaBand
-        title="Come and feel the scale of it."
-        blurb="Forty-two acres are hard to put into words. Arrange a private viewing and walk the estate for yourself, free parking, and the A12, M11 & M1 all close by."
+        title="Experience the scale for yourself."
+        blurb="Forty-two acres and multiple event spaces are difficult to appreciate from photographs alone. Arrange a viewing and discover the venues and grounds in person."
+        secondary={{ href: "/gallery", label: "Explore The Chigwell Marquees" }}
         tone="ink"
       />
     </>

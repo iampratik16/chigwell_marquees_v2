@@ -7,10 +7,10 @@
  */
 
 export const VENUE_INTEREST_OPTIONS = [
-  // NOTE: the venue pages state the Mega range as 300–1,000; this form uses the
-  // client-specified 250–1,000 label. Flagged for alignment, not changed elsewhere.
-  "Mini Marquee (30–200 Guests)",
+  "Mini Marquee (Up to 200 Guests)",
   "Mega Marquee (250–1,000 Guests)",
+  "Chigwell Hall",
+  "Not Sure Yet",
 ] as const;
 
 export type VenueInterest = (typeof VENUE_INTEREST_OPTIONS)[number];
@@ -27,7 +27,7 @@ export type EnquiryPayload = {
   preferredMonth?: string;
   /** Optional approximate guest count. */
   guests?: string;
-  /** Zero, one or both venues. */
+  /** Any of the venue-interest options (zero or more). */
   venueInterest: VenueInterest[];
   consent: boolean;
 };

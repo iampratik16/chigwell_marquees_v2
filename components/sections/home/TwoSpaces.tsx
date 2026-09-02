@@ -12,7 +12,9 @@ type Area = {
   numeral: string;
   name: string;
   capacity: string;
+  /** One or two paragraphs, split on "\n". */
   copy: string;
+  cta: string;
   href: string;
   media: { src: string; alt: string };
 };
@@ -22,38 +24,39 @@ const AREAS: Area[] = [
   {
     numeral: "I",
     name: "The Mega Marquee",
-    capacity: "300 – 1,000 guests",
-    copy: "High ceilings, neutral interiors, a state-of-the-art sound & lighting rig and a fully functioning kitchen, a grand blank canvas for weddings, galas and corporate showcases.",
+    capacity: "250 – 1,000 guests",
+    copy: "An impressive large-capacity venue with high ceilings, neutral interiors and the flexibility to be completely transformed around your occasion.\nIdeal for large weddings, cultural celebrations, corporate events and private functions.",
+    cta: "Explore the Mega Marquee",
     href: "/venues/mega-marquee",
     media: { src: "/media/mega-photo-35.jpg", alt: "Inside the Mega Marquee dressed for a celebration" },
   },
   {
     numeral: "II",
     name: "The Mini Marquee",
-    capacity: "30 – 200 guests",
-    copy: "Floor-to-ceiling glass, built-in air conditioning and a white-canopy starlit ceiling that switches on as evening falls, opening onto the Secret Garden.",
+    capacity: "Up to 200 guests",
+    copy: "An elegant and more intimate venue featuring natural light, a signature white starlit ceiling and direct access to the Secret Garden.\nPerfect for weddings, engagements, anniversaries, birthdays and private celebrations.",
+    cta: "Explore the Mini Marquee",
     href: "/venues/mini-marquee",
     media: { src: "/media/mini-8c.jpg", alt: "The Mini Marquee, an intimate light-filled setting" },
   },
   {
     numeral: "III",
     name: "Chigwell Hall",
-    // TODO(client): confirm a capacity/subtitle line for Chigwell Hall.
-    capacity: "Grade II listed manor",
-    // TODO(client): confirm final description copy for Chigwell Hall.
-    copy: "A magnificent Grade II listed Victorian manor at the heart of the estate, home to elegant indoor function suites.",
+    capacity: "Grade II Listed",
+    copy: "A historic Grade II listed building at the heart of the grounds, offering elegant indoor function spaces and a beautiful backdrop for weddings and events.",
+    cta: "Explore Chigwell Hall",
     // TODO(client): confirm the canonical link target for Chigwell Hall (estate vs. suites).
     href: "/the-estate",
-    media: { src: "/media/chigwell-hall-4e.jpg", alt: "Chigwell Hall, the Grade II listed manor on the estate" },
+    media: { src: "/media/chigwell-hall-4e.jpg", alt: "Chigwell Hall, the Grade II listed manor" },
   },
   {
     numeral: "IV",
-    name: "Grounds & Gardens",
-    capacity: "up to 250",
-    copy: "A secluded lawn with a classic central fountain, the picturesque setting for outdoor civil ceremonies, welcome drinks and unforgettable photography.",
-    // TODO(client): confirm Grounds & Gardens maps to the Secret Garden route.
+    name: "Grounds & Secret Garden",
+    capacity: "42 acres of grounds",
+    copy: "Beautiful surroundings including landscaped lawns, the Secret Garden, waterfall, bridge and a variety of distinctive locations for wedding photography.",
+    cta: "Explore the Grounds",
     href: "/venues/secret-garden",
-    media: { src: "/media/garden-10b.jpg", alt: "The grounds and gardens of the Chigwell Hall estate" },
+    media: { src: "/media/garden-10b.jpg", alt: "The grounds and gardens of Chigwell Hall" },
   },
 ];
 
@@ -67,10 +70,14 @@ function SpaceContent({ s }: { s: Area }) {
         <p className="mt-3 font-display text-2xl italic text-champagne-soft">{s.capacity}</p>
       </div>
       <div className="md:col-span-5">
-        <p className="text-bone/80">{s.copy}</p>
+        {s.copy.split("\n").map((para, i) => (
+          <p key={i} className={cn("text-bone/80", i > 0 && "mt-1.5")}>
+            {para}
+          </p>
+        ))}
         <div className="mt-6">
           <AnimatedLink href={s.href} arrow cursorLabel="Discover" className="text-bone">
-            Step inside
+            {s.cta}
           </AnimatedLink>
         </div>
       </div>
@@ -191,7 +198,7 @@ export default function TwoSpaces() {
         <div
           ref={railRef}
           role="tablist"
-          aria-label="Estate settings"
+          aria-label="Venue settings"
           onKeyDown={onKeyDown}
           onScroll={updateEdges}
           style={{ maskImage: edgeMask, WebkitMaskImage: edgeMask }}

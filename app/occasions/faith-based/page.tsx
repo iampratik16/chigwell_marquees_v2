@@ -12,9 +12,9 @@ import Reveal from "@/components/ui/Reveal";
 import { OCC_FAITH, OCC_FAITH_2, OCC_CIVIL } from "@/lib/media";
 
 export const metadata = pageMeta({
-  title: "Asian Wedding & Faith-Based Venue, Essex | The Chigwell Marquees",
+  title: "Cultural & Religious Event Venue, Essex | The Chigwell Marquees",
   description:
-    "An Asian wedding and faith-based venue in Essex for Hindu, Sikh and Muslim weddings, Bar & Bat Mitzvahs and religious ceremonies of up to 1,000 guests.",
+    "A cultural and religious event venue in Essex for Asian weddings, Bar & Bat Mitzvahs and religious ceremonies of up to 1,000 guests, with flexible layouts and catering facilities.",
   path: "/occasions/faith-based",
   imageAlt: "An Asian wedding mandap staged in the Mega Marquee at The Chigwell Marquees",
 });
@@ -25,62 +25,68 @@ export default function FaithBasedPage() {
       <JsonLd
         data={[
           serviceNode({
-            name: "Faith-Based Event Venue Hire",
-            serviceType: "Faith-based event venue hire",
-            // TODO: confirm copy
+            name: "Cultural & Religious Event Venue Hire",
+            serviceType: "Cultural and religious event venue hire",
             description:
-              "A faith-based event venue in Essex for Asian weddings, mitzvahs and religious ceremonies, accommodated with cultural understanding, flexible catering and partitionable spaces.",
+              "A cultural and religious event venue in Essex for Asian weddings, Bar & Bat Mitzvahs and religious ceremonies, with flexible layouts, large capacities and dedicated catering preparation facilities.",
             path: "/occasions/faith-based",
           }),
           breadcrumbList([
             { name: "Home", path: "/" },
             { name: "Occasions", path: "/occasions" },
-            { name: "Faith-Based Events", path: "/occasions/faith-based" },
+            { name: "Cultural & Religious Events", path: "/occasions/faith-based" },
           ]),
         ]}
       />
       <PageHero
-        eyebrow="Occasions · Faith-Based"
-        // TODO: confirm copy
-        title={"Ceremonies of\nevery faith."}
-        // TODO: confirm copy
-        intro="Asian weddings, mitzvahs and religious ceremonies, hosted with care and cultural understanding."
+        eyebrow="Occasions · Cultural & Religious Events"
+        title="A setting for every tradition."
+        intro="Flexible spaces, large capacities and an experienced team for cultural celebrations and religious occasions."
         media={OCC_FAITH}
       />
 
       <Section tone="bone" spacing="lg">
         <div className="container-luxe">
           <div className="max-w-4xl">
-            <Eyebrow>Faith-based events in Essex</Eyebrow>
+            <Eyebrow>Cultural &amp; Religious Events</Eyebrow>
             <RevealText as="h2" className="mt-7 display-lg">
-              {"A venue that adapts to\nyour traditions."}
+              Flexible around what matters to you.
             </RevealText>
-            <Reveal>
-              {/* TODO: confirm copy */}
-              <p className="lead mt-8 max-w-2xl text-mist">
-                Partitionable spaces, your own caterer with no corkage, and an
-                experienced team who understand the customs your day requires.
-              </p>
-            </Reveal>
+            <div className="mt-8 max-w-2xl space-y-5">
+              <Reveal>
+                <p className="lead text-mist">
+                  Every celebration has its own traditions and requirements.
+                </p>
+              </Reveal>
+              <Reveal delay={0.08}>
+                <p className="text-mist">
+                  Our marquee venues provide flexible layouts, large capacities
+                  and dedicated catering preparation facilities, allowing your
+                  chosen suppliers to create an event around the needs of your
+                  family and celebration.
+                </p>
+              </Reveal>
+            </div>
           </div>
         </div>
       </Section>
 
       <SplitFeature
-        eyebrow="Asian weddings"
-        title="Mandaps, mehndis and grand receptions."
-        // TODO: confirm copy
-        body="Hindu, Sikh, Muslim and Bengali weddings staged across the estate, with long-standing caterers and décor partners who know our marquees."
+        eyebrow="Asian Weddings"
+        title="Space for every part of the celebration."
+        body={[
+          "The Chigwell Marquees has extensive experience hosting Asian weddings and pre-wedding events.",
+          "The Mega Marquee provides the scale for major wedding receptions of up to 1,000 guests, while the Mini Marquee offers a more intimate setting for weddings and pre-wedding celebrations.",
+        ]}
         media={OCC_FAITH_2}
         ratio="4 / 3"
-        link={{ href: "/occasions/weddings", label: "See all weddings" }}
+        link={{ href: "/occasions/weddings", label: "Explore Weddings" }}
       />
 
       <SplitFeature
-        eyebrow="Mitzvahs & milestones"
-        title="Bar & Bat Mitzvahs, beautifully held."
-        // TODO: confirm copy
-        body="A blank canvas dressed entirely to the occasion, with the run of the estate for families and guests of every age."
+        eyebrow="Mitzvahs"
+        title="Bar & Bat Mitzvahs."
+        body="Our flexible marquee venues provide a blank canvas for Bar and Bat Mitzvahs, with space for dining, entertainment and bespoke décor and production."
         media={OCC_CIVIL}
         ratio="4 / 3"
         reverse
@@ -88,35 +94,34 @@ export default function FaithBasedPage() {
       />
 
       <SplitFeature
-        eyebrow="Religious ceremonies & festivals"
-        title="Space to gather, and to observe."
-        // TODO: confirm copy
-        body="From intimate religious ceremonies to large cultural festivals, the estate scales to the moment with privacy and care."
+        eyebrow="Religious Ceremonies"
+        title="Space to gather and celebrate."
+        body="From religious ceremonies to important cultural occasions, our team will work with you to understand the requirements of your event and help identify the most suitable venue."
         media={OCC_FAITH}
         ratio="4 / 3"
       />
 
       <SpecList
-        eyebrow="Accommodated with care"
-        title="Everything your tradition needs."
-        // TODO: confirm copy
+        eyebrow="Facilities"
+        title="Everything you need for your celebration."
         features={[
-          "Partitionable spaces for men & women",
-          "Bring your own caterer · no corkage",
-          "Capacity from 30 to 1,000 guests",
-          "Mandap, stage & décor partners",
-          "Full air conditioning & heating",
-          "Built-in PA & cordless microphone",
-          "Exclusive use of the grounds",
-          "Ample free parking",
+          "Flexible spaces",
+          "Capacity up to 1,000 guests",
+          "Approved external caterers welcome",
+          "Catering preparation facilities",
+          "Air conditioning and heating",
+          "Built-in sound system",
+          "Cordless microphone",
+          "Extensive complimentary parking",
+          "Experienced operational team",
         ]}
         tone="ink"
       />
 
       <CtaBand
         title="Tell us about your celebration."
-        // TODO: confirm copy
-        blurb="Whatever the faith or tradition, our team will help you plan it with care."
+        blurb="Share your requirements, preferred date and guest numbers and our team will help you find the right venue."
+        secondary={{ href: "/gallery", label: "Explore the Gallery" }}
       />
     </>
   );

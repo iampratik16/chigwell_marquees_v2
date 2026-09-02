@@ -25,7 +25,7 @@ export default function Journey() {
         <div className="max-w-3xl">
           <Eyebrow tone="champagne">Visit</Eyebrow>
           <RevealText as="h2" className="mt-6 display-xl">
-            {"Forty minutes from London.\nA world away from it."}
+            {"Beautiful surroundings.\nChigwell location."}
           </RevealText>
         </div>
 
@@ -43,14 +43,7 @@ export default function Journey() {
 
           <div className="md:col-span-5 md:pb-2">
             <Reveal>
-              <address className="not-italic font-display text-2xl leading-snug">
-                {SITE.address.line1}
-                <br />
-                {SITE.address.city}, {SITE.address.county} {SITE.address.postcode}
-              </address>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <div className="mt-8 flex flex-wrap items-center gap-5">
+              <div className="flex flex-wrap items-center gap-5">
                 <GoldButton href="/visit#enquire" cursorLabel="Book">
                   Book a Viewing
                 </GoldButton>

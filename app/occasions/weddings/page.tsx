@@ -23,7 +23,7 @@ const MINI_WEDDING: Media = {
 export const metadata = pageMeta({
   title: "Wedding Venue in Essex | The Chigwell Marquees",
   description:
-    "An Essex wedding venue for civil ceremonies and receptions of 30 to 1,000 guests, with bespoke wedding packages, the Secret Garden and no corkage on dry hire.",
+    "An Essex wedding venue for civil ceremonies and receptions of 30 to 1,000 guests, with bespoke wedding packages, the Secret Garden and flexible dry hire.",
   path: "/occasions/weddings",
   imageAlt: "A wedding reception styled inside a marquee at The Chigwell Marquees",
 });
@@ -49,8 +49,8 @@ export default function WeddingsPage() {
       />
       <PageHero
         eyebrow="Occasions · Weddings"
-        title={"Weddings\nin Essex."}
-        intro="Choosing a venue for your special day is one of the most important decisions you'll make. Here, we offer two magnificent ones."
+        title="Weddings at The Chigwell Marquees."
+        intro="Two distinctive marquee venues, beautiful grounds and the flexibility to create a wedding that feels completely your own."
         media={REAL.ceremonyAisle}
         video={VIDEO.weddingHero}
         poster={POSTER.weddings}
@@ -59,53 +59,63 @@ export default function WeddingsPage() {
       <Section tone="bone" spacing="lg">
         <div className="container-luxe">
           <div className="max-w-4xl">
-            <Eyebrow>Your day, your way</Eyebrow>
+            <Eyebrow>Your Day. Your Way.</Eyebrow>
             <RevealText as="h2" className="mt-7 display-lg">
-              {"An idyllic countryside backdrop\nyour guests will talk about\nfor years to come."}
+              {"From intimate celebrations to weddings\nfor up to 1,000 guests."}
             </RevealText>
-            <Reveal>
-              <p className="lead mt-8 max-w-2xl text-mist">
-                Fully customisable, set against open Essex countryside, and only
-                five minutes by car from Chigwell Underground on the Central Line
-, with ample free parking for every guest.
-              </p>
-            </Reveal>
+            <div className="mt-8 max-w-2xl space-y-5">
+              <Reveal>
+                <p className="lead text-mist">
+                  Set within 42 acres of grounds at Chigwell Hall in Chigwell,
+                  Essex, The Chigwell Marquees provides two distinctive settings
+                  for weddings of all sizes, cultures and traditions.
+                </p>
+              </Reveal>
+              <Reveal delay={0.08}>
+                <p className="text-mist">
+                  With excellent access from London and extensive complimentary
+                  parking, everything is in place for you and your guests to
+                  celebrate in one remarkable location.
+                </p>
+              </Reveal>
+            </div>
           </div>
         </div>
       </Section>
 
       <SplitFeature
-        eyebrow="Intimate weddings"
-        title="The Mini Marquee."
+        eyebrow="Intimate Weddings"
+        title="The Mini Marquee"
         body={[
-          "Ideal for smaller weddings and seating up to 200, with an elegantly presented three-course meal followed by a celebration into the night, sound system, dance floor and bar.",
-          "A starlit ceiling, air conditioning and access to the Bridal Suite and Secret Garden, where you and your guests can gather on the lawn around the fountain.",
+          "Ideal for weddings of up to 200 guests, the Mini Marquee combines natural light, elegant neutral interiors and its signature white starlit ceiling.",
+          "Located beside the Secret Garden, it provides a beautiful setting for couples looking for a more intimate celebration.",
         ]}
         media={MINI_WEDDING}
         ratio="4 / 3"
-        link={{ href: "/venues/mini-marquee", label: "See the Mini Marquee" }}
+        link={{ href: "/venues/mini-marquee", label: "Explore the Mini Marquee" }}
       />
 
       <SplitFeature
-        eyebrow="Grand weddings"
-        title="The Mega Marquee."
+        eyebrow="Large Weddings"
+        title="The Mega Marquee"
         body={[
-          "Grand and extravagant, suited to wedding hire for 300 to 1,000 guests. Relax in sumptuous surroundings for your sit-down meal, then a party they'll never forget.",
-          "Partition off parts of the venue for a separate bar or lounge, with access to the Bridal Suite, the Secret Garden and a fully functional kitchen.",
+          "Designed for weddings on a larger scale, the Mega Marquee accommodates celebrations of up to 1,000 guests.",
+          "Its high ceilings, expansive layout and neutral interior provide the flexibility to create impressive décor, staging, dining and entertainment around your wedding.",
         ]}
         media={SPACE_MEGA}
         ratio="4 / 3"
         reverse
         tone="bone-dim"
-        link={{ href: "/venues/mega-marquee", label: "See the Mega Marquee" }}
+        link={{ href: "/venues/mega-marquee", label: "Explore the Mega Marquee" }}
       />
 
       <SplitFeature
-        eyebrow="A leading Asian wedding venue"
+        eyebrow="Asian & Cultural Weddings"
         title={"Designed around\nevery tradition."}
         body={[
-          "The Chigwell Marquees have quickly built a reputation as a leading Asian wedding venue for Essex and London, the Mega Marquee, in particular, for its scale and setting.",
-          "Both marquees adapt to any group: partition the space should you require men and women to be seated separately. Our long-established relationships with caterers, décor companies, DJs, photographers and videographers, all experienced in Asian weddings, help create the most joyous celebration.",
+          "The Chigwell Marquees has extensive experience hosting Asian weddings and celebrations from a wide range of cultures and traditions.",
+          "Our generous capacities, flexible layouts and catering preparation facilities make the venues particularly well suited to large family celebrations.",
+          "The Mega Marquee offers the scale required for major wedding receptions, while the Mini Marquee provides an elegant setting for smaller weddings and pre-wedding celebrations.",
         ]}
         media={OCC_ASIAN}
         ratio="4 / 3"
@@ -119,19 +129,21 @@ export default function WeddingsPage() {
       </Section>
 
       <SpecList
-        eyebrow="Good to know"
+        eyebrow="Good to Know"
         specs={[
-          { k: "Capacity", v: "30 – 1,000 guests across two marquees" },
-          { k: "Ceremonies", v: "Civil, in the garden or Mini Marquee" },
-          { k: "Catering", v: "Dry hire · bring your caterer · no corkage" },
-          { k: "Getting here", v: "5 min from Chigwell (Central Line)" },
+          { k: "Capacity", v: "Up to 1,000 guests across two marquee venues" },
+          { k: "Ceremonies", v: "Available within selected licensed areas" },
+          { k: "Catering", v: "Dry hire · approved external caterers welcome" },
+          { k: "Getting Here", v: "Approximately five minutes by car from Chigwell Underground Station" },
         ]}
         tone="ink"
       />
 
       <CtaBand
-        title="Making all your dreams a reality for your very special day."
-        blurb="Share your date and vision, our events team will take it from there."
+        title="Picture your wedding here."
+        blurb="Share your preferred date and guest numbers and arrange a private viewing with our events team."
+        primary={{ href: "/visit#enquire", label: "Book a Wedding Viewing" }}
+        secondary={{ href: "/gallery", label: "Explore Real Weddings" }}
       />
     </>
   );

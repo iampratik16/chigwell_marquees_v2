@@ -10,12 +10,12 @@ export default function NotFound() {
         <span className="eyebrow text-champagne">Lost in the grounds</span>
         <h1 className="mt-6 display-hero">404</h1>
         <p className="lead mx-auto mt-6 max-w-md text-bone/70">
-          This path doesn&apos;t lead anywhere on the estate, but the marquees
+          This path doesn&apos;t lead anywhere in the grounds, but the marquees
           are just this way.
         </p>
         <div className="mt-10 flex justify-center">
           <MagneticButton href="/" variant="light" cursorLabel="Home">
-            Back to the estate
+            Back to Chigwell Hall &amp; Grounds
           </MagneticButton>
         </div>
         <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm uppercase tracking-[0.14em] text-bone/50">

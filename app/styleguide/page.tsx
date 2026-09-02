@@ -32,7 +32,7 @@ export default function StyleguidePage() {
         <div className="container-luxe">
           <Eyebrow tone="champagne">Design system</Eyebrow>
           <RevealText as="h1" className="mt-6 display-xl">
-            {"The grammar of\nthe estate."}
+            {"The grammar of\nthe grounds."}
           </RevealText>
           <p className="lead mt-8 max-w-2xl text-mist">
             Tokens, type and motion primitives that compose every page,             refined, cinematic, editorial luxury with botanical warmth.

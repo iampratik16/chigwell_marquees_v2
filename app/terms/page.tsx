@@ -54,9 +54,9 @@ const sections: LegalSection[] = [
     ],
   },
   {
-    heading: "Catering, alcohol and corkage",
+    heading: "Catering and alcohol",
     body: [
-      "The Chigwell Marquees are dry-hire venues. You are free to appoint your own caterer and to supply your own drinks, and there is no corkage charge.",
+      "The Chigwell Marquees are dry-hire venues. You are free to appoint your own approved caterer and to supply your own drinks in line with your hire agreement.",
       "The supply of alcohol and any regulated entertainment must comply with the Venue’s premises licence and applicable licensing law.",
     ],
   },

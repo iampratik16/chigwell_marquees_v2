@@ -18,7 +18,7 @@ import {
 export const metadata = pageMeta({
   title: "Marquee Venues & Hire in Essex | The Chigwell Marquees",
   description:
-    "Explore our Essex marquee venues: the Mega Marquee (300–1,000), the Mini Marquee (30–200), the Secret Garden and indoor suites on the Chigwell Hall estate.",
+    "Explore our Essex marquee venues: the Mega Marquee (250–1,000), the Mini Marquee (30–200), the Secret Garden and indoor suites at Chigwell Hall.",
   path: "/venues",
   imageAlt: "The marquees and Secret Garden in the grounds of Chigwell Hall",
 });
@@ -33,24 +33,22 @@ export default function SpacesPage() {
         ])}
       />
       <PageHero
-        eyebrow="The spaces"
-        title={"Two marquees and\na secret garden."}
-        intro="One estate, three distinct settings, each a blank canvas, dressed entirely to your vision."
+        eyebrow="Our Venues"
+        title={"Two distinctive marquees.\nOne remarkable setting."}
+        intro="From intimate celebrations to spectacular events for up to 1,000 guests, discover our venues within the grounds of Chigwell Hall."
         media={SPACES_HERO}
       />
 
       <Section tone="bone" spacing="lg">
         <div className="container-luxe">
           <div className="max-w-4xl">
-            <Eyebrow>Choose your stage</Eyebrow>
+            <Eyebrow>Choose Your Venue</Eyebrow>
             <RevealText as="h2" className="mt-7 display-lg">
-              {"From a thousand guests beneath\nthe stars to thirty by candlelight."}
+              {"A space for every scale\nof celebration."}
             </RevealText>
             <Reveal>
               <p className="lead mt-8 max-w-2xl text-mist">
-                Whatever the scale, the same care applies, professional sound and
-                lighting, an experienced events team, and the freedom of a dry-hire
-                venue with no corkage.
+                {"Whether you're planning a wedding, engagement, birthday, cultural celebration or corporate event, our venues provide the flexibility to create an occasion around your requirements."}
               </p>
             </Reveal>
           </div>
@@ -58,11 +56,11 @@ export default function SpacesPage() {
       </Section>
 
       <SplitFeature
-        eyebrow="I · up to 1,000"
+        eyebrow="I · 250 – 1,000 guests"
         title="The Mega Marquee"
         body={[
-          "A striking structure with high ceilings and neutral interiors, built for grand weddings, galas and corporate showcases of 300 to 1,000 guests.",
-          "A state-of-the-art sound & lighting rig, a fully functioning kitchen with its own discreet entrance, and access to the Bridal Suite and Secret Garden.",
+          "An impressive large-capacity venue with high ceilings, neutral interiors and a generous open-plan layout.",
+          "Designed for large weddings, cultural celebrations, corporate events and major private functions.",
         ]}
         media={SPACE_MEGA_FEATURE}
         ratio="4 / 3"
@@ -70,11 +68,11 @@ export default function SpacesPage() {
       />
 
       <SplitFeature
-        eyebrow="II · 30 – 200"
+        eyebrow="II · Up to 200 guests"
         title="The Mini Marquee"
         body={[
-          "An intimate, light-filled space with a full side of glass, built-in air conditioning and a white-canopy starlit ceiling that switches on as evening falls.",
-          "A raised stage for your band or DJ, and a door straight onto the Secret Garden, now licensed for civil ceremonies.",
+          "An elegant and light-filled space featuring natural light, air conditioning and a signature white starlit ceiling.",
+          "Ideal for weddings, engagements, anniversaries, birthdays and more intimate celebrations.",
         ]}
         media={SPACE_MINI_FEATURE}
         ratio="4 / 3"
@@ -84,11 +82,11 @@ export default function SpacesPage() {
       />
 
       <SplitFeature
-        eyebrow="III · up to 250"
+        eyebrow="III · Outdoor Setting"
         title="The Secret Garden"
         body={[
-          "A secluded lawn with a classic central fountain, the picturesque setting for outdoor civil ceremonies, welcome drinks and unforgettable photography.",
-          "Given over to your exclusive use whenever you hire either marquee.",
+          "A secluded garden adjoining the Mini Marquee, featuring landscaped lawns and a central fountain.",
+          "Available for selected ceremonies, welcome drinks, canapés and photography depending on your booking.",
         ]}
         media={SPACE_GARDEN_FEATURE}
         ratio="4 / 3"
@@ -96,8 +94,9 @@ export default function SpacesPage() {
       />
 
       <CtaBand
-        title="Not sure which space is yours?"
-        blurb="Tell us about your occasion and our events team will walk you through both marquees, the garden and everything in between."
+        title="Not sure which venue is right for you?"
+        blurb="Tell us about your occasion, guest numbers and preferred date and our events team will help you find the most suitable space."
+        secondary={{ href: "/gallery", label: "Explore Our Gallery" }}
       />
     </>
   );

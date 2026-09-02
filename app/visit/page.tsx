@@ -24,9 +24,9 @@ export default function VisitPage() {
   return (
     <>
       <PageHero
-        eyebrow="Visit & enquire"
-        title={"Come and see\nthe estate."}
-        intro="Forty minutes from Central London, fifteen from the M25, and five from the Central Line, with six hundred free parking spaces waiting."
+        eyebrow="Visit & Enquire"
+        title="Come and experience The Chigwell Marquees."
+        intro="Explore our venues and the beautiful 42-acre grounds of Chigwell Hall and discover which setting is right for your occasion."
         media={ESTATE}
         size="md"
       />
@@ -35,14 +35,14 @@ export default function VisitPage() {
       <Section id="enquire" tone="bone-dim" spacing="lg">
         <div className="container-luxe grid gap-14 md:grid-cols-12">
           <div className="md:col-span-4">
-            <Eyebrow>Begin your enquiry</Eyebrow>
+            <Eyebrow>Begin Your Enquiry</Eyebrow>
             <RevealText as="h2" className="mt-6 display-md">
               {"Tell us about\nyour occasion."}
             </RevealText>
             <Reveal>
               <p className="mt-6 text-mist">
-                Share a few details and our events team will be in touch to talk
-                dates, spaces and everything that makes your day yours.
+                Share a few details and our events team will be in touch to
+                discuss availability, venue options and your plans.
               </p>
             </Reveal>
             <Reveal delay={0.1}>

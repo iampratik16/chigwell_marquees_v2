@@ -7,6 +7,7 @@ import GoogleReviews from "@/components/site/GoogleReviews";
 import { GALLERY_FILES, GALLERY_HERO, img } from "@/lib/media";
 import { REAL_GALLERY } from "@/lib/media.real";
 import { CONTENT_GALLERY } from "@/lib/gallery-content";
+import { NEW_GALLERY } from "@/lib/gallery-new";
 import { SOCIALS } from "@/lib/site";
 
 const INSTAGRAM =
@@ -36,8 +37,10 @@ function categorise(file: string): string {
 }
 
 export default function GalleryPage() {
-  // Lead with the premium Instagram photography, then the wider archive.
+  // Lead with the newest professional wedding photography, then the premium
+  // Instagram set, then the wider archive.
   const items: GalleryItem[] = [
+    ...NEW_GALLERY,
     ...CONTENT_GALLERY,
     ...REAL_GALLERY,
     ...GALLERY_FILES.map((file) => ({ ...img(file), cat: categorise(file) })),
@@ -48,7 +51,7 @@ export default function GalleryPage() {
       <PageHero
         eyebrow="Gallery"
         title={"Inside the\nmarquees."}
-        intro="Real weddings, parties and gatherings, drawn from years of celebrations on the estate."
+        intro="Real weddings, parties and gatherings, drawn from years of celebrations across the grounds."
         media={GALLERY_HERO}
         size="md"
         social
@@ -80,7 +83,7 @@ export default function GalleryPage() {
 
       <CtaBand
         title="Picture your own occasion here."
-        blurb="The best way to feel the estate is to stand in it. Arrange a private viewing."
+        blurb="The best way to experience Chigwell Hall & Grounds is to stand in it. Arrange a private viewing."
         secondary={null}
       />
     </>

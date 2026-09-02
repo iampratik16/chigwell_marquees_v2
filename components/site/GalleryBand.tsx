@@ -14,7 +14,7 @@ type Props = {
 export default function GalleryBand({
   href = "/gallery",
   label = "View the gallery",
-  title = "See more of the estate.",
+  title = "See more of Chigwell Hall & Grounds.",
   tone = "bone",
 }: Props) {
   return (

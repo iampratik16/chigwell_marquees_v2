@@ -214,7 +214,7 @@ export default function EnquiryForm() {
                 ))}
               </select>
               <p id="preferredMonth-help" className="mt-1.5 text-sm text-mist">
-                For clients who don&apos;t yet have a date.
+                For clients who don&apos;t yet have a confirmed date.
               </p>
             </div>
 
@@ -227,7 +227,7 @@ export default function EnquiryForm() {
             {/* Venue interest (optional, multi-select) */}
             <fieldset className="sm:col-span-2">
               <legend className="eyebrow mb-3 block text-mist">Venue interest</legend>
-              <div className="flex flex-col gap-2 sm:flex-row sm:gap-8">
+              <div className="grid gap-2 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-3">
                 {VENUE_INTEREST_OPTIONS.map((v) => (
                   <label
                     key={v}

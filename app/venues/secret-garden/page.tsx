@@ -32,7 +32,7 @@ export default function SecretGardenPage() {
         ])}
       />
       <PageHero
-        eyebrow="The spaces · III"
+        eyebrow="A beautiful outdoor setting."
         title={"The Secret\nGarden."}
         intro="A secluded lawn, a classic fountain, and the soft gold of a setting sun."
         media={SECRET_IMG.blossom}
@@ -46,34 +46,28 @@ export default function SecretGardenPage() {
             <div className="md:col-span-7">
               <Eyebrow>Secret Garden &amp; Waterfall</Eyebrow>
               <RevealText as="h2" className="mt-7 display-lg">
-                {"One of the most\nenchanting corners\nof the estate."}
+                {"A peaceful setting for memorable moments."}
               </RevealText>
               <div className="mt-8 space-y-6">
                 <Reveal>
                   <p className="lead text-mist">
-                    Hidden behind the Mini Marquee, our Secret Garden is one of
-                    the most enchanting areas within the Chigwell Hall estate — a
-                    peaceful and romantic setting designed for unforgettable
-                    moments.
+                    Located alongside the Mini Marquee, the Secret Garden
+                    features landscaped lawns, a central fountain and a secluded
+                    outdoor setting.
                   </p>
                 </Reveal>
                 <Reveal delay={0.08}>
                   <p className="text-mist">
-                    Surrounded by beautiful greenery and tranquil scenery, many
-                    couples choose to exchange their vows beneath our charming
-                    pergola whilst enjoying the calming sounds of the fountain and
-                    nature around them. The secluded atmosphere creates a truly
-                    magical backdrop for ceremonies, photographs and special
-                    memories.
+                    Depending on your booking, it can provide a beautiful
+                    backdrop for selected wedding ceremonies, welcome drinks,
+                    canapés and photography.
                   </p>
                 </Reveal>
                 <Reveal delay={0.16}>
                   <p className="text-mist">
-                    The Secret Garden is also the perfect space for welcoming
-                    guests with drinks, canapés and live music before the main
-                    celebration begins. Meanwhile, our stunning on-site waterfall
-                    and picturesque bridge provide exceptional photo opportunities
-                    for newlyweds and guests alike.
+                    The surrounding grounds also provide additional locations for
+                    couple photography, including the waterfall, bridge and
+                    selected areas around Chigwell Hall.
                   </p>
                 </Reveal>
               </div>
@@ -96,50 +90,56 @@ export default function SecretGardenPage() {
 
       <SplitFeature
         eyebrow="The grounds"
-        title={"A picturesque setting\nfor your finest moments."}
-        body="Exclusively yours with either marquee — tended lawns, a classic fountain, and the place for outdoor ceremonies and pictures you'll keep forever."
+        title="A beautiful backdrop for your photographs."
+        body={[
+          "The grounds surrounding Chigwell Hall provide a variety of distinctive locations for wedding photography, from landscaped lawns and mature trees to the historic architecture of Chigwell Hall.",
+          "Access to the grounds is subject to your booking and agreed photography timings.",
+        ]}
         media={ESTATE_IMG.gazebo}
         ratio="3 / 2"
       />
 
       <SplitFeature
-        eyebrow="In bloom"
-        title="Blossom-lined avenues, made for photographs."
-        body="In spring the grounds turn to blossom — pink avenues and quiet corners that frame every photograph effortlessly."
+        eyebrow="Throughout the Year"
+        title="A setting that changes with the seasons."
+        body="From spring blossom and summer greenery to the warm colours of autumn, the grounds provide an ever-changing backdrop for weddings and celebrations throughout the year."
         media={SECRET_IMG.blossom}
         ratio="4 / 5"
         reverse
         tone="bone-dim"
       />
 
-      <GalleryBand tone="bone-dim" />
+      <GalleryBand label="Explore the Gallery" tone="bone-dim" />
 
       <SpecList
-        eyebrow="The detail"
-        title="Yours, exclusively."
+        eyebrow="Secret Garden Details"
         specs={[
-          { k: "Capacity", v: "Up to 250 guests" },
-          { k: "Licensed", v: "Civil ceremonies permitted" },
-          { k: "Access", v: "Included with either marquee" },
-          { k: "At its heart", v: "Manicured lawns & a classic fountain" },
+          { k: "Access", v: "Subject to your venue booking" },
+          { k: "Setting", v: "Landscaped lawn and central fountain" },
+          {
+            k: "Available For",
+            v: "Selected civil ceremonies · welcome drinks · canapés · wedding photography",
+          },
         ]}
         tone="bone-dim"
       />
 
       <SpecList
-        eyebrow="Perfect for"
+        eyebrow="Perfect For"
         features={[
-          "Outdoor civil ceremonies",
-          "Drinks receptions",
-          "Romantic photography & videography",
-          "Quiet moments away from the party",
+          "Selected civil ceremonies",
+          "Welcome drinks",
+          "Canapés",
+          "Wedding photography",
+          "Couple videography",
+          "Quiet moments away from the main celebration",
         ]}
         tone="botanical"
       />
 
       <CtaBand
-        title="Say your vows beneath the open sky."
-        blurb="The Secret Garden flows straight into both marquees, ceremony, reception and celebration, all on one estate."
+        title="Discover the Secret Garden."
+        blurb="Experience the Secret Garden and surrounding grounds as part of your venue viewing."
         tone="ink"
         secondary={null}
       />

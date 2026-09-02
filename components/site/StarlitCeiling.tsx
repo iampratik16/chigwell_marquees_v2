@@ -18,8 +18,7 @@ export default function StarlitCeiling() {
           </RevealText>
           <Reveal delay={0.1}>
             <p className="lead mx-auto mt-8 max-w-xl text-bone/75">
-              A white-canopy starlit ceiling threaded with fibre-optic light,               it switches on as the evening falls, turning the Mini Marquee into
-              something quietly magical above your guests.
+              {"The Mini Marquee's signature white starlit ceiling creates a warm and elegant atmosphere and provides a beautiful feature above your celebration."}
             </p>
           </Reveal>
         </div>

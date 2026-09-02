@@ -33,10 +33,10 @@ export default function MegaMarqueePage() {
         ])}
       />
       <PageHero
-        eyebrow="The spaces · I"
+        eyebrow="Celebrations on a grand scale"
         title="The Mega Marquee."
         titleClassName="whitespace-nowrap"
-        intro="Up to one thousand guests beneath a single, grand and unbroken canvas."
+        intro="An impressive large-capacity venue in Chigwell, Essex, accommodating weddings and events of up to 1,000 guests."
         media={SPACE_MEGA_HERO}
         video={VIDEO.megaHero}
       />
@@ -47,33 +47,30 @@ export default function MegaMarqueePage() {
             <div className="md:col-span-7">
               <Eyebrow>One of the largest marquee venues in Essex</Eyebrow>
               <RevealText as="h2" className="mt-7 display-lg">
-                {"Spectacular celebrations\non a grand scale."}
+                {"Space to create\nsomething exceptional."}
               </RevealText>
               <div className="mt-8 space-y-6">
                 <Reveal>
                   <p className="lead text-mist">
-                    The Mega Marquee at The Chigwell Marquees is one of the
-                    largest and most impressive luxury marquee venues in Essex
-                    and Greater London. Designed for spectacular celebrations on
-                    a grand scale, this extraordinary space can accommodate
-                    between 250 and 1,000 guests in complete comfort and style.
+                    The Mega Marquee is the largest venue at The Chigwell
+                    Marquees and is designed for weddings and events on a
+                    significant scale.
                   </p>
                 </Reveal>
                 <Reveal delay={0.08}>
                   <p className="text-mist">
-                    Set within the breathtaking grounds of Chigwell Hall, the
-                    Mega Marquee offers a sophisticated and versatile setting
-                    that can be transformed entirely around your vision — from
-                    lavish wedding receptions and cultural celebrations to
-                    high-end corporate events.
+                    Set within the 42-acre grounds of Chigwell Hall, its
+                    expansive interior provides a highly versatile blank canvas
+                    that can be transformed around your décor, production and
+                    entertainment.
                   </p>
                 </Reveal>
                 <Reveal delay={0.16}>
                   <p className="text-mist">
-                    With its elegant interiors, expansive layout and exceptional
-                    facilities, the Mega Marquee provides the perfect setting to
-                    create an unforgettable experience for both you and your
-                    guests.
+                    From spectacular wedding receptions and cultural
+                    celebrations to corporate events and major private
+                    functions, the Mega Marquee offers the scale and flexibility
+                    required for a truly impressive occasion.
                   </p>
                 </Reveal>
               </div>
@@ -95,46 +92,48 @@ export default function MegaMarqueePage() {
       </Section>
 
       <SplitFeature
-        eyebrow="The grand canvas"
-        title={"A structure that turns\nheads, for all the\nright reasons."}
-        body="A striking blank canvas for 250 to 1,000 guests — neutral carpet, soaring ceilings and the height to realise any décor vision."
+        eyebrow="The Space"
+        title="Designed around your vision."
+        body="The neutral interior, high ceilings and generous open-plan layout allow your chosen décor and production teams to completely transform the venue around your occasion."
         media={REAL.tallCenterpiece}
         ratio="4 / 5"
       />
 
-      <GalleryBand />
+      <GalleryBand label="Explore the Gallery" />
 
       <SpecList
         eyebrow="Features"
-        title="Everything, built in."
+        title="Everything you need for a large-scale event."
         features={[
           "Capacity for 250 – 1,000 guests",
-          "Complimentary on-site parking with attendants",
-          "State-of-the-art sound & lighting system",
-          "Cordless microphone included",
+          "Complimentary on-site guest parking",
+          "Built-in sound system",
+          "Cordless microphone",
           "Private bridal suite",
-          "Limewash Chiavari chairs",
-          "Fully equipped catering preparation area",
-          "Restroom facilities with attendants",
-          "Access to the grounds for photography",
+          "Seating and tables available",
+          "Catering preparation facilities",
+          "Purpose-built restroom facilities",
+          "Air conditioning and heating",
+          "Event security and operational staff",
+          "Selected access to the grounds for wedding photography",
         ]}
         tone="bone"
       />
 
       <SpecList
-        eyebrow="The detail"
+        eyebrow="Venue Details"
         specs={[
-          { k: "Seated capacity", v: "Up to 1,000, 100 tables of 10" },
-          { k: "Licensed", v: "Until midnight, 7 days a week" },
-          { k: "Hire", v: "Dry hire · 12 hours standard" },
-          { k: "Interior", v: "Neutral carpet · high ceilings" },
+          { k: "Capacity", v: "250 – 1,000 guests" },
+          { k: "Venue Type", v: "Dry hire" },
+          { k: "Interior", v: "Neutral interior · high ceilings · flexible layout" },
+          { k: "Ideal For", v: "Large weddings · receptions · cultural celebrations · corporate events · private functions" },
         ]}
         tone="ink"
       />
 
       <CtaBand
-        title="Imagine your thousand guests here."
-        blurb="From sit-down banquets to awards nights and product launches, the Mega Marquee scales to the moment."
+        title="Experience the Mega Marquee for yourself."
+        blurb="Arrange a viewing and discover the scale and flexibility of our largest venue."
         secondary={null}
       />
     </>

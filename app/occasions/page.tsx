@@ -13,7 +13,7 @@ import { OCC_WEDDINGS, OCC_CELEBRATIONS, OCC_CORPORATE_CARD, OCC_FAITH } from "@
 export const metadata = pageMeta({
   title: "Event & Party Venue Hire in Essex | The Chigwell Marquees",
   description:
-    "From weddings and corporate events to faith-based celebrations and milestone parties — discover every occasion you can host at The Chigwell Marquees, Essex.",
+    "From weddings and corporate events to cultural and religious celebrations and milestone parties — discover every occasion you can host at The Chigwell Marquees, Essex.",
   path: "/occasions",
   imageAlt: "Events and celebrations hosted at The Chigwell Marquees, Essex",
 });
@@ -29,71 +29,81 @@ export default function OccasionsPage() {
       />
       <PageHero
         eyebrow="Occasions"
-        title={"Held for every\nkind of gathering."}
-        intro="From the most personal of vows to the grandest of galas, the estate adapts to the moment."
+        title="Every reason to celebrate."
+        intro="Weddings are at the heart of what we do, but our venues provide a setting for occasions of every kind."
         media={OCC_WEDDINGS}
       />
 
       <Section tone="bone" spacing="lg">
         <div className="container-luxe">
           <div className="max-w-4xl">
-            <Eyebrow>One estate, many moments</Eyebrow>
+            <Eyebrow>One Location. Many Occasions.</Eyebrow>
             <RevealText as="h2" className="mt-7 display-lg">
-              {"A blank canvas that becomes\nwhatever your day requires."}
+              A setting shaped around your event.
             </RevealText>
-            <Reveal>
-              <p className="lead mt-8 max-w-2xl text-mist">
-                A blank canvas for thirty guests or a thousand — dressed to any
-                theme, bring your own caterer, no corkage.
-              </p>
-            </Reveal>
+            <div className="mt-8 max-w-2xl space-y-5">
+              <Reveal>
+                <p className="lead text-mist">
+                  From intimate gatherings to celebrations for up to 1,000
+                  guests, The Chigwell Marquees provides flexible spaces for
+                  events of every style and scale.
+                </p>
+              </Reveal>
+              <Reveal delay={0.08}>
+                <p className="text-mist">
+                  Choose your venue and create your occasion around your chosen
+                  décor, entertainment, caterers and suppliers.
+                </p>
+              </Reveal>
+            </div>
           </div>
         </div>
       </Section>
 
       <SplitFeature
         eyebrow="01 · Weddings · Primary"
-        title="Weddings, of every tradition."
-        body="Garden ceremonies, civil vows and grand traditional weddings, for thirty guests or a thousand."
+        title="Weddings for every style and tradition."
+        body="From intimate celebrations to spectacular receptions for up to 1,000 guests, create a wedding day entirely your own."
         media={OCC_WEDDINGS}
         ratio="16 / 9"
-        link={{ href: "/occasions/weddings", label: "Explore weddings" }}
+        link={{ href: "/occasions/weddings", label: "Explore Weddings" }}
       />
 
       <SplitFeature
         eyebrow="02 · Corporate Events"
-        title="Corporate, at an incredible location."
-        body="Galas, conferences, product launches and the office Christmas party of the year — full PA, big screens, 42 acres."
+        title="A distinctive setting for business."
+        body="Conferences, award ceremonies, launches, company celebrations and large-scale corporate events within easy reach of London."
         media={OCC_CORPORATE_CARD}
         ratio="4 / 3"
         reverse
         tone="bone-dim"
-        link={{ href: "/occasions/corporate", label: "Explore corporate" }}
+        link={{ href: "/occasions/corporate", label: "Explore Corporate Events" }}
       />
 
       <SplitFeature
-        eyebrow="03 · Faith-Based Events"
-        title="Faith-based, hosted with care."
-        body="Asian weddings, mitzvahs and religious ceremonies, accommodated with cultural understanding and ease."
+        eyebrow="03 · Cultural & Religious Events"
+        title="Celebrations of every tradition."
+        body="Asian weddings, religious ceremonies, Bar & Bat Mitzvahs and cultural celebrations hosted within flexible venues."
         media={OCC_FAITH}
         ratio="4 / 3"
-        link={{ href: "/occasions/faith-based", label: "Explore faith-based events" }}
+        link={{ href: "/occasions/faith-based", label: "Explore Cultural & Religious Events" }}
       />
 
       <SplitFeature
         eyebrow="04 · Private Celebrations"
-        title="Celebrations worth gathering for."
-        body="Milestone birthdays, engagements and anniversaries, the room dressed entirely to the occasion."
+        title="Celebrate life's biggest moments."
+        body="Birthdays, engagements, anniversaries and important family occasions in a setting that can be tailored around you."
         media={OCC_CELEBRATIONS}
         ratio="4 / 3"
         reverse
         tone="bone-dim"
-        link={{ href: "/occasions/celebrations", label: "Explore private celebrations" }}
+        link={{ href: "/occasions/celebrations", label: "Explore Private Celebrations" }}
       />
 
       <CtaBand
         title="Tell us what you're planning."
-        blurb="Every occasion starts with a conversation. Ours begins whenever you're ready."
+        blurb="Share your occasion, preferred date and guest numbers and our team will help you find the right venue."
+        secondary={{ href: "/gallery", label: "Explore the Gallery" }}
       />
     </>
   );

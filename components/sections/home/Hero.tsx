@@ -11,7 +11,7 @@ import GoldButton from "@/components/ui/GoldButton";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 import { useMounted } from "@/lib/useMounted";
 
-const HEADLINE = ["Luxurious wedding", "venue in Essex"];
+const HEADLINE = ["A remarkable setting", "for unforgettable occasions."];
 
 export default function Hero() {
   const reduced = useReducedMotion();
@@ -40,10 +40,10 @@ export default function Hero() {
           transition={{ duration: 0.9, ease: EASE_LUXE, delay: 0.4 }}
           className="eyebrow mb-5 flex items-center gap-3 text-bone/80 before:block before:h-px before:w-10 before:bg-champagne/70 before:content-['']"
         >
-          Luxury marquee venue · Chigwell Hall Estate, Essex
+          Weddings &amp; Events · Chigwell, Essex
         </motion.span>
 
-        <h1 className="display-hero max-w-[14ch] font-display">
+        <h1 className="display-hero max-w-[20ch] font-display">
           {HEADLINE.map((line, i) => (
             <motion.span
               key={i}
@@ -68,7 +68,7 @@ export default function Hero() {
               Book a Viewing
             </GoldButton>
             <MagneticButton href="/venues" variant="ghost" cursorLabel="Explore">
-              Explore the spaces
+              Explore Our Venues
             </MagneticButton>
           </div>
         </motion.div>

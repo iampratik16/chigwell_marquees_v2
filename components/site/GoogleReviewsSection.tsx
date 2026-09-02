@@ -33,8 +33,12 @@ export default async function GoogleReviewsSection({
         <div className="mx-auto max-w-2xl text-center">
           <Eyebrow tone="champagne">Reviews</Eyebrow>
           <RevealText as="h2" className="mt-5 display-md">
-            Loved by the couples and families we host.
+            Loved by the couples, families and clients we host.
           </RevealText>
+          <p className="mt-4 text-mist">
+            Read genuine Google reviews from weddings, celebrations and events
+            held at The Chigwell Marquees.
+          </p>
           {rating != null && (
             <p className="mt-4 flex items-center justify-center gap-2 text-mist">
               <GoogleGlyph className="h-4 w-4 shrink-0" />
@@ -70,7 +74,7 @@ export default async function GoogleReviewsSection({
 
         <div className="mt-10 flex flex-col items-center gap-3">
           <GoldButton href={url} tone="onLight" cursorLabel="Reviews">
-            Read all on Google
+            Read Our Google Reviews
           </GoldButton>
           <p className="text-xs uppercase tracking-[0.16em] text-mist">
             Reviews sourced from Google

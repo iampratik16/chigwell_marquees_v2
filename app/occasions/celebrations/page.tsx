@@ -45,23 +45,23 @@ export default function CelebrationsPage() {
           breadcrumbList([
             { name: "Home", path: "/" },
             { name: "Occasions", path: "/occasions" },
-            { name: "Celebrations", path: "/occasions/celebrations" },
+            { name: "Private Celebrations", path: "/occasions/celebrations" },
           ]),
         ]}
       />
       <PageHero
-        eyebrow="Occasions · Celebrations"
-        title={"Every reason\nto gather."}
-        intro="Party venue hire in Essex for birthdays, engagements, anniversaries and milestones, the estate dressed entirely to the moment."
+        eyebrow="Occasions · Private Celebrations"
+        title="Every reason to celebrate."
+        intro="Birthdays, engagements, anniversaries and private occasions in one of Chigwell's most distinctive settings."
         media={CELEB_HERO}
       />
 
       <SplitFeature
         eyebrow="Milestone birthdays"
-        title="Parties at the scale of the moment."
+        title="Celebrate on your scale."
         body={[
-          "Our birthday party venue flexes from an intimate thirtieth to a thousand-guest spectacular, with a state-of-the-art sound system, dance floor and bar built in.",
-          "Bring your own caterer and theme, with no corkage and 42 acres to set the scene, from summer garden parties to a Christmas party venue in Essex.",
+          "From milestone birthdays with close family and friends to large-scale parties, choose a venue suited to your guest numbers and create the atmosphere entirely around your occasion.",
+          "The Mini Marquee provides an elegant setting for celebrations of up to 200 guests, while the Mega Marquee offers the scale for significantly larger events.",
         ]}
         media={CELEB_PARTY}
         ratio="4 / 3"
@@ -71,8 +71,8 @@ export default function CelebrationsPage() {
         eyebrow="Engagements & anniversaries"
         title="Mark the occasion in style."
         body={[
-          "A glamorous engagement party, a landmark anniversary, a pre-wedding gathering, set against the lawns and the fountain of the Secret Garden.",
-          "The Mini Marquee for something intimate; the Mega Marquee when the whole family is coming.",
+          "Celebrate an engagement, anniversary or important milestone within the beautiful surroundings of Chigwell Hall.",
+          "The Mini Marquee offers an intimate setting, while the Mega Marquee provides the space for larger family celebrations.",
         ]}
         media={CELEB_MINI}
         ratio="4 / 5"
@@ -82,11 +82,8 @@ export default function CelebrationsPage() {
 
       <SplitFeature
         eyebrow="Ceremonies & mitzvahs"
-        title={"Civil ceremonies,\nmitzvahs & more."}
-        body={[
-          "The Secret Garden and Belmont Suite are both licensed for civil ceremonies, and the Mini Marquee is licensed too, so the whole day can happen on one estate.",
-          "Bar & Bat Mitzvahs, christenings, baby showers and religious events are all warmly at home here.",
-        ]}
+        title="More reasons to gather."
+        body="The Chigwell Marquees can also host civil ceremonies, Bar & Bat Mitzvahs, christenings, baby showers, pre-wedding celebrations and other important family occasions."
         media={OCC_CIVIL}
         ratio="4 / 3"
       />
@@ -107,9 +104,10 @@ export default function CelebrationsPage() {
       />
 
       <CtaBand
-        title="What are we celebrating?"
-        blurb="Tell us the occasion and the date, we'll help you shape a night to remember."
+        title="What are you celebrating?"
+        blurb="Tell us your occasion, preferred date and guest numbers and we'll help you find the most suitable venue."
         tone="ink"
+        secondary={{ href: "/gallery", label: "Explore the Gallery" }}
       />
     </>
   );

@@ -16,21 +16,21 @@ const CARDS = [
     n: "01",
     label: "Weddings",
     tag: "Primary",
-    blurb: "Garden ceremonies, civil vows and grand traditional weddings.",
+    blurb: "From intimate celebrations to spectacular wedding receptions for up to 1,000 guests.",
     href: "/occasions/weddings",
     media: OCC_WEDDINGS_CARD,
   },
   {
     n: "02",
     label: "Corporate Events",
-    blurb: "Galas, conferences, product launches and Christmas parties.",
+    blurb: "Conferences, award ceremonies, launches, dinners and large-scale corporate occasions.",
     href: "/occasions/corporate",
     media: OCC_CORPORATE_CARD,
   },
   {
     n: "03",
-    label: "Faith-Based Events",
-    blurb: "Asian weddings, mitzvahs and religious ceremonies, hosted with care.",
+    label: "Cultural & Religious Events",
+    blurb: "Asian weddings, religious ceremonies, Bar & Bat Mitzvahs and cultural celebrations.",
     href: "/occasions/faith-based",
     media: OCC_FAITH,
   },
@@ -50,7 +50,7 @@ export default function OccasionsPreview() {
         <div className="max-w-2xl">
           <Eyebrow>Occasions</Eyebrow>
           <RevealText as="h2" className="mt-6 display-lg">
-            {"Held for every\nkind of gathering."}
+            {"A setting for\nevery occasion."}
           </RevealText>
         </div>
 

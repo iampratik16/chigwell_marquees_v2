@@ -35,7 +35,7 @@ export default function GoogleReviews({
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
           <Eyebrow tone="champagne">Reviews</Eyebrow>
           <RevealText as="h2" className="display-md">
-            Loved by the couples and families we host.
+            Loved by the couples, families and clients we host.
           </RevealText>
           <div className="text-lg tracking-[0.3em] text-champagne" aria-label="Rated five stars on Google">
             ★★★★★
@@ -46,11 +46,11 @@ export default function GoogleReviews({
           ) : (
             <>
               <p className="text-mist">
-                Read what our clients say on Google — real reviews from weddings,
-                celebrations and events across the estate.
+                Read genuine Google reviews from weddings, celebrations and
+                events held at The Chigwell Marquees.
               </p>
               <GoldButton href={reviewsUrl} cursorLabel="Reviews" tone="onLight">
-                Read our Google reviews
+                Read Our Google Reviews
               </GoldButton>
             </>
           )}

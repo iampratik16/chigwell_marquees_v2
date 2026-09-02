@@ -10,6 +10,7 @@ export const VIDEO = {
   aboutHero: "/media/video/about-hero-v2.mp4", // About Us / the-estate page hero
   megaHero: "/media/video/mega-hero-v3.mp4", // -v3: CRF28 re-encode (SSIM 0.98)
   weddingHero: "/media/video/wedding-hero-v2.mp4", // The Weddings page hero
+  corporateHero: "/media/video/corporate-hero-v2.mp4", // Corporate page hero (DJ set; native 16:9, 9s loop, audio stripped)
   mega: "/media/video/scene-mega-v3.mp4", // -v3: trimmed 21s->9s loop (halves size, no re-encode)
   mini: "/media/video/scene-mini-v3.mp4", // -v3: trimmed 15s->9s loop
   wedding: "/media/video/scene-wedding-v2.mp4", // aerial estate (estate hero)
@@ -25,6 +26,7 @@ export const VIDEO = {
 export const POSTER = {
   hero: "/media/video/hero-poster.jpg",
   aboutHero: "/media/video/about-hero-poster.jpg",
+  corporateHero: "/media/video/corporate-hero-poster.jpg",
   wedding: "/media/video/scene-wedding-poster.jpg",
   weddings: "/media/video/weddings-poster.jpg",
   secretGarden: "/media/video/secret-garden-poster.jpg",
@@ -51,9 +53,9 @@ export const REAL: Record<string, RealEntry> = {
   // Portrait celebrations / aisles (1080×1350)
   aisleBlossom: { src: "/media/ig-06.jpg", alt: "A wedding aisle lined with blossom trees beneath the marquee canopy", width: W_P, height: H_P, cat: "weddings" },
   reception1: { src: "/media/ig-07.jpg", alt: "A wedding reception beneath the white canopy ceiling", width: W_P, height: H_P, cat: "weddings" },
-  gardenParty: { src: "/media/ig-08.jpg", alt: "Guests gathered in the estate grounds during a summer celebration", width: W_P, height: H_P, cat: "celebrations" },
+  gardenParty: { src: "/media/ig-08.jpg", alt: "Guests gathered in the grounds of Chigwell Hall during a summer celebration", width: W_P, height: H_P, cat: "celebrations" },
   reception2: { src: "/media/ig-09.jpg", alt: "Tablescapes and florals inside the marquee", width: W_P, height: H_P, cat: "weddings" },
-  reception3: { src: "/media/ig-10.jpg", alt: "A celebration dressed in ivory and gold at the estate", width: W_P, height: H_P, cat: "weddings" },
+  reception3: { src: "/media/ig-10.jpg", alt: "A celebration dressed in ivory and gold at Chigwell Hall", width: W_P, height: H_P, cat: "weddings" },
   reception4: { src: "/media/ig-11.jpg", alt: "An elegant marquee celebration at The Chigwell Marquees", width: W_P, height: H_P, cat: "weddings" },
 
   // Portrait detail / ceremony (1080×1440)
@@ -68,14 +70,14 @@ export const REAL: Record<string, RealEntry> = {
 export const ESTATE_IMG = {
   hall: {
     src: "/media/estate-hall.jpg",
-    alt: "Chigwell Hall, the Grade II listed manor at the heart of the estate",
+    alt: "Chigwell Hall, the Grade II listed manor at the heart of the grounds",
     width: 1080,
     height: 720,
     cat: "estate",
   },
   avenue: {
     src: "/media/estate-avenue.jpg",
-    alt: "A couple on the tree-lined avenue through the estate grounds at golden hour",
+    alt: "A couple on the tree-lined avenue through the grounds of Chigwell Hall at golden hour",
     width: 1080,
     height: 725,
     cat: "estate",
@@ -183,7 +185,7 @@ export const SUITES_IMG = {
 export const SECRET_IMG = {
   blossom: {
     src: "/media/secret-2.jpg",
-    alt: "A blossom-lined avenue through the estate grounds in spring",
+    alt: "A blossom-lined avenue through the grounds of Chigwell Hall in spring",
     width: 1080,
     height: 1350,
     cat: "estate",
@@ -222,7 +224,7 @@ export const ASIAN_IMG = {
   },
   portrait: {
     src: "/media/asian-2.jpg",
-    alt: "An Asian wedding couple by the estate's iron gates",
+    alt: "An Asian wedding couple by Chigwell Hall's iron gates",
     width: 1080,
     height: 1440,
     cat: "asian",
@@ -236,7 +238,7 @@ export const ASIAN_IMG = {
   },
   pair2: {
     src: "/media/wedding-photo-120.jpg",
-    alt: "A wedding couple by the estate's iron gates",
+    alt: "A wedding couple by Chigwell Hall's iron gates",
     width: 4623,
     height: 6936,
     cat: "asian",
