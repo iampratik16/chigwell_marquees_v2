@@ -157,10 +157,12 @@ export const OCC_WEDDINGS_CARD = img(
   "small-civil-ceremony-venue-luxury-marquee-event-hire-essex-the-chigwell-marquees.jpg",
   "A wedding reception dressed beneath the marquee canopy",
 );
-export const OCC_CORPORATE_CARD = img(
-  "chigwell-marquees-corporate-events-04.jpg",
-  "A corporate event with full lighting and a dancefloor under the marquee",
-);
+export const OCC_CORPORATE_CARD: Media = {
+  src: "/media/corporate-evening-event-essex-chigwell-marquees.jpg",
+  alt: "Business professionals networking at a corporate evening event in the marquee",
+  width: 928,
+  height: 1152,
+};
 export const OCC_CELEBRATIONS_CARD = img(
   "birthday-party-venue-essex-chigwell-marquees.jpg",
   "A celebration dressed with balloons and a styled dessert table",
