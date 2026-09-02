@@ -9,7 +9,7 @@ import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
-import { OCC_FAITH, OCC_FAITH_2, OCC_CIVIL } from "@/lib/media";
+import { OCC_FAITH, OCC_FAITH_2, OCC_CIVIL, OCC_CULTURAL } from "@/lib/media";
 
 export const metadata = pageMeta({
   title: "Cultural & Religious Event Venue, Essex | The Chigwell Marquees",
@@ -42,7 +42,7 @@ export default function FaithBasedPage() {
         eyebrow="Occasions · Cultural & Religious Events"
         title="A setting for every tradition."
         intro="Flexible spaces, large capacities and an experienced team for cultural celebrations and religious occasions."
-        media={OCC_FAITH}
+        media={OCC_CULTURAL}
       />
 
       <Section tone="bone" spacing="lg">

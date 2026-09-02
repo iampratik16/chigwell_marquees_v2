@@ -149,6 +149,14 @@ export const OCC_FAITH = img(
   "asian-wedding-mandap-hire.jpg",
   "A traditional mandap dressed for a cultural wedding ceremony",
 );
+// Real venue photo: the marquee set up for a cultural/religious ceremony
+// (floral backdrop, gold throne, lectern and starlit ceiling).
+export const OCC_CULTURAL: Media = {
+  src: "/media/cultural-religious-ceremony-setup-chigwell-marquees.jpg",
+  alt: "The marquee set for a cultural and religious ceremony with a floral backdrop, gold throne and lectern",
+  width: 1920,
+  height: 1080,
+};
 export const OCC_FAITH_2 = img(
   "asian-weddings-indian-wedding-essex-the-chigwell-marquees.jpg",
   "A vibrant Asian wedding celebration in the Mega Marquee",

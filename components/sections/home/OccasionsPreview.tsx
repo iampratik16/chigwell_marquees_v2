@@ -7,7 +7,7 @@ import {
   OCC_WEDDINGS_CARD,
   OCC_CELEBRATIONS_CARD,
   OCC_CORPORATE_CARD,
-  OCC_FAITH,
+  OCC_CULTURAL,
 } from "@/lib/media";
 
 /** Four occasion pillars — Weddings leads as the primary market. */
@@ -32,7 +32,7 @@ const CARDS = [
     label: "Cultural & Religious Events",
     blurb: "Asian weddings, religious ceremonies, Bar & Bat Mitzvahs and cultural celebrations.",
     href: "/occasions/faith-based",
-    media: OCC_FAITH,
+    media: OCC_CULTURAL,
   },
   {
     n: "04",

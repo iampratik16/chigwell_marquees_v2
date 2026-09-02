@@ -8,7 +8,7 @@ import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
-import { OCC_WEDDINGS, OCC_CELEBRATIONS, OCC_CORPORATE_CARD, OCC_FAITH } from "@/lib/media";
+import { OCC_WEDDINGS, OCC_CELEBRATIONS, OCC_CORPORATE_CARD, OCC_CULTURAL } from "@/lib/media";
 
 export const metadata = pageMeta({
   title: "Event & Party Venue Hire in Essex | The Chigwell Marquees",
@@ -84,7 +84,7 @@ export default function OccasionsPage() {
         eyebrow="03 · Cultural & Religious Events"
         title="Celebrations of every tradition."
         body="Asian weddings, religious ceremonies, Bar & Bat Mitzvahs and cultural celebrations hosted within flexible venues."
-        media={OCC_FAITH}
+        media={OCC_CULTURAL}
         ratio="4 / 3"
         link={{ href: "/occasions/faith-based", label: "Explore Cultural & Religious Events" }}
       />
