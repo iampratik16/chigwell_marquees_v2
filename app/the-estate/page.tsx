@@ -2,8 +2,6 @@ import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/site/PageHero";
 import SplitFeature from "@/components/site/SplitFeature";
 import SpecList from "@/components/site/SpecList";
-import StatsBand from "@/components/sections/home/StatsBand";
-import CtaBand from "@/components/site/CtaBand";
 import JsonLd from "@/components/site/JsonLd";
 import Faqs from "@/components/site/Faqs";
 import Section from "@/components/ui/Section";
@@ -81,21 +79,6 @@ export default function EstatePage() {
         tone="bone-dim"
       />
 
-      {/* Inside the Hall — function suites */}
-      <Section tone="bone" spacing="md">
-        <div className="container-luxe">
-          <Eyebrow>Inside the Hall</Eyebrow>
-          <RevealText as="h2" className="mt-5 display-md max-w-3xl">
-            Elegant function spaces for memorable occasions.
-          </RevealText>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            <RevealImage media={HALL_IMG.room1} ratio="4 / 5" sizes="33vw" interactive cursorLabel="View" />
-            <RevealImage media={HALL_IMG.room2} ratio="4 / 5" sizes="33vw" interactive cursorLabel="View" delay={0.08} />
-            <RevealImage media={HALL_IMG.room3} ratio="4 / 5" sizes="33vw" interactive cursorLabel="View" delay={0.16} />
-          </div>
-        </div>
-      </Section>
-
       <SplitFeature
         eyebrow="The grounds"
         title="42 acres to discover."
@@ -108,32 +91,6 @@ export default function EstatePage() {
         reverse
         tone="bone-dim"
       />
-
-      <SplitFeature
-        eyebrow="The Secret Garden"
-        title="A beautiful outdoor setting."
-        body={[
-          "Located alongside the Mini Marquee, the Secret Garden features landscaped lawns, a central fountain and a secluded setting for selected ceremonies, welcome drinks, canapés and wedding photography.",
-          "Access and use depend on the arrangements included within your booking.",
-        ]}
-        media={ESTATE_IMG.gazebo}
-        ratio="3 / 2"
-        link={{ href: "/venues/secret-garden", label: "Explore the Secret Garden" }}
-      />
-
-      <StatsBand />
-
-      {/* Outdoor gallery strip */}
-      <Section tone="bone" spacing="md">
-        <div className="container-luxe">
-          <Eyebrow>Across the grounds</Eyebrow>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            <RevealImage media={ESTATE_IMG.avenue} ratio="4 / 5" sizes="33vw" interactive cursorLabel="View" />
-            <RevealImage media={ESTATE_IMG.gazebo} ratio="4 / 5" sizes="33vw" interactive cursorLabel="View" delay={0.08} />
-            <RevealImage media={ESTATE_IMG.hall} ratio="4 / 5" sizes="33vw" interactive cursorLabel="View" delay={0.16} />
-          </div>
-        </div>
-      </Section>
 
       <SpecList
         eyebrow="Perfect For"
@@ -148,7 +105,7 @@ export default function EstatePage() {
           "Corporate events & conferences",
           "Private celebrations",
         ]}
-        tone="botanical"
+        tone="navy"
       />
 
       {/* FAQs */}
@@ -165,13 +122,6 @@ export default function EstatePage() {
           </div>
         </div>
       </Section>
-
-      <CtaBand
-        title="Experience the scale for yourself."
-        blurb="Forty-two acres and multiple event spaces are difficult to appreciate from photographs alone. Arrange a viewing and discover the venues and grounds in person."
-        secondary={{ href: "/gallery", label: "Explore The Chigwell Marquees" }}
-        tone="ink"
-      />
     </>
   );
 }

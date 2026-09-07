@@ -5,7 +5,6 @@ import { breadcrumbList } from "@/lib/structured-data";
 import SplitFeature from "@/components/site/SplitFeature";
 import SpecList from "@/components/site/SpecList";
 import StarlitCeiling from "@/components/site/StarlitCeiling";
-import CtaBand from "@/components/site/CtaBand";
 import GalleryBand from "@/components/site/GalleryBand";
 import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
@@ -38,7 +37,7 @@ export default function MiniMarqueePage() {
         eyebrow="Elegant. Intimate. Versatile."
         title="The Mini Marquee."
         titleClassName="whitespace-nowrap"
-        intro="A beautiful setting for weddings and celebrations of up to 200 guests."
+        intro="A beautiful setting for weddings and celebrations of 30 to 200 guests."
         media={MINI_IMG.interior}
       />
 
@@ -60,7 +59,7 @@ export default function MiniMarqueePage() {
                 </Reveal>
                 <Reveal delay={0.08}>
                   <p className="text-mist">
-                    Accommodating up to 200 guests, the venue combines natural
+                    Accommodating 30 to 200 guests, the venue combines natural
                     light, neutral interiors and a beautiful white starlit
                     ceiling to create a sophisticated blank canvas for your
                     celebration.
@@ -153,7 +152,7 @@ export default function MiniMarqueePage() {
         eyebrow="Features"
         title="Everything you need for your celebration."
         features={[
-          "Capacity for up to 200 guests",
+          "Capacity for 30 – 200 guests",
           "Complimentary on-site parking",
           "White starlit ceiling",
           "Built-in sound system",
@@ -172,18 +171,12 @@ export default function MiniMarqueePage() {
       <SpecList
         eyebrow="Venue Details"
         specs={[
-          { k: "Capacity", v: "Up to 200 guests" },
+          { k: "Capacity", v: "30 – 200 guests" },
           { k: "Venue Type", v: "Dry hire" },
           { k: "Civil Ceremonies", v: "Available in selected licensed areas" },
           { k: "Ideal For", v: "Weddings · engagements · birthdays · anniversaries · cultural events · private celebrations" },
         ]}
         tone="ink"
-      />
-
-      <CtaBand
-        title="See the Mini Marquee for yourself."
-        blurb="Tell us your preferred date and guest numbers and arrange a private viewing with our events team."
-        secondary={null}
       />
     </>
   );

@@ -61,7 +61,7 @@ export default function CelebrationsPage() {
         title="Celebrate on your scale."
         body={[
           "From milestone birthdays with close family and friends to large-scale parties, choose a venue suited to your guest numbers and create the atmosphere entirely around your occasion.",
-          "The Mini Marquee provides an elegant setting for celebrations of up to 200 guests, while the Mega Marquee offers the scale for significantly larger events.",
+          "The Mini Marquee provides an elegant setting for celebrations of 30 to 200 guests, while the Mega Marquee offers the scale for significantly larger events.",
         ]}
         media={CELEB_PARTY}
         ratio="4 / 3"

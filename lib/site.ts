@@ -18,6 +18,9 @@ export const SITE = {
     display: "+44 7549 517417",
   },
   address: {
+    venue: "Chigwell Hall",
+    street: "159 High Road",
+    /** Combined form, kept for the footer, terms and schema.org. */
     line1: "Chigwell Hall, 159 High Road",
     city: "Chigwell",
     county: "Essex",
@@ -53,10 +56,10 @@ export const NAV: NavItem[] = [
     label: "Venues",
     href: "/venues",
     children: [
-      { label: "The Mega Marquee", href: "/venues/mega-marquee", blurb: "300 – 1,000 guests" },
+      { label: "The Mega Marquee", href: "/venues/mega-marquee", blurb: "200 – 1,000 guests" },
       { label: "The Mini Marquee", href: "/venues/mini-marquee", blurb: "30 – 200 · starlit ceiling" },
-      { label: "The Secret Garden", href: "/venues/secret-garden", blurb: "Outdoor ceremonies · up to 250" },
-      { label: "The Suites", href: "/venues/suites", blurb: "Banqueting & Belmont · indoor" },
+      { label: "The Secret Garden", href: "/venues/secret-garden", blurb: "With the Mini Marquee · up to 150" },
+      { label: "Chigwell Hall", href: "/venues/suites", blurb: "Banqueting & Belmont · indoor" },
     ],
   },
   {
@@ -97,7 +100,7 @@ export const FACTS = [
 export const FAQS = [
   {
     q: "What's the difference between the Mega and Mini Marquee?",
-    a: "The Mega Marquee is our larger venue, accommodating events from approximately 250 to 1,000 guests. The Mini Marquee provides a more intimate setting for events of up to 200 guests.",
+    a: "The Mega Marquee is our larger venue, accommodating events from 200 to 1,000 guests. The Mini Marquee provides a more intimate setting for events of 30 to 200 guests.",
   },
   {
     q: "Is the venue licensed for civil ceremonies?",

@@ -18,7 +18,7 @@ import {
 export const metadata = pageMeta({
   title: "Marquee Venues & Hire in Essex | The Chigwell Marquees",
   description:
-    "Explore our Essex marquee venues: the Mega Marquee (250–1,000), the Mini Marquee (30–200), the Secret Garden and indoor suites at Chigwell Hall.",
+    "Explore our Essex marquee venues: the Mega Marquee (200–1,000), the Mini Marquee (30–200) with its Secret Garden, and the indoor suites at Chigwell Hall.",
   path: "/venues",
   imageAlt: "The marquees and Secret Garden in the grounds of Chigwell Hall",
 });
@@ -37,6 +37,7 @@ export default function SpacesPage() {
         title={"Two distinctive marquees.\nOne remarkable setting."}
         intro="From intimate celebrations to spectacular events for up to 1,000 guests, discover our venues within the grounds of Chigwell Hall."
         media={SPACES_HERO}
+        size="md"
       />
 
       <Section tone="bone" spacing="lg">
@@ -56,7 +57,7 @@ export default function SpacesPage() {
       </Section>
 
       <SplitFeature
-        eyebrow="I · 250 – 1,000 guests"
+        eyebrow="I · 200 – 1,000 guests"
         title="The Mega Marquee"
         body={[
           "An impressive large-capacity venue with high ceilings, neutral interiors and a generous open-plan layout.",
@@ -68,7 +69,7 @@ export default function SpacesPage() {
       />
 
       <SplitFeature
-        eyebrow="II · Up to 200 guests"
+        eyebrow="II · 30 – 200 guests"
         title="The Mini Marquee"
         body={[
           "An elegant and light-filled space featuring natural light, air conditioning and a signature white starlit ceiling.",
@@ -82,21 +83,24 @@ export default function SpacesPage() {
       />
 
       <SplitFeature
-        eyebrow="III · Outdoor Setting"
+        eyebrow="Included with the Mini Marquee · up to 150 guests"
         title="The Secret Garden"
         body={[
           "A secluded garden adjoining the Mini Marquee, featuring landscaped lawns and a central fountain.",
-          "Available for selected ceremonies, welcome drinks, canapés and photography depending on your booking.",
+          "The Secret Garden is not booked independently — it comes as part of a Mini Marquee booking, for selected ceremonies, welcome drinks, canapés and photography.",
         ]}
         media={SPACE_GARDEN_FEATURE}
         ratio="4 / 3"
-        link={{ href: "/venues/secret-garden", label: "Explore the Secret Garden" }}
+        tone="bone-dim"
+        link={{ href: "/venues/secret-garden", label: "See the Secret Garden" }}
       />
 
       <CtaBand
         title="Not sure which venue is right for you?"
         blurb="Tell us about your occasion, guest numbers and preferred date and our events team will help you find the most suitable space."
+        primary={{ href: "/gallery", label: "Explore Gallery" }}
         secondary={{ href: "/gallery", label: "Explore Our Gallery" }}
+        tone="navy"
       />
     </>
   );

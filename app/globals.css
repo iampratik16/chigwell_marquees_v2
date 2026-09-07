@@ -9,6 +9,7 @@
   --color-bone-dim: #efe7d7; /* recessed ivory (cards/sections) */
   --color-champagne: #c8a96a; /* metallic accent */
   --color-champagne-soft: #e2cda0;
+  --color-navy: #2a3156; /* brand blue */
   --color-botanical: #2c3a2e; /* deep estate green */
   --color-botanical-soft: #3c4f3f;
   --color-mist: #8c857a; /* secondary text */
@@ -114,14 +115,6 @@
     max-width: 100%;
   }
 
-  /* Hide native cursor when custom cursor is active (fine pointers only) */
-  @media (hover: hover) and (pointer: fine) {
-    html.has-cursor,
-    html.has-cursor * {
-      cursor: none !important;
-    }
-  }
-
   :focus-visible {
     outline: 2px solid var(--color-champagne);
     outline-offset: 3px;
@@ -200,7 +193,6 @@
 }
 
 /* ───────────────────────── Custom cursor ───────────────────────── */
-.cursor-dot,
 .cursor-ring {
   position: fixed;
   top: 0;
@@ -209,20 +201,12 @@
   pointer-events: none;
   will-change: transform;
 }
-.cursor-dot {
-  width: 6px;
-  height: 6px;
-  margin: -3px 0 0 -3px;
-  border-radius: 50%;
-  background: var(--color-champagne);
-  mix-blend-mode: difference;
-}
 .cursor-ring {
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 21px;
-  margin: -10.5px 0 0 -20px;
+  width: 32px;
+  height: 17px;
+  margin: -8.5px 0 0 -16px;
   border: 0;
   border-radius: 0;
   background-image: url("/cursor-crown.png");
@@ -238,14 +222,14 @@
     opacity 0.4s ease;
 }
 .cursor-ring[data-active="true"] {
-  width: 54px;
-  height: 29px;
-  margin: -14.5px 0 0 -27px;
+  width: 44px;
+  height: 23px;
+  margin: -11.5px 0 0 -22px;
 }
 .cursor-ring[data-down="true"] {
-  width: 32px;
-  height: 17px;
-  margin: -8.5px 0 0 -16px;
+  width: 26px;
+  height: 14px;
+  margin: -7px 0 0 -13px;
 }
 .cursor-ring[data-labelled="true"] {
   width: 92px;

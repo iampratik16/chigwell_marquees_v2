@@ -4,12 +4,10 @@ import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
-import AnimatedLink from "@/components/ui/AnimatedLink";
 import EnquiryForm from "@/components/site/EnquiryForm";
 import GoogleReviewsSection from "@/components/site/GoogleReviewsSection";
-import Journey from "@/components/sections/home/Journey";
-import { SITE, whatsappLink } from "@/lib/site";
-import WhatsAppGlyph from "@/components/ui/WhatsAppGlyph";
+import LocationMap from "@/components/site/LocationMap";
+import { SITE } from "@/lib/site";
 import { ESTATE } from "@/lib/media";
 
 export const metadata = pageMeta({
@@ -46,13 +44,55 @@ export default function VisitPage() {
               </p>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="mt-8 text-sm text-mist">
-                Prefer to talk? Call{" "}
-                <a href={SITE.phoneHref} className="text-ink underline">
-                  {SITE.phone}
-                </a>
-                .
-              </p>
+              <div className="mt-8 border-t border-line pt-8 text-sm">
+                <p className="text-mist">
+                  Prefer to talk? Call{" "}
+                  <a href={SITE.phoneHref} className="text-ink underline">
+                    {SITE.phone}
+                  </a>
+                  .
+                </p>
+
+                <address className="mt-6 not-italic leading-relaxed text-mist">
+                  <span className="block font-medium text-ink">{SITE.name}</span>
+                  {SITE.address.venue}
+                  <br />
+                  {SITE.address.street}
+                  <br />
+                  {SITE.address.city}
+                  <br />
+                  {SITE.address.county}
+                  <br />
+                  {SITE.address.postcode}
+                </address>
+
+                <dl className="mt-6 flex flex-col gap-2 text-mist">
+                  <div className="flex flex-wrap gap-x-2">
+                    <dt>Telephone:</dt>
+                    <dd>
+                      <a href={SITE.phoneHref} className="text-ink underline">
+                        {SITE.phone}
+                      </a>
+                    </dd>
+                  </div>
+                  <div className="flex flex-wrap gap-x-2">
+                    <dt>Mobile:</dt>
+                    <dd>
+                      <a href={`tel:+${SITE.whatsapp.number}`} className="text-ink underline">
+                        {SITE.whatsapp.display}
+                      </a>
+                    </dd>
+                  </div>
+                  <div className="flex flex-wrap gap-x-2">
+                    <dt>Email:</dt>
+                    <dd>
+                      <a href={`mailto:${SITE.email}`} className="text-ink underline">
+                        {SITE.email}
+                      </a>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
             </Reveal>
           </div>
 
@@ -62,62 +102,23 @@ export default function VisitPage() {
         </div>
       </Section>
 
-      {/* Location + map */}
-      <Section tone="bone" spacing="md">
-        <div className="container-luxe grid gap-12 md:grid-cols-12 md:items-center">
-          <div className="md:col-span-5">
-            <Eyebrow>Find us</Eyebrow>
-            <address className="mt-6 not-italic font-display text-3xl leading-tight md:text-4xl">
-              {SITE.address.line1}
-              <br />
-              {SITE.address.city}, {SITE.address.county}
-              <br />
-              {SITE.address.postcode}
-            </address>
+      <GoogleReviewsSection />
 
-            <div className="mt-10 flex flex-col gap-3">
-              <a href={SITE.phoneHref} className="font-display text-2xl hover:text-botanical">
-                {SITE.phone}
-              </a>
-              <a href={`mailto:${SITE.email}`} className="text-ink/80 hover:text-botanical">
-                {SITE.email}
-              </a>
-              <a
-                href={whatsappLink(false)}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Message us on WhatsApp at ${SITE.whatsapp.display}`}
-                className="inline-flex items-center gap-2 text-ink/80 hover:text-botanical"
-              >
-                <WhatsAppGlyph className="h-4 w-4" />
-                {SITE.whatsapp.display}
-              </a>
-              <div className="mt-2">
-                <AnimatedLink href={SITE.address.maps} arrow cursorLabel="Map">
-                  Get directions
-                </AnimatedLink>
-              </div>
-            </div>
-          </div>
-
-          <div className="md:col-span-7">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-line bg-bone-dim">
-              <iframe
-                title="Map to The Chigwell Marquees"
-                src="https://maps.google.com/maps?q=The%20Chigwell%20Marquees%20159%20High%20Road%20Chigwell%20IG7%206BD&z=14&output=embed"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0 h-full w-full grayscale-[0.25] contrast-[1.05]"
-              />
-            </div>
-          </div>
+      {/* Address, then the full-bleed map directly beneath it, blending into the footer */}
+      <Section tone="bone" spacing="sm">
+        <div className="container-luxe">
+          <Eyebrow>Find us</Eyebrow>
+          <address className="mt-6 not-italic font-display text-3xl leading-tight md:text-4xl">
+            {SITE.address.line1}
+            <br />
+            {SITE.address.city}, {SITE.address.county}
+            <br />
+            {SITE.address.postcode}
+          </address>
         </div>
       </Section>
 
-      <GoogleReviewsSection />
-
-      {/* Travel & location — relocated from the homepage */}
-      <Journey />
+      <LocationMap />
     </>
   );
 }

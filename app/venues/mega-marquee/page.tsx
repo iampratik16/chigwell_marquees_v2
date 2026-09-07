@@ -4,7 +4,6 @@ import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbList } from "@/lib/structured-data";
 import SplitFeature from "@/components/site/SplitFeature";
 import SpecList from "@/components/site/SpecList";
-import CtaBand from "@/components/site/CtaBand";
 import GalleryBand from "@/components/site/GalleryBand";
 import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
@@ -17,7 +16,7 @@ import { VIDEO, REAL } from "@/lib/media.real";
 export const metadata = pageMeta({
   title: "Large Marquee Venue Hire in Essex | The Chigwell Marquees",
   description:
-    "The Mega Marquee — a large Essex marquee venue for weddings, galas and corporate events of 300 to 1,000 guests, with a pro sound and lighting rig and full kitchen.",
+    "The Mega Marquee — a large Essex marquee venue for weddings, galas and corporate events of 200 to 1,000 guests, with a pro sound and lighting rig and full kitchen.",
   path: "/venues/mega-marquee",
   imageAlt: "Inside the Mega Marquee dressed for a grand wedding reception",
 });
@@ -105,7 +104,7 @@ export default function MegaMarqueePage() {
         eyebrow="Features"
         title="Everything you need for a large-scale event."
         features={[
-          "Capacity for 250 – 1,000 guests",
+          "Capacity for 200 – 1,000 guests",
           "Complimentary on-site guest parking",
           "Built-in sound system",
           "Cordless microphone",
@@ -123,18 +122,12 @@ export default function MegaMarqueePage() {
       <SpecList
         eyebrow="Venue Details"
         specs={[
-          { k: "Capacity", v: "250 – 1,000 guests" },
+          { k: "Capacity", v: "200 – 1,000 guests" },
           { k: "Venue Type", v: "Dry hire" },
           { k: "Interior", v: "Neutral interior · high ceilings · flexible layout" },
           { k: "Ideal For", v: "Large weddings · receptions · cultural celebrations · corporate events · private functions" },
         ]}
         tone="ink"
-      />
-
-      <CtaBand
-        title="Experience the Mega Marquee for yourself."
-        blurb="Arrange a viewing and discover the scale and flexibility of our largest venue."
-        secondary={null}
       />
     </>
   );

@@ -87,7 +87,7 @@ export default function WeddingsPage() {
         eyebrow="Intimate Weddings"
         title="The Mini Marquee"
         body={[
-          "Ideal for weddings of up to 200 guests, the Mini Marquee combines natural light, elegant neutral interiors and its signature white starlit ceiling.",
+          "Ideal for weddings of 30 to 200 guests, the Mini Marquee combines natural light, elegant neutral interiors and its signature white starlit ceiling.",
           "Located beside the Secret Garden, it provides a beautiful setting for couples looking for a more intimate celebration.",
         ]}
         media={MINI_WEDDING}

@@ -34,10 +34,10 @@ export default function Logo({
         width={630}
         height={156}
         priority={priority}
-        sizes="(max-width: 640px) 150px, (max-width: 1024px) 200px, 240px"
+        sizes="(max-width: 640px) 170px, (max-width: 1024px) 230px, 260px"
         className={cn(
           "w-auto transition-[filter] duration-500",
-          imgClassName ?? "h-12 sm:h-14 md:h-16 lg:h-[5rem]",
+          imgClassName ?? "h-10 sm:h-12 md:h-14 lg:h-16",
           invert && "[filter:brightness(0)_invert(1)]",
         )}
       />

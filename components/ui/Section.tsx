@@ -4,7 +4,7 @@ type Props = {
   children: React.ReactNode;
   className?: string;
   /** Background tone. */
-  tone?: "bone" | "bone-dim" | "ink" | "botanical" | "transparent";
+  tone?: "bone" | "bone-dim" | "ink" | "navy" | "botanical" | "transparent";
   id?: string;
   /** Vertical padding scale. */
   spacing?: "sm" | "md" | "lg";
@@ -15,6 +15,7 @@ const tones = {
   bone: "bg-bone text-ink",
   "bone-dim": "bg-bone-dim text-ink",
   ink: "bg-ink text-bone",
+  navy: "bg-navy text-bone",
   botanical: "bg-botanical text-bone",
   transparent: "",
 };

@@ -4,7 +4,7 @@
 
 .goldBtn {
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --gb-text: #ecd79a; /* shiny champagne — for dark backgrounds */
+  --gb-text: #e3b973; /* brand gold, matching the crown — for dark backgrounds */
   --gb-fill: transparent; /* fill stays transparent; faint gold on hover */
 
   position: relative;
@@ -55,13 +55,13 @@
   pointer-events: none;
   background: linear-gradient(
     135deg,
-    #7a5c1e 0%,
-    #c9a24a 28%,
-    #f3e2a0 47%,
-    #fff6da 52%,
-    #d4af37 62%,
-    #a77e26 80%,
-    #7a5c1e 100%
+    #7d663f 0%,
+    #cfa45c 28%,
+    #f0d6a4 47%,
+    #fbeed4 52%,
+    #e3b973 62%,
+    #b08a45 80%,
+    #7d663f 100%
   );
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
@@ -109,11 +109,11 @@
 }
 
 .goldBtn:hover {
-  --gb-fill: rgba(212, 175, 55, 0.14); /* whisper of gold */
+  --gb-fill: rgba(227, 185, 115, 0.14); /* whisper of gold */
   transform: translateY(-1px);
   box-shadow:
     inset 0 1px 0 rgba(255, 250, 225, 0.28),
-    0 6px 22px rgba(212, 175, 55, 0.3); /* warm glow */
+    0 6px 22px rgba(227, 185, 115, 0.3); /* warm glow */
 }
 .goldBtn:hover::before {
   animation: goldSheen 600ms ease-out;
@@ -122,13 +122,13 @@
   transform: translateY(0);
   box-shadow:
     inset 0 1px 0 rgba(255, 250, 225, 0.2),
-    0 2px 10px rgba(212, 175, 55, 0.22);
+    0 2px 10px rgba(227, 185, 115, 0.22);
 }
 .goldBtn:focus-visible {
   outline: none;
   box-shadow:
     0 0 0 2px #16130f,
-    0 0 0 4px #d4af37; /* focus ring in the gold tone */
+    0 0 0 4px #e3b973; /* focus ring in the gold tone */
 }
 
 @keyframes goldSheen {

@@ -13,7 +13,7 @@ export default function IntroStatement() {
         <div className="max-w-5xl">
           <Eyebrow>The Chigwell Marquees</Eyebrow>
           <RevealText as="h2" className="mt-8 display-lg">
-            {"Weddings and events set within 42 acres\nof beautiful grounds at Chigwell Hall"}
+            {"Weddings and corporate events set within 42 acres\nof beautiful grounds at Chigwell Hall"}
           </RevealText>
         </div>
 
@@ -32,15 +32,15 @@ export default function IntroStatement() {
             <Reveal>
               <p className="lead text-ink/85">
                 Set within the grounds of the Grade II listed Chigwell Hall, The
-                Chigwell Marquees offers two distinctive venues for weddings,
-                celebrations and events.
+                Chigwell Marquees offers two distinctive venues built around two
+                occasions: weddings and corporate events.
               </p>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-6 text-mist">
-                From intimate occasions to spectacular celebrations for up to
-                1,000 guests, our venues provide the flexibility to create an
-                event entirely around you.
+                From intimate ceremonies to conferences, award ceremonies and
+                receptions for up to 1,000 guests, our venues provide the
+                flexibility to create an occasion entirely around you.
               </p>
             </Reveal>
             <Reveal delay={0.2}>

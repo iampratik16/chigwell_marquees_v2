@@ -3,14 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Refined custom cursor: a precise dot that tracks the pointer 1:1 and a
- * trailing ring that eases behind it. Grows over interactive elements and
- * shows a contextual label for elements with `data-cursor="<label>"`.
+ * Refined custom cursor: a crown that eases behind the native pointer, which
+ * stays visible. Grows over interactive elements and shows a contextual label
+ * for elements with `data-cursor="<label>"`.
  * Pointer-fine devices only; fully removed under reduced motion.
  */
 export default function Cursor() {
   const ringRef = useRef<HTMLDivElement>(null);
-  const dotRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLSpanElement>(null);
   const [enabled, setEnabled] = useState(false);
 
@@ -20,17 +19,14 @@ export default function Cursor() {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!fine || reduced) return;
     setEnabled(true);
-    document.documentElement.classList.add("has-cursor");
-    return () => document.documentElement.classList.remove("has-cursor");
   }, []);
 
   // 2) Animation loop, runs only once the elements are actually mounted.
   useEffect(() => {
     if (!enabled) return;
     const ring = ringRef.current;
-    const dot = dotRef.current;
     const label = labelRef.current;
-    if (!ring || !dot || !label) return;
+    if (!ring || !label) return;
 
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
@@ -41,7 +37,6 @@ export default function Cursor() {
     const onMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
 
       const el = (e.target as HTMLElement)?.closest<HTMLElement>(
         "a, button, [data-cursor], input, textarea, label, select, summary",
@@ -94,7 +89,6 @@ export default function Cursor() {
 
   return (
     <>
-      <div ref={dotRef} className="cursor-dot" aria-hidden="true" />
       <div ref={ringRef} className="cursor-ring" aria-hidden="true">
         <span ref={labelRef} className="cursor-label" />
       </div>

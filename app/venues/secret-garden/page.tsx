@@ -16,7 +16,7 @@ import { SECRET_IMG, ESTATE_IMG, VIDEO, POSTER } from "@/lib/media.real";
 export const metadata = pageMeta({
   title: "Secret Garden Wedding Venue, Essex | The Chigwell Marquees",
   description:
-    "The Secret Garden — a secluded lawn with a central fountain, licensed for outdoor civil ceremonies and welcome drinks for up to 250 guests, in Chigwell, Essex.",
+    "The Secret Garden — a secluded lawn with a central fountain, licensed for outdoor civil ceremonies and welcome drinks for up to 150 guests, in Chigwell, Essex.",
   path: "/venues/secret-garden",
   imageAlt: "The Secret Garden lawn and central fountain set for an outdoor ceremony",
 });

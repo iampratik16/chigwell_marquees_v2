@@ -10,12 +10,11 @@ import {
   OCC_CULTURAL,
 } from "@/lib/media";
 
-/** Four occasion pillars — Weddings leads as the primary market. */
+/** Four occasion pillars — Weddings and Corporate Events lead as the primary markets. */
 const CARDS = [
   {
     n: "01",
     label: "Weddings",
-    tag: "Primary",
     blurb: "From intimate celebrations to spectacular wedding receptions for up to 1,000 guests.",
     href: "/occasions/weddings",
     media: OCC_WEDDINGS_CARD,
@@ -23,7 +22,7 @@ const CARDS = [
   {
     n: "02",
     label: "Corporate Events",
-    blurb: "Conferences, award ceremonies, launches, dinners and large-scale corporate occasions.",
+    blurb: "Conferences, away days, award ceremonies, launches and corporate dinners for up to 1,000 guests.",
     href: "/occasions/corporate",
     media: OCC_CORPORATE_CARD,
   },
@@ -50,7 +49,7 @@ export default function OccasionsPreview() {
         <div className="max-w-2xl">
           <Eyebrow>Occasions</Eyebrow>
           <RevealText as="h2" className="mt-6 display-lg">
-            {"A setting for\nevery occasion."}
+            {"Built for weddings.\nEquipped for business."}
           </RevealText>
         </div>
 
@@ -73,11 +72,6 @@ export default function OccasionsPreview() {
                   delay={i * 0.07}
                   className="rounded-[1.25rem]"
                 />
-                {c.tag && (
-                  <span className="absolute left-4 top-4 rounded-full bg-bone/90 px-3 py-1 text-[0.6rem] font-medium uppercase tracking-[0.18em] text-ink shadow-sm backdrop-blur-sm">
-                    {c.tag}
-                  </span>
-                )}
               </div>
               <div className="mt-5 flex items-start justify-between gap-3">
                 <div>

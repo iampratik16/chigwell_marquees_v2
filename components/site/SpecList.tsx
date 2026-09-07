@@ -11,10 +11,10 @@ type Props = {
   specs?: Spec[];
   /** Simple feature bullets. */
   features?: string[];
-  tone?: "bone" | "bone-dim" | "ink" | "botanical";
+  tone?: "bone" | "bone-dim" | "ink" | "navy" | "botanical";
 };
 
-const dark = (t: string) => t === "ink" || t === "botanical";
+const dark = (t: string) => t === "ink" || t === "navy" || t === "botanical";
 
 /** Feature / specification panel, hairline-ruled, editorial. */
 export default function SpecList({

@@ -10,7 +10,7 @@ type Props = {
   primary?: { href: string; label: string };
   /** Defaults to a gallery link; pass `null` to omit (e.g. on the gallery page). */
   secondary?: { href: string; label: string } | null;
-  tone?: "botanical" | "ink";
+  tone?: "botanical" | "ink" | "navy";
 };
 
 /** Mid-page call-to-action band. */

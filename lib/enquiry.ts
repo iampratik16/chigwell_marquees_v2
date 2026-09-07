@@ -7,8 +7,8 @@
  */
 
 export const VENUE_INTEREST_OPTIONS = [
-  "Mini Marquee (Up to 200 Guests)",
-  "Mega Marquee (250–1,000 Guests)",
+  "Mini Marquee (30–200 Guests)",
+  "Mega Marquee (200–1,000 Guests)",
   "Chigwell Hall",
   "Not Sure Yet",
 ] as const;

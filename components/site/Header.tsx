@@ -72,7 +72,7 @@ export default function Header() {
         <div
           className={cn(
             "container-luxe flex items-center justify-between transition-all duration-500",
-            scrolled ? "py-1.5 lg:py-2" : "py-2 lg:py-2.5",
+            scrolled ? "py-2 lg:py-2.5" : "py-3 lg:py-3.5",
             textColor,
           )}
         >

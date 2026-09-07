@@ -27,12 +27,12 @@ export default function SuitesPage() {
         data={breadcrumbList([
           { name: "Home", path: "/" },
           { name: "Venues", path: "/venues" },
-          { name: "The Suites", path: "/venues/suites" },
+          { name: "Chigwell Hall", path: "/venues/suites" },
         ])}
       />
       <PageHero
         eyebrow="The spaces · IV"
-        title={"The\nSuites."}
+        title={"Chigwell\nHall."}
         intro="Beautifully appointed indoor suites within Chigwell Hall, made for stylish celebrations."
         media={SUITES_IMG.banquetingHall}
       />
