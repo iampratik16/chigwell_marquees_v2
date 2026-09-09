@@ -7,7 +7,7 @@ export const VIDEO = {
   // that BackgroundVideo swaps in on narrow viewports — keep the pair in sync
   // when adding or replacing a clip.
   hero: "/media/video/hero-v2.mp4",
-  aboutHero: "/media/video/about-hero-v4.mp4", // -v4: exterior + interior re-shot to the real venue (Veo image-to-video from mega-marquee-*.jpg and mini-8a.jpg)
+  aboutHero: "/media/video/about-hero-v5.mp4", // -v5: same edit mastered at 1920x972 CRF25 (SSIM 0.98 vs CRF21 ref); -sm is 1280x648
   megaHero: "/media/video/mega-hero-v3.mp4", // -v3: CRF28 re-encode (SSIM 0.98)
   weddingHero: "/media/video/wedding-hero-v2.mp4", // The Weddings page hero
   corporateHero: "/media/video/corporate-hero-v2.mp4", // Corporate page hero (DJ set; native 16:9, 9s loop, audio stripped)
@@ -25,7 +25,7 @@ export const VIDEO = {
  */
 export const POSTER = {
   hero: "/media/video/hero-poster.jpg",
-  aboutHero: "/media/video/about-hero-poster.jpg",
+  aboutHero: "/media/video/about-hero-poster-v2.jpg", // 1920x972, matches the v5 master
   corporateHero: "/media/video/corporate-hero-poster.jpg",
   wedding: "/media/video/scene-wedding-poster.jpg",
   weddings: "/media/video/weddings-poster.jpg",
