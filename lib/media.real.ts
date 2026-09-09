@@ -7,7 +7,7 @@ export const VIDEO = {
   // that BackgroundVideo swaps in on narrow viewports — keep the pair in sync
   // when adding or replacing a clip.
   hero: "/media/video/hero-v2.mp4",
-  aboutHero: "/media/video/about-hero-v3.mp4", // -v3: interior re-shot to the real Mini Marquee look (Veo image-to-video from mini-8a.jpg)
+  aboutHero: "/media/video/about-hero-v4.mp4", // -v4: exterior + interior re-shot to the real venue (Veo image-to-video from mega-marquee-*.jpg and mini-8a.jpg)
   megaHero: "/media/video/mega-hero-v3.mp4", // -v3: CRF28 re-encode (SSIM 0.98)
   weddingHero: "/media/video/wedding-hero-v2.mp4", // The Weddings page hero
   corporateHero: "/media/video/corporate-hero-v2.mp4", // Corporate page hero (DJ set; native 16:9, 9s loop, audio stripped)
