@@ -43,8 +43,8 @@
     color 200ms ease;
 }
 
-/* shiny gold gradient border — drawn only in the 1.5px ring via mask, so the
-   interior stays transparent and the pill's rounded corners are respected. */
+/* gold border — drawn only in the 1.5px ring via mask, so the interior stays
+   transparent and the pill's rounded corners are respected. */
 .goldBtn::after {
   content: "";
   position: absolute;
@@ -53,16 +53,10 @@
   border-radius: inherit;
   padding: 1.5px;
   pointer-events: none;
-  background: linear-gradient(
-    135deg,
-    #7d663f 0%,
-    #cfa45c 28%,
-    #f0d6a4 47%,
-    #fbeed4 52%,
-    #e3b973 62%,
-    #b08a45 80%,
-    #7d663f 100%
-  );
+  /* Flat brand gold, matching the crown. The old 135deg metallic gradient ran
+     from #7d663f bronze to #fbeed4 near-white, so the ring read as two
+     different colours rather than the crown's gold. */
+  background: #e3b973;
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
