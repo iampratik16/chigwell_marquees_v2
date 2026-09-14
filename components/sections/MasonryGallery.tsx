@@ -9,8 +9,11 @@ import type { Media } from "@/lib/media";
 
 export type GalleryItem = Media & { cat: string };
 
-const FILTERS = [
-  { key: "all", label: "Everything" },
+export type GalleryFilter = { key: string; label: string };
+
+/** Every category the site knows about, in display order. */
+export const ALL_FILTERS: GalleryFilter[] = [
+  { key: "all", label: "All Images" },
   { key: "weddings", label: "Weddings" },
   { key: "asian", label: "Asian Weddings" },
   { key: "engagements", label: "Engagements" },
@@ -18,9 +21,19 @@ const FILTERS = [
   { key: "birthdays", label: "Birthdays" },
   { key: "corporate", label: "Corporate Events" },
   { key: "civil", label: "Civil Ceremonies" },
+  { key: "the-space", label: "The Space" },
 ];
 
+/** Keep only the filters that actually match something in `items`. */
+function filtersFor(items: GalleryItem[]): GalleryFilter[] {
+  const present = new Set(items.map((i) => i.cat));
+  return ALL_FILTERS.filter((f) => f.key === "all" || present.has(f.key));
+}
+
 export default function MasonryGallery({ items }: { items: GalleryItem[] }) {
+  const filters = useMemo(() => filtersFor(items), [items]);
+  // One category (plus "all") means the filters would do nothing — hide them.
+  const showFilters = filters.length > 2;
   const [active, setActive] = useState("all");
   const [index, setIndex] = useState<number | null>(null);
   const [panelOpen, setPanelOpen] = useState(true);
@@ -58,8 +71,9 @@ export default function MasonryGallery({ items }: { items: GalleryItem[] }) {
   return (
     <div className="container-luxe">
       {/* Mobile: horizontal scroll filter row */}
+      {showFilters && (
       <div className="sticky top-16 z-20 -mx-[var(--gutter)] mb-8 flex gap-2 overflow-x-auto bg-bone/85 px-[var(--gutter)] py-3 backdrop-blur-md lg:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {FILTERS.map((f) => {
+        {filters.map((f) => {
           const on = active === f.key;
           return (
             <button
@@ -75,9 +89,11 @@ export default function MasonryGallery({ items }: { items: GalleryItem[] }) {
           );
         })}
       </div>
+      )}
 
       <div className="lg:flex lg:gap-10 xl:gap-14">
         {/* Desktop: vertical, toggleable filter panel */}
+        {showFilters && (
         <aside
           className={cn(
             "hidden shrink-0 transition-[width] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:block",
@@ -108,7 +124,7 @@ export default function MasonryGallery({ items }: { items: GalleryItem[] }) {
                   transition={{ duration: 0.35, ease: EASE_LUXE }}
                   className="mt-6 flex flex-col gap-1"
                 >
-                  {FILTERS.map((f) => {
+                  {filters.map((f) => {
                     const on = active === f.key;
                     return (
                       <button
@@ -128,6 +144,7 @@ export default function MasonryGallery({ items }: { items: GalleryItem[] }) {
             </AnimatePresence>
           </div>
         </aside>
+        )}
 
         {/* Masonry via CSS columns */}
         <div className="min-w-0 flex-1 [column-gap:1rem] columns-1 sm:columns-2 lg:columns-2 xl:columns-3">

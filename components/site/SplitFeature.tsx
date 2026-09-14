@@ -4,18 +4,23 @@ import Reveal from "@/components/ui/Reveal";
 import RevealImage from "@/components/ui/RevealImage";
 import RevealVideo from "@/components/ui/RevealVideo";
 import AnimatedLink from "@/components/ui/AnimatedLink";
+import MagneticButton from "@/components/ui/MagneticButton";
 import { cn } from "@/lib/utils";
 import type { Media } from "@/lib/media";
 
 type Props = {
   eyebrow?: string;
   title: string;
+  /** Capacity or similar note, shown under the title in a high-contrast pill. */
+  titleNote?: string;
   body: string | string[];
   media: Media;
   /** Optional looping clip; `media` is its poster + reduced-motion fallback. */
   video?: string;
   reverse?: boolean;
   link?: { href: string; label: string };
+  /** Render `link` as a pill button rather than a text link. */
+  linkVariant?: "link" | "button";
   ratio?: string;
   tone?: "bone" | "bone-dim";
 };
@@ -24,11 +29,13 @@ type Props = {
 export default function SplitFeature({
   eyebrow,
   title,
+  titleNote,
   body,
   media,
   video,
   reverse = false,
   link,
+  linkVariant = "link",
   ratio = "4 / 5",
   tone = "bone",
 }: Props) {
@@ -61,6 +68,13 @@ export default function SplitFeature({
             <RevealText as="h2" className="mt-5 display-md">
               {title}
             </RevealText>
+            {titleNote && (
+              <Reveal delay={0.08}>
+                <p className="mt-4 inline-flex items-center rounded-full border border-ink/20 px-4 py-1.5 text-[0.72rem] font-medium uppercase tracking-[0.16em] text-ink/80">
+                  {titleNote}
+                </p>
+              </Reveal>
+            )}
             <div className="mt-6 space-y-5">
               {paras.map((p, i) => (
                 <Reveal key={i} delay={i * 0.08}>
@@ -71,9 +85,15 @@ export default function SplitFeature({
             {link && (
               <Reveal delay={0.15}>
                 <div className="mt-8">
+                  {linkVariant === "button" ? (
+                    <MagneticButton href={link.href} variant="outline" cursorLabel="More">
+                      {link.label}
+                    </MagneticButton>
+                  ) : (
                   <AnimatedLink href={link.href} arrow cursorLabel="More">
                     {link.label}
                   </AnimatedLink>
+                  )}
                 </div>
               </Reveal>
             )}

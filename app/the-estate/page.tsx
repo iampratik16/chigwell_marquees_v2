@@ -44,11 +44,10 @@ export default function EstatePage() {
               </RevealText>
               <Reveal>
                 <p className="lead mt-8 text-mist">
-                  The Chigwell Marquees is located within the beautiful grounds of
-                  Chigwell Hall in Chigwell, Essex. Surrounded by 42 acres, the
-                  venue offers a peaceful setting for weddings and events while
-                  remaining within easy reach of Central London and major
-                  transport links.
+                  Surrounded by 42 acres of open grounds, The Chigwell Marquees
+                  offers a peaceful and private setting for weddings and events,
+                  with Central London and major transport links within easy
+                  reach.
                 </p>
               </Reveal>
             </div>

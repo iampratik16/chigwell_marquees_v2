@@ -1,3 +1,5 @@
+import VenueGallery from "@/components/sections/VenueGallery";
+import { MINI_GALLERY } from "@/lib/gallery-venues";
 import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/site/PageHero";
 import JsonLd from "@/components/site/JsonLd";
@@ -12,8 +14,7 @@ import RevealText from "@/components/ui/RevealText";
 import Reveal from "@/components/ui/Reveal";
 import RevealImage from "@/components/ui/RevealImage";
 import RevealVideo from "@/components/ui/RevealVideo";
-import { SPACE_GARDEN } from "@/lib/media";
-import { MINI_IMG, VIDEO } from "@/lib/media.real";
+import { MINI_IMG, VIDEO, SECRET_IMG } from "@/lib/media.real";
 
 export const metadata = pageMeta({
   title: "Intimate Marquee Venue in Essex | The Chigwell Marquees",
@@ -40,6 +41,8 @@ export default function MiniMarqueePage() {
         intro="A beautiful setting for weddings and celebrations of 30 to 200 guests."
         media={MINI_IMG.interior}
       />
+
+      <VenueGallery title="Inside the Mini Marquee." items={MINI_GALLERY} />
 
       <Section tone="bone" spacing="lg">
         <div className="container-luxe">
@@ -106,11 +109,12 @@ export default function MiniMarqueePage() {
           "The Secret Garden sits alongside the Mini Marquee and provides an attractive outdoor setting for selected ceremonies, welcome drinks, canapés and wedding photography.",
           "Access is subject to the arrangements included within your booking.",
         ]}
-        media={SPACE_GARDEN}
+        media={SECRET_IMG.waterfall}
         ratio="4 / 3"
         reverse
         tone="bone-dim"
         link={{ href: "/venues/secret-garden", label: "See the Secret Garden" }}
+        linkVariant="button"
       />
 
       {/* Catering — portrait (9:16) video kept at its native aspect ratio */}

@@ -1,0 +1,74 @@
+// AUTO-GENERATED: per-venue galleries. Categories were assigned by reviewing
+// each photograph, since the filenames do not carry the event type.
+import type { GalleryItem } from "@/components/sections/MasonryGallery";
+
+export const CHIGWELL_HALL_GALLERY: GalleryItem[] = [
+  { src: "/media/content/chigwell-hall-4a.jpg", alt: "Chigwell Hall and its surroundings", width: 2560, height: 1706, cat: "the-space" },
+  { src: "/media/content/chigwell-hall-4b.jpg", alt: "Chigwell Hall and its surroundings", width: 2560, height: 1707, cat: "the-space" },
+  { src: "/media/content/chigwell-hall-4e.jpg", alt: "Chigwell Hall and its surroundings", width: 1600, height: 1066, cat: "the-space" },
+  { src: "/media/content/chigwell-hall-rooms-12a.jpg", alt: "Chigwell Hall set for a civil ceremony", width: 2000, height: 1500, cat: "civil" },
+  { src: "/media/content/chigwell-hall-rooms-12b.jpg", alt: "Chigwell Hall set for a civil ceremony", width: 2000, height: 1500, cat: "civil" },
+  { src: "/media/content/chigwell-hall-rooms-12c.jpg", alt: "Chigwell Hall set for a civil ceremony", width: 2000, height: 1500, cat: "civil" },
+  { src: "/media/content/chigwell-hall-rooms-12d.jpg", alt: "Chigwell Hall lit for an evening celebration", width: 2000, height: 1500, cat: "parties" },
+  { src: "/media/content/chigwell-hall-rooms-13a.jpg", alt: "Chigwell Hall dressed for a wedding", width: 2000, height: 1255, cat: "weddings" },
+  { src: "/media/content/chigwell-hall-rooms-13b.jpg", alt: "Chigwell Hall dressed for a wedding", width: 1999, height: 1264, cat: "weddings" },
+  { src: "/media/content/chigwell-hall-rooms-13c.jpg", alt: "Chigwell Hall dressed for a wedding", width: 2000, height: 1251, cat: "weddings" },
+];
+
+export const SECRET_GARDEN_GALLERY: GalleryItem[] = [
+  { src: "/media/estate-gazebo.jpg", alt: "The Secret Garden dressed for a wedding", width: 1080, height: 713, cat: "weddings" },
+  { src: "/media/garden-10b.jpg", alt: "The Secret Garden and its surroundings", width: 1706, height: 2560, cat: "the-space" },
+  { src: "/media/garden-grounds.jpg", alt: "The Secret Garden and its surroundings", width: 1600, height: 1143, cat: "the-space" },
+  { src: "/media/garden-waterfall-10f.jpg", alt: "The Secret Garden set for a civil ceremony", width: 2560, height: 1920, cat: "civil" },
+  { src: "/media/garden-wedding-essex-london-chigwell-marquees.jpg", alt: "The Secret Garden and its surroundings", width: 520, height: 300, cat: "the-space" },
+  { src: "/media/secret-2.jpg", alt: "The Secret Garden and its surroundings", width: 1080, height: 1350, cat: "the-space" },
+  { src: "/media/secret-3.jpg", alt: "The Secret Garden dressed for a wedding", width: 1080, height: 1350, cat: "weddings" },
+];
+
+export const MEGA_GALLERY: GalleryItem[] = [
+  { src: "/media/mega-marquee-wedding-venue-essex-london-chigwell-marquees.jpg", alt: "The Mega Marquee and its surroundings", width: 520, height: 300, cat: "the-space" },
+  { src: "/media/recent-mega.jpg", alt: "The Mega Marquee dressed for a wedding", width: 2000, height: 1334, cat: "weddings" },
+  { src: "/media/content/extras-mega-marquee-or-grounds.jpg", alt: "The Mega Marquee and its surroundings", width: 1600, height: 1143, cat: "the-space" },
+  { src: "/media/content/mega-3j7a1689.jpg", alt: "The Mega Marquee set for an Asian wedding", width: 2560, height: 1706, cat: "asian" },
+  { src: "/media/content/mega-4bdnnvby.jpg", alt: "The Mega Marquee set for an Asian wedding", width: 2560, height: 1706, cat: "asian" },
+  { src: "/media/content/mega-9.jpg", alt: "The Mega Marquee lit for an evening celebration", width: 2560, height: 1704, cat: "parties" },
+  { src: "/media/content/mega-a2-portrait.jpg", alt: "The Mega Marquee dressed for a wedding", width: 2560, height: 1920, cat: "weddings" },
+  { src: "/media/content/mega-dsc-0834.jpg", alt: "The Mega Marquee lit for an evening celebration", width: 2560, height: 1709, cat: "parties" },
+  { src: "/media/content/mega-gimage.jpg", alt: "The Mega Marquee dressed for a wedding", width: 2048, height: 1366, cat: "weddings" },
+  { src: "/media/content/mega-image-5.jpg", alt: "The Mega Marquee set for an Asian wedding", width: 2560, height: 1438, cat: "asian" },
+  { src: "/media/content/mega-img-1110.jpg", alt: "The Mega Marquee and its surroundings", width: 2560, height: 1327, cat: "the-space" },
+  { src: "/media/content/mega-mega-marquee2.jpg", alt: "The Mega Marquee dressed for a wedding", width: 1600, height: 1066, cat: "weddings" },
+  { src: "/media/content/mega-mega-marquee3.jpg", alt: "The Mega Marquee lit for an evening celebration", width: 2560, height: 1706, cat: "parties" },
+  { src: "/media/content/mega-mega-marquee5.jpg", alt: "The Mega Marquee set for an Asian wedding", width: 2560, height: 1706, cat: "asian" },
+  { src: "/media/content/mega-mendhi-stage.jpg", alt: "The Mega Marquee set for an Asian wedding", width: 1600, height: 777, cat: "asian" },
+  { src: "/media/content/mega-photo-122.jpg", alt: "The Mega Marquee dressed for a wedding", width: 2560, height: 1706, cat: "weddings" },
+  { src: "/media/content/mega-photo-183.jpg", alt: "The Mega Marquee dressed for a wedding", width: 2560, height: 1706, cat: "weddings" },
+  { src: "/media/content/mega-photo-28.jpg", alt: "The Mega Marquee dressed for a wedding", width: 2560, height: 1706, cat: "weddings" },
+  { src: "/media/content/mega-photo-35.jpg", alt: "The Mega Marquee dressed for a wedding", width: 2560, height: 1706, cat: "weddings" },
+  { src: "/media/content/mega-photo-543.jpg", alt: "The Mega Marquee dressed for a wedding", width: 2560, height: 1706, cat: "weddings" },
+  { src: "/media/content/mega-venue5-450-guest.jpg", alt: "The Mega Marquee lit for an evening celebration", width: 1600, height: 1066, cat: "parties" },
+  { src: "/media/content/mega-whatsapp-image-2025-02-02-at-20-08-14.jpg", alt: "The Mega Marquee lit for an evening celebration", width: 1600, height: 1067, cat: "parties" },
+];
+
+export const MINI_GALLERY: GalleryItem[] = [
+  { src: "/media/mini-6.jpg", alt: "The Mini Marquee dressed for a wedding", width: 2560, height: 1920, cat: "weddings" },
+  { src: "/media/mini-interior.jpg", alt: "The Mini Marquee lit for an evening celebration", width: 1080, height: 720, cat: "parties" },
+  { src: "/media/mini-marquee-party-venue-essex-london-chigwell-marquees.jpg", alt: "The Mini Marquee lit for an evening celebration", width: 520, height: 300, cat: "parties" },
+  { src: "/media/recent-mini.jpg", alt: "The Mini Marquee dressed for a wedding", width: 2000, height: 1500, cat: "weddings" },
+  { src: "/media/content/mini-03fde31a-9817-4ac3-b40d-b09c6a34a94c.jpg", alt: "The Mini Marquee set for a civil ceremony", width: 1512, height: 1512, cat: "civil" },
+  { src: "/media/content/mini-2.jpg", alt: "The Mini Marquee and its surroundings", width: 2560, height: 1920, cat: "the-space" },
+  { src: "/media/content/mini-20190517-152537.jpg", alt: "The Mini Marquee lit for an evening celebration", width: 2560, height: 2560, cat: "parties" },
+  { src: "/media/content/mini-20230519-184055.jpg", alt: "The Mini Marquee dressed for a wedding", width: 2560, height: 1920, cat: "weddings" },
+  { src: "/media/content/mini-6-mini-marquee-3.jpg", alt: "The Mini Marquee dressed for a wedding", width: 2560, height: 1920, cat: "weddings" },
+  { src: "/media/content/mini-6-mini-marquee-5.jpg", alt: "The Mini Marquee dressed for a wedding", width: 2560, height: 1920, cat: "weddings" },
+  { src: "/media/content/mini-8a.jpg", alt: "The Mini Marquee dressed for a wedding", width: 1500, height: 2000, cat: "weddings" },
+  { src: "/media/content/mini-8c.jpg", alt: "The Mini Marquee set for an Asian wedding", width: 2560, height: 1706, cat: "asian" },
+  { src: "/media/content/mini-8d.jpg", alt: "The Mini Marquee and its surroundings", width: 1600, height: 777, cat: "the-space" },
+  { src: "/media/content/mini-8e.jpg", alt: "The Mini Marquee dressed for a wedding", width: 2560, height: 1920, cat: "weddings" },
+  { src: "/media/content/mini-f0b138d4-6b91-488f-ab74-f8e1e360b768.jpg", alt: "The Mini Marquee dressed for a wedding", width: 1000, height: 667, cat: "weddings" },
+  { src: "/media/content/mini-mi-3.jpg", alt: "The Mini Marquee set for an Asian wedding", width: 2560, height: 1706, cat: "asian" },
+  { src: "/media/content/mini-photo-153.jpg", alt: "The Mini Marquee and its surroundings", width: 2560, height: 1706, cat: "the-space" },
+  { src: "/media/content/mini-photo-188.jpg", alt: "The Mini Marquee dressed for a wedding", width: 2560, height: 1706, cat: "weddings" },
+  { src: "/media/content/mini-photo-202.jpg", alt: "The Mini Marquee dressed for a wedding", width: 2560, height: 1706, cat: "weddings" },
+  { src: "/media/content/mini-photo-3.jpg", alt: "The Mini Marquee dressed for a wedding", width: 2560, height: 1706, cat: "weddings" },
+];

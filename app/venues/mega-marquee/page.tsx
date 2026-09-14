@@ -1,3 +1,5 @@
+import VenueGallery from "@/components/sections/VenueGallery";
+import { MEGA_GALLERY } from "@/lib/gallery-venues";
 import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/site/PageHero";
 import JsonLd from "@/components/site/JsonLd";
@@ -39,6 +41,8 @@ export default function MegaMarqueePage() {
         media={SPACE_MEGA_HERO}
         video={VIDEO.megaHero}
       />
+
+      <VenueGallery title="Inside the Mega Marquee." items={MEGA_GALLERY} />
 
       <Section tone="bone" spacing="lg">
         <div className="container-luxe">

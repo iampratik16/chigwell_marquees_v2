@@ -22,11 +22,13 @@ const SECRET = 'PASTE_A_LONG_RANDOM_STRING_HERE';
 // Open by ID so this works as a STANDALONE script too — a standalone script has
 // no active spreadsheet, so getActiveSpreadsheet() would return null.
 const SHEET_ID = '1iJXcV3_yZbTxMj1RT4LAjdqCkvp4QNt5UFa5R5sI_3k';
-const SHEET_NAME = 'Enquiries';
+// v2 of the form changed the columns. Point at a NEW tab so the historical
+// rows in 'Enquiries' keep their old (different) column meanings.
+const SHEET_NAME = 'Enquiries v2';
 
 const HEADERS = [
-  'Timestamp', 'Name', 'Email', 'Phone', 'Occasion',
-  'Preferred date', 'Preferred month', 'Guests', 'Venue interest', 'Consent',
+  'Timestamp', 'Name', 'Email', 'Phone', 'Message',
+  'Preferred date', 'Guests', 'Venue interest', 'How did you hear about us', 'Consent',
 ];
 
 function doPost(e) {
@@ -51,9 +53,9 @@ function doPost(e) {
       body.phone || '',
       body.occasion || '',
       body.preferredDate || '',
-      body.preferredMonth || '',
       body.guests || '',
-      (body.venueInterest || []).join(', '),
+      body.venueInterest || '',
+      body.hearAbout || '',
       body.consent ? 'Yes' : 'No',
     ]);
 

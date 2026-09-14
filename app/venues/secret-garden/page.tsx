@@ -1,3 +1,6 @@
+import AnimatedLink from "@/components/ui/AnimatedLink";
+import VenueGallery from "@/components/sections/VenueGallery";
+import { SECRET_GARDEN_GALLERY } from "@/lib/gallery-venues";
 import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/site/PageHero";
 import JsonLd from "@/components/site/JsonLd";
@@ -32,13 +35,15 @@ export default function SecretGardenPage() {
         ])}
       />
       <PageHero
-        eyebrow="A beautiful outdoor setting."
+        eyebrow="Part of the Mini Marquee"
         title={"The Secret\nGarden."}
         intro="A secluded lawn, a classic fountain, and the soft gold of a setting sun."
         media={SECRET_IMG.blossom}
         video={VIDEO.secretGarden}
         poster={POSTER.secretGarden}
       />
+
+      <VenueGallery title="The Secret Garden in every season." items={SECRET_GARDEN_GALLERY} />
 
       <Section tone="bone" spacing="lg">
         <div className="container-luxe">
@@ -69,6 +74,17 @@ export default function SecretGardenPage() {
                     couple photography, including the waterfall, bridge and
                     selected areas around Chigwell Hall.
                   </p>
+                </Reveal>
+                <Reveal delay={0.24}>
+                  <p className="text-ink/85">
+                    The Secret Garden is not booked independently — it comes as
+                    part of a Mini Marquee booking.
+                  </p>
+                  <div className="mt-5">
+                    <AnimatedLink href="/venues/mini-marquee" arrow cursorLabel="Explore">
+                      Explore the Mini Marquee
+                    </AnimatedLink>
+                  </div>
                 </Reveal>
               </div>
             </div>

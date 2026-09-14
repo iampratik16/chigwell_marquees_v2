@@ -7,28 +7,41 @@
  */
 
 export const VENUE_INTEREST_OPTIONS = [
-  "Mini Marquee (30–200 Guests)",
-  "Mega Marquee (200–1,000 Guests)",
-  "Chigwell Hall",
-  "Not Sure Yet",
+  "Mini Marquee",
+  "Mega Marquee",
+  "Both / Not Sure",
 ] as const;
 
 export type VenueInterest = (typeof VENUE_INTEREST_OPTIONS)[number];
 
+export const HEAR_ABOUT_OPTIONS = [
+  "Google",
+  "Instagram",
+  "Facebook",
+  "TikTok",
+  "Recommendation / Word of Mouth",
+  "Wedding Directory",
+  "Previous Event",
+  "Other",
+] as const;
+
+export type HearAbout = (typeof HEAR_ABOUT_OPTIONS)[number];
+
 export type EnquiryPayload = {
-  /** Free-text "Tell us about your occasion" (replaces the old occasion dropdown). */
+  /** Free-text "Message / additional information". Keeps the `occasion` key so
+   *  the sheet column mapping stays stable. */
   occasion: string;
   fullName: string;
   email: string;
   phone: string;
   /** Optional exact date (yyyy-mm-dd). */
   preferredDate?: string;
-  /** Optional month for enquirers without a fixed date (e.g. "June"). */
-  preferredMonth?: string;
   /** Optional approximate guest count. */
   guests?: string;
-  /** Any of the venue-interest options (zero or more). */
-  venueInterest: VenueInterest[];
+  /** Optional attribution — how the enquirer found us. */
+  hearAbout?: HearAbout | "";
+  /** Single choice from the venue dropdown. */
+  venueInterest?: VenueInterest | "";
   consent: boolean;
 };
 

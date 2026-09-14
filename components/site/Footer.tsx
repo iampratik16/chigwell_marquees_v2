@@ -1,42 +1,13 @@
-"use client";
-
-import { usePathname } from "next/navigation";
 import { SITE } from "@/lib/site";
-import RevealText from "@/components/ui/RevealText";
-import Reveal from "@/components/ui/Reveal";
-import GoldButton from "@/components/ui/GoldButton";
 import AnimatedLink from "@/components/ui/AnimatedLink";
 import SocialLinks from "@/components/site/SocialLinks";
 import Logo from "@/components/site/Logo";
 
 export default function Footer() {
   const year = 2026;
-  // The Visit page is itself the enquiry page, so the duplicate CTA is hidden there.
-  const onVisit = usePathname() === "/visit";
 
   return (
     <footer className="relative overflow-hidden bg-ink text-bone">
-      {/* Emotive CTA */}
-      {!onVisit && (
-      <div className="container-luxe border-b border-bone/12 py-8 md:py-10">
-        <div className="grid gap-6 md:grid-cols-12 md:items-end">
-          <div className="md:col-span-8">
-            <span className="eyebrow text-champagne">Begin Your Enquiry</span>
-            <RevealText as="h2" className="mt-4 display-md text-bone">
-              {"Come and experience\nThe Chigwell Marquees for yourself."}
-            </RevealText>
-          </div>
-          <div className="md:col-span-4 md:flex md:justify-end">
-            <Reveal delay={0.1}>
-              <GoldButton href="/visit#enquire" cursorLabel="Book">
-                Book a Viewing
-              </GoldButton>
-            </Reveal>
-          </div>
-        </div>
-      </div>
-      )}
-
       {/* Detail columns */}
       <div className="container-luxe grid gap-8 py-7 md:grid-cols-12">
         <div className="md:col-span-5">

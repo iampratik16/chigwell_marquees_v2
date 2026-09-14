@@ -57,8 +57,7 @@ export const NAV: NavItem[] = [
     href: "/venues",
     children: [
       { label: "The Mega Marquee", href: "/venues/mega-marquee", blurb: "200 – 1,000 guests" },
-      { label: "The Mini Marquee", href: "/venues/mini-marquee", blurb: "30 – 200 · starlit ceiling" },
-      { label: "The Secret Garden", href: "/venues/secret-garden", blurb: "With the Mini Marquee · up to 150" },
+      { label: "The Mini Marquee", href: "/venues/mini-marquee", blurb: "30 – 200 · with the Secret Garden" },
       { label: "Chigwell Hall", href: "/venues/suites", blurb: "Banqueting & Belmont · indoor" },
     ],
   },

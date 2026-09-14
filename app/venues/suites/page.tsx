@@ -1,3 +1,5 @@
+import VenueGallery from "@/components/sections/VenueGallery";
+import { CHIGWELL_HALL_GALLERY } from "@/lib/gallery-venues";
 import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/site/PageHero";
 import JsonLd from "@/components/site/JsonLd";
@@ -33,22 +35,25 @@ export default function SuitesPage() {
       <PageHero
         eyebrow="The spaces · IV"
         title={"Chigwell\nHall."}
-        intro="Beautifully appointed indoor suites within Chigwell Hall, made for stylish celebrations."
+        intro="Beautifully appointed indoor suites offering an elegant setting for private celebrations and events."
         media={SUITES_IMG.banquetingHall}
       />
+
+      <VenueGallery title="Inside Chigwell Hall." items={CHIGWELL_HALL_GALLERY} />
 
       <Section tone="bone" spacing="lg">
         <div className="container-luxe">
           <div className="max-w-4xl">
             <Eyebrow>Indoor celebrations at Chigwell Hall</Eyebrow>
             <RevealText as="h2" className="mt-7 display-lg">
-              {"Stylish celebrations,\nwithin a stately home."}
+              {"Stylish spaces for every occasion."}
             </RevealText>
             <Reveal>
               <p className="lead mt-8 max-w-2xl text-mist">
-                Located within the elegant surroundings of Chigwell Hall, our
-                beautifully appointed suites provide the perfect setting for
-                stylish indoor celebrations.
+                Set within the characterful surroundings of this Grade II listed
+                building, the Banqueting and Belmont Suites offer two distinctive
+                spaces for indoor celebrations, from intimate occasions to larger
+                private events.
               </p>
             </Reveal>
           </div>
@@ -56,22 +61,22 @@ export default function SuitesPage() {
       </Section>
 
       <SplitFeature
-        eyebrow="Up to 160 guests"
-        title={"The Banqueting\nSuite."}
+        title="The Banqueting Suite"
+        titleNote="Up to 160 guests"
         body={[
-          "The Banqueting Suite accommodates up to 160 guests and offers a spacious yet welcoming atmosphere ideal for larger private events.",
-          "Complete with its own fitted bar, generous dancefloor and adjustable ambient lighting, the suite provides everything needed for an unforgettable celebration within a stunning stately home setting.",
+          "A spacious and welcoming setting for larger celebrations, the Banqueting Suite accommodates up to 160 guests.",
+          "Complete with its own fitted bar, generous dancefloor and adjustable ambient lighting, the space can be tailored to suit a variety of occasions and event styles.",
         ]}
         media={SUITES_IMG.banqueting}
         ratio="3 / 2"
       />
 
       <SplitFeature
-        eyebrow="Up to 70 guests"
-        title={"The Belmont\nSuite."}
+        title="The Belmont Suite"
+        titleNote="Up to 70 guests"
         body={[
-          "The Belmont Suite offers a sophisticated space for up to 70 guests. Situated on the first floor of Chigwell Hall, the suite features a private bar and spacious dancefloor.",
-          "It also has access to a charming balcony overlooking the London skyline — the perfect place for guests to relax and enjoy the atmosphere throughout the evening.",
+          "Located on the first floor, the Belmont Suite offers an intimate and sophisticated setting for up to 70 guests, complete with a private bar and spacious dancefloor.",
+          "Guests also have access to a private balcony overlooking the London skyline, providing an additional space to relax and enjoy the evening.",
         ]}
         media={SUITES_IMG.belmont}
         ratio="3 / 2"

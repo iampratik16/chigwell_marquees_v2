@@ -100,7 +100,7 @@ export default function FloatingActions() {
       fullName,
       email,
       phone,
-      venueInterest: data.getAll("venueInterest") as VenueInterest[],
+      venueInterest: ((data.get("venueInterest") as string) ?? "") as VenueInterest | "",
       consent,
     };
 
@@ -276,17 +276,20 @@ export default function FloatingActions() {
                     <textarea id="qe-message" name="message" rows={3} className={cn(fieldBase, "resize-none")} placeholder="A few words about your occasion…" />
                   </div>
 
-                  <fieldset>
-                    <legend className="eyebrow mb-2 block text-mist">Venue interest</legend>
-                    <div className="flex flex-col gap-1">
+                  <div>
+                    <label htmlFor="qe-venue" className="eyebrow mb-1 block text-mist">Venue interested in</label>
+                    <select
+                      id="qe-venue"
+                      name="venueInterest"
+                      className={cn(fieldBase, "appearance-none")}
+                      defaultValue=""
+                    >
+                      <option value="">Select a venue…</option>
                       {VENUE_INTEREST_OPTIONS.map((v) => (
-                        <label key={v} className="flex min-h-[44px] cursor-pointer items-center gap-3 text-ink">
-                          <input type="checkbox" name="venueInterest" value={v} className="h-4 w-4 accent-botanical" />
-                          <span className="text-[0.9rem]">{v}</span>
-                        </label>
+                        <option key={v} value={v}>{v}</option>
                       ))}
-                    </div>
-                  </fieldset>
+                    </select>
+                  </div>
 
                   <div className="flex items-start gap-3">
                     <input

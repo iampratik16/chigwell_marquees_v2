@@ -6,17 +6,14 @@ import { EASE_LUXE } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import {
   VENUE_INTEREST_OPTIONS,
+  HEAR_ABOUT_OPTIONS,
   submitEnquiry,
   validateContact,
   type ContactErrors,
   type EnquiryPayload,
+  type HearAbout,
   type VenueInterest,
 } from "@/lib/enquiry";
-
-const MONTHS = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December",
-];
 
 const fieldBase =
   "w-full border-b border-line bg-transparent py-3 text-ink placeholder:text-mist/70 focus:border-ink focus:outline-none transition-colors";
@@ -74,9 +71,9 @@ export default function EnquiryForm() {
       email,
       phone,
       preferredDate: ((data.get("preferredDate") as string) ?? "") || undefined,
-      preferredMonth: ((data.get("preferredMonth") as string) ?? "") || undefined,
       guests: ((data.get("guests") as string) ?? "") || undefined,
-      venueInterest: data.getAll("venueInterest") as VenueInterest[],
+      hearAbout: ((data.get("hearAbout") as string) ?? "") as HearAbout | "",
+      venueInterest: ((data.get("venueInterest") as string) ?? "") as VenueInterest | "",
       consent,
     };
 
@@ -129,13 +126,13 @@ export default function EnquiryForm() {
 
             {/* 1 · Tell us about your occasion — moved to the top */}
             <div className="sm:col-span-2">
-              <Label htmlFor="occasion">Tell us about your occasion</Label>
+              <Label htmlFor="occasion">Message / additional information</Label>
               <textarea
                 id="occasion"
                 name="occasion"
                 rows={4}
                 className={cn(fieldBase, "resize-none")}
-                placeholder="A few words about your day, the occasion, your vision…"
+                placeholder="A few words about your occasion, your plans or anything you'd like us to know…"
               />
             </div>
 
@@ -198,52 +195,43 @@ export default function EnquiryForm() {
               <input id="preferredDate" name="preferredDate" type="date" className={fieldBase} />
             </div>
 
-            {/* 6 · Preferred month (optional, secondary) */}
-            <div className="sm:col-span-1">
-              <Label htmlFor="preferredMonth">Preferred month</Label>
-              <select
-                id="preferredMonth"
-                name="preferredMonth"
-                aria-describedby="preferredMonth-help"
-                className={cn(fieldBase, "appearance-none")}
-                defaultValue=""
-              >
-                <option value="">No preference…</option>
-                {MONTHS.map((m) => (
-                  <option key={m} value={m}>{m}</option>
-                ))}
-              </select>
-              <p id="preferredMonth-help" className="mt-1.5 text-sm text-mist">
-                For clients who don&apos;t yet have a confirmed date.
-              </p>
-            </div>
-
             {/* 7 · Number of guests (optional) */}
             <div className="sm:col-span-1">
               <Label htmlFor="guests">Number of guests</Label>
               <input id="guests" name="guests" type="number" min={1} className={fieldBase} placeholder="e.g. 220" />
             </div>
 
-            {/* Venue interest (optional, multi-select) */}
-            <fieldset className="sm:col-span-2">
-              <legend className="eyebrow mb-3 block text-mist">Venue interest</legend>
-              <div className="grid gap-2 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-3">
+            {/* Venue interested in */}
+            <div className="sm:col-span-1">
+              <Label htmlFor="venueInterest">Venue interested in</Label>
+              <select
+                id="venueInterest"
+                name="venueInterest"
+                className={cn(fieldBase, "appearance-none")}
+                defaultValue=""
+              >
+                <option value="">Select a venue…</option>
                 {VENUE_INTEREST_OPTIONS.map((v) => (
-                  <label
-                    key={v}
-                    className="flex min-h-[44px] cursor-pointer items-center gap-3 text-ink"
-                  >
-                    <input
-                      type="checkbox"
-                      name="venueInterest"
-                      value={v}
-                      className="h-4 w-4 accent-botanical"
-                    />
-                    <span className="text-[0.95rem]">{v}</span>
-                  </label>
+                  <option key={v} value={v}>{v}</option>
                 ))}
-              </div>
-            </fieldset>
+              </select>
+            </div>
+
+            {/* How did you hear about us */}
+            <div className="sm:col-span-1">
+              <Label htmlFor="hearAbout">How did you hear about us?</Label>
+              <select
+                id="hearAbout"
+                name="hearAbout"
+                className={cn(fieldBase, "appearance-none")}
+                defaultValue=""
+              >
+                <option value="">Select an option…</option>
+                {HEAR_ABOUT_OPTIONS.map((h) => (
+                  <option key={h} value={h}>{h}</option>
+                ))}
+              </select>
+            </div>
 
             {/* Consent (required) */}
             <div className="sm:col-span-2">

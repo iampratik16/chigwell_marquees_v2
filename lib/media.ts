@@ -122,24 +122,28 @@ export const OCC_CORPORATE_2 = img(
   "festival-venue-hire-essex-chigwell-marquees.jpg",
   "A festival-scale event staged across the grounds",
 );
-// Curated corporate imagery (AI-generated, photorealistic marquee events).
+// Corporate imagery, AI-generated (Gemini image-to-image on Vertex) from real
+// photographs of our own marquees, so the roof structure, pillars, chandeliers
+// and window lines match the actual venue rather than a generic marquee.
+//   gala + conference: seeded from content/mega-mega-marquee2.jpg (Mega Marquee)
+//   reception:         seeded from mini-6.jpg (Mini Marquee)
 export const CORP_GALA: Media = {
-  src: "/media/corporate-gala-dinner-essex-chigwell-marquees.jpg",
-  alt: "A black-tie corporate gala dinner set beneath the marquee",
+  src: "/media/corporate-gala-dinner-essex-chigwell-marquees-v2.jpg",
+  alt: "A black-tie corporate gala dinner beneath the Mega Marquee's vaulted ceiling",
   width: 1200,
-  height: 896,
+  height: 800,
 };
 export const CORP_CONFERENCE: Media = {
-  src: "/media/large-corporate-conference-essex-chigwell-marquees.jpg",
-  alt: "A large-scale corporate conference staged in the Mega Marquee",
+  src: "/media/large-corporate-conference-essex-chigwell-marquees-v2.jpg",
+  alt: "A corporate conference in theatre-style seating in the Mega Marquee",
   width: 1200,
-  height: 896,
+  height: 800,
 };
 export const CORP_RECEPTION: Media = {
-  src: "/media/corporate-networking-reception-essex-chigwell-marquees.jpg",
-  alt: "Guests networking at a corporate drinks reception in the marquee",
+  src: "/media/corporate-networking-reception-essex-chigwell-marquees-v2.jpg",
+  alt: "Guests at a corporate drinks reception beneath the Mini Marquee's starlit ceiling",
   width: 1200,
-  height: 896,
+  height: 876,
 };
 export const OCC_CIVIL = img(
   "civil-ceremoney-venue-essex-the-chigwell-marquees.jpg",

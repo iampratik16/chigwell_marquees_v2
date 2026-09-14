@@ -76,14 +76,6 @@ export default function VisitPage() {
                     </dd>
                   </div>
                   <div className="flex flex-wrap gap-x-2">
-                    <dt>Mobile:</dt>
-                    <dd>
-                      <a href={`tel:+${SITE.whatsapp.number}`} className="text-ink underline">
-                        {SITE.whatsapp.display}
-                      </a>
-                    </dd>
-                  </div>
-                  <div className="flex flex-wrap gap-x-2">
                     <dt>Email:</dt>
                     <dd>
                       <a href={`mailto:${SITE.email}`} className="text-ink underline">
