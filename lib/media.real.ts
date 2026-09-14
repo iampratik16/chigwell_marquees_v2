@@ -7,7 +7,7 @@ export const VIDEO = {
   // that BackgroundVideo swaps in on narrow viewports — keep the pair in sync
   // when adding or replacing a clip.
   hero: "/media/video/hero-v2.mp4",
-  aboutHero: "/media/video/about-hero-v5.mp4", // -v5: same edit mastered at 1920x972 CRF25 (SSIM 0.98 vs CRF21 ref); -sm is 1280x648
+  aboutHero: "/media/video/about-hero-v6.mp4", // -v6: all-Mega footage (exterior + interior) so the venue reads consistently; exterior reseeded from the 2560px mega-img-1110.jpg
   megaHero: "/media/video/mega-hero-v3.mp4", // -v3: CRF28 re-encode (SSIM 0.98)
   weddingHero: "/media/video/wedding-hero-v2.mp4", // The Weddings page hero
   corporateHero: "/media/video/corporate-hero-v2.mp4", // Corporate page hero (DJ set; native 16:9, 9s loop, audio stripped)
