@@ -37,6 +37,7 @@ export default function SuitesPage() {
         title={"Chigwell\nHall."}
         intro="Beautifully appointed indoor suites offering an elegant setting for private celebrations and events."
         media={SUITES_IMG.banquetingHall}
+        focal="50% 22%"
       />
 
       <VenueGallery title="Inside Chigwell Hall." items={CHIGWELL_HALL_GALLERY} />

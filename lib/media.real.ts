@@ -150,26 +150,32 @@ export const MINI_IMG = {
 } as const;
 
 /** Chigwell Hall function suites (supplied). */
+// hall-room-12a/12b/12c carried a third party's "Marlborough Homes" watermark,
+// so these now use the client's own Banqueting Suite photographs instead.
 export const SUITES_IMG = {
   banqueting: {
-    src: "/media/hall-room-12a.jpg",
+    src: "/media/suites/banqueting-02.jpg",
     alt: "The Banqueting Suite at Chigwell Hall, set for a private celebration",
-    width: 2000,
-    height: 1500,
+    width: 1200,
+    height: 1600,
     cat: "estate",
   },
   banquetingBar: {
-    src: "/media/hall-room-12b.jpg",
-    alt: "The Banqueting Suite's fitted bar and dancefloor",
-    width: 2000,
-    height: 1500,
+    src: "/media/suites/banqueting-19.jpg",
+    alt: "The Banqueting Suite dressed with round tables and gold detailing",
+    width: 640,
+    height: 480,
     cat: "estate",
   },
   banquetingHall: {
-    src: "/media/hall-room-12c.jpg",
-    alt: "The Banqueting Suite's spacious interior with adjustable ambient lighting",
-    width: 2000,
-    height: 1500,
+    // Same photograph as banqueting-26.jpg, enlarged 2x (lanczos + mild unsharp)
+    // for the full-bleed hero. No generative upscaling: a Vertex pass produced a
+    // sharper image but re-rendered the florals and chair positions, so it was
+    // not a faithful record of the room.
+    src: "/media/suites/banqueting-26-hero.jpg",
+    alt: "The Banqueting Suite at Chigwell Hall, set with a white aisle leading to the stage",
+    width: 2400,
+    height: 3200,
     cat: "estate",
   },
   belmont: {

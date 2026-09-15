@@ -23,12 +23,15 @@ type Props = {
   poster?: string;
   /** Smaller hero for utility pages. */
   size?: "lg" | "md";
+  /** CSS object-position for the backdrop, e.g. "50% 25%" to reveal more of the
+   *  top of a tall photograph. Defaults to centred. */
+  focal?: string;
   /** Show a "Follow along" social row beneath the intro. */
   social?: boolean;
 };
 
 /** Cinematic dark hero shared by inner pages. */
-export default function PageHero({ eyebrow, title, titleClassName, intro, media, video, poster, size = "lg", social }: Props) {
+export default function PageHero({ eyebrow, title, titleClassName, intro, media, video, poster, size = "lg", social, focal }: Props) {
   const reduced = useReducedMotion();
   const mounted = useMounted();
   const lines = title.split("\n");
@@ -46,7 +49,7 @@ export default function PageHero({ eyebrow, title, titleClassName, intro, media,
         <div className={reduced ? "absolute inset-0" : "ken-burns absolute inset-0"}>
           {/* Full-bleed, but capped at 1920px: the poster sits behind a scrim (and
               often video), so 4K srcset candidates are wasted bytes. */}
-          <Image src={posterSrc} alt={media.alt} fill priority sizes="(min-width: 1920px) 1920px, 100vw" className="object-cover" />
+          <Image src={posterSrc} alt={media.alt} fill priority sizes="(min-width: 1920px) 1920px, 100vw" className="object-cover" style={focal ? { objectPosition: focal } : undefined} />
         </div>
         {/* Cinematic clip, layered on top once it can play. */}
         {playVideo && <BackgroundVideo src={video!} poster={posterSrc} className="object-cover" />}
