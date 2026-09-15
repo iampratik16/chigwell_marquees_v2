@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { EASE_LUXE } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import type { Media } from "@/lib/media";
+import { CANONICAL_SRC } from "@/lib/gallery-duplicates";
 
 export type GalleryItem = Media & { cat: string };
 
@@ -30,8 +31,28 @@ function filtersFor(items: GalleryItem[]): GalleryFilter[] {
   return ALL_FILTERS.filter((f) => f.key === "all" || present.has(f.key));
 }
 
-export default function MasonryGallery({ items }: { items: GalleryItem[] }) {
-  const filters = useMemo(() => filtersFor(items), [items]);
+export default function MasonryGallery({
+  items,
+  initialCount,
+}: {
+  items: GalleryItem[];
+  /** Show only this many at first, with a "See more" button for the rest. */
+  initialCount?: number;
+}) {
+  // The same photograph reached the site under several filenames. Keep the
+  // first copy of each and skip the rest, so nothing shows twice. Done here
+  // rather than in the source lists because every gallery passes through this
+  // component, and a repeat on /gallery may be a venue gallery's only copy.
+  const unique = useMemo(() => {
+    const seen = new Set<string>();
+    return items.filter((i) => {
+      const id = CANONICAL_SRC[i.src] ?? i.src;
+      if (seen.has(id)) return false;
+      seen.add(id);
+      return true;
+    });
+  }, [items]);
+  const filters = useMemo(() => filtersFor(unique), [unique]);
   // One category (plus "all") means the filters would do nothing — hide them.
   const showFilters = filters.length > 2;
   const [active, setActive] = useState("all");
@@ -39,15 +60,28 @@ export default function MasonryGallery({ items }: { items: GalleryItem[] }) {
   const [panelOpen, setPanelOpen] = useState(true);
 
   const filtered = useMemo(
-    () => (active === "all" ? items : items.filter((i) => i.cat === active)),
-    [active, items],
+    () => (active === "all" ? unique : unique.filter((i) => i.cat === active)),
+    [active, unique],
   );
+
+  // Collapsed by default when `initialCount` is set, so a long gallery does not
+  // force the reader to scroll past it. Everything below runs on `visible`, so
+  // the lightbox only steps through what is actually on screen.
+  const [expanded, setExpanded] = useState(false);
+  const visible = useMemo(
+    () => (initialCount && !expanded ? filtered.slice(0, initialCount) : filtered),
+    [filtered, initialCount, expanded],
+  );
+  // Capped galleries render as an even grid — a flat "tray" that ends on a
+  // straight edge. Ragged masonry columns left a large hole under the shorter
+  // column once the list was capped. The uncapped /gallery page keeps masonry.
+  const tray = Boolean(initialCount);
 
   const close = useCallback(() => setIndex(null), []);
   const step = useCallback(
     (dir: number) =>
-      setIndex((i) => (i === null ? i : (i + dir + filtered.length) % filtered.length)),
-    [filtered.length],
+      setIndex((i) => (i === null ? i : (i + dir + visible.length) % visible.length)),
+    [visible.length],
   );
 
   // Keyboard controls + scroll lock while the lightbox is open.
@@ -66,7 +100,7 @@ export default function MasonryGallery({ items }: { items: GalleryItem[] }) {
     };
   }, [index, close, step]);
 
-  const current = index === null ? null : filtered[index];
+  const current = index === null ? null : visible[index];
 
   return (
     <div className="container-luxe">
@@ -146,10 +180,16 @@ export default function MasonryGallery({ items }: { items: GalleryItem[] }) {
         </aside>
         )}
 
-        {/* Masonry via CSS columns */}
-        <div className="min-w-0 flex-1 [column-gap:1rem] columns-1 sm:columns-2 lg:columns-2 xl:columns-3">
+        <div
+          className={cn(
+            "min-w-0 flex-1",
+            tray
+              ? "grid grid-cols-2 gap-4 lg:grid-cols-3"
+              : "[column-gap:1rem] columns-1 sm:columns-2 lg:columns-2 xl:columns-3",
+          )}
+        >
           <AnimatePresence mode="popLayout">
-            {filtered.map((m, i) => (
+            {visible.map((m, i) => (
               <motion.button
                 key={m.src}
                 layout
@@ -160,7 +200,10 @@ export default function MasonryGallery({ items }: { items: GalleryItem[] }) {
                 onClick={() => setIndex(i)}
                 data-cursor="View"
                 aria-label={`View image: ${m.alt}`}
-                className="group/g relative mb-4 block w-full break-inside-avoid overflow-hidden rounded-xl bg-bone-dim"
+                className={cn(
+                  "group/g relative block w-full overflow-hidden rounded-xl bg-bone-dim",
+                  tray ? "aspect-[4/3]" : "mb-4 break-inside-avoid",
+                )}
               >
                 <Image
                   src={m.src}
@@ -168,7 +211,10 @@ export default function MasonryGallery({ items }: { items: GalleryItem[] }) {
                   width={m.width}
                   height={m.height}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="h-auto w-full object-cover transition-transform duration-[1.3s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/g:scale-[1.04]"
+                  className={cn(
+                    "w-full object-cover transition-transform duration-[1.3s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/g:scale-[1.04]",
+                    tray ? "h-full" : "h-auto",
+                  )}
                 />
                 <span className="pointer-events-none absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover/g:bg-ink/10" />
               </motion.button>
@@ -176,6 +222,19 @@ export default function MasonryGallery({ items }: { items: GalleryItem[] }) {
           </AnimatePresence>
         </div>
       </div>
+
+      {initialCount && filtered.length > initialCount && (
+        <div className="mt-10 flex justify-center">
+          <button
+            onClick={() => setExpanded((e) => !e)}
+            aria-expanded={expanded}
+            data-cursor={expanded ? "Less" : "More"}
+            className="rounded-full border border-ink/25 px-8 py-3.5 text-[0.72rem] font-medium uppercase tracking-[0.16em] text-ink transition-colors duration-400 hover:border-ink hover:bg-ink hover:text-bone"
+          >
+            {expanded ? "Show less" : "See more"}
+          </button>
+        </div>
+      )}
 
       {/* Lightbox */}
       <AnimatePresence>
@@ -245,7 +304,7 @@ export default function MasonryGallery({ items }: { items: GalleryItem[] }) {
                 />
               </div>
               <figcaption className="mt-3 max-w-2xl text-center text-sm text-bone/70">
-                {current.alt} · {(index ?? 0) + 1} / {filtered.length}
+                {current.alt} · {(index ?? 0) + 1} / {visible.length}
               </figcaption>
             </motion.figure>
           </motion.div>

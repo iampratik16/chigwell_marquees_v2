@@ -27,7 +27,7 @@ export default function VenueGallery({
         </RevealText>
       </div>
       <div className="mt-10">
-        <MasonryGallery items={items} />
+        <MasonryGallery items={items} initialCount={12} />
       </div>
     </Section>
   );
