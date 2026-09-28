@@ -232,18 +232,21 @@
   margin: -7px 0 0 -13px;
 }
 .cursor-ring[data-labelled="true"] {
-  width: 92px;
-  height: 92px;
-  margin: -46px 0 0 -46px;
+  /* Sized so the longest label ("Instagram", from the social links) still sits
+     inside the circle — shrink the type with it if this gets any smaller. */
+  width: 70px;
+  height: 70px;
+  margin: -35px 0 0 -35px;
   border-radius: 50%;
   background-image: none;
   background-color: var(--color-champagne);
 }
 .cursor-label {
   font-family: var(--font-sans);
-  font-size: 0.62rem;
+  font-size: 0.52rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
   text-transform: uppercase;
   color: var(--color-ink);
   opacity: 0;
