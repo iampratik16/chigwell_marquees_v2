@@ -15,7 +15,7 @@ import { VIDEO, POSTER } from "@/lib/media.real";
 export const metadata = pageMeta({
   title: "Corporate Event Venue near London | The Chigwell Marquees",
   description:
-    "A corporate event venue near London for conferences, galas, product launches and private functions of up to 1,000 guests, at Chigwell Hall in Essex.",
+    "A corporate event venue near London for conferences, galas, product launches and private functions of up to 1,800 guests, at Chigwell Hall in Essex.",
   path: "/occasions/corporate",
   imageAlt: "A corporate gala dinner staged in the Mega Marquee",
 });
@@ -66,7 +66,7 @@ export default function CorporatePage() {
               </Reveal>
               <Reveal delay={0.08}>
                 <p className="text-mist">
-                  With capacities of up to 1,000 guests, extensive complimentary
+                  With capacities of up to 1,800 guests, extensive complimentary
                   parking and convenient access from London and major road
                   networks, the venue combines practicality with an impressive
                   setting.
@@ -101,7 +101,7 @@ export default function CorporatePage() {
       <SplitFeature
         eyebrow="Large-Scale Events"
         title="Space for ambitious ideas."
-        body="With the Mega Marquee accommodating up to 1,000 guests and extensive surrounding grounds, The Chigwell Marquees can accommodate a wide range of larger corporate briefs, subject to individual event requirements and approval."
+        body="With capacity for up to 1,800 guests across the marquees and extensive surrounding grounds, The Chigwell Marquees can accommodate a wide range of larger corporate briefs, subject to individual event requirements and approval."
         media={CORP_CONFERENCE}
         ratio="4 / 3"
       />

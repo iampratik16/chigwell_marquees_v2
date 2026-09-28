@@ -32,8 +32,8 @@ export default function IntroStatement() {
             <Reveal>
               <p className="lead text-ink/85">
                 Set within the grounds of the Grade II listed Chigwell Hall, The
-                Chigwell Marquees offers two distinctive venues built around two
-                occasions: weddings and corporate events.
+                Chigwell Marquees offers two distinctive venues designed for
+                unforgettable occasions of every scale.
               </p>
             </Reveal>
             <Reveal delay={0.1}>

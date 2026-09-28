@@ -1,5 +1,4 @@
 import Section from "@/components/ui/Section";
-import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
 import RevealImage from "@/components/ui/RevealImage";
 import type { Media } from "@/lib/media";
@@ -36,8 +35,7 @@ export default function CaseStudies() {
       <div className="container-luxe">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <Eyebrow>August Weddings</Eyebrow>
-            <h2 className="mt-6 display-md max-w-xl">Discover Our Spaces</h2>
+            <h2 className="display-md max-w-xl">Discover Our Spaces</h2>
           </div>
         </div>
 

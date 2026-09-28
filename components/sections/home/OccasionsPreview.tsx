@@ -7,7 +7,7 @@ import {
   OCC_WEDDINGS_CARD,
   OCC_CELEBRATIONS_CARD,
   OCC_CORPORATE_CARD,
-  OCC_CULTURAL,
+  OCC_CULTURAL_CARD,
 } from "@/lib/media";
 
 /** Four occasion pillars — Weddings and Corporate Events lead as the primary markets. */
@@ -22,7 +22,7 @@ const CARDS = [
   {
     n: "02",
     label: "Corporate Events",
-    blurb: "Conferences, away days, award ceremonies, launches and corporate dinners for up to 1,000 guests.",
+    blurb: "Conferences, away days, award ceremonies, launches and corporate dinners for up to 1,800 guests.",
     href: "/occasions/corporate",
     media: OCC_CORPORATE_CARD,
   },
@@ -31,7 +31,7 @@ const CARDS = [
     label: "Cultural & Religious Events",
     blurb: "Asian weddings, religious ceremonies, Bar & Bat Mitzvahs and cultural celebrations.",
     href: "/occasions/faith-based",
-    media: OCC_CULTURAL,
+    media: OCC_CULTURAL_CARD,
   },
   {
     n: "04",
@@ -49,7 +49,7 @@ export default function OccasionsPreview() {
         <div className="max-w-2xl">
           <Eyebrow>Occasions</Eyebrow>
           <RevealText as="h2" className="mt-6 display-lg">
-            {"Built for weddings.\nEquipped for business."}
+            A setting for every occasion
           </RevealText>
         </div>
 

@@ -165,20 +165,34 @@ export const OCC_FAITH_2 = img(
   "asian-weddings-indian-wedding-essex-the-chigwell-marquees.jpg",
   "A vibrant Asian wedding celebration in the Mega Marquee",
 );
-export const OCC_WEDDINGS_CARD = img(
-  "small-civil-ceremony-venue-luxury-marquee-event-hire-essex-the-chigwell-marquees.jpg",
-  "A wedding reception dressed beneath the marquee canopy",
-);
+/* Homepage occasion cards. These crop to 4:5, so each one is a portrait or
+   square frame — a wide shot loses its subject to the centre crop. */
+export const OCC_WEDDINGS_CARD: Media = {
+  src: "/media/new/new-0017.jpg",
+  alt: "A newly married couple walking through the marquee as their guests celebrate",
+  width: 1425,
+  height: 2048,
+};
+/* The homepage card only. OCC_CULTURAL stays as it is for /occasions and
+   /occasions/faith-based, which both use it at a wider crop. */
+export const OCC_CULTURAL_CARD: Media = {
+  src: "/media/ig-09.jpg",
+  alt: "An ornate mandap staged in the marquee with floor cushions and rugs",
+  width: 1080,
+  height: 1350,
+};
 export const OCC_CORPORATE_CARD: Media = {
   src: "/media/corporate-evening-event-essex-chigwell-marquees.jpg",
   alt: "Business professionals networking at a corporate evening event in the marquee",
   width: 928,
   height: 1152,
 };
-export const OCC_CELEBRATIONS_CARD = img(
-  "birthday-party-venue-essex-chigwell-marquees.jpg",
-  "A celebration dressed with balloons and a styled dessert table",
-);
+export const OCC_CELEBRATIONS_CARD: Media = {
+  src: "/media/ig-07.jpg",
+  alt: "An evening celebration in the marquee, with a lit bar beneath hanging blossom",
+  width: 1080,
+  height: 1350,
+};
 
 /* ── Occasion index cards ── */
 export const OCCASION_CARDS = [

@@ -17,6 +17,9 @@ type Area = {
   cta: string;
   href: string;
   media: { src: string; alt: string };
+  /** Override the panel quality — set only where the photograph is also
+      used elsewhere on the page, so both share one download. */
+  quality?: number;
 };
 
 /* Four estate settings presented in one cinematic, tabbed stage. */
@@ -48,12 +51,14 @@ const AREAS: Area[] = [
     // TODO(client): confirm the canonical link target for Chigwell Hall (estate vs. suites).
     href: "/the-estate",
     media: { src: "/media/chigwell-hall-4e.jpg", alt: "Chigwell Hall, the Grade II listed manor" },
+    // Same photograph as IntroStatement's; match its quality to share the file.
+    quality: 75,
   },
   {
     numeral: "IV",
     name: "Grounds & Secret Garden",
     capacity: "42 acres of grounds",
-    copy: "Beautiful surroundings including landscaped lawns, the Secret Garden, waterfall, bridge and a variety of distinctive locations for wedding photography and outdoor corporate entertaining.",
+    copy: "Beautiful surroundings including landscaped lawns, the Secret Garden, waterfall, bridge and a variety of distinctive locations for photography, outdoor ceremonies, receptions and entertaining.",
     cta: "Explore the Grounds",
     href: "/venues/secret-garden",
     media: { src: "/media/garden-10b.jpg", alt: "The grounds and gardens of Chigwell Hall" },
@@ -172,7 +177,7 @@ export default function TwoSpaces() {
                 src={s.media.src}
                 alt={s.media.alt}
                 fill
-                quality={65}
+                quality={s.quality ?? 65}
                 sizes="100vw"
                 className={cn(
                   "object-cover",

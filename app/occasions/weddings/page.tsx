@@ -111,7 +111,7 @@ export default function WeddingsPage() {
 
       <SplitFeature
         eyebrow="Asian & Cultural Weddings"
-        title={"Designed around\nevery tradition."}
+        title={"Designed around\nyour traditions."}
         body={[
           "The Chigwell Marquees has extensive experience hosting Asian weddings and celebrations from a wide range of cultures and traditions.",
           "Our generous capacities, flexible layouts and catering preparation facilities make the venues particularly well suited to large family celebrations.",
@@ -131,7 +131,7 @@ export default function WeddingsPage() {
       <SpecList
         eyebrow="Good to Know"
         specs={[
-          { k: "Capacity", v: "Up to 1,000 guests across two marquee venues" },
+          { k: "Capacity", v: "30 to 1,000 guests, depending on venue." },
           { k: "Ceremonies", v: "Available within selected licensed areas" },
           { k: "Catering", v: "Dry hire · approved external caterers welcome" },
           { k: "Getting Here", v: "Approximately five minutes by car from Chigwell Underground Station" },
