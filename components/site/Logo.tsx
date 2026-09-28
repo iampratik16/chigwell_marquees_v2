@@ -34,7 +34,10 @@ export default function Logo({
         width={630}
         height={156}
         priority={priority}
-        sizes="(max-width: 640px) 170px, (max-width: 1024px) 230px, 260px"
+        // Matches Loader's sizes exactly. Both render /logo.png with priority,
+        // so identical `sizes` means the browser picks one variant and reuses it
+        // rather than preloading two copies of the logo on every page.
+        sizes="(max-width: 640px) 240px, 320px"
         className={cn(
           "w-auto transition-[filter] duration-500",
           imgClassName ?? "h-10 sm:h-12 md:h-14 lg:h-16",
