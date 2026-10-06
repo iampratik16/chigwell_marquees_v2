@@ -7,6 +7,7 @@ import {
   VENUE_INTEREST_OPTIONS,
   type EnquiryPayload,
 } from "@/lib/enquiry";
+import { waitUntil } from "@vercel/functions";
 import { mailConfigured, sendEnquiryEmails } from "@/lib/mailer";
 
 /**
@@ -128,35 +129,37 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true, recorded, delivered: false }, { status: recorded ? 200 : 502 });
   }
 
-  // Timings are logged because the two legs fail and slow down for entirely
-  // different reasons; without them, "the form is slow" is a guess.
+  /* ── 2 · Finish after answering ────────────────────────────────────── */
+
+  // Office 365 takes ~7s to accept a message from Vercel's network — 1.5s from
+  // a laptop, but that is the number that matters here. Making the customer
+  // watch "Sending…" for that long invites them to give up or submit twice, so
+  // the response goes out immediately and the work finishes behind it.
+  //
+  // waitUntil is what makes that safe: it keeps the function alive until the
+  // promise settles, rather than the platform freezing it the moment the
+  // response is flushed. Outside Vercel there is no such guarantee, so we
+  // simply await instead — slower locally, never dropped.
   const t0 = Date.now();
-  const ms: Record<string, number> = {};
-  const timed = <T,>(label: string, pr: Promise<T>) =>
-    pr.then((v) => {
-      ms[label] = Date.now() - t0;
-      console.warn(`[enquiry] ${label} took ${ms[label]}ms`);
-      return v;
-    });
+  const work = Promise.all([recordPromise, sendEnquiryEmails(body)]).then(
+    ([recorded, failures]) => {
+      for (const err of failures) console.error("[enquiry] email failed:", err);
+      const delivered = failures.length === 0;
+      console.warn(
+        `[enquiry] ${body.email} — recorded:${recorded} delivered:${delivered} in ${Date.now() - t0}ms`,
+      );
+      // Nothing captured it. Loud, because the customer has already been told
+      // it went through and only this log will say otherwise.
+      if (!recorded && !delivered) {
+        console.error("[enquiry] LOST — neither sheet nor email captured it:", body.email);
+      } else if (!recorded) {
+        console.error("[enquiry] sheet unavailable — captured by email only:", body.email);
+      }
+    },
+  );
 
-  const [recorded, failures] = await Promise.all([
-    timed("sheet", recordPromise),
-    timed("email", sendEnquiryEmails(body)),
-  ]);
-  for (const err of failures) console.error("[enquiry] email failed:", err);
-  const delivered = failures.length === 0;
+  if (process.env.VERCEL) waitUntil(work);
+  else await work;
 
-  /* ── 3 · Did anything capture it? ──────────────────────────────────── */
-
-  // Both routes failed, so the enquiry really is lost — tell the customer, who
-  // can then call instead. Anything less would discard it in silence.
-  if (!recorded && !delivered) {
-    console.error("[enquiry] LOST — neither sheet nor email captured it:", body.email);
-    return NextResponse.json({ ok: false, error: "send_failed" }, { status: 502 });
-  }
-
-  // At least one record exists. The customer sees success either way: an error
-  // would invite a resubmit and duplicate whichever record did go through.
-  if (!recorded) console.error("[enquiry] sheet unavailable — captured by email only:", body.email);
-  return NextResponse.json({ ok: true, recorded, delivered, ms });
+  return NextResponse.json({ ok: true });
 }
