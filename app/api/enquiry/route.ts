@@ -131,9 +131,11 @@ export async function POST(req: Request) {
   // Timings are logged because the two legs fail and slow down for entirely
   // different reasons; without them, "the form is slow" is a guess.
   const t0 = Date.now();
+  const ms: Record<string, number> = {};
   const timed = <T,>(label: string, pr: Promise<T>) =>
     pr.then((v) => {
-      console.warn(`[enquiry] ${label} took ${Date.now() - t0}ms`);
+      ms[label] = Date.now() - t0;
+      console.warn(`[enquiry] ${label} took ${ms[label]}ms`);
       return v;
     });
 
@@ -156,5 +158,5 @@ export async function POST(req: Request) {
   // At least one record exists. The customer sees success either way: an error
   // would invite a resubmit and duplicate whichever record did go through.
   if (!recorded) console.error("[enquiry] sheet unavailable — captured by email only:", body.email);
-  return NextResponse.json({ ok: true, recorded, delivered });
+  return NextResponse.json({ ok: true, recorded, delivered, ms });
 }
