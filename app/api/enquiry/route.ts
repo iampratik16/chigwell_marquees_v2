@@ -94,36 +94,41 @@ export async function POST(req: Request) {
       }
       recorded = true;
     } catch (err) {
-      // Nothing has captured the enquiry at this point, so say so rather than
-      // losing it in silence.
+      // Don't give up here: the email below is an independent record of the
+      // enquiry, and one broken pipe should not lose it. We only report
+      // failure if BOTH the sheet and the email fail.
       console.error("[enquiry] failed to record:", err);
-      return NextResponse.json({ ok: false, error: "send_failed" }, { status: 502 });
     }
   }
 
   /* ── 2 · Email it ──────────────────────────────────────────────────── */
 
-  // Checked after the sheet write so a misconfigured mailbox never costs us the
-  // enquiry itself — it is already stored by the time we get here.
   if (!mailConfigured) {
     if (process.env.NODE_ENV === "production") {
       // Loud and visible. A quiet "ok" here would let every enquiry go
       // unemailed for months with the form looking perfectly healthy.
-      console.error("[enquiry] SMTP not configured in production — recorded but NOT emailed:", body.email);
+      console.error("[enquiry] SMTP not configured in production:", body.email);
       return NextResponse.json({ ok: false, error: "email_not_configured" }, { status: 500 });
     }
     console.warn("[enquiry] SMTP not configured — skipping email (dev)");
-    return NextResponse.json({ ok: true, recorded, delivered: false });
+    return NextResponse.json({ ok: true, recorded, delivered: false }, { status: recorded ? 200 : 502 });
   }
 
   const failures = await sendEnquiryEmails(body);
-  if (failures.length) {
-    // Configured but the send failed. The enquiry is safely recorded, so the
-    // customer sees success — showing an error would invite a resubmit and
-    // duplicate the row for something that did go through.
-    for (const err of failures) console.error("[enquiry] email failed:", err);
-    return NextResponse.json({ ok: true, recorded, delivered: false });
+  for (const err of failures) console.error("[enquiry] email failed:", err);
+  const delivered = failures.length === 0;
+
+  /* ── 3 · Did anything capture it? ──────────────────────────────────── */
+
+  // Both routes failed, so the enquiry really is lost — tell the customer, who
+  // can then call instead. Anything less would discard it in silence.
+  if (!recorded && !delivered) {
+    console.error("[enquiry] LOST — neither sheet nor email captured it:", body.email);
+    return NextResponse.json({ ok: false, error: "send_failed" }, { status: 502 });
   }
 
-  return NextResponse.json({ ok: true, recorded, delivered: true });
+  // At least one record exists. The customer sees success either way: an error
+  // would invite a resubmit and duplicate whichever record did go through.
+  if (!recorded) console.error("[enquiry] sheet unavailable — captured by email only:", body.email);
+  return NextResponse.json({ ok: true, recorded, delivered });
 }
