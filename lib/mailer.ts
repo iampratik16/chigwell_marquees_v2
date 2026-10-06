@@ -88,6 +88,14 @@ const transporter = config
       port: config.port,
       secure: config.port === 465,
       auth: { user: config.user, pass: config.pass },
+      // Office 365 caps concurrent SMTP connections per mailbox and answers
+      // `432 4.3.2 Concurrent connections limit exceeded` over it. Sending the
+      // notification and the acknowledgement at the same time was enough to
+      // trip that. Pooling with a single connection queues them onto one
+      // authenticated session instead — which also skips a second TLS
+      // handshake, so it is faster as well as within the limit.
+      pool: true,
+      maxConnections: 1,
     })
   : null;
 
@@ -158,6 +166,7 @@ async function sendAutoReply(b: EnquiryPayload) {
 /**
  * Send both emails. Settled independently so one failing cannot stop the
  * other — a bounced customer address must not cost the team its notification.
+ * The pool serialises them onto one connection, so this does not open two.
  * Returns the failures rather than throwing; the caller decides what a failed
  * send means for an enquiry that is already safely in the sheet.
  */
