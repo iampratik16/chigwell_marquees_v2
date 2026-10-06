@@ -133,7 +133,7 @@ export async function POST(req: Request) {
   const t0 = Date.now();
   const timed = <T,>(label: string, pr: Promise<T>) =>
     pr.then((v) => {
-      console.log(`[enquiry] ${label} took ${Date.now() - t0}ms`);
+      console.warn(`[enquiry] ${label} took ${Date.now() - t0}ms`);
       return v;
     });
 
