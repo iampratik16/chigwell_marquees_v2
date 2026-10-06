@@ -128,7 +128,19 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true, recorded, delivered: false }, { status: recorded ? 200 : 502 });
   }
 
-  const [recorded, failures] = await Promise.all([recordPromise, sendEnquiryEmails(body)]);
+  // Timings are logged because the two legs fail and slow down for entirely
+  // different reasons; without them, "the form is slow" is a guess.
+  const t0 = Date.now();
+  const timed = <T,>(label: string, pr: Promise<T>) =>
+    pr.then((v) => {
+      console.log(`[enquiry] ${label} took ${Date.now() - t0}ms`);
+      return v;
+    });
+
+  const [recorded, failures] = await Promise.all([
+    timed("sheet", recordPromise),
+    timed("email", sendEnquiryEmails(body)),
+  ]);
   for (const err of failures) console.error("[enquiry] email failed:", err);
   const delivered = failures.length === 0;
 
