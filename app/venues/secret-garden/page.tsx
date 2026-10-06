@@ -43,7 +43,18 @@ export default function SecretGardenPage() {
         poster={POSTER.secretGarden}
       />
 
-      <VenueGallery title="The Secret Garden in every season." items={SECRET_GARDEN_GALLERY} />
+      <SpecList
+        eyebrow="Secret Garden Details"
+        specs={[
+          { k: "Access", v: "Subject to your venue booking" },
+          { k: "Setting", v: "Landscaped lawn and central fountain" },
+          {
+            k: "Available For",
+            v: "Selected civil ceremonies · welcome drinks · canapés · wedding photography",
+          },
+        ]}
+        tone="bone-dim"
+      />
 
       <Section tone="bone" spacing="lg">
         <div className="container-luxe">
@@ -127,18 +138,7 @@ export default function SecretGardenPage() {
 
       <GalleryBand label="Explore the Gallery" tone="bone-dim" />
 
-      <SpecList
-        eyebrow="Secret Garden Details"
-        specs={[
-          { k: "Access", v: "Subject to your venue booking" },
-          { k: "Setting", v: "Landscaped lawn and central fountain" },
-          {
-            k: "Available For",
-            v: "Selected civil ceremonies · welcome drinks · canapés · wedding photography",
-          },
-        ]}
-        tone="bone-dim"
-      />
+      <VenueGallery title="The Secret Garden in every season." items={SECRET_GARDEN_GALLERY} />
 
       <SpecList
         eyebrow="Perfect For"

@@ -40,7 +40,17 @@ export default function SuitesPage() {
         focal="50% 22%"
       />
 
-      <VenueGallery title="Inside Chigwell Hall." items={CHIGWELL_HALL_GALLERY} />
+      <SpecList
+        eyebrow="The detail"
+        title="Two suites, every occasion."
+        specs={[
+          { k: "Banqueting Suite", v: "Up to 160 guests · ground floor" },
+          { k: "Belmont Suite", v: "Up to 70 guests · first floor" },
+          { k: "Both feature", v: "Private bar & spacious dancefloor" },
+          { k: "Belmont balcony", v: "Overlooking the London skyline" },
+        ]}
+        tone="ink"
+      />
 
       <Section tone="bone" spacing="lg">
         <div className="container-luxe">
@@ -85,17 +95,7 @@ export default function SuitesPage() {
         tone="bone-dim"
       />
 
-      <SpecList
-        eyebrow="The detail"
-        title="Two suites, every occasion."
-        specs={[
-          { k: "Banqueting Suite", v: "Up to 160 guests · ground floor" },
-          { k: "Belmont Suite", v: "Up to 70 guests · first floor" },
-          { k: "Both feature", v: "Private bar & spacious dancefloor" },
-          { k: "Belmont balcony", v: "Overlooking the London skyline" },
-        ]}
-        tone="ink"
-      />
+      <VenueGallery title="Inside Chigwell Hall." items={CHIGWELL_HALL_GALLERY} />
 
       {/* Inside the suites */}
       <Section tone="bone" spacing="md">

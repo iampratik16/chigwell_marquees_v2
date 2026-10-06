@@ -42,7 +42,24 @@ export default function MegaMarqueePage() {
         video={VIDEO.megaHero}
       />
 
-      <VenueGallery title="Inside the Mega Marquee." items={MEGA_GALLERY} />
+      <SpecList
+        eyebrow="Features"
+        title="Everything you need for a large-scale event."
+        features={[
+          "Capacity for 200 – 1,000 guests",
+          "Complimentary on-site guest parking",
+          "Built-in sound system",
+          "Cordless microphone",
+          "Private bridal suite",
+          "Seating and tables available",
+          "Catering preparation facilities",
+          "Purpose-built restroom facilities",
+          "Air conditioning and heating",
+          "Event security and operational staff",
+          "Selected access to the grounds for wedding photography",
+        ]}
+        tone="bone"
+      />
 
       <Section tone="bone" spacing="lg">
         <div className="container-luxe">
@@ -104,24 +121,7 @@ export default function MegaMarqueePage() {
 
       <GalleryBand label="Explore the Gallery" />
 
-      <SpecList
-        eyebrow="Features"
-        title="Everything you need for a large-scale event."
-        features={[
-          "Capacity for 200 – 1,000 guests",
-          "Complimentary on-site guest parking",
-          "Built-in sound system",
-          "Cordless microphone",
-          "Private bridal suite",
-          "Seating and tables available",
-          "Catering preparation facilities",
-          "Purpose-built restroom facilities",
-          "Air conditioning and heating",
-          "Event security and operational staff",
-          "Selected access to the grounds for wedding photography",
-        ]}
-        tone="bone"
-      />
+      <VenueGallery title="Inside the Mega Marquee." items={MEGA_GALLERY} />
 
       <SpecList
         eyebrow="Venue Details"

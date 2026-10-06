@@ -42,7 +42,25 @@ export default function MiniMarqueePage() {
         media={MINI_IMG.interior}
       />
 
-      <VenueGallery title="Inside the Mini Marquee." items={MINI_GALLERY} />
+      <SpecList
+        eyebrow="Features"
+        title="Everything you need for your celebration."
+        features={[
+          "Capacity for 30 – 200 guests",
+          "Complimentary on-site parking",
+          "White starlit ceiling",
+          "Built-in sound system",
+          "Cordless microphone",
+          "Private bridal suite",
+          "Gold Napoleon chairs",
+          "Round and rectangular tables",
+          "Catering preparation facilities",
+          "Purpose-built restroom facilities",
+          "Air conditioning and heating",
+          "Selected Secret Garden access",
+        ]}
+        tone="bone"
+      />
 
       <Section tone="bone" spacing="lg">
         <div className="container-luxe">
@@ -152,25 +170,7 @@ export default function MiniMarqueePage() {
 
       <GalleryBand label="Explore the Gallery" />
 
-      <SpecList
-        eyebrow="Features"
-        title="Everything you need for your celebration."
-        features={[
-          "Capacity for 30 – 200 guests",
-          "Complimentary on-site parking",
-          "White starlit ceiling",
-          "Built-in sound system",
-          "Cordless microphone",
-          "Private bridal suite",
-          "Gold Napoleon chairs",
-          "Round and rectangular tables",
-          "Catering preparation facilities",
-          "Purpose-built restroom facilities",
-          "Air conditioning and heating",
-          "Selected Secret Garden access",
-        ]}
-        tone="bone"
-      />
+      <VenueGallery title="Inside the Mini Marquee." items={MINI_GALLERY} />
 
       <SpecList
         eyebrow="Venue Details"
