@@ -181,12 +181,11 @@ export const OCC_CULTURAL_CARD: Media = {
   width: 1080,
   height: 1350,
 };
-export const OCC_CORPORATE_CARD: Media = {
-  src: "/media/corporate-evening-event-essex-chigwell-marquees.jpg",
-  alt: "Business professionals networking at a corporate evening event in the marquee",
-  width: 928,
-  height: 1152,
-};
+// The old corporate-evening-event image showed a pleated pole-tent roof, which
+// is neither of our marquees — it predates the CORP_* set above and was never
+// seeded from a photograph of the venue. Reuse the reception shot instead: same
+// scene, but a roof, chandeliers and window line that are actually the Mini.
+export const OCC_CORPORATE_CARD: Media = CORP_RECEPTION;
 export const OCC_CELEBRATIONS_CARD: Media = {
   src: "/media/ig-07.jpg",
   alt: "An evening celebration in the marquee, with a lit bar beneath hanging blossom",
