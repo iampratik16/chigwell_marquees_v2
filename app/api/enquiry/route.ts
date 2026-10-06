@@ -42,6 +42,53 @@ const Schema = z.object({
   consent: z.literal(true),
 });
 
+/** How long to wait on the Apps Script before giving up on the sheet. Without
+ *  a cap, a hanging or broken script holds the customer's form open
+ *  indefinitely; the email is an independent record, so losing the race here
+ *  is survivable. */
+const SHEET_TIMEOUT_MS = 6000;
+
+/** Append to the Google Sheet. Resolves true only if the row was really saved. */
+async function recordToSheet(body: EnquiryPayload): Promise<boolean> {
+  const url = process.env.SHEETS_WEBHOOK_URL;
+  const secret = process.env.SHEETS_WEBHOOK_SECRET;
+
+  if (!url) {
+    console.warn("[enquiry] SHEETS_WEBHOOK_URL not set — enquiry NOT recorded:", body.email);
+    return false;
+  }
+
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...body, secret }),
+      cache: "no-store",
+      signal: AbortSignal.timeout(SHEET_TIMEOUT_MS),
+    });
+
+    // Apps Script answers 200 with an HTML error page when the script itself
+    // fails (e.g. "Script function not found: doPost"), so the status alone
+    // proves nothing — the row is only saved if it echoes back {ok:true}.
+    const text = await res.text();
+    let reply: { ok?: boolean; error?: string } | null = null;
+    try {
+      reply = JSON.parse(text) as { ok?: boolean; error?: string };
+    } catch {
+      reply = null;
+    }
+    if (!res.ok || !reply?.ok) {
+      throw new Error(`sheet rejected (${res.status}): ${reply?.error ?? text.slice(0, 200)}`);
+    }
+    return true;
+  } catch (err) {
+    // Not fatal on its own: the email is a second, independent record of the
+    // enquiry. Only losing both counts as losing the enquiry.
+    console.error("[enquiry] failed to record:", err);
+    return false;
+  }
+}
+
 export async function POST(req: Request) {
   let raw: unknown;
   try {
@@ -62,48 +109,15 @@ export async function POST(req: Request) {
   }
   const body: EnquiryPayload = { ...parsed.data, occasion: parsed.data.occasion ?? "" };
 
-  /* ── 1 · Record it ─────────────────────────────────────────────────── */
+  /* ── 1 · Record it and email it, at the same time ──────────────────── */
 
-  const url = process.env.SHEETS_WEBHOOK_URL;
-  const secret = process.env.SHEETS_WEBHOOK_SECRET;
-  let recorded = false;
-
-  if (!url) {
-    console.warn("[enquiry] SHEETS_WEBHOOK_URL not set — enquiry NOT recorded:", body.email);
-  } else {
-    try {
-      const res = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...body, secret }),
-        cache: "no-store",
-      });
-
-      // Apps Script answers 200 with an HTML error page when the script itself
-      // fails (e.g. "Script function not found: doPost"), so the status alone
-      // proves nothing — the row is only saved if it echoes back {ok:true}.
-      const text = await res.text();
-      let reply: { ok?: boolean; error?: string } | null = null;
-      try {
-        reply = JSON.parse(text) as { ok?: boolean; error?: string };
-      } catch {
-        reply = null;
-      }
-      if (!res.ok || !reply?.ok) {
-        throw new Error(`sheet rejected (${res.status}): ${reply?.error ?? text.slice(0, 200)}`);
-      }
-      recorded = true;
-    } catch (err) {
-      // Don't give up here: the email below is an independent record of the
-      // enquiry, and one broken pipe should not lose it. We only report
-      // failure if BOTH the sheet and the email fail.
-      console.error("[enquiry] failed to record:", err);
-    }
-  }
-
-  /* ── 2 · Email it ──────────────────────────────────────────────────── */
+  // Run concurrently, not in sequence. They are independent, and waiting for
+  // one before starting the other made the customer sit through the sum of
+  // both — which is how a slow sheet turned into a nine-second "Sending…".
+  const recordPromise = recordToSheet(body);
 
   if (!mailConfigured) {
+    const recorded = await recordPromise;
     if (process.env.NODE_ENV === "production") {
       // Loud and visible. A quiet "ok" here would let every enquiry go
       // unemailed for months with the form looking perfectly healthy.
@@ -114,7 +128,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true, recorded, delivered: false }, { status: recorded ? 200 : 502 });
   }
 
-  const failures = await sendEnquiryEmails(body);
+  const [recorded, failures] = await Promise.all([recordPromise, sendEnquiryEmails(body)]);
   for (const err of failures) console.error("[enquiry] email failed:", err);
   const delivered = failures.length === 0;
 
